@@ -4,13 +4,13 @@ import { Heart } from 'lucide-react';
 import { analytics } from '@/lib/analytics';
 
 // Heart icon link to CONTRIBUTING.md
-export function ContributeLink({ href = "https://github.com/abusoww/tuxmate/blob/main/CONTRIBUTING.md" }: { href?: string }) {
+export function ContributeLink({ href = "https://github.com/pzmmy/kaixiang-linux/blob/main/CONTRIBUTING.md" }: { href?: string }) {
     return (
         <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contribute to TuxMate on GitHub"
+            aria-label="在 GitHub 上贡献开箱 Linux"
             className="group flex items-center gap-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-300"
             onClick={() => analytics.contributeClicked()}
         >

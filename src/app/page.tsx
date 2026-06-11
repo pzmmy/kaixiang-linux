@@ -274,13 +274,13 @@ export default function Home() {
                             <div className="flex items-center gap-4">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                    src="/tuxmate.png"
-                                    alt="TuxMate Logo"
+                                    src="/kaixiang.png"
+                                    alt="开箱 Linux Logo"
                                     className="w-16 h-16 sm:w-[72px] sm:h-[72px] object-contain shrink-0"
                                 />
                                 <div className="flex flex-col justify-center">
                                     <h1 className="text-xl sm:text-2xl font-bold tracking-tight" style={{ transition: 'color 0.5s' }}>
-                                        TuxMate
+                                        开箱 Linux
                                     </h1>
                                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-0.5">
                                         <p className="text-xs sm:text-sm text-[var(--text-muted)] tracking-widest uppercase opacity-80" style={{ transition: 'color 0.5s' }}>

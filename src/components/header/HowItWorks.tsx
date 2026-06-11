@@ -102,7 +102,7 @@ export function HowItWorks() {
             >
                 <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border-primary)]/15">
                     <h3 id="how-it-works-title" className="text-base font-semibold text-[var(--text-primary)]">
-                        Help
+                        帮助
                     </h3>
                     <button
                         onClick={handleClose}
@@ -115,21 +115,21 @@ export function HowItWorks() {
                 <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6" style={{ scrollbarGutter: 'stable' }}>
 
                     <section>
-                        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-4 pl-3 border-l-2 border-[var(--text-muted)]/30">Keyboard Shortcuts</h4>
+                        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-4 pl-3 border-l-2 border-[var(--text-muted)]/30">快捷键</h4>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-2">
                             {[
-                                ['↑↓←→', 'Navigate through apps'],
-                                ['hjkl', 'Vim-style navigation'],
-                                ['Space', 'Select or deselect app'],
-                                ['/', 'Focus search box'],
-                                ['y', 'Copy install command'],
-                                ['d', 'Download install script'],
-                                ['c', 'Clear all selections'],
-                                ['t', 'Toggle light/dark theme'],
-                                ['Tab', 'Preview current selection'],
-                                ['Esc', 'Close this modal'],
-                                ['?', 'Show this help'],
-                                ['1 / 2', 'Switch AUR helper (yay/paru)'],
+                                ['↑↓←→', '在应用中导航'],
+                                ['hjkl', 'Vim 风格导航'],
+                                ['Space', '选中或取消应用'],
+                                ['/', '聚焦搜索框'],
+                                ['y', '复制安装命令'],
+                                ['d', '下载安装脚本'],
+                                ['c', '清除所有选择'],
+                                ['t', '切换浅色/深色主题'],
+                                ['Tab', '预览当前选择'],
+                                ['Esc', '关闭此窗口'],
+                                ['?', '显示此帮助'],
+                                ['1 / 2', '切换 AUR 助手 (yay/paru)'],
                             ].map(([key, desc]) => (
                                 <div key={key} className="flex items-center gap-3 text-sm">
                                     <kbd className="inline-flex items-center justify-center min-w-[52px] px-2 py-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)]/20 rounded text-xs font-mono text-[var(--text-secondary)]">
@@ -142,43 +142,43 @@ export function HowItWorks() {
                     </section>
 
                     <section>
-                        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3 pl-3 border-l-2 border-[var(--text-muted)]/30">Getting Started</h4>
+                        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3 pl-3 border-l-2 border-[var(--text-muted)]/30">快速上手</h4>
                         <ol className="space-y-2 text-sm text-[var(--text-muted)] leading-relaxed">
                             <li>
-                                <strong className="text-[var(--text-secondary)]">1. Pick your distro</strong> — Select your Linux distribution from the dropdown at the top. This determines which package manager commands TuxMate generates for you.
+                                <strong className="text-[var(--text-secondary)]">1. 选择发行版</strong> — 从顶部下拉菜单选择你的 Linux 发行版，开箱 Linux 会根据你选择的包管理器生成相应命令。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">2. Select apps</strong> — Browse the categories and click on apps to add them to your selection. Selected apps are highlighted. Use keyboard shortcuts to navigate faster.
+                                <strong className="text-[var(--text-secondary)]">2. 挑选软件</strong> — 浏览分类，点击软件即可选中。已选中的应用会高亮显示。支持键盘快捷键快速操作。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">3. Copy or download</strong> — Copy the generated install command to your clipboard, or download a complete shell script. Downloaded scripts include error handling and can install multiple apps at once.
+                                <strong className="text-[var(--text-secondary)]">3. 复制或下载</strong> — 复制安装命令到剪贴板，或下载完整的 Shell 安装脚本。下载的脚本包含错误处理，可一键安装多个软件。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">4. Run in terminal</strong> — Open your terminal, paste the command (Ctrl+Shift+V), and press Enter. The script will handle the rest.
+                                <strong className="text-[var(--text-secondary)]">4. 在终端中运行</strong> — 打开终端，粘贴命令（Ctrl+Shift+V），按回车。脚本会自动完成剩余工作。
                             </li>
                         </ol>
                     </section>
 
                     <section>
-                        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3 pl-3 border-l-2 border-[var(--text-muted)]/30">Good to Know</h4>
+                        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3 pl-3 border-l-2 border-[var(--text-muted)]/30">注意事项</h4>
                         <ul className="space-y-2 text-sm text-[var(--text-muted)] leading-relaxed">
                             <li>
-                                <strong className="text-[var(--text-secondary)]">Greyed out apps</strong> aren&apos;t available in your distro&apos;s official repositories. Try switching to Flatpak or Snap in the dropdown, or hover the info icon next to the app for alternative installation methods.
+                                <strong className="text-[var(--text-secondary)]">灰色软件</strong> — 表示该软件不在当前发行版的官方仓库中。可切换到 Flatpak 或 Snap 包管理器，或悬停在信息图标上查看替代安装方式。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">Arch Linux users</strong> — Some packages come from the AUR. TuxMate uses yay or paru as the AUR helper. Press 1 or 2 anytime to switch between them.
+                                <strong className="text-[var(--text-secondary)]">Arch Linux 用户</strong> — 部分软件来自 AUR。开箱 Linux 使用 yay 或 paru 作为 AUR 助手，按 1 或 2 可随时切换。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">Homebrew users</strong> — Works on both macOS and Linux. GUI apps (Casks) are macOS-only and will be automatically skipped on Linux. The script handles this check for you.
+                                <strong className="text-[var(--text-secondary)]">Homebrew 用户</strong> — 同时支持 macOS 和 Linux。图形界面应用（Casks）仅限 macOS，Linux 上会自动跳过。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">Auto-save</strong> — Your app selections are saved automatically in your browser. Come back anytime and your selections will still be there.
+                                <strong className="text-[var(--text-secondary)]">自动保存</strong> — 你的选择会自动保存在浏览器中。下次打开页面时，之前的选择仍然保留。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">NixOS</strong> — Generates `environment.systemPackages`. If you pick unfree apps, the download includes comments showing exactly what to whitelist with `allowUnfree`.
+                                <strong className="var(--text-secondary)]">NixOS</strong> — 生成 `environment.systemPackages` 配置。如果选择了 unfree 软件，下载的脚本会包含 `allowUnfree` 注释说明。
                             </li>
                             <li>
-                                <strong className="text-[var(--text-secondary)]">Script Safety</strong> — Downloaded scripts are robust and idempotent. They include error handling, network retries, and system checks. Run them with <code className="px-1 py-0.5 bg-[var(--bg-secondary)] border border-[var(--border-primary)]/20 rounded text-xs font-mono">bash tuxmate-*.sh</code> to safely install your selection.
+                                <strong className="text-[var(--text-secondary)]">脚本安全</strong> — 下载的脚本是幂等的，包含错误处理和网络重试机制。用 <code className="px-1 py-0.5 bg-[var(--bg-secondary)] border border-[var(--border-primary)]/20 rounded text-xs font-mono">bash kaixiang-*.sh</code> 安全运行。
                             </li>
                         </ul>
                     </section>
@@ -197,7 +197,7 @@ export function HowItWorks() {
                     : 'bg-[var(--bg-tertiary)] text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
             >
                 <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                <span className="whitespace-nowrap">Help</span>
+                <span className="whitespace-nowrap">帮助</span>
             </button>
             {isOpen && mounted && typeof document !== 'undefined' && createPortal(modal, document.body)}
         </>

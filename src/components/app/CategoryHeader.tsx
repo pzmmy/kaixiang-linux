@@ -5,6 +5,7 @@ import {
     Terminal, Command, Play, Palette, Gamepad2, Briefcase,
     Network, Lock, Share2, Cpu, Sparkles, type LucideIcon
 } from 'lucide-react';
+import { categoryNamesZh } from '@/lib/data';
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
     'Web Browsers': Globe,
@@ -93,7 +94,7 @@ export function CategoryHeader({
                 const Icon = CATEGORY_ICONS[category] || Terminal;
                 return <Icon className="w-[18px] h-[18px]" style={{ color: hexColor }} />;
             })()}
-            <span className="flex-1 text-left">{category}</span>
+            <span className="flex-1 text-left">{categoryNamesZh[category] || category}</span>
             {selectedCount > 0 && (
                 <span
                     className="text-sm font-bold ml-1.5 px-2 py-0.5 rounded"

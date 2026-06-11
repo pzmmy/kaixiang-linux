@@ -122,7 +122,7 @@ export function CommandFooter({
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = isNix ? 'configuration.nix' : `tuxmate-${selectedDistro}.sh`;
+        a.download = isNix ? 'configuration.nix' : `kaixiang-${selectedDistro}.sh`;
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         const distroName = distros.find(d => d.id === selectedDistro)?.name || selectedDistro;

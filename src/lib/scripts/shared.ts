@@ -59,8 +59,8 @@ export function generateAsciiHeader(distroName: string, pkgCount: number): strin
 #     ██║   ╚██████╔╝██╔╝ ██╗██║ ╚═╝ ██║██║  ██║   ██║   ███████╗
 #     ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
 #
-#  Linux App Installer
-#  https://github.com/abusoww/tuxmate
+#  Linux App Installer — 开箱 Linux
+#  https://github.com/pzmmy/kaixiang-linux
 #
 #  Distribution: ${distroName}
 #  Packages: ${pkgCount}
@@ -82,7 +82,7 @@ export function generateSharedUtils(distroName: string, total: number): string {
 #  Logging & Colors
 # ---------------------------------------------------------------------------
 
-LOG="/tmp/tuxmate-${distroName.toLowerCase().replace(/\s+/g, '-')}-$(date +%Y%m%d-%H%M%S).log"
+LOG="/tmp/kaixiang-${distroName.toLowerCase().replace(/\\s+/g, '-')}-$(date +%Y%m%d-%H%M%S).log"
 # Save original stdout to FD 3
 exec 3>&1
 # Redirect script's stdout & stderr to the log file to keep TTY clean

@@ -22,17 +22,17 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TuxMate - LINUX BULK APP INSTALLER",
-  description: "TuxMate helps you generate terminal commands to install your favorite apps on any Linux distribution. Select your distro, pick your apps, and get your install command.",
+  title: "开箱 Linux — Linux 一键装软件",
+  description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
   openGraph: {
-    title: "TuxMate - Linux Bulk App Installer",
+    title: "开箱 Linux — Linux 一键装软件",
     description: "Generate install commands for 180+ apps on Ubuntu, Debian, Arch, Fedora, and more.",
     type: "website",
-    url: "https://tuxmate.com",
+    url: "https://github.com/pzmmy/kaixiang-linux",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TuxMate - Linux Bulk App Installer",
+    title: "开箱 Linux — Linux 一键装软件",
     description: "Generate install commands for 180+ apps on any Linux distro.",
   },
 };

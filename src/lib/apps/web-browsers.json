@@ -100,28 +100,6 @@
     }
   },
   {
-    "id": "tor",
-    "name": "Tor Browser",
-    "description": "Anonymous browsing via the Tor network",
-    "category": "Web Browsers",
-    "targets": {
-      "ubuntu": "torbrowser-launcher",
-      "arch": "torbrowser-launcher",
-      "fedora": "torbrowser-launcher",
-      "opensuse": "torbrowser-launcher",
-      "nix": "tor-browser",
-      "flatpak": "org.torproject.torbrowser-launcher",
-      "homebrew": "--cask tor-browser"
-    },
-    "unavailableReason": "Debian requires editing /etc/apt/sources.list adding \"contrib\" to the end of the line that starts with \"deb\" or \"deb-src\" and `sudo apt update` before installing `sudo apt install -y torbrowser-launcher`. Or just download from [torproject.org](https://www.torproject.org/download/).",
-    "icon": {
-      "type": "iconify",
-      "set": "simple-icons",
-      "name": "torbrowser",
-      "color": "#7D4698"
-    }
-  },
-  {
     "id": "chrome",
     "name": "Google Chrome",
     "description": "Most popular web browser by Google",
@@ -326,23 +304,6 @@
       "set": "simple-icons",
       "name": "floorp",
       "color": "#4B42FF"
-    }
-  },
-  {
-    "id": "mullvad-browser",
-    "name": "Mullvad Browser",
-    "description": "Privacy-focused browser made in collaboration with the Tor Project.",
-    "category": "Web Browsers",
-    "targets": {
-      "arch": "mullvad-browser-bin",
-      "flatpak": "net.mullvad.MullvadBrowser",
-      "homebrew": "--cask mullvad-browser",
-      "nix": "mullvad-browser"
-    },
-    "unavailableReason": "Not in most official repos. Use [Flatpak](https://flathub.org/en/apps/net.mullvad.MullvadBrowser) or see [mullvad.net](https://mullvad.net/en/download/browser/linux).",
-    "icon": {
-      "type": "url",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Mullvad_Browser_logo.svg"
     }
   },
   {

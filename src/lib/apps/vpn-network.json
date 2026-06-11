@@ -1,59 +1,5 @@
 [
   {
-    "id": "ivpn",
-    "name": "IVPN",
-    "description": "Private VPN with no-logging policy",
-    "category": "VPN & Network",
-    "targets": {
-      "arch": "ivpn-ui",
-      "nix": "ivpn-ui",
-      "homebrew": "--cask ivpn",
-      "snap": "ivpn"
-    },
-    "unavailableReason": "Not in official repos. Follow instructions at [ivpn.net/en/apps-linux](https://www.ivpn.net/en/apps-linux/).",
-    "icon": {
-      "type": "url",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Logo_of_IVPN.svg"
-    }
-  },
-  {
-    "id": "protonvpn",
-    "name": "Proton VPN",
-    "description": "Secure VPN by the makers of ProtonMail",
-    "category": "VPN & Network",
-    "targets": {
-      "arch": "proton-vpn-gtk-app",
-      "nix": "protonvpn-gui",
-      "flatpak": "com.protonvpn.www",
-      "homebrew": "--cask protonvpn"
-    },
-    "unavailableReason": "Not in official repos. Use Flatpak or follow instructions at [protonvpn.com/support/linux-vpn-setup](https://protonvpn.com/support/linux-vpn-setup/).",
-    "icon": {
-      "type": "iconify",
-      "set": "simple-icons",
-      "name": "protonvpn",
-      "color": "#6D4AFF"
-    }
-  },
-  {
-    "id": "mullvad",
-    "name": "Mullvad VPN",
-    "description": "Privacy-focused VPN with no-logging policy",
-    "category": "VPN & Network",
-    "targets": {
-      "arch": "mullvad-vpn-bin",
-      "nix": "mullvad-vpn",
-      "homebrew": "--cask mullvad-vpn"
-    },
-    "unavailableReason": "Not in official repos. Use [AUR](https://aur.archlinux.org/packages/mullvad-vpn-bin) or see [official install guide](https://mullvad.net/en/help/install-mullvad-app-linux).",
-    "icon": {
-      "type": "iconify",
-      "set": "simple-icons",
-      "name": "mullvad",
-      "color": "#44AD4D"
-    }
-  },
-  {
     "id": "tailscale",
     "name": "Tailscale",
     "description": "Zero-config mesh VPN using WireGuard",

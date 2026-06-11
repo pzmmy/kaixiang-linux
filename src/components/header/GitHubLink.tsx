@@ -4,7 +4,7 @@ import { Github } from 'lucide-react';
 import { analytics } from '@/lib/analytics';
 
 // GitHub logo that links to the repo
-export function GitHubLink({ href = "https://github.com/abusoww/tuxmate" }: { href?: string }) {
+export function GitHubLink({ href = "https://github.com/pzmmy/kaixiang-linux" }: { href?: string }) {
     return (
         <a
             href={href}

@@ -121,6 +121,39 @@ export const categories: Category[] = [
     'AI Tools',
 ];
 
+/** 分类中文名映射 */
+export const categoryNamesZh: Record<Category, string> = {
+    'Web Browsers': '网页浏览器',
+    'Communication': '通讯工具',
+    'Media': '影音媒体',
+    'Gaming': '游戏娱乐',
+    'Office': '办公软件',
+    'Creative': '创意设计',
+    'System': '系统工具',
+    'File Sharing': '文件分享',
+    'Security': '安全隐私',
+    'VPN & Network': '网络工具',
+    'Dev: Editors': '开发：编辑器',
+    'Dev: Languages': '开发：语言环境',
+    'Dev: Tools': '开发：工具',
+    'Terminal': '终端模拟器',
+    'CLI Tools': '命令行工具',
+    'AI Tools': 'AI 工具',
+};
+
+/** 发行版中文名映射 */
+export const distroNamesZh: Record<string, string> = {
+    'ubuntu': 'Ubuntu',
+    'debian': 'Debian',
+    'arch': 'Arch Linux',
+    'fedora': 'Fedora',
+    'opensuse': 'OpenSUSE',
+    'nix': 'NixOS',
+    'flatpak': 'Flatpak（通用）',
+    'snap': 'Snap（通用）',
+    'homebrew': 'Homebrew（通用）',
+};
+
 export const getAppsByCategory = (category: Category): AppData[] => {
     return apps.filter(app => app.category === category);
 };

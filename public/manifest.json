@@ -1,24 +1,21 @@
 {
-    "name": "TuxMate",
-    "short_name": "TuxMate",
-    "description": "Linux bulk app installer - select your apps, get your install script",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#0a0a0a",
-    "theme_color": "#8B5CF6",
-    "orientation": "any",
-    "icons": [
-        {
-            "src": "/icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "/icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any maskable"
-        }
-    ]
+  "name": "开箱 Linux",
+  "short_name": "开箱Linux",
+  "description": "Linux 一键装软件 — 选择发行版，挑选软件，复制命令，搞定。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }

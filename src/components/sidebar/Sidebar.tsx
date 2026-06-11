@@ -77,7 +77,7 @@ export function Sidebar({
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = isNix ? 'configuration.nix' : `tuxmate-${selectedDistro}.sh`;
+        a.download = isNix ? 'configuration.nix' : `kaixiang-${selectedDistro}.sh`;
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         const distroName = distros.find(d => d.id === selectedDistro)?.name || selectedDistro;
@@ -102,14 +102,14 @@ export function Sidebar({
                 <div className="flex items-center gap-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                        src="/tuxmate.png"
-                        alt="TuxMate Logo"
+                        src="/kaixiang.png"
+                        alt="开箱 Linux Logo"
                         className="w-16 h-16 object-contain shrink-0"
                     />
                     <div className="flex flex-col items-start">
                         <h1 className="text-[28px] font-extrabold tracking-tight text-[var(--text-primary)] leading-none"
                             style={{ fontFamily: 'var(--font-heading)', transition: 'color 0.5s' }}>
-                            TuxMate
+                            开箱 Linux
                         </h1>
                         <p className="text-[11px] text-[var(--text-muted)] tracking-[0.14em] uppercase mt-2 font-medium leading-none"
                             style={{ transition: 'color 0.5s' }}>
@@ -421,7 +421,7 @@ export function Sidebar({
 
                     <div className="flex items-center gap-0.5">
                         <a
-                            href="https://github.com/abusoww/tuxmate"
+                            href="https://github.com/pzmmy/kaixiang-linux"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all text-[12px]"
@@ -431,7 +431,7 @@ export function Sidebar({
                             <Github className="w-4 h-4" />
                         </a>
                         <a
-                            href="https://github.com/abusoww/tuxmate/blob/main/CONTRIBUTING.md"
+                            href="https://github.com/pzmmy/kaixiang-linux/blob/main/CONTRIBUTING.md"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-rose-400 transition-all text-[12px]"

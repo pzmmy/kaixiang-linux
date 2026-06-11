@@ -27,7 +27,7 @@ export const SearchBox = forwardRef<HTMLInputElement, SearchBoxProps>(
                     value={query}
                     onChange={(e) => onChange(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Press / to search..."
+                    placeholder="按 / 搜索..."
                     className="
                         w-36 sm:w-44 pl-8 pr-7 py-1.5 
                         bg-[var(--bg-secondary)] 

@@ -130,10 +130,10 @@ export function CommandDrawer({
                             <div className="w-1 h-5 rounded-full" style={{ backgroundColor: distroColor }}></div>
                             <div>
                                 <h3 id="drawer-title" className="text-sm font-bold uppercase tracking-wider text-[var(--text-secondary)]">
-                                    {isNix ? 'Configuration Preview' : 'Terminal Preview'}
+                                    {isNix ? 'Nix 配置预览' : '终端命令预览'}
                                 </h3>
                                 <p className="text-xs text-[var(--text-muted)] mt-0.5">
-                                    {selectedCount} apps selected
+                                    已选 {selectedCount} 个软件
                                 </p>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ export function CommandDrawer({
                     <button
                         onClick={onClose}
                         className="p-2 -mr-2 rounded-md hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
-                        aria-label="Close drawer"
+                        aria-label="关闭面板"
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -164,9 +164,9 @@ export function CommandDrawer({
                             <div className="flex items-start gap-2">
                                 <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
                                 <div className="text-sm">
-                                    <p className="font-medium text-amber-500">Unfree packages</p>
+                                    <p className="font-medium text-amber-500">非自由软件</p>
                                     <p className="text-[var(--text-muted)] mt-1">
-                                        {unfreeAppNames.join(', ')} require <code className="px-1 py-0.5 rounded bg-[var(--bg-tertiary)] text-xs">nixpkgs.config.allowUnfree = true</code>
+                                        {unfreeAppNames.join(', ')} 需要添加 <code className="px-1 py-0.5 rounded bg-[var(--bg-tertiary)] text-xs">nixpkgs.config.allowUnfree = true</code>
                                     </p>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@ export function CommandDrawer({
                                     className={`h-8 px-4 flex items-center gap-2 rounded-md transition-all text-xs font-medium ${activeShortcut === 'd' ? 'bg-[var(--bg-primary)] text-[var(--text-primary)] scale-[0.98]' : 'hover:bg-[var(--bg-primary)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
                                 >
                                     <Download className="w-4 h-4" />
-                                    <span>{isNix ? 'configuration.nix' : 'Script'}</span>
+                                    <span>{isNix ? 'configuration.nix' : '脚本'}</span>
                                 </button>
                                 <button
                                     data-action="copy"
@@ -202,7 +202,7 @@ export function CommandDrawer({
                                     }}
                                 >
                                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                                    <span>{copied ? 'Copied' : 'Copy'}</span>
+                                    <span>{copied ? '已复制' : '复制'}</span>
                                 </button>
                             </div>
                         </div>
@@ -232,7 +232,7 @@ export function CommandDrawer({
                         className={`flex-1 h-11 flex items-center justify-center gap-2 rounded-md border text-sm font-medium transition-all ${activeShortcut === 'd' ? 'bg-[var(--bg-hover)] text-[var(--text-primary)] border-[var(--border-secondary)] scale-[0.98]' : 'bg-[var(--bg-tertiary)] border-[var(--border-primary)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
                     >
                         <Download className="w-4 h-4" />
-                        Download
+                        下载
                     </button>
                     <button
                         data-action="copy"
@@ -248,7 +248,7 @@ export function CommandDrawer({
                         }}
                     >
                         {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                        {copied ? 'Copied!' : 'Copy'}
+                        {copied ? '已复制' : '复制'}
                     </button>
                 </div>
             </div>
