@@ -71,6 +71,18 @@ export default function RootLayout({
         {/* Preconnect to icon CDN */}
         <link rel="preconnect" href="https://api.iconify.design" />
         <link rel="dns-prefetch" href="https://api.iconify.design" />
+        {/* Content Security Policy */}
+        <meta httpEquiv="Content-Security-Policy" content="
+            default-src 'self';
+            script-src 'self' 'unsafe-inline' https://cloud.umami.is https://static.cloudflareinsights.com;
+            style-src 'self' 'unsafe-inline';
+            img-src 'self' https://api.iconify.design data:;
+            font-src 'self';
+            connect-src 'self';
+            frame-src 'none';
+            object-src 'none';
+            base-uri 'self';
+        " />
         <meta name="theme-color" content="#8B5CF6" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
