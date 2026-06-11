@@ -13,6 +13,7 @@ import { CommandDrawer } from './CommandDrawer';
 interface CommandFooterProps {
     command: string;
     selectedCount: number;
+    totalSize: number;
     selectedDistro: DistroId;
     selectedApps: Set<string>;
     hasAurPackages: boolean;
@@ -38,6 +39,7 @@ interface CommandFooterProps {
 export function CommandFooter({
     command,
     selectedCount,
+    totalSize,
     selectedDistro,
     selectedApps,
     hasAurPackages,
@@ -232,6 +234,11 @@ export function CommandFooter({
                                         <span className="whitespace-nowrap text-xs uppercase tracking-wider">Preview</span>
                                         {selectedCount > 0 && (
                                             <span className="text-[10px] opacity-60 ml-0.5 whitespace-nowrap">[{selectedCount}]</span>
+                                        )}
+                                        {totalSize > 0 && (
+                                            <span className="text-[10px] opacity-40 ml-1 whitespace-nowrap">
+                                                {totalSize >= 1000 ? `${(totalSize/1000).toFixed(1)}GB` : `${totalSize}MB`}
+                                            </span>
                                         )}
                                     </button>
 

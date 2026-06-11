@@ -41,6 +41,7 @@ export default function Home() {
         unfreeAppNames,
         selectedMirror,
         setMirrorSource,
+        totalSize,
     } = useLinuxInit();
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -153,7 +154,8 @@ export default function Home() {
                 const filteredApps = query
                     ? categoryApps.filter(app =>
                         app.name.toLowerCase().includes(query) ||
-                        app.id.toLowerCase().includes(query)
+                        app.id.toLowerCase().includes(query) ||
+                        (app.aliases && app.aliases.some(a => a.toLowerCase().includes(query)))
                     )
                     : categoryApps;
                 return { category: cat, apps: filteredApps };
@@ -240,6 +242,7 @@ export default function Home() {
                 setSelectedHelper={setSelectedHelper}
                 hasUnfreePackages={hasUnfreePackages}
                 unfreeAppNames={unfreeAppNames}
+                totalSize={totalSize}
                 onOpenDrawer={openDrawer}
             />
 
@@ -420,6 +423,7 @@ export default function Home() {
                 setSelectedHelper={setSelectedHelper}
                 hasUnfreePackages={hasUnfreePackages}
                 unfreeAppNames={unfreeAppNames}
+                totalSize={totalSize}
                 drawerOpen={drawerOpen}
                 drawerClosing={drawerClosing}
                 onDrawerOpen={() => setDrawerOpen(true)}

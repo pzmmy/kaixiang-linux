@@ -1,0 +1,27 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":prHourlyLimitNone",
+    ":prConcurrentLimitNone"
+  ],
+  "rangeStrategy": "bump",
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["next", "react", "react-dom"],
+      "groupName": "core",
+      "labels": ["core-update"]
+    }
+  ],
+  "schedule": ["before 8am on monday"]
+}

@@ -59,6 +59,8 @@ export interface AppData {
     targets: Partial<Record<DistroId | UniversalTargetId, string>>;
     unavailableReason?: string;
     note?: string;
+    aliases?: string[];
+    size?: number;
 }
 
 export const getIconUrl = (icon: IconDef): string => {

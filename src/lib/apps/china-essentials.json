@@ -17,7 +17,14 @@
       "set": "simple-icons",
       "name": "wechat",
       "color": "#07C160"
-    }
+    },
+    "aliases": [
+      "wx",
+      "weixin",
+      "微信",
+      "vx"
+    ],
+    "size": 180
   },
   {
     "id": "qq",
@@ -38,7 +45,12 @@
       "name": "tencentqq",
       "color": "#1EBAFC"
     },
-    "note": "Flatpak 版可能无法使用输入法，建议用 AUR (linuxqq)"
+    "note": "Flatpak 版可能无法使用输入法，建议用 AUR (linuxqq)",
+    "aliases": [
+      "qq",
+      "tim"
+    ],
+    "size": 150
   },
   {
     "id": "dingtalk",
@@ -55,7 +67,12 @@
       "set": "simple-icons",
       "name": "dingtalk",
       "color": "#0089FF"
-    }
+    },
+    "aliases": [
+      "dingding",
+      "钉钉"
+    ],
+    "size": 200
   },
   {
     "id": "feishu",
@@ -72,7 +89,12 @@
       "name": "lark",
       "color": "#00D26C"
     },
-    "note": "AUR 版版本可能滞后，建议从官网直接下载 deb 包"
+    "note": "AUR 版版本可能滞后，建议从官网直接下载 deb 包",
+    "aliases": [
+      "lark",
+      "飞书"
+    ],
+    "size": 250
   },
   {
     "id": "wework",
@@ -89,7 +111,13 @@
       "set": "simple-icons",
       "name": "wechat",
       "color": "#08C160"
-    }
+    },
+    "aliases": [
+      "qiyeweixin",
+      "qywx",
+      "企业微信"
+    ],
+    "size": 180
   },
   {
     "id": "wps-office",
@@ -110,7 +138,11 @@
       "set": "simple-icons",
       "name": "wps",
       "color": "#3655B3"
-    }
+    },
+    "aliases": [
+      "wps"
+    ],
+    "size": 350
   },
   {
     "id": "netease-cloud-music",
@@ -129,7 +161,13 @@
       "set": "simple-icons",
       "name": "neteasecloudmusic",
       "color": "#D43C33"
-    }
+    },
+    "aliases": [
+      "wangyiyun",
+      "music163",
+      "网易云"
+    ],
+    "size": 120
   },
   {
     "id": "baidunetdisk",
@@ -146,7 +184,13 @@
     "icon": {
       "type": "url",
       "url": "https://pan.baidu.com/favicon.ico"
-    }
+    },
+    "aliases": [
+      "baidupan",
+      "wangpan",
+      "百度网盘"
+    ],
+    "size": 100
   },
   {
     "id": "tencent-meeting",
@@ -165,7 +209,13 @@
       "set": "simple-icons",
       "name": "tencentqq",
       "color": "#0052D9"
-    }
+    },
+    "aliases": [
+      "huiyi",
+      "wemeet",
+      "腾讯会议"
+    ],
+    "size": 150
   },
   {
     "id": "sunlogin",
@@ -180,7 +230,12 @@
     "icon": {
       "type": "url",
       "url": "https://sunlogin.oray.com/favicon.ico"
-    }
+    },
+    "aliases": [
+      "oray",
+      "向日葵"
+    ],
+    "size": 80
   },
   {
     "id": "sogouime",
@@ -199,7 +254,13 @@
       "set": "simple-icons",
       "name": "sogou",
       "color": "#FB8000"
-    }
+    },
+    "aliases": [
+      "sogou",
+      "sougou",
+      "搜狗"
+    ],
+    "size": 50
   },
   {
     "id": "utools",
@@ -217,7 +278,11 @@
       "set": "simple-icons",
       "name": "utools",
       "color": "#4A90D9"
-    }
+    },
+    "aliases": [
+      "u工具"
+    ],
+    "size": 80
   },
   {
     "id": "aliyun-cli",
@@ -235,7 +300,11 @@
       "name": "alibabacloud",
       "color": "#FF6A00"
     },
-    "note": "也可通过 pip install aliyuncli 安装"
+    "note": "也可通过 pip install aliyuncli 安装",
+    "aliases": [
+      "aliyun"
+    ],
+    "size": 15
   },
   {
     "id": "tim",
@@ -252,7 +321,8 @@
       "set": "simple-icons",
       "name": "tencentqq",
       "color": "#1EBAFC"
-    }
+    },
+    "size": 200
   },
   {
     "id": "bilibili",
@@ -270,7 +340,13 @@
       "set": "simple-icons",
       "name": "bilibili",
       "color": "#FB7299"
-    }
+    },
+    "aliases": [
+      "bili",
+      "b站",
+      "哔哩哔哩"
+    ],
+    "size": 120
   },
   {
     "id": "eleven-music",
@@ -288,7 +364,8 @@
       "set": "simple-icons",
       "name": "musicbrainz",
       "color": "#BA478F"
-    }
+    },
+    "size": 80
   },
   {
     "id": "clash-verge",
@@ -306,7 +383,11 @@
       "set": "simple-icons",
       "name": "clash",
       "color": "#E60012"
-    }
+    },
+    "aliases": [
+      "clash"
+    ],
+    "size": 120
   },
   {
     "id": "v2raya",
@@ -323,7 +404,11 @@
     "icon": {
       "type": "url",
       "url": "https://raw.githubusercontent.com/v2rayA/v2rayA/master/img/logo.svg"
-    }
+    },
+    "aliases": [
+      "v2ray"
+    ],
+    "size": 60
   },
   {
     "id": "hiddify",
@@ -340,7 +425,11 @@
       "set": "simple-icons",
       "name": "hiddify",
       "color": "#FF6B35"
-    }
+    },
+    "aliases": [
+      "hiddify"
+    ],
+    "size": 100
   },
   {
     "id": "sing-box",
@@ -357,7 +446,8 @@
     "icon": {
       "type": "url",
       "url": "https://raw.githubusercontent.com/SagerNet/sing-box/main/icons/icon.svg"
-    }
+    },
+    "size": 20
   },
   {
     "id": "rustdesk",
@@ -374,7 +464,12 @@
     "icon": {
       "type": "url",
       "url": "https://rustdesk.com/images/logo.svg"
-    }
+    },
+    "aliases": [
+      "rust",
+      "rustdesk"
+    ],
+    "size": 80
   },
   {
     "id": "tencent-cli",
@@ -390,7 +485,12 @@
       "set": "simple-icons",
       "name": "tencentqq",
       "color": "#0052D9"
-    }
+    },
+    "aliases": [
+      "tccli",
+      "腾讯云"
+    ],
+    "size": 10
   },
   {
     "id": "huawei-cli",
@@ -406,7 +506,12 @@
       "set": "simple-icons",
       "name": "huawei",
       "color": "#FF0000"
-    }
+    },
+    "aliases": [
+      "hcloud",
+      "华为云"
+    ],
+    "size": 10
   },
   {
     "id": "deepin-terminal",
@@ -425,7 +530,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 15
   },
   {
     "id": "deepin-screen-recorder",
@@ -442,7 +548,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 10
   },
   {
     "id": "spark-store",
@@ -459,7 +566,8 @@
     "icon": {
       "type": "url",
       "url": "https://www.spark-app.store/favicon.ico"
-    }
+    },
+    "size": 50
   },
   {
     "id": "wqy-microhei",
@@ -480,7 +588,8 @@
       "set": "simple-icons",
       "name": "wqy",
       "color": "#333333"
-    }
+    },
+    "size": 12
   },
   {
     "id": "fcitx5-chinese",
@@ -500,7 +609,8 @@
       "set": "simple-icons",
       "name": "fcitx5",
       "color": "#4A90D9"
-    }
+    },
+    "size": 20
   },
   {
     "id": "gitee-cli",
@@ -515,7 +625,8 @@
     "icon": {
       "type": "url",
       "url": "https://gitee.com/favicon.ico"
-    }
+    },
+    "size": 8
   },
   {
     "id": "xmind",
@@ -533,7 +644,12 @@
       "set": "simple-icons",
       "name": "xmind",
       "color": "#F75C2F"
-    }
+    },
+    "aliases": [
+      "xmind",
+      "mindmap"
+    ],
+    "size": 200
   },
   {
     "id": "youdao-dict",
@@ -548,7 +664,8 @@
     "icon": {
       "type": "url",
       "url": "https://dict.youdao.com/favicon.ico"
-    }
+    },
+    "size": 100
   },
   {
     "id": "baidupinyin",
@@ -566,7 +683,8 @@
       "set": "simple-icons",
       "name": "baidu",
       "color": "#2932E1"
-    }
+    },
+    "size": 50
   },
   {
     "id": "foxitreader",
@@ -580,7 +698,12 @@
     "icon": {
       "type": "url",
       "url": "https://www.foxit.com/favicon.ico"
-    }
+    },
+    "aliases": [
+      "foxit",
+      "福昕"
+    ],
+    "size": 80
   },
   {
     "id": "xunlei",
@@ -595,7 +718,12 @@
     "icon": {
       "type": "url",
       "url": "https://www.xunlei.com/favicon.ico"
-    }
+    },
+    "aliases": [
+      "thunder",
+      "迅雷"
+    ],
+    "size": 150
   },
   {
     "id": "kugou",
@@ -610,7 +738,12 @@
     "icon": {
       "type": "url",
       "url": "https://www.kugou.com/favicon.ico"
-    }
+    },
+    "aliases": [
+      "kugou",
+      "酷狗"
+    ],
+    "size": 100
   },
   {
     "id": "nutstore",
@@ -625,7 +758,12 @@
     "icon": {
       "type": "url",
       "url": "https://www.jianguoyun.com/favicon.ico"
-    }
+    },
+    "aliases": [
+      "jianguo",
+      "坚果云"
+    ],
+    "size": 60
   },
   {
     "id": "deepin-music",
@@ -643,7 +781,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 15
   },
   {
     "id": "deepin-image-viewer",
@@ -660,7 +799,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 8
   },
   {
     "id": "deepin-calculator",
@@ -677,7 +817,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 5
   },
   {
     "id": "aliwangwang",
@@ -692,7 +833,8 @@
     "icon": {
       "type": "url",
       "url": "https://www.taobao.com/favicon.ico"
-    }
+    },
+    "size": 200
   },
   {
     "id": "deepin-wine",
@@ -710,7 +852,8 @@
       "set": "simple-icons",
       "name": "wine",
       "color": "#C44242"
-    }
+    },
+    "size": 300
   },
   {
     "id": "netease-mail",
@@ -725,7 +868,8 @@
     "icon": {
       "type": "url",
       "url": "https://mail.163.com/favicon.ico"
-    }
+    },
+    "size": 100
   },
   {
     "id": "teamviewer-cn",
@@ -742,7 +886,8 @@
       "set": "simple-icons",
       "name": "teamviewer",
       "color": "#0EABEB"
-    }
+    },
+    "size": 80
   },
   {
     "id": "qv2ray",
@@ -759,7 +904,8 @@
       "set": "simple-icons",
       "name": "qv2ray",
       "color": "#0078D4"
-    }
+    },
+    "size": 80
   },
   {
     "id": "copyq",
@@ -776,7 +922,8 @@
     "icon": {
       "type": "url",
       "url": "https://raw.githubusercontent.com/hluk/CopyQ/master/copyq.svg"
-    }
+    },
+    "size": 15
   },
   {
     "id": "goldendict-ng",
@@ -792,7 +939,8 @@
     "icon": {
       "type": "url",
       "url": "https://goldendict.org/favicon.ico"
-    }
+    },
+    "size": 100
   },
   {
     "id": "deepin-editor",
@@ -810,7 +958,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 10
   },
   {
     "id": "deepin-file-manager",
@@ -827,7 +976,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 20
   },
   {
     "id": "deepin-system-monitor",
@@ -844,7 +994,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 10
   },
   {
     "id": "peazip",
@@ -860,7 +1011,8 @@
     "icon": {
       "type": "url",
       "url": "https://peazip.github.io/favicon.ico"
-    }
+    },
+    "size": 15
   },
   {
     "id": "masterpdfeditor",
@@ -875,7 +1027,8 @@
     "icon": {
       "type": "url",
       "url": "https://code-industry.net/favicon.ico"
-    }
+    },
+    "size": 80
   },
   {
     "id": "deepin-picker",
@@ -892,7 +1045,8 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 5
   },
   {
     "id": "deepin-downloader",
@@ -909,6 +1063,7 @@
       "set": "simple-icons",
       "name": "deepin",
       "color": "#007CFF"
-    }
+    },
+    "size": 10
   }
 ]

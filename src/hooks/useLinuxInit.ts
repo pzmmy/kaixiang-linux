@@ -18,6 +18,7 @@ export interface UseLinuxInitReturn {
     generatedCommand: string;
     selectedCount: number;
     availableCount: number;
+    totalSize: number;
     hasYayInstalled: boolean;
     setHasYayInstalled: (value: boolean) => void;
     selectedHelper: 'yay' | 'paru';
@@ -198,6 +199,15 @@ export function useLinuxInit(): UseLinuxInitReturn {
         return apps.filter(app => globalIsAppAvailable(app, selectedDistro)).length;
     }, [selectedDistro]);
 
+    const totalSize = useMemo(() => {
+        let total = 0;
+        selectedApps.forEach(appId => {
+            const app = apps.find(a => a.id === appId);
+            if (app && app.size) total += app.size;
+        });
+        return total;
+    }, [selectedApps]);
+
     const generatedCommand = useMemo(() => {
         if (selectedApps.size === 0) {
             return '# Select apps above to generate command';
@@ -310,6 +320,7 @@ export function useLinuxInit(): UseLinuxInitReturn {
         generatedCommand,
         selectedCount: selectedApps.size,
         availableCount,
+        totalSize,
         hasYayInstalled,
         setHasYayInstalled,
         selectedHelper,
