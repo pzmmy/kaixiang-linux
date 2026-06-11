@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/fetch-verified-flatpaks.mjs",
-    "predev": "node scripts/fetch-verified-flatpaks.mjs",
+    "prebuild": "node scripts/fetch-verified-flatpaks.mjs && node scripts/validate-apps.mjs",
+    "predev": "node scripts/fetch-verified-flatpaks.mjs && node scripts/validate-apps.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

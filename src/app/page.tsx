@@ -310,6 +310,13 @@ export default function Home() {
                             </button>
                         ))}
                     </div>
+                    {allCategoriesWithApps.length === 0 && searchQuery && (
+                        <div className="text-center py-20 text-[var(--text-muted)]">
+                            <div className="text-4xl mb-4">🔍</div>
+                            <p className="text-base">没有找到匹配的软件</p>
+                            <p className="text-sm mt-2 opacity-60">试试其他关键词，或清除搜索条件</p>
+                        </div>
+                    )}
                     <div className="grid grid-cols-2 gap-x-4 lg:hidden items-start">
                         {(() => {
                             const mobileColumns: Array<typeof allCategoriesWithApps> = [[], []];
