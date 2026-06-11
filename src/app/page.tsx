@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
-import gsap from 'gsap';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 
 import { useLinuxInit } from '@/hooks/useLinuxInit';
 import { useTooltip } from '@/hooks/useTooltip';
@@ -204,40 +203,6 @@ export default function Home() {
         toggleApp
     );
 
-    const headerRef = useRef<HTMLElement>(null);
-
-    useLayoutEffect(() => {
-        if (!headerRef.current || !isHydrated) return;
-
-        const header = headerRef.current;
-        const title = header.querySelector('.header-animate');
-        const controls = header.querySelector('.header-controls');
-
-        gsap.fromTo(title,
-            { clipPath: 'inset(0 100% 0 0)' },
-            {
-                clipPath: 'inset(0 0% 0 0)',
-                duration: 0.8,
-                ease: 'power2.out',
-                delay: 0.1,
-                onComplete: () => {
-                    if (title) gsap.set(title, { clipPath: 'none' });
-                }
-            }
-        );
-
-        gsap.fromTo(controls,
-            { opacity: 0, y: -10 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: 'power2.out',
-                delay: 0.3
-            }
-        );
-    }, [isHydrated]);
-
     if (!isHydrated) {
         return <LoadingSkeleton />;
     }
@@ -270,7 +235,7 @@ export default function Home() {
                 onOpenDrawer={openDrawer}
             />
 
-            <header ref={headerRef} className="lg:hidden pt-8 sm:pt-12 pb-8 sm:pb-10 px-4 sm:px-6 relative" style={{ zIndex: 1 }}>
+            <header className="lg:hidden pt-8 sm:pt-12 pb-8 sm:pb-10 px-4 sm:px-6 relative animate-fadeIn" style={{ zIndex: 1 }}>
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="header-animate">

@@ -64,10 +64,13 @@ export default function RootLayout({
   const cfBeacon = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
         {/* PWA manifest and meta tags */}
         <link rel="manifest" href="/manifest.json" />
+        {/* Preconnect to icon CDN */}
+        <link rel="preconnect" href="https://api.iconify.design" />
+        <link rel="dns-prefetch" href="https://api.iconify.design" />
         <meta name="theme-color" content="#8B5CF6" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

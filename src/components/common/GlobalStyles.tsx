@@ -94,6 +94,23 @@ export function GlobalStyles() {
         0% { opacity: 0; }
         100% { opacity: 1; }
       }
+      @keyframes revealFromLeft {
+        0% { clip-path: inset(0 100% 0 0); }
+        100% { clip-path: inset(0 0% 0 0); }
+      }
+      @keyframes slideUpFade {
+        0% { opacity: 0; transform: translateY(-10px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.4s ease-out;
+      }
+      .header-animate {
+        animation: revealFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+      }
+      .header-controls {
+        animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      }
       @keyframes fadeOut {
         0% { opacity: 1; }
         100% { opacity: 0; }

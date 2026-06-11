@@ -1,7 +1,6 @@
 'use client';
 
-import { memo, useRef, useLayoutEffect, useEffect } from 'react';
-import gsap from 'gsap';
+import { memo, useRef, useEffect } from 'react';
 import { type DistroId, type AppData, type Category } from '@/lib/data';
 import { analytics } from '@/lib/analytics';
 import { CategoryHeader } from './CategoryHeader';
@@ -69,50 +68,9 @@ function CategorySectionComponent({
     const selectedInCategory = categoryApps.filter(a => selectedApps.has(a.id)).length;
     const isCategoryFocused = focusedType === 'category' && focusedId === category;
     const sectionRef = useRef<HTMLDivElement>(null);
-    const hasAnimated = useRef(false);
     const prevAppCount = useRef(categoryApps.length);
 
     const color = categoryColors[category] || 'gray';
-
-    useLayoutEffect(() => {
-        if (!sectionRef.current || hasAnimated.current) return;
-        hasAnimated.current = true;
-
-        const section = sectionRef.current;
-        const header = section.querySelector('.category-header');
-        const items = section.querySelectorAll('.app-item');
-
-        requestAnimationFrame(() => {
-            gsap.set(header, { clipPath: 'inset(0 100% 0 0)' });
-            gsap.set(items, { y: -15, opacity: 0, force3D: true });
-
-            const delay = categoryIndex * 0.05;
-
-            gsap.to(header, {
-                clipPath: 'inset(0 0% 0 0)',
-                duration: 0.6,
-                ease: 'power2.out',
-                delay: delay + 0.05
-            });
-
-            gsap.to(items, {
-                y: 0,
-                opacity: 1,
-                duration: 0.5,
-                ease: 'power2.out',
-                delay: delay + 0.1,
-                force3D: true
-            });
-        });
-    }, [categoryIndex]);
-
-    useEffect(() => {
-        if (categoryApps.length !== prevAppCount.current && sectionRef.current) {
-            const items = sectionRef.current.querySelectorAll('.app-item');
-            gsap.set(items, { y: 0, opacity: 1, clearProps: 'all' });
-        }
-        prevAppCount.current = categoryApps.length;
-    }, [categoryApps.length]);
 
     return (
         <div ref={sectionRef} className="mb-3 md:mb-5 category-section">
