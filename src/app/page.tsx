@@ -44,7 +44,15 @@ export default function Home() {
     } = useLinuxInit();
 
     const [searchQuery, setSearchQuery] = useState('');
+    const [debouncedSearch, setDebouncedSearch] = useState('');
     const searchInputRef = useRef<HTMLInputElement>(null);
+    const debounceTimer = useRef<ReturnType<typeof setTimeout>>();
+
+    const handleSearchChange = useCallback((query: string) => {
+        setSearchQuery(query);
+        if (debounceTimer.current) clearTimeout(debounceTimer.current);
+        debounceTimer.current = setTimeout(() => setDebouncedSearch(query), 120);
+    }, []);
 
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [drawerClosing, setDrawerClosing] = useState(false);
@@ -138,7 +146,7 @@ export default function Home() {
     }, [selectedCount, clearAll, hasAurPackages, setSelectedHelper, drawerOpen, closeDrawer, openDrawer, toggleThemeWithFlash]);
 
     const allCategoriesWithApps = useMemo(() => {
-        const query = searchQuery.toLowerCase().trim();
+        const query = debouncedSearch.toLowerCase().trim();
         return categories
             .map(cat => {
                 const categoryApps = getAppsByCategory(cat);
@@ -151,7 +159,7 @@ export default function Home() {
                 return { category: cat, apps: filteredApps };
             })
             .filter(c => c.apps.length > 0);
-    }, [searchQuery]);
+    }, [debouncedSearch]);
 
     const COLUMN_COUNT = 4;
 
@@ -224,7 +232,7 @@ export default function Home() {
                 clearAll={clearAll}
                 command={generatedCommand}
                 searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
+                onSearchChange={handleSearchChange}
                 searchInputRef={searchInputRef}
                 hasAurPackages={hasAurPackages}
                 aurAppNames={aurAppNames}
@@ -405,7 +413,7 @@ export default function Home() {
                 hasYayInstalled={hasYayInstalled}
                 setHasYayInstalled={setHasYayInstalled}
                 searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
+                onSearchChange={handleSearchChange}
                 searchInputRef={searchInputRef}
                 clearAll={clearAll}
                 selectedHelper={selectedHelper}
