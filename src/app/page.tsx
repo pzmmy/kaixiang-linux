@@ -48,7 +48,7 @@ export default function Home() {
     const [debouncedSearch, setDebouncedSearch] = useState('');
     const [initScriptMode, setInitScriptMode] = useState(false);
     const searchInputRef = useRef<HTMLInputElement>(null);
-    const debounceTimer = useRef<ReturnType<typeof setTimeout>>();
+    const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const handleSearchChange = useCallback((query: string) => {
         setSearchQuery(query);
@@ -244,7 +244,6 @@ export default function Home() {
                 setSelectedHelper={setSelectedHelper}
                 hasUnfreePackages={hasUnfreePackages}
                 unfreeAppNames={unfreeAppNames}
-                totalSize={totalSize}
                 onOpenDrawer={openDrawer}
             />
 
