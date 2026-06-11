@@ -6,7 +6,7 @@ import { useLinuxInit } from '@/hooks/useLinuxInit';
 import { useTooltip } from '@/hooks/useTooltip';
 import { useKeyboardNavigation, type NavItem } from '@/hooks/useKeyboardNavigation';
 import { useVerification } from '@/hooks/useVerification';
-import { categories, getAppsByCategory, categoryNamesZh, mirrorSources, recipes } from '@/lib/data';
+import { categories, getAppsByCategory, categoryNamesZh, mirrorSources, recipes, generateInitScript } from '@/lib/data';
 
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { HowItWorks, GitHubLink, ContributeLink } from '@/components/header';
@@ -46,6 +46,7 @@ export default function Home() {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [debouncedSearch, setDebouncedSearch] = useState('');
+    const [initScriptMode, setInitScriptMode] = useState(false);
     const searchInputRef = useRef<HTMLInputElement>(null);
     const debounceTimer = useRef<ReturnType<typeof setTimeout>>();
 
@@ -155,6 +156,7 @@ export default function Home() {
                     ? categoryApps.filter(app =>
                         app.name.toLowerCase().includes(query) ||
                         app.id.toLowerCase().includes(query) ||
+                        app.description.toLowerCase().includes(query) ||
                         (app.aliases && app.aliases.some(a => a.toLowerCase().includes(query)))
                     )
                     : categoryApps;
@@ -232,7 +234,7 @@ export default function Home() {
                 selectedApps={selectedApps}
                 selectedCount={selectedCount}
                 clearAll={clearAll}
-                command={generatedCommand}
+                command={initScriptMode ? generateInitScript(selectedDistro) : generatedCommand}
                 searchQuery={searchQuery}
                 onSearchChange={handleSearchChange}
                 searchInputRef={searchInputRef}
@@ -303,8 +305,8 @@ export default function Home() {
                             <button
                                 key={recipe.id}
                                 onClick={() => {
+                                    setInitScriptMode(false);
                                     clearAll();
-                                    // Need setTimeout because clearAll is async in React
                                     setTimeout(() => {
                                         recipe.apps.forEach(appId => {
                                             if (isAppAvailable(appId)) toggleApp(appId);
@@ -320,6 +322,20 @@ export default function Home() {
                                 {recipe.name}
                             </button>
                         ))}
+                        <button
+                            onClick={() => {
+                                clearAll();
+                                setInitScriptMode(true);
+                            }}
+                            className={`px-3 py-1.5 text-xs rounded-lg border transition-all duration-200
+                                ${initScriptMode
+                                    ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
+                                    : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)]'
+                                }`}
+                            title="一键换源 + 安装中文字体和输入法"
+                        >
+                            🚀 一键初始化
+                        </button>
                     </div>
                     {allCategoriesWithApps.length === 0 && searchQuery && (
                         <div className="text-center py-20 text-[var(--text-muted)]">
@@ -407,7 +423,7 @@ export default function Home() {
             </main>
 
             <CommandFooter
-                command={generatedCommand}
+                command={initScriptMode ? generateInitScript(selectedDistro) : generatedCommand}
                 selectedCount={selectedCount}
                 selectedDistro={selectedDistro}
                 selectedApps={selectedApps}

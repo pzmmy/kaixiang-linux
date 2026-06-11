@@ -142,6 +142,114 @@ export interface Recipe {
     apps: string[];
 }
 
+/**
+ * 生成一键初始化脚本（换源 + 字体 + 输入法 + Flatpak 镜像）
+ */
+export function generateInitScript(distroId: DistroId): string {
+    const date = new Date().toISOString().split('T')[0];
+    const header = `#!/bin/bash
+# ============================================================
+# 开箱 Linux 一键初始化脚本
+# 生成日期: ${date}
+# 发行版: ${distroId}
+# 用途: 换国内源 + 安装中文字体 + 配置输入法
+# ============================================================
+set -euo pipefail
+`;
+
+    const aptMirror = `# 1. 备份并换清华源
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak 2>/dev/null || true
+sudo sed -i 's|http://archive.ubuntu.com|https://mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list 2>/dev/null || true
+sudo sed -i 's|https://archive.ubuntu.com|https://mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list 2>/dev/null || true
+sudo sed -i 's|http://security.ubuntu.com|https://mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list 2>/dev/null || true
+sudo apt update -qq
+
+# 2. 安装中文字体
+sudo apt install -y fonts-wqy-microhei fonts-wqy-zenhei 2>/dev/null && echo "✓ 中文字体已安装" || echo "⚠ 字体安装跳过"
+
+# 3. 安装中文输入法
+sudo apt install -y fcitx5 fcitx5-chinese-addons fcitx5-configtool 2>/dev/null && echo "✓ 输入法已安装" || echo "⚠ 输入法安装跳过"
+
+# 4. 配置输入法环境变量
+grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
+    echo >> ~/.xprofile
+    echo 'export GTK_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export QT_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export XMODIFIERS=@im=fcitx' >> ~/.xprofile
+}
+echo "✓ 输入法环境变量已配置"
+
+# 5. Flatpak 镜像
+sudo flatpak remote-modify flathub --url=https://mirrors.tuna.tsinghua.edu.cn/flathub 2>/dev/null && echo "✓ Flathub 已换清华源" || echo "⚠ Flatpak 未安装，跳过"
+`;
+
+    const archScript = `# 1. 配置清华源
+sudo sed -i 's|#Server = http://mirror.archlinux|Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux|g' /etc/pacman.d/mirrorlist 2>/dev/null || true
+echo "✓ 镜像源已配置"
+
+# 2. 更新系统
+sudo pacman -Syu --noconfirm
+
+# 3. 安装中文字体
+sudo pacman -S --noconfirm wqy-microhei wqy-zenhei 2>/dev/null && echo "✓ 中文字体已安装" || echo "⚠ 字体安装跳过"
+
+# 4. 安装中文输入法
+sudo pacman -S --noconfirm fcitx5 fcitx5-chinese-addons fcitx5-configtool 2>/dev/null && echo "✓ 输入法已安装" || echo "⚠ 输入法安装跳过"
+
+# 5. 配置输入法环境变量
+grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
+    echo >> ~/.xprofile
+    echo 'export GTK_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export QT_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export XMODIFIERS=@im=fcitx' >> ~/.xprofile
+}
+echo "✓ 输入法环境变量已配置"
+`;
+
+    const fedoraScript = `# 1. 换清华源
+sudo sed -i 's|#baseurl=http://download.example/pub/fedora/linux|baseurl=https://mirrors.tuna.tsinghua.edu.cn/fedora|g' /etc/yum.repos.d/fedora.repo 2>/dev/null || true
+echo "✓ 镜像源已配置"
+
+# 2. 安装中文字体
+sudo dnf install -y wqy-microhei-fonts 2>/dev/null && echo "✓ 中文字体已安装" || echo "⚠ 字体安装跳过"
+
+# 3. 安装中文输入法
+sudo dnf install -y fcitx5 fcitx5-chinese-addons 2>/dev/null && echo "✓ 输入法已安装" || echo "⚠ 输入法安装跳过"
+
+# 4. 配置输入法
+grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
+    echo >> ~/.xprofile
+    echo 'export GTK_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export QT_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export XMODIFIERS=@im=fcitx' >> ~/.xprofile
+}
+echo "✓ 输入法环境变量已配置"
+`;
+
+    switch (distroId) {
+        case 'ubuntu':
+        case 'debian':
+        case 'deepin':
+        case 'uos':
+            return header + aptMirror;
+        case 'arch':
+            return header + archScript;
+        case 'fedora':
+            return header + fedoraScript;
+        case 'opensuse':
+            return header + `# OpenSUSE: 手动换源
+sudo zypper mr -da
+sudo zypper ar -fcg https://mirrors.tuna.tsinghua.edu.cn/opensuse/distribution/leap/15.6/repo/oss/ TUNA-OSS
+sudo zypper ar -fcg https://mirrors.tuna.tsinghua.edu.cn/opensuse/distribution/leap/15.6/repo/non-oss/ TUNA-NON-OSS
+sudo zypper ref
+sudo zypper install -y wqy-microhei-fonts fcitx5 fcitx5-chinese-addons
+`;
+        default:
+            return `# 当前发行版 (${distroId}) 暂不支持一键初始化。
+# 请手动配置镜像源和输入法。`;
+    }
+}
+
 export const recipes: Recipe[] = [
     {
         id: 'office-cn',
