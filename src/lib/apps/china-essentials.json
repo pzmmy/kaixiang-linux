@@ -37,7 +37,8 @@
       "set": "simple-icons",
       "name": "tencentqq",
       "color": "#1EBAFC"
-    }
+    },
+    "note": "Flatpak 版可能无法使用输入法，建议用 AUR (linuxqq)"
   },
   {
     "id": "dingtalk",
@@ -70,7 +71,8 @@
       "set": "simple-icons",
       "name": "lark",
       "color": "#00D26C"
-    }
+    },
+    "note": "AUR 版版本可能滞后，建议从官网直接下载 deb 包"
   },
   {
     "id": "wework",
@@ -232,6 +234,7 @@
       "set": "simple-icons",
       "name": "alibabacloud",
       "color": "#FF6A00"
-    }
+    },
+    "note": "也可通过 pip install aliyuncli 安装"
   }
 ]
