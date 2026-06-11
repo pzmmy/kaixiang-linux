@@ -2,7 +2,7 @@
     {
         "id": "zsh",
         "name": "Zsh",
-        "description": "Powerful shell with advanced completion features",
+        "description": "功能强大的高级自动补全 Shell",
         "category": "Terminal",
         "targets": {
             "ubuntu": "zsh",
@@ -24,7 +24,7 @@
     {
         "id": "ohmyzsh",
         "name": "Oh My Zsh",
-        "description": "Zsh configuration framework with plugins/themes",
+        "description": "Zsh 插件与主题配置框架",
         "category": "Terminal",
         "targets": {
             "nix": "oh-my-zsh"
@@ -40,7 +40,7 @@
     {
         "id": "fish",
         "name": "Fish",
-        "description": "Smart and user-friendly interactive shell",
+        "description": "智能友好的交互式 Shell",
         "category": "Terminal",
         "targets": {
             "ubuntu": "fish",
@@ -61,7 +61,7 @@
     {
         "id": "starship",
         "name": "Starship",
-        "description": "Cross-shell customizable command prompt",
+        "description": "跨 Shell 可定制的命令提示符",
         "category": "Terminal",
         "targets": {
             "ubuntu": "starship",
@@ -82,7 +82,7 @@
     {
         "id": "alacritty",
         "name": "Alacritty",
-        "description": "Blazing fast GPU-accelerated terminal emulator",
+        "description": "极速 GPU 加速终端模拟器",
         "category": "Terminal",
         "targets": {
             "ubuntu": "alacritty",
@@ -105,7 +105,7 @@
     {
         "id": "kitty",
         "name": "Kitty",
-        "description": "Fast GPU-based terminal with advanced features",
+        "description": "基于 GPU 的快速终端模拟器",
         "category": "Terminal",
         "targets": {
             "ubuntu": "kitty",
@@ -127,7 +127,7 @@
     {
         "id": "wezterm",
         "name": "WezTerm",
-        "description": "GPU-accelerated terminal with Lua configuration",
+        "description": "GPU 加速、Lua 配置的终端模拟器",
         "category": "Terminal",
         "targets": {
             "arch": "wezterm",
@@ -147,7 +147,7 @@
     {
         "id": "foot",
         "name": "Foot",
-        "description": "Lightweight Wayland-native terminal emulator",
+        "description": "轻量级原生 Wayland 终端模拟器",
         "category": "Terminal",
         "targets": {
             "ubuntu": "foot",
@@ -169,7 +169,7 @@
     {
         "id": "ghostty",
         "name": "Ghostty",
-        "description": "Native GPU-accelerated terminal by Mitchell Hashimoto",
+        "description": "Mitchell Hashimoto 开发的 GPU 加速终端",
         "category": "Terminal",
         "targets": {
             "arch": "ghostty",
@@ -187,7 +187,7 @@
     {
         "id": "ptyxis",
         "name": "Ptyxis",
-        "description": "Modern terminal emulator optimized for containerized workflows",
+        "description": "面向容器化工作流的现代终端模拟器",
         "category": "Terminal",
         "targets": {
             "debian": "ptyxis",

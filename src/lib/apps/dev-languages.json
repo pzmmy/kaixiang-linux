@@ -2,7 +2,7 @@
     {
         "id": "python3",
         "name": "Python 3",
-        "description": "Popular beginner-friendly programming language",
+        "description": "流行的易上手编程语言",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "python3",
@@ -24,7 +24,7 @@
     {
         "id": "nodejs",
         "name": "Node.js",
-        "description": "Server-side JavaScript runtime environment",
+        "description": "服务端 JavaScript 运行时环境",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "nodejs",
@@ -47,7 +47,7 @@
     {
         "id": "go",
         "name": "Go",
-        "description": "Fast compiled programming language by Google",
+        "description": "Google 出品的快速编译型编程语言",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "golang",
@@ -70,7 +70,7 @@
     {
         "id": "rust",
         "name": "Rust",
-        "description": "Memory-safe systems programming language",
+        "description": "内存安全的系统级编程语言",
         "category": "Dev: Languages",
         "targets": {
             "arch": "rustup",
@@ -91,7 +91,7 @@
     {
         "id": "ruby",
         "name": "Ruby",
-        "description": "Dynamic language known for elegant syntax",
+        "description": "语法优雅的动态编程语言",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "ruby",
@@ -114,7 +114,7 @@
     {
         "id": "php",
         "name": "PHP",
-        "description": "Popular web server-side scripting language",
+        "description": "流行的 Web 服务端脚本语言",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "php",
@@ -136,7 +136,7 @@
     {
         "id": "openjdk",
         "name": "OpenJDK",
-        "description": "Open-source Java Development Kit",
+        "description": "开源的 Java 开发工具包",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "openjdk-21-jdk",
@@ -158,7 +158,7 @@
     {
         "id": "deno",
         "name": "Deno",
-        "description": "Secure TypeScript/JavaScript runtime by Node creator",
+        "description": "Node 作者打造的 TypeScript/JavaScript 运行时",
         "category": "Dev: Languages",
         "targets": {
             "arch": "deno",
@@ -177,7 +177,7 @@
     {
         "id": "bun",
         "name": "Bun",
-        "description": "Ultra-fast JavaScript runtime and bundler",
+        "description": "超快的 JavaScript 运行时与打包工具",
         "category": "Dev: Languages",
         "targets": {
             "arch": "bun",
@@ -194,7 +194,7 @@
     {
         "id": "npm",
         "name": "npm",
-        "description": "JavaScript package manager",
+        "description": "JavaScript 包管理器",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "npm",
@@ -216,7 +216,7 @@
     {
         "id": "pnpm",
         "name": "pnpm",
-        "description": "Fast, disk space efficient package manager",
+        "description": "快速节省磁盘空间的包管理器",
         "category": "Dev: Languages",
         "targets": {
             "arch": "pnpm",
@@ -235,7 +235,7 @@
     {
         "id": "yarn",
         "name": "yarn",
-        "description": "JavaScript package manager",
+        "description": "JavaScript 包管理器",
         "category": "Dev: Languages",
         "targets": {
             "ubuntu": "yarnpkg",
@@ -256,7 +256,7 @@
     {
         "id": "uv",
         "name": "uv",
-        "description": "Fast Python package manager",
+        "description": "快速的 Python 包管理器",
         "category": "Dev: Languages",
         "targets": {
             "arch": "uv",

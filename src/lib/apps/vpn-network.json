@@ -2,7 +2,7 @@
   {
     "id": "tailscale",
     "name": "Tailscale",
-    "description": "Zero-config mesh VPN using WireGuard",
+    "description": "零配置的网状VPN，基于WireGuard",
     "category": "VPN & Network",
     "targets": {
       "arch": "tailscale",
@@ -22,7 +22,7 @@
   {
     "id": "wireguard",
     "name": "WireGuard",
-    "description": "Fast, modern, secure VPN tunnel protocol",
+    "description": "快速、现代、安全的VPN隧道协议",
     "category": "VPN & Network",
     "targets": {
       "ubuntu": "wireguard",
@@ -44,7 +44,7 @@
   {
     "id": "openvpn",
     "name": "OpenVPN",
-    "description": "Full-featured SSL VPN solution",
+    "description": "功能完备的SSL VPN解决方案",
     "category": "VPN & Network",
     "targets": {
       "ubuntu": "openvpn",
@@ -66,7 +66,7 @@
   {
     "id": "nmap",
     "name": "Nmap",
-    "description": "Network discovery and security auditing tool",
+    "description": "网络发现与安全审计工具",
     "category": "VPN & Network",
     "targets": {
       "ubuntu": "nmap",
@@ -86,7 +86,7 @@
   {
     "id": "openssh",
     "name": "OpenSSH",
-    "description": "Secure remote login and file transfer via SSH",
+    "description": "安全的远程登录与文件传输工具",
     "category": "VPN & Network",
     "targets": {
       "ubuntu": "openssh-client",
@@ -108,7 +108,7 @@
   {
     "id": "remmina",
     "name": "Remmina",
-    "description": "Open-source remote desktop client for RDP, VNC, SSH and more",
+    "description": "开源远程桌面客户端，支持RDP/VNC/SSH",
     "category": "VPN & Network",
     "targets": {
       "ubuntu": "remmina",

@@ -2,7 +2,7 @@
     {
         "id": "gparted",
         "name": "GParted",
-        "description": "GNOME partition editor for disk management",
+        "description": "GNOME 磁盘分区管理工具",
         "category": "System",
         "targets": {
             "ubuntu": "gparted",
@@ -23,7 +23,7 @@
     {
         "id": "kde-partition-manager",
         "name": "KDE Partition Manager",
-        "description": "Utility for management of disk devices, partitions and file systems",
+        "description": "磁盘设备、分区和文件系统管理工具",
         "category": "System",
         "targets": {
             "ubuntu": "partitionmanager",
@@ -45,7 +45,7 @@
     {
         "id": "kdeconnect",
         "name": "KDE Connect",
-        "description": "Connect your phone to your Linux desktop",
+        "description": "将手机与 Linux 桌面无缝连接",
         "category": "System",
         "targets": {
             "ubuntu": "kdeconnect",
@@ -66,7 +66,7 @@
     {
         "id": "timeshift",
         "name": "Timeshift",
-        "description": "System snapshot and restore tool like Time Machine",
+        "description": "系统快照备份和恢复工具",
         "category": "System",
         "targets": {
             "ubuntu": "timeshift",
@@ -87,7 +87,7 @@
     {
         "id": "bleachbit",
         "name": "BleachBit",
-        "description": "Free disk space and maintain privacy",
+        "description": "释放磁盘空间并保护隐私",
         "category": "System",
         "targets": {
             "ubuntu": "bleachbit",
@@ -107,7 +107,7 @@
     {
         "id": "flameshot",
         "name": "Flameshot",
-        "description": "Powerful screenshot tool with annotation",
+        "description": "功能强大的截图和标注工具",
         "category": "System",
         "targets": {
             "ubuntu": "flameshot",
@@ -128,7 +128,7 @@
     {
         "id": "gnometweaks",
         "name": "GNOME Tweaks",
-        "description": "Advanced settings and customization for GNOME",
+        "description": "GNOME 桌面高级设置和定制",
         "category": "System",
         "targets": {
             "ubuntu": "gnome-tweaks",
@@ -149,7 +149,7 @@
     {
         "id": "dconf",
         "name": "dconf Editor",
-        "description": "Low-level configuration editor for GNOME",
+        "description": "GNOME 底层配置编辑器",
         "category": "System",
         "targets": {
             "ubuntu": "dconf-editor",
@@ -170,7 +170,7 @@
     {
         "id": "borgbackup",
         "name": "BorgBackup",
-        "description": "Deduplicating backup program with compression",
+        "description": "带压缩功能的去重备份工具",
         "category": "System",
         "targets": {
             "ubuntu": "borgbackup",
@@ -192,7 +192,7 @@
     {
         "id": "restic",
         "name": "Restic",
-        "description": "Fast, secure, efficient backup program",
+        "description": "快速、安全、高效的备份程序",
         "category": "System",
         "targets": {
             "ubuntu": "restic",
@@ -214,7 +214,7 @@
     {
         "id": "flatpaksupport",
         "name": "Flatpak",
-        "description": "Universal app packaging and sandboxing framework",
+        "description": "通用应用打包和沙箱运行框架",
         "category": "System",
         "targets": {
             "ubuntu": "flatpak",
@@ -235,7 +235,7 @@
     {
         "id": "filelight",
         "name": "Filelight",
-        "description": "Interactive disk usage visualization by KDE",
+        "description": "KDE 出品交互式磁盘空间可视化",
         "category": "System",
         "targets": {
             "ubuntu": "filelight",
@@ -257,7 +257,7 @@
     {
         "id": "conky",
         "name": "Conky",
-        "description": "Highly configurable desktop system monitor",
+        "description": "高度可配置的桌面系统监控工具",
         "category": "System",
         "targets": {
             "ubuntu": "conky-all",
@@ -278,7 +278,7 @@
     {
         "id": "fsearch",
         "name": "FSearch",
-        "description": "Fast file search utility, inspired by Everything",
+        "description": "受 Everything 启发的快速文件搜索",
         "category": "System",
         "targets": {
             "ubuntu": "fsearch",
@@ -297,7 +297,7 @@
     {
         "id": "resources",
         "name": "Resources",
-        "description": "Modern system resource monitor",
+        "description": "现代风格的系统资源监视器",
         "category": "System",
         "targets": {
             "arch": "resources",
@@ -312,7 +312,7 @@
     {
         "id": "cpux",
         "name": "CPU-X",
-        "description": "System profiling and monitoring (CPU-Z alternative)",
+        "description": "系统分析和监控工具（CPU-Z 替代）",
         "category": "System",
         "targets": {
             "ubuntu": "cpu-x",
@@ -330,7 +330,7 @@
     {
         "id": "missioncenter",
         "name": "Mission Center",
-        "description": "Fast, modern system monitor with GPU support",
+        "description": "快速现代的系统监视器，支持 GPU",
         "category": "System",
         "targets": {
             "arch": "mission-center",
@@ -347,7 +347,7 @@
     {
         "id": "openrgb",
         "name": "OpenRGB",
-        "description": "Open source RGB lighting control that does not depend on manufacturer software. Supports a wide variety of RGB components, peripherals, accessories, and lights across many manufacturers.",
+        "description": "不依赖厂商软件的开源 RGB 灯光控制",
         "category": "System",
         "targets": {
             "arch": "openrgb",

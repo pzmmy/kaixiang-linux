@@ -2,7 +2,7 @@
     {
         "id": "blender",
         "name": "Blender",
-        "description": "Industry-grade 3D creation suite",
+        "description": "工业级 3D 建模和创作套件",
         "category": "Creative",
         "targets": {
             "ubuntu": "blender",
@@ -25,7 +25,7 @@
     {
         "id": "gimp",
         "name": "GIMP",
-        "description": "Powerful free image editor, Photoshop alternative",
+        "description": "功能强大的免费图像编辑器，Photoshop 替代",
         "category": "Creative",
         "targets": {
             "ubuntu": "gimp",
@@ -48,7 +48,7 @@
     {
         "id": "inkscape",
         "name": "Inkscape",
-        "description": "Professional vector graphics editor",
+        "description": "专业矢量图形编辑软件",
         "category": "Creative",
         "targets": {
             "ubuntu": "inkscape",
@@ -69,7 +69,7 @@
     {
         "id": "krita",
         "name": "Krita",
-        "description": "Professional digital painting application",
+        "description": "专业数字绘画应用软件",
         "category": "Creative",
         "targets": {
             "ubuntu": "krita",
@@ -92,7 +92,7 @@
     {
         "id": "darktable",
         "name": "Darktable",
-        "description": "Professional photography workflow application",
+        "description": "专业摄影后期工作流处理软件",
         "category": "Creative",
         "targets": {
             "ubuntu": "darktable",
@@ -113,7 +113,7 @@
     {
         "id": "freecad",
         "name": "FreeCAD",
-        "description": "Open-source parametric 3D CAD modeler",
+        "description": "开源参数化 3D CAD 建模工具",
         "category": "Creative",
         "targets": {
             "ubuntu": "freecad",
@@ -136,7 +136,7 @@
     {
         "id": "kicad",
         "name": "KiCad",
-        "description": "Professional PCB and schematic design suite",
+        "description": "专业 PCB 电路板和原理图设计套件",
         "category": "Creative",
         "targets": {
             "ubuntu": "kicad",
@@ -159,7 +159,7 @@
     {
         "id": "cura",
         "name": "UltiMaker Cura",
-        "description": "Popular 3D printer slicing application",
+        "description": "流行的 3D 打印机切片软件",
         "category": "Creative",
         "targets": {
             "arch": "cura",
@@ -179,7 +179,7 @@
     {
         "id": "godot",
         "name": "Godot Engine",
-        "description": "Feature-packed, cross-platform game engine",
+        "description": "功能丰富的跨平台开源游戏引擎",
         "category": "Creative",
         "targets": {
             "ubuntu": "godot",
@@ -202,7 +202,7 @@
     {
         "id": "kolourpaint",
         "name": "KolourPaint",
-        "description": "Easy-to-use paint program by KDE",
+        "description": "KDE 出品简单易用的绘画程序",
         "category": "Creative",
         "targets": {
             "ubuntu": "kolourpaint",
@@ -222,7 +222,7 @@
     {
         "id": "orcaslicer",
         "name": "OrcaSlicer",
-        "description": "Advanced 3D printer slicer based on BambuStudio",
+        "description": "基于 BambuStudio 的高级 3D 切片器",
         "category": "Creative",
         "targets": {
             "arch": "orca-slicer-bin",
@@ -240,7 +240,7 @@
     {
         "id": "davinci-resolve",
         "name": "DaVinci Resolve",
-        "description": "Professional video editing, color grading, and VFX software",
+        "description": "专业视频剪辑、调色和 VFX 软件",
         "category": "Creative",
         "targets": {
             "nix": "davinci-resolve"

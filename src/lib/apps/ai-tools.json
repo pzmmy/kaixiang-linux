@@ -2,7 +2,7 @@
   {
     "id": "opencode",
     "name": "OpenCode",
-    "description": "AI-powered coding platform and environment",
+    "description": "AI驱动的编码平台与开发环境",
     "category": "AI Tools",
     "targets": {
       "homebrew": "opencode",
@@ -21,7 +21,7 @@
   {
     "id": "codex",
     "name": "OpenAI Codex",
-    "description": "AI model that parses natural language and generates code",
+    "description": "解析自然语言并生成代码的AI模型",
     "category": "AI Tools",
     "targets": {
       "npm": "@openai/codex",
@@ -39,7 +39,7 @@
   {
     "id": "gemini-cli",
     "name": "Gemini CLI",
-    "description": "Command-line interface for Google's Gemini API",
+    "description": "Google Gemini API的命令行界面",
     "category": "AI Tools",
     "targets": {
       "npm": "@google/gemini-cli",
@@ -57,7 +57,7 @@
   {
     "id": "claude-code",
     "name": "Claude Code",
-    "description": "Anthropic's official CLI tool for Claude",
+    "description": "Anthropic官方推出的Claude CLI工具",
     "category": "AI Tools",
     "targets": {
       "homebrew": "--cask claude-code",
@@ -75,7 +75,7 @@
   {
     "id": "ollama",
     "name": "Ollama",
-    "description": "Get up and running with large language models locally",
+    "description": "本地运行大型语言模型的工具",
     "category": "AI Tools",
     "targets": {
       "fedora": "ollama",
@@ -94,7 +94,7 @@
   {
     "id": "llama-cpp",
     "name": "llama.cpp",
-    "description": "Inference of LLaMA model in pure C/C++",
+    "description": "纯C/C++实现的LLaMA模型推理工具",
     "category": "AI Tools",
     "targets": {
       "nix": "llama-cpp",
@@ -111,7 +111,7 @@
   {
     "id": "jan",
     "name": "Jan",
-    "description": "Open-source ChatGPT-alternative that runs locally offline",
+    "description": "开源的ChatGPT替代品，本地离线运行",
     "category": "AI Tools",
     "targets": {
       "arch": "jan-bin",

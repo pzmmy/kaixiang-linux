@@ -2,7 +2,7 @@
     {
         "id": "libreoffice",
         "name": "LibreOffice",
-        "description": "Full-featured open-source office suite",
+        "description": "功能完善的开源办公套件",
         "category": "Office",
         "targets": {
             "ubuntu": "libreoffice",
@@ -25,7 +25,7 @@
     {
         "id": "onlyoffice",
         "name": "OnlyOffice",
-        "description": "Modern office suite with MS Office compatibility",
+        "description": "兼容微软 Office 格式的现代办公套件",
         "category": "Office",
         "targets": {
             "arch": "onlyoffice-bin",
@@ -45,7 +45,7 @@
     {
         "id": "obsidian",
         "name": "Obsidian",
-        "description": "Popular Markdown-based knowledge management app",
+        "description": "基于 Markdown 的流行知识管理应用",
         "category": "Office",
         "targets": {
             "arch": "obsidian",
@@ -65,7 +65,7 @@
     {
         "id": "logseq",
         "name": "Logseq",
-        "description": "Open-source outliner for knowledge management",
+        "description": "开源的知识管理大纲工具",
         "category": "Office",
         "targets": {
             "arch": "logseq-desktop-bin",
@@ -85,7 +85,7 @@
     {
         "id": "joplin",
         "name": "Joplin",
-        "description": "Open-source note-taking with sync and encryption",
+        "description": "支持同步和加密的开源笔记应用",
         "category": "Office",
         "targets": {
             "arch": "joplin-appimage",
@@ -105,7 +105,7 @@
     {
         "id": "okular",
         "name": "Okular",
-        "description": "Universal document viewer by KDE",
+        "description": "KDE 出品的通用文档查看器",
         "category": "Office",
         "targets": {
             "ubuntu": "okular",
@@ -127,7 +127,7 @@
     {
         "id": "zathura",
         "name": "Zathura",
-        "description": "Vim-style minimal PDF/document viewer",
+        "description": "Vim 风格的极简 PDF 和文档查看器",
         "category": "Office",
         "targets": {
             "ubuntu": "zathura",
@@ -146,7 +146,7 @@
     {
         "id": "calibre",
         "name": "Calibre",
-        "description": "Complete e-book library management solution",
+        "description": "全面的电子书库管理解决方案",
         "category": "Office",
         "targets": {
             "ubuntu": "calibre",
@@ -169,7 +169,7 @@
     {
         "id": "xournalpp",
         "name": "Xournal++",
-        "description": "Handwriting and PDF annotation app",
+        "description": "手写笔记和 PDF 批注应用",
         "category": "Office",
         "targets": {
             "ubuntu": "xournalpp",
@@ -191,7 +191,7 @@
     {
         "id": "zotero",
         "name": "Zotero",
-        "description": "Research reference manager and citation tool",
+        "description": "研究文献管理和引用工具",
         "category": "Office",
         "targets": {
             "arch": "zotero-bin",
@@ -212,7 +212,7 @@
     {
         "id": "trilium",
         "name": "Trilium Notes",
-        "description": "Hierarchical note-taking app with powerful features",
+        "description": "功能强大的层级化笔记应用",
         "category": "Office",
         "targets": {
             "arch": "trilium-bin",

@@ -131,6 +131,53 @@ export const mirrorSources: MirrorSource[] = [
     },
 ];
 
+/** 装机必备配方 */
+export interface Recipe {
+    id: string;
+    name: string;
+    description: string;
+    icon: string;
+    apps: string[];
+}
+
+export const recipes: Recipe[] = [
+    {
+        id: 'office-cn',
+        name: '办公必备',
+        description: '办公套件 + 沟通协作',
+        icon: 'Briefcase',
+        apps: ['wps-office', 'wechat', 'qq', 'dingtalk', 'feishu', 'tencent-meeting', 'thunderbird'],
+    },
+    {
+        id: 'dev-env',
+        name: '开发环境',
+        description: 'IDE + 语言 + 容器 + Git',
+        icon: 'Code2',
+        apps: ['vscode', 'git', 'docker', 'docker-compose', 'nodejs', 'python3', 'openjdk', 'neovim', 'lazygit', 'cmake', 'dbeaver'],
+    },
+    {
+        id: 'social-media',
+        name: '社交娱乐',
+        description: '聊天 + 音乐 + 浏览器 + 下载',
+        icon: 'MessageCircle',
+        apps: ['wechat', 'qq', 'netease-cloud-music', 'firefox', 'chrome', 'vlc', 'baidunetdisk', 'flameshot'],
+    },
+    {
+        id: 'daily-cn',
+        name: '日常推荐',
+        description: '中国用户常用软件组合',
+        icon: 'Sparkles',
+        apps: ['wps-office', 'wechat', 'qq', 'dingtalk', 'netease-cloud-music', 'baidunetdisk', 'sogouime', 'sunlogin', 'firefox', 'vlc', 'flameshot'],
+    },
+    {
+        id: 'gaming',
+        name: '游戏玩家',
+        description: 'Steam + 游戏工具 + 性能优化',
+        icon: 'Gamepad2',
+        apps: ['steam', 'lutris', 'heroic', 'mangohud', 'gamemode', 'protonup', 'goverlay', 'retroarch'],
+    },
+];
+
 export const distros: Distro[] = [
     { id: 'ubuntu', name: 'Ubuntu', iconUrl: 'https://api.iconify.design/simple-icons/ubuntu.svg?color=%23E95420', color: '#E95420', installPrefix: 'sudo apt install -y' },
     { id: 'debian', name: 'Debian', iconUrl: 'https://api.iconify.design/simple-icons/debian.svg?color=%23A81D33', color: '#A81D33', installPrefix: 'sudo apt install -y' },

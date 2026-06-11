@@ -59,7 +59,7 @@ export function generateAsciiHeader(distroName: string, pkgCount: number): strin
 #     ██║   ╚██████╔╝██╔╝ ██╗██║ ╚═╝ ██║██║  ██║   ██║   ███████╗
 #     ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
 #
-#  Linux App Installer — 开箱 Linux
+#  Linux App Installer — kaixiang-linux
 #  https://github.com/pzmmy/kaixiang-linux
 #
 #  Distribution: ${distroName}

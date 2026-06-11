@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
   openGraph: {
     title: "开箱 Linux — Linux 一键装软件",
-    description: "Generate install commands for 180+ apps on Ubuntu, Debian, Arch, Fedora, and more.",
+    description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
     type: "website",
     url: "https://github.com/pzmmy/kaixiang-linux",
   },
   twitter: {
     card: "summary_large_image",
     title: "开箱 Linux — Linux 一键装软件",
-    description: "Generate install commands for 180+ apps on any Linux distro.",
+    description: "开箱 Linux 帮你一键生成安装命令：选择发行版，挑选 200+ 软件，复制命令即可。",
   },
 };
 

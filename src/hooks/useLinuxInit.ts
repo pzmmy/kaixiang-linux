@@ -200,20 +200,20 @@ export function useLinuxInit(): UseLinuxInitReturn {
 
     const generatedCommand = useMemo(() => {
         if (selectedApps.size === 0) {
-            return '# 在上方选择软件以生成安装命令';
+            return '# Select apps above to generate command';
         }
 
         const distro = distros.find(d => d.id === selectedDistro);
         if (!distro) return '';
 
-        // 国内镜像提示
+        // 国内镜像提示（注释保持英文，避免终端乱码）
         const mirrorInfo = mirrorSources.find(m => m.id === selectedMirror);
         const mirrorHeader = selectedMirror !== 'none' && mirrorInfo
-            ? `# 镜像源: ${mirrorInfo.name}\n` +
+            ? `# Mirror: ${mirrorInfo.name}\\n` +
               (selectedDistro === 'flatpak' && mirrorInfo.flathubMirror
-                  ? `# Flatpak 镜像: ${mirrorInfo.flathubMirror}\n# sudo flatpak remote-modify flathub --url=${mirrorInfo.flathubMirror}\n`
+                  ? `# Flathub mirror: ${mirrorInfo.flathubMirror}\\n# sudo flatpak remote-modify flathub --url=${mirrorInfo.flathubMirror}\\n`
                   : selectedDistro !== 'flatpak' && mirrorInfo.rules[selectedDistro]
-                  ? `# ${selectedDistro} 镜像: ${mirrorInfo.rules[selectedDistro]}\n`
+                  ? `# ${selectedDistro} mirror: ${mirrorInfo.rules[selectedDistro]}\\n`
                   : '')
             : '';
 

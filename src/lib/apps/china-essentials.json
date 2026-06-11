@@ -9,6 +9,7 @@
       "flatpak": "com.tencent.WeChat"
     },
     "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/zh-Hans/apps/com.tencent.WeChat) 安装，或从 [微信Linux官网](https://linux.weixin.qq.com/) 下载 AppImage。",
+    "note": "Flatpak版文件保存需要执行: flatpak override --filesystem=xdg-download:rw com.tencent.WeChat",
     "icon": {
       "type": "iconify",
       "set": "simple-icons",
@@ -43,6 +44,7 @@
       "arch": "dingtalk-bin"
     },
     "unavailableReason": "多由 AUR (dingtalk-bin) 安装。也可从 [钉钉官网](https://page.dingtalk.com/wow/dingtalk/act/download-linux) 下载 deb/rpm 包。",
+    "note": "AUR 版本由社区维护，更新可能比官方版本稍有延迟",
     "icon": {
       "type": "iconify",
       "set": "simple-icons",
@@ -75,6 +77,7 @@
       "arch": "work-wechat-bin"
     },
     "unavailableReason": "多由 AUR (work-wechat-bin) 安装。也可从 [企业微信官网](https://work.weixin.qq.com/) 下载。",
+    "note": "Linux版功能比Windows版少，不支持打卡等部分功能",
     "icon": {
       "type": "iconify",
       "set": "simple-icons",
@@ -93,6 +96,7 @@
       "flatpak": "com.wps.Office"
     },
     "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/en/apps/com.wps.Office)，AUR (wps-office-cn)，或从 [WPS官网](https://www.wps.cn/product/wpslinux) 下载。",
+    "note": "Flatpak版如需使用系统字体，需执行: flatpak override --filesystem=/usr/share/fonts com.wps.Office",
     "icon": {
       "type": "iconify",
       "set": "simple-icons",
@@ -109,6 +113,7 @@
       "arch": "netease-cloud-music"
     },
     "unavailableReason": "多由 AUR (netease-cloud-music) 安装，或从 [网易云音乐官网](https://music.163.com/) 下载 deb 包。",
+    "note": "部分新版需要自行安装 electron 依赖",
     "icon": {
       "type": "iconify",
       "set": "simple-icons",
@@ -125,6 +130,7 @@
       "arch": "baidunetdisk-bin"
     },
     "unavailableReason": "多由 AUR (baidunetdisk-bin) 安装，或从 [百度网盘官网](https://pan.baidu.com/download) 下载 deb/rpm 包。",
+    "note": "Linux版功能受限，不支持相册备份等部分功能",
     "icon": {
       "type": "url",
       "url": "https://pan.baidu.com/favicon.ico"
@@ -139,6 +145,7 @@
       "arch": "wemeet-bin"
     },
     "unavailableReason": "多由 AUR (wemeet-bin) 安装，或从 [腾讯会议官网](https://meeting.tencent.com/download/) 下载 deb 包。",
+    "note": "新版腾讯会议支持屏幕共享和虚拟背景",
     "icon": {
       "type": "iconify",
       "set": "simple-icons",
@@ -155,6 +162,7 @@
       "arch": "sunlogin-bin"
     },
     "unavailableReason": "多由 AUR (sunlogin-bin) 安装，或从 [向日葵官网](https://sunlogin.oray.com/download/) 下载。",
+    "note": "免费版限速 300KB/s，需注册 Oray 账号使用",
     "icon": {
       "type": "url",
       "url": "https://sunlogin.oray.com/favicon.ico"
@@ -169,11 +177,47 @@
       "arch": "fcitx5-sogouime"
     },
     "unavailableReason": "多由 AUR (fcitx5-sogouime) 安装，或从 [搜狗输入法官网](https://shurufa.sogou.com/linux) 下载。",
+    "note": "需要 fcitx5 框架支持，安装后需重启或重新登录才能启用",
     "icon": {
       "type": "iconify",
       "set": "simple-icons",
       "name": "sogou",
       "color": "#FB8000"
+    }
+  },
+  {
+    "id": "utools",
+    "name": "uTools",
+    "description": "国产效率工具启动器，媲美 uTools 的 Linux 替代",
+    "category": "System",
+    "targets": {
+      "arch": "utools",
+      "flatpak": "io.github.utools.utools"
+    },
+    "unavailableReason": "不在官方仓库。可从 [uTools 官网](https://u.tools/) 下载 deb 包。",
+    "note": "安装后按 Alt+Space 唤醒搜索框，支持插件扩展",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "utools",
+      "color": "#4A90D9"
+    }
+  },
+  {
+    "id": "aliyun-cli",
+    "name": "阿里云 CLI",
+    "description": "阿里云官方命令行工具，管理云资源",
+    "category": "Dev: Tools",
+    "targets": {
+      "arch": "aliyun-cli",
+      "npm": "aliyun-cli"
+    },
+    "unavailableReason": "通过 AUR (aliyun-cli) 或 npm install -g @alicloud/cloud-cli 安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "alibabacloud",
+      "color": "#FF6A00"
     }
   }
 ]

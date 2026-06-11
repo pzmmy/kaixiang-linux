@@ -2,7 +2,7 @@
     {
         "id": "git",
         "name": "Git",
-        "description": "Industry-standard distributed version control",
+        "description": "业界标准的分布式版本控制系统",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "git",
@@ -24,7 +24,7 @@
     {
         "id": "gitlfs",
         "name": "Git LFS",
-        "description": "Git extension for versioning large files",
+        "description": "Git 大文件版本控制扩展",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "git-lfs",
@@ -46,7 +46,7 @@
     {
         "id": "lazygit",
         "name": "LazyGit",
-        "description": "Simple terminal UI for git commands",
+        "description": "简洁的 Git 终端界面",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "lazygit",
@@ -67,7 +67,7 @@
     {
         "id": "docker",
         "name": "Docker",
-        "description": "Most popular container platform for app deployment",
+        "description": "最流行的应用容器化部署平台",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "docker.io",
@@ -90,7 +90,7 @@
     {
         "id": "podman",
         "name": "Podman",
-        "description": "Rootless container engine, Docker alternative",
+        "description": "无 root 容器引擎，Docker 替代品",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "podman",
@@ -112,7 +112,7 @@
     {
         "id": "podman-desktop",
         "name": "Podman Desktop",
-        "description": "A GUI for managing Podman",
+        "description": "Podman 图形化管理界面",
         "category": "Dev: Tools",
         "targets": {
             "arch": "podman-desktop",
@@ -129,7 +129,7 @@
     {
         "id": "incus",
         "name": "Incus",
-        "description": "Powerful system container and virtual machine manager (community fork of LXD)",
+        "description": "强大的系统容器和虚拟机管理器（LXD 社区分支）",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "incus",
@@ -151,7 +151,7 @@
     {
         "id": "kubectl",
         "name": "kubectl",
-        "description": "Command-line tool for Kubernetes clusters",
+        "description": "Kubernetes 集群命令行管理工具",
         "category": "Dev: Tools",
         "targets": {
             "arch": "kubectl",
@@ -172,7 +172,7 @@
     {
         "id": "vagrant",
         "name": "Vagrant",
-        "description": "Build and manage portable dev environments",
+        "description": "构建和管理可移植开发环境",
         "category": "Dev: Tools",
         "targets": {
             "debian": "vagrant",
@@ -193,7 +193,7 @@
     {
         "id": "virtualbox",
         "name": "VirtualBox",
-        "description": "Free cross-platform virtual machine manager",
+        "description": "免费跨平台的虚拟机管理器",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "virtualbox",
@@ -213,7 +213,7 @@
     {
         "id": "gnomeboxes",
         "name": "GNOME Boxes",
-        "description": "Simple virtual machine app for GNOME",
+        "description": "GNOME 简易虚拟机应用",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "gnome-boxes",
@@ -235,7 +235,7 @@
     {
         "id": "dbeaver",
         "name": "DBeaver",
-        "description": "Universal database management tool",
+        "description": "通用数据库管理工具",
         "category": "Dev: Tools",
         "targets": {
             "arch": "dbeaver",
@@ -254,7 +254,7 @@
     {
         "id": "meld",
         "name": "Meld",
-        "description": "Visual diff and merge tool for files",
+        "description": "可视化的文件差异比较与合并工具",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "meld",
@@ -275,7 +275,7 @@
     {
         "id": "wireshark",
         "name": "Wireshark",
-        "description": "Network protocol analyzer and packet capture",
+        "description": "网络协议分析与数据包抓取工具",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "wireshark",
@@ -298,7 +298,7 @@
     {
         "id": "postman",
         "name": "Postman",
-        "description": "Popular API testing and development platform",
+        "description": "流行的 API 测试与开发平台",
         "category": "Dev: Tools",
         "targets": {
             "arch": "postman-bin",
@@ -318,7 +318,7 @@
     {
         "id": "bruno",
         "name": "Bruno",
-        "description": "Offline-first open-source API client",
+        "description": "离线优先的开源 API 客户端",
         "category": "Dev: Tools",
         "targets": {
             "arch": "bruno-bin",
@@ -338,7 +338,7 @@
     {
         "id": "hoppscotch",
         "name": "Hoppscotch",
-        "description": "Open-source API development ecosystem",
+        "description": "开源的 API 开发生态系统",
         "category": "Dev: Tools",
         "targets": {
             "arch": "hoppscotch-bin",
@@ -356,7 +356,7 @@
     {
         "id": "yaak",
         "name": "Yaak",
-        "description": "Modern desktop API client for REST and GraphQL",
+        "description": "支持 REST 和 GraphQL 的现代 API 客户端",
         "category": "Dev: Tools",
         "targets": {
             "arch": "yaak-bin",
@@ -372,7 +372,7 @@
     {
         "id": "virtmanager",
         "name": "Virt Manager",
-        "description": "Desktop app for managing KVM virtual machines",
+        "description": "KVM 虚拟机桌面管理应用",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "virt-manager",
@@ -394,7 +394,7 @@
     {
         "id": "imhex",
         "name": "ImHex",
-        "description": "Feature-rich hex editor for reverse engineering",
+        "description": "功能丰富的逆向工程十六进制编辑器",
         "category": "Dev: Tools",
         "targets": {
             "arch": "imhex-bin",
@@ -414,7 +414,7 @@
     {
         "id": "cmake",
         "name": "CMake",
-        "description": "Cross-platform build system generator",
+        "description": "跨平台构建系统生成器",
         "category": "Dev: Tools",
         "targets": {
             "ubuntu": "cmake",

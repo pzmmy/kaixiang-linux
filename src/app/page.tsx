@@ -7,7 +7,7 @@ import { useLinuxInit } from '@/hooks/useLinuxInit';
 import { useTooltip } from '@/hooks/useTooltip';
 import { useKeyboardNavigation, type NavItem } from '@/hooks/useKeyboardNavigation';
 import { useVerification } from '@/hooks/useVerification';
-import { categories, getAppsByCategory } from '@/lib/data';
+import { categories, getAppsByCategory, categoryNamesZh, mirrorSources, recipes } from '@/lib/data';
 
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { HowItWorks, GitHubLink, ContributeLink } from '@/components/header';
@@ -320,6 +320,31 @@ export default function Home() {
 
             <main className="main-with-sidebar px-4 sm:px-6 pb-40 relative" style={{ zIndex: 1 }}>
                 <div className="max-w-7xl mx-auto lg:pt-8">
+                    {/* 装机必备配方 */}
+                    <div className="flex flex-wrap items-center gap-2 mb-6 px-1">
+                        <span className="text-xs font-medium text-[var(--text-muted)] mr-1 whitespace-nowrap">🧩 一键选:</span>
+                        {recipes.map(recipe => (
+                            <button
+                                key={recipe.id}
+                                onClick={() => {
+                                    clearAll();
+                                    // Need setTimeout because clearAll is async in React
+                                    setTimeout(() => {
+                                        recipe.apps.forEach(appId => {
+                                            if (isAppAvailable(appId)) toggleApp(appId);
+                                        });
+                                    }, 0);
+                                }}
+                                className="px-3 py-1.5 text-xs rounded-lg border border-[var(--border-primary)]/30 
+                                    bg-[var(--bg-tertiary)] text-[var(--text-secondary)]
+                                    hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]
+                                    transition-all duration-200"
+                                title={recipe.description}
+                            >
+                                {recipe.name}
+                            </button>
+                        ))}
+                    </div>
                     <div className="grid grid-cols-2 gap-x-4 lg:hidden items-start">
                         {(() => {
                             const mobileColumns: Array<typeof allCategoriesWithApps> = [[], []];

@@ -2,7 +2,7 @@
   {
     "id": "syncthing",
     "name": "Syncthing",
-    "description": "Decentralized peer-to-peer file synchronization",
+    "description": "去中心化的点对点文件同步工具",
     "category": "File Sharing",
     "targets": {
       "ubuntu": "syncthing",
@@ -25,7 +25,7 @@
   {
     "id": "qbittorrent",
     "name": "qBittorrent",
-    "description": "Open-source BitTorrent client, uTorrent alternative",
+    "description": "开源BitTorrent客户端，uTorrent替代品",
     "category": "File Sharing",
     "targets": {
       "ubuntu": "qbittorrent",
@@ -48,7 +48,7 @@
   {
     "id": "transmission",
     "name": "Transmission",
-    "description": "Lightweight BitTorrent client",
+    "description": "轻量级BitTorrent客户端",
     "category": "File Sharing",
     "targets": {
       "ubuntu": "transmission",
@@ -71,7 +71,7 @@
   {
     "id": "localsend",
     "name": "LocalSend",
-    "description": "Cross-platform AirDrop alternative for local sharing",
+    "description": "跨平台本地文件传输工具",
     "category": "File Sharing",
     "targets": {
       "arch": "localsend-bin",
@@ -90,7 +90,7 @@
   {
     "id": "filezilla",
     "name": "FileZilla",
-    "description": "Cross-platform FTP, FTPS and SFTP client",
+    "description": "跨平台FTP/FTPS/SFTP客户端",
     "category": "File Sharing",
     "targets": {
       "ubuntu": "filezilla",
@@ -112,7 +112,7 @@
   {
     "id": "nextcloud",
     "name": "Nextcloud",
-    "description": "Self-hosted cloud storage sync client",
+    "description": "自托管的云存储同步客户端",
     "category": "File Sharing",
     "targets": {
       "ubuntu": "nextcloud-desktop",
@@ -135,7 +135,7 @@
   {
     "id": "abdownloadmanager",
     "name": "AB Download Manager",
-    "description": "Modern download manager with browser integration",
+    "description": "现代化下载管理器，支持浏览器集成",
     "category": "File Sharing",
     "targets": {
       "arch": "ab-download-manager-bin"
@@ -151,7 +151,7 @@
   {
     "id": "fdm",
     "name": "Free Download Manager",
-    "description": "Feature-rich download manager with BitTorrent",
+    "description": "功能丰富的下载管理器，支持BitTorrent",
     "category": "File Sharing",
     "targets": {
       "arch": "freedownloadmanager-bin",
