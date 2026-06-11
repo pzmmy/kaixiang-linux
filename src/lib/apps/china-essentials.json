@@ -236,5 +236,679 @@
       "color": "#FF6A00"
     },
     "note": "也可通过 pip install aliyuncli 安装"
+  },
+  {
+    "id": "tim",
+    "name": "TIM",
+    "description": "腾讯 TIM，轻聊版 QQ，专注办公沟通",
+    "category": "Communication",
+    "targets": {
+      "arch": "deepin-wine-tim"
+    },
+    "unavailableReason": "由 AUR (deepin-wine-tim) 安装，需要 deepin-wine 支持",
+    "note": "基于 Wine 运行，首次启动较慢",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "tencentqq",
+      "color": "#1EBAFC"
+    }
+  },
+  {
+    "id": "bilibili",
+    "name": "哔哩哔哩 (Bilibili)",
+    "description": "国内最大的弹幕视频平台 Linux 客户端",
+    "category": "Media",
+    "targets": {
+      "arch": "bilibili-bin",
+      "flatpak": "com.bilibili.bilibili"
+    },
+    "unavailableReason": "使用 [Flatpak](https://flathub.org/apps/com.bilibili.bilibili) 或 AUR (bilibili-bin) 安装",
+    "note": "非官方客户端，功能与网页版基本一致",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "bilibili",
+      "color": "#FB7299"
+    }
+  },
+  {
+    "id": "eleven-music",
+    "name": "Listen1",
+    "description": "聚合网易云/QQ/酷狗/咪咕音乐的播放器",
+    "category": "Media",
+    "targets": {
+      "arch": "listen1",
+      "flatpak": "io.github.listen1"
+    },
+    "unavailableReason": "从 [GitHub](https://github.com/listen1) 下载或 AUR (listen1) 安装",
+    "note": "开源音乐聚合器，支持多平台",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "musicbrainz",
+      "color": "#BA478F"
+    }
+  },
+  {
+    "id": "clash-verge",
+    "name": "Clash Verge",
+    "description": "基于 Clash 内核的跨平台代理客户端",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "clash-verge-rev-bin",
+      "flatpak": "io.github.clash-verge-rev.clash-verge-rev"
+    },
+    "unavailableReason": "使用 AUR (clash-verge-rev-bin) 或 Flatpak 安装",
+    "note": "需自行准备订阅链接，同时支持 TUN 模式",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "clash",
+      "color": "#E60012"
+    }
+  },
+  {
+    "id": "v2raya",
+    "name": "v2rayA",
+    "description": "v2ray 的 Linux 图形化管理前端",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "v2raya",
+      "ubuntu": "v2raya",
+      "debian": "v2raya"
+    },
+    "unavailableReason": "从 [GitHub](https://github.com/v2rayA/v2rayA/releases) 下载 deb 包或 AUR 安装",
+    "note": "需要 v2ray/xray 核心，Web 管理界面(http://localhost:2017)",
+    "icon": {
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/v2rayA/v2rayA/master/img/logo.svg"
+    }
+  },
+  {
+    "id": "hiddify",
+    "name": "Hiddify",
+    "description": "跨平台代理客户端，支持多协议",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "hiddify-app-bin"
+    },
+    "unavailableReason": "使用 AUR (hiddify-app-bin) 或从 [GitHub](https://github.com/hiddify/hiddify-app) 下载 AppImage",
+    "note": "支持 Sing-box 核心和多种订阅格式",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "hiddify",
+      "color": "#FF6B35"
+    }
+  },
+  {
+    "id": "sing-box",
+    "name": "Sing-box",
+    "description": "通用代理平台，命令行工具",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "sing-box",
+      "ubuntu": "sing-box",
+      "fedora": "sing-box"
+    },
+    "unavailableReason": "从 [GitHub](https://github.com/SagerNet/sing-box/releases) 下载或 AUR 安装",
+    "note": "命令行工具，需要手动编辑 JSON 配置文件",
+    "icon": {
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/SagerNet/sing-box/main/icons/icon.svg"
+    }
+  },
+  {
+    "id": "rustdesk",
+    "name": "RustDesk",
+    "description": "开源远程桌面软件，国产替代 TeamViewer",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "rustdesk",
+      "flatpak": "com.rustdesk.RustDesk",
+      "snap": "rustdesk"
+    },
+    "unavailableReason": "使用 [Flatpak](https://flathub.org/apps/com.rustdesk.RustDesk) 或 AUR (rustdesk) 安装",
+    "note": "可自建中继服务器，免费版不限速",
+    "icon": {
+      "type": "url",
+      "url": "https://rustdesk.com/images/logo.svg"
+    }
+  },
+  {
+    "id": "tencent-cli",
+    "name": "腾讯云 CLI",
+    "description": "腾讯云官方命令行工具，管理云资源",
+    "category": "Dev: Tools",
+    "targets": {
+      "npm": "tccli"
+    },
+    "unavailableReason": "通过 npm install -g tccli 安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "tencentqq",
+      "color": "#0052D9"
+    }
+  },
+  {
+    "id": "huawei-cli",
+    "name": "华为云 CLI",
+    "description": "华为云官方命令行工具",
+    "category": "Dev: Tools",
+    "targets": {
+      "npm": "hcloud"
+    },
+    "unavailableReason": "通过 npm install -g @huaweicloud/hcloud 安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "huawei",
+      "color": "#FF0000"
+    }
+  },
+  {
+    "id": "deepin-terminal",
+    "name": "Deepin 终端",
+    "description": "Deepin 桌面环境的终端模拟器，功能丰富",
+    "category": "Terminal",
+    "targets": {
+      "deepin": "deepin-terminal",
+      "uos": "deepin-terminal",
+      "ubuntu": "deepin-terminal",
+      "arch": "deepin-terminal"
+    },
+    "unavailableReason": "Deepin 默认终端，也可在其他发行版安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "deepin-screen-recorder",
+    "name": "Deepin 录屏",
+    "description": "Deepin 桌面环境的录屏工具，支持区域录制",
+    "category": "System",
+    "targets": {
+      "deepin": "deepin-screen-recorder",
+      "arch": "deepin-screen-recorder"
+    },
+    "unavailableReason": "Deepin 自带录屏工具，也可在 Arch 通过 AUR 安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "spark-store",
+    "name": "星火应用商店",
+    "description": "Deepin/UOS 社区应用商店，收录大量国产软件",
+    "category": "System",
+    "targets": {
+      "deepin": "spark-store",
+      "uos": "spark-store",
+      "arch": "spark-store-bin"
+    },
+    "unavailableReason": "Deepin 社区维护的应用商店，从 [官网](https://www.spark-app.store/) 下载",
+    "note": "星火商店收录了许多 Deepin 原生打包的中国软件",
+    "icon": {
+      "type": "url",
+      "url": "https://www.spark-app.store/favicon.ico"
+    }
+  },
+  {
+    "id": "wqy-microhei",
+    "name": "文泉驿微米黑",
+    "description": "开源中文字体，Linux 桌面中文显示必备",
+    "category": "System",
+    "targets": {
+      "ubuntu": "fonts-wqy-microhei",
+      "debian": "fonts-wqy-microhei",
+      "arch": "wqy-microhei",
+      "fedora": "wqy-microhei-fonts",
+      "opensuse": "wqy-microhei-fonts"
+    },
+    "unavailableReason": "大多数发行版官方源包含此字体",
+    "note": "安装后可能需要 fc-cache -fv 刷新字体缓存",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "wqy",
+      "color": "#333333"
+    }
+  },
+  {
+    "id": "fcitx5-chinese",
+    "name": "Fcitx5 中文输入法",
+    "description": "Fcitx5 输入法框架的中文拼音引擎",
+    "category": "System",
+    "targets": {
+      "ubuntu": "fcitx5-chinese-addons",
+      "debian": "fcitx5-chinese-addons",
+      "arch": "fcitx5-chinese-addons",
+      "fedora": "fcitx5-chinese-addons"
+    },
+    "unavailableReason": "Fcitx5 的中文拼音输入引擎，配合搜狗或自带拼音使用",
+    "note": "如果搜狗输入法不好用，fcitx5-chinese-addons 是轻量替代",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "fcitx5",
+      "color": "#4A90D9"
+    }
+  },
+  {
+    "id": "gitee-cli",
+    "name": "Gitee CLI",
+    "description": "码云 Gitee 的命令行工具",
+    "category": "Dev: Tools",
+    "targets": {
+      "npm": "gitee"
+    },
+    "unavailableReason": "通过 npm install -g @gitee/cli 安装",
+    "note": "Gitee 是国内 GitHub 替代品，部分企业使用",
+    "icon": {
+      "type": "url",
+      "url": "https://gitee.com/favicon.ico"
+    }
+  },
+  {
+    "id": "xmind",
+    "name": "XMind",
+    "description": "国产思维导图软件，支持多种图表结构",
+    "category": "Office",
+    "targets": {
+      "arch": "xmind",
+      "flatpak": "net.xmind.XMind"
+    },
+    "unavailableReason": "使用 [Flatpak](https://flathub.org/apps/net.xmind.XMind) 或 AUR (xmind) 安装，也可从 [官网](https://xmind.cn/download) 下载",
+    "note": "免费版功能已足够日常使用，Pro 版需付费",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "xmind",
+      "color": "#F75C2F"
+    }
+  },
+  {
+    "id": "youdao-dict",
+    "name": "有道词典",
+    "description": "有道词典 Linux 版，支持划词翻译",
+    "category": "Office",
+    "targets": {
+      "arch": "youdao-dict-bin"
+    },
+    "unavailableReason": "从 [有道词典官网](https://dict.youdao.com/) 下载 deb/rpm 包或 AUR 安装",
+    "note": "Linux 版功能较 Windows 版少，基础翻译可用",
+    "icon": {
+      "type": "url",
+      "url": "https://dict.youdao.com/favicon.ico"
+    }
+  },
+  {
+    "id": "baidupinyin",
+    "name": "百度输入法",
+    "description": "百度出品的 Linux 拼音输入法",
+    "category": "System",
+    "targets": {
+      "arch": "baidupinyin",
+      "deepin": "baidupinyin"
+    },
+    "unavailableReason": "从 [百度输入法官网](https://srf.baidu.com/input/) 下载，或 AUR 安装",
+    "note": "Fcitx5 框架下使用，安装后需重启",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "baidu",
+      "color": "#2932E1"
+    }
+  },
+  {
+    "id": "foxitreader",
+    "name": "福昕PDF阅读器",
+    "description": "福昕PDF Linux版，轻量级PDF阅读编辑工具",
+    "category": "Office",
+    "targets": {
+      "arch": "foxitreader"
+    },
+    "unavailableReason": "从 [福昕官网](https://www.foxit.com/zh-cn/downloads/) 下载，或 AUR (foxitreader) 安装",
+    "icon": {
+      "type": "url",
+      "url": "https://www.foxit.com/favicon.ico"
+    }
+  },
+  {
+    "id": "xunlei",
+    "name": "迅雷",
+    "description": "迅雷下载器 Linux 版，支持BT和磁力链",
+    "category": "File Sharing",
+    "targets": {
+      "arch": "xunlei-bin"
+    },
+    "unavailableReason": "从 [迅雷官网](https://www.xunlei.com/) 下载或 AUR (xunlei-bin) 安装",
+    "note": "Linux 版功能精简，基础下载功能可用",
+    "icon": {
+      "type": "url",
+      "url": "https://www.xunlei.com/favicon.ico"
+    }
+  },
+  {
+    "id": "kugou",
+    "name": "酷狗音乐",
+    "description": "酷狗音乐 Linux 客户端",
+    "category": "Media",
+    "targets": {
+      "arch": "kugoumusic"
+    },
+    "unavailableReason": "从 [酷狗音乐官网](https://www.kugou.com/) 下载或 AUR 安装",
+    "note": "第三方打包版本，非官方客户端",
+    "icon": {
+      "type": "url",
+      "url": "https://www.kugou.com/favicon.ico"
+    }
+  },
+  {
+    "id": "nutstore",
+    "name": "坚果云",
+    "description": "国产云同步盘，支持增量同步",
+    "category": "File Sharing",
+    "targets": {
+      "arch": "nutstore"
+    },
+    "unavailableReason": "从 [坚果云官网](https://www.jianguoyun.com/) 下载 Linux 客户端，或 AUR 安装",
+    "note": "免费版每月 1GB 上传流量",
+    "icon": {
+      "type": "url",
+      "url": "https://www.jianguoyun.com/favicon.ico"
+    }
+  },
+  {
+    "id": "deepin-music",
+    "name": "Deepin 音乐",
+    "description": "Deepin 桌面环境本地音乐播放器",
+    "category": "Media",
+    "targets": {
+      "deepin": "deepin-music",
+      "uos": "deepin-music",
+      "arch": "deepin-music"
+    },
+    "unavailableReason": "Deepin 默认音乐播放器，也可在 Arch 通过 AUR 安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "deepin-image-viewer",
+    "name": "Deepin 看图",
+    "description": "Deepin 桌面环境图片查看器",
+    "category": "Creative",
+    "targets": {
+      "deepin": "deepin-image-viewer",
+      "arch": "deepin-image-viewer"
+    },
+    "unavailableReason": "Deepin 默认图片查看器，也可在 Arch 通过 AUR 安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "deepin-calculator",
+    "name": "Deepin 计算器",
+    "description": "Deepin 桌面环境科学计算器",
+    "category": "System",
+    "targets": {
+      "deepin": "deepin-calculator",
+      "uos": "deepin-calculator"
+    },
+    "unavailableReason": "Deepin 默认计算器",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "aliwangwang",
+    "name": "阿里旺旺",
+    "description": "淘宝卖家沟通工具，支持 Wine",
+    "category": "Communication",
+    "targets": {
+      "arch": "deepin-wine-aliwangwang"
+    },
+    "unavailableReason": "通过 AUR (deepin-wine-aliwangwang) 安装，需要 deepin-wine 支持",
+    "note": "Wine 版本，非原生 Linux 应用",
+    "icon": {
+      "type": "url",
+      "url": "https://www.taobao.com/favicon.ico"
+    }
+  },
+  {
+    "id": "deepin-wine",
+    "name": "Deepin Wine",
+    "description": "Deepin 深度定制的 Wine，运行 Windows 软件",
+    "category": "System",
+    "targets": {
+      "deepin": "deepin-wine",
+      "uos": "deepin-wine",
+      "arch": "deepin-wine"
+    },
+    "unavailableReason": "Deepin Wine 是许多 Wine 打包版软件的基础依赖",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "wine",
+      "color": "#C44242"
+    }
+  },
+  {
+    "id": "netease-mail",
+    "name": "网易邮箱大师",
+    "description": "网易邮箱 Linux 客户端",
+    "category": "Communication",
+    "targets": {
+      "arch": "netease-mail-bin"
+    },
+    "unavailableReason": "从 [网易邮箱官网](https://mail.163.com/) 下载或 AUR 安装",
+    "note": "基于 Electron 的第三方封装",
+    "icon": {
+      "type": "url",
+      "url": "https://mail.163.com/favicon.ico"
+    }
+  },
+  {
+    "id": "teamviewer-cn",
+    "name": "TeamViewer(中国版)",
+    "description": "使用国内服务器的 TeamViewer 远程桌面",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "teamviewer"
+    },
+    "unavailableReason": "从 [TeamViewer 中国站](https://www.teamviewer.cn/download) 下载",
+    "note": "中国版使用国内服务器，连接速度更好",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "teamviewer",
+      "color": "#0EABEB"
+    }
+  },
+  {
+    "id": "qv2ray",
+    "name": "Qv2ray",
+    "description": "跨平台 v2ray 图形化客户端",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "qv2ray",
+      "flatpak": "com.github.qv2ray"
+    },
+    "unavailableReason": "从 [GitHub](https://github.com/Qv2ray/Qv2ray) 下载或 AUR 安装",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "qv2ray",
+      "color": "#0078D4"
+    }
+  },
+  {
+    "id": "copyq",
+    "name": "CopyQ",
+    "description": "高级剪贴板管理工具，支持标签和搜索",
+    "category": "System",
+    "targets": {
+      "ubuntu": "copyq",
+      "arch": "copyq",
+      "flatpak": "com.github.copyq"
+    },
+    "unavailableReason": "从 [GitHub](https://github.com/hluk/CopyQ) 下载或官方源安装",
+    "note": "国内用户很喜欢的高级剪贴板工具",
+    "icon": {
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/hluk/CopyQ/master/copyq.svg"
+    }
+  },
+  {
+    "id": "goldendict-ng",
+    "name": "GoldenDict",
+    "description": "跨平台词典翻译软件，支持多词典",
+    "category": "Office",
+    "targets": {
+      "arch": "goldendict-ng",
+      "ubuntu": "goldendict"
+    },
+    "unavailableReason": "从 [GitHub](https://github.com/xiaoyifang/goldendict-ng) 下载或 AUR 安装",
+    "note": "支持离线词典包，国内用户常用",
+    "icon": {
+      "type": "url",
+      "url": "https://goldendict.org/favicon.ico"
+    }
+  },
+  {
+    "id": "deepin-editor",
+    "name": "Deepin 编辑器",
+    "description": "Deepin 桌面文本编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "deepin": "deepin-editor",
+      "uos": "deepin-editor",
+      "arch": "deepin-editor"
+    },
+    "unavailableReason": "Deepin 默认文本编辑器",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "deepin-file-manager",
+    "name": "Deepin 文件管理器",
+    "description": "Deepin 桌面文件管理器，功能丰富",
+    "category": "System",
+    "targets": {
+      "deepin": "dde-file-manager",
+      "arch": "dde-file-manager"
+    },
+    "unavailableReason": "Deepin 默认文件管理器",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "deepin-system-monitor",
+    "name": "Deepin 系统监视器",
+    "description": "Deepin 桌面资源监控工具",
+    "category": "System",
+    "targets": {
+      "deepin": "deepin-system-monitor",
+      "arch": "deepin-system-monitor"
+    },
+    "unavailableReason": "Deepin 默认系统监视器",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "peazip",
+    "name": "PeaZip",
+    "description": "开源压缩工具，国内常用 WinRAR 替代",
+    "category": "System",
+    "targets": {
+      "ubuntu": "peazip",
+      "arch": "peazip",
+      "flatpak": "io.github.peazip"
+    },
+    "unavailableReason": "从 [官网](https://peazip.github.io/) 下载或官方源安装",
+    "icon": {
+      "type": "url",
+      "url": "https://peazip.github.io/favicon.ico"
+    }
+  },
+  {
+    "id": "masterpdfeditor",
+    "name": "Master PDF Editor",
+    "description": "Linux 全功能 PDF 编辑工具",
+    "category": "Office",
+    "targets": {
+      "arch": "masterpdfeditor"
+    },
+    "unavailableReason": "从 [官网](https://code-industry.net/masterpdfeditor/) 下载或 AUR 安装",
+    "note": "免费版可编辑，导出有水印",
+    "icon": {
+      "type": "url",
+      "url": "https://code-industry.net/favicon.ico"
+    }
+  },
+  {
+    "id": "deepin-picker",
+    "name": "Deepin 取色器",
+    "description": "Deepin 桌面颜色拾取工具",
+    "category": "Creative",
+    "targets": {
+      "deepin": "deepin-picker",
+      "arch": "deepin-picker"
+    },
+    "unavailableReason": "Deepin 桌面工具套件",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
+  },
+  {
+    "id": "deepin-downloader",
+    "name": "Deepin 下载器",
+    "description": "Deepin 桌面下载工具，支持 BT",
+    "category": "File Sharing",
+    "targets": {
+      "deepin": "deepin-downloader",
+      "arch": "deepin-downloader"
+    },
+    "unavailableReason": "Deepin 默认下载工具",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "deepin",
+      "color": "#007CFF"
+    }
   }
 ]

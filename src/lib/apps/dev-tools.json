@@ -1,436 +1,294 @@
 [
-    {
-        "id": "git",
-        "name": "Git",
-        "description": "业界标准的分布式版本控制系统",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "git",
-            "debian": "git",
-            "arch": "git",
-            "fedora": "git",
-            "opensuse": "git",
-            "nix": "git",
-            "homebrew": "git"
-        },
-        "unavailableReason": "Git is a system package and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "git",
-            "color": "#F05032"
-        }
+  {
+    "id": "git",
+    "name": "Git",
+    "description": "业界标准的分布式版本控制系统",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "git",
+      "debian": "git",
+      "arch": "git",
+      "fedora": "git",
+      "opensuse": "git",
+      "nix": "git",
+      "homebrew": "git"
     },
-    {
-        "id": "gitlfs",
-        "name": "Git LFS",
-        "description": "Git 大文件版本控制扩展",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "git-lfs",
-            "debian": "git-lfs",
-            "arch": "git-lfs",
-            "fedora": "git-lfs",
-            "opensuse": "git-lfs",
-            "nix": "git-lfs",
-            "homebrew": "git-lfs"
-        },
-        "unavailableReason": "Git LFS is a system package and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "git",
-            "color": "#F05032"
-        }
-    },
-    {
-        "id": "lazygit",
-        "name": "LazyGit",
-        "description": "简洁的 Git 终端界面",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "lazygit",
-            "debian": "lazygit",
-            "arch": "lazygit",
-            "fedora": "lazygit",
-            "opensuse": "lazygit",
-            "nix": "lazygit",
-            "homebrew": "lazygit"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "git",
-            "color": "#F05032"
-        }
-    },
-    {
-        "id": "docker",
-        "name": "Docker",
-        "description": "最流行的应用容器化部署平台",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "docker.io",
-            "debian": "docker.io",
-            "arch": "docker",
-            "fedora": "docker",
-            "opensuse": "docker",
-            "nix": "docker",
-            "snap": "docker",
-            "homebrew": "docker"
-        },
-        "unavailableReason": "Docker is a system service and not available as a Flatpak.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "docker",
-            "color": "#2496ED"
-        }
-    },
-    {
-        "id": "podman",
-        "name": "Podman",
-        "description": "无 root 容器引擎，Docker 替代品",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "podman",
-            "debian": "podman",
-            "arch": "podman",
-            "fedora": "podman",
-            "opensuse": "podman",
-            "nix": "podman",
-            "homebrew": "podman"
-        },
-        "unavailableReason": "Podman is a system package and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "podman",
-            "color": "#892CA0"
-        }
-    },
-    {
-        "id": "podman-desktop",
-        "name": "Podman Desktop",
-        "description": "Podman 图形化管理界面",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "podman-desktop",
-            "nix": "podman-desktop",
-            "flatpak": "io.podman_desktop.PodmanDesktop",
-            "homebrew": "--cask podman-desktop"
-        },
-        "unavailableReason": "Not in official repos. Use the [Flatpak version](https://flathub.org/en/apps/io.podman_desktop.PodmanDesktop) instead, or download from [podman-desktop.io/downloads](https://podman-desktop.io/downloads).",
-        "icon": {
-            "type": "url",
-            "url": "https://podman-desktop.io/img/logo.svg"
-        }
-    },
-    {
-        "id": "incus",
-        "name": "Incus",
-        "description": "强大的系统容器和虚拟机管理器（LXD 社区分支）",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "incus",
-            "debian": "incus",
-            "arch": "incus",
-            "fedora": "incus",
-            "opensuse": "incus",
-            "nix": "incus",
-            "homebrew": "incus"
-        },
-        "unavailableReason": "Available in official repositories for Ubuntu 24.04+ (Noble) and Debian 13+ (Trixie). For older releases, the Zabbly repository is required. Incus is a system service and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "server",
-            "color": "#2496ED"
-        }
-    },
-    {
-        "id": "kubectl",
-        "name": "kubectl",
-        "description": "Kubernetes 集群命令行管理工具",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "kubectl",
-            "fedora": "kubernetes-client",
-            "opensuse": "kubectl",
-            "nix": "kubectl",
-            "snap": "kubectl --classic",
-            "homebrew": "kubectl"
-        },
-        "unavailableReason": "kubectl is not in official Ubuntu or Debian repos. Use Snap or install via [kubernetes.io](https://kubernetes.io/docs/tasks/tools/).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "kubernetes",
-            "color": "#326CE5"
-        }
-    },
-    {
-        "id": "vagrant",
-        "name": "Vagrant",
-        "description": "构建和管理可移植开发环境",
-        "category": "Dev: Tools",
-        "targets": {
-            "debian": "vagrant",
-            "arch": "vagrant",
-            "fedora": "vagrant",
-            "opensuse": "vagrant",
-            "nix": "vagrant",
-            "homebrew": "--cask vagrant"
-        },
-        "unavailableReason": "Vagrant is a system package and not available via Flatpak or Snap. Follow instructions at [developer.hashicorp.com/vagrant/install](https://developer.hashicorp.com/vagrant/install).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "vagrant",
-            "color": "#1868F2"
-        }
-    },
-    {
-        "id": "virtualbox",
-        "name": "VirtualBox",
-        "description": "免费跨平台的虚拟机管理器",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "virtualbox",
-            "arch": "virtualbox",
-            "opensuse": "virtualbox",
-            "nix": "virtualbox",
-            "homebrew": "--cask virtualbox"
-        },
-        "unavailableReason": "VirtualBox requires kernel modules and is not available via Flatpak or Snap. Debian user follow instructions at [wiki.debian.org/VirtualBox](https://wiki.debian.org/VirtualBox).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "virtualbox",
-            "color": "#183A61"
-        }
-    },
-    {
-        "id": "gnomeboxes",
-        "name": "GNOME Boxes",
-        "description": "GNOME 简易虚拟机应用",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "gnome-boxes",
-            "debian": "gnome-boxes",
-            "arch": "gnome-boxes",
-            "fedora": "gnome-boxes",
-            "opensuse": "gnome-boxes",
-            "nix": "gnome-boxes",
-            "flatpak": "org.gnome.Boxes"
-        },
-        "unavailableReason": "GNOME Boxes is not available as a Snap package.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "gnome",
-            "color": "#4A86CF"
-        }
-    },
-    {
-        "id": "dbeaver",
-        "name": "DBeaver",
-        "description": "通用数据库管理工具",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "dbeaver",
-            "nix": "dbeaver-bin",
-            "flatpak": "io.dbeaver.DBeaverCommunity",
-            "homebrew": "--cask dbeaver-community"
-        },
-        "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/io.dbeaver.DBeaverCommunity) or download from [dbeaver.io/download](https://dbeaver.io/download/).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "dbeaver",
-            "color": "#382923"
-        }
-    },
-    {
-        "id": "meld",
-        "name": "Meld",
-        "description": "可视化的文件差异比较与合并工具",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "meld",
-            "debian": "meld",
-            "arch": "meld",
-            "fedora": "meld",
-            "opensuse": "meld",
-            "nix": "meld",
-            "flatpak": "org.gnome.meld",
-            "homebrew": "--cask meld"
-        },
-        "unavailableReason": "Meld is not available as a Snap package.",
-        "icon": {
-            "type": "url",
-            "url": "https://meldmerge.org/images/meld.svg"
-        }
-    },
-    {
-        "id": "wireshark",
-        "name": "Wireshark",
-        "description": "网络协议分析与数据包抓取工具",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "wireshark",
-            "debian": "wireshark",
-            "arch": "wireshark-qt",
-            "fedora": "wireshark",
-            "opensuse": "wireshark",
-            "nix": "wireshark",
-            "flatpak": "org.wireshark.Wireshark",
-            "homebrew": "--cask wireshark-app"
-        },
-        "unavailableReason": "Wireshark is not available as a Snap package.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "wireshark",
-            "color": "#1679A7"
-        }
-    },
-    {
-        "id": "postman",
-        "name": "Postman",
-        "description": "流行的 API 测试与开发平台",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "postman-bin",
-            "nix": "postman",
-            "flatpak": "com.getpostman.Postman",
-            "snap": "postman",
-            "homebrew": "--cask postman"
-        },
-        "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/com.getpostman.Postman)/[Snap](https://snapcraft.io/postman) or download from [postman.com/downloads](https://www.postman.com/downloads/).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "postman",
-            "color": "#FF6C37"
-        }
-    },
-    {
-        "id": "bruno",
-        "name": "Bruno",
-        "description": "离线优先的开源 API 客户端",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "bruno-bin",
-            "nix": "bruno",
-            "flatpak": "com.usebruno.Bruno",
-            "snap": "bruno",
-            "homebrew": "--cask bruno"
-        },
-        "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/apps/com.usebruno.Bruno)/[Snap](https://snapcraft.io/bruno) or download from [usebruno.com](https://www.usebruno.com/downloads).",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "api",
-            "color": "#F4A62A"
-        }
-    },
-    {
-        "id": "hoppscotch",
-        "name": "Hoppscotch",
-        "description": "开源的 API 开发生态系统",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "hoppscotch-bin",
-            "nix": "hoppscotch",
-            "homebrew": "--cask hoppscotch"
-        },
-        "unavailableReason": "Use [AUR](https://aur.archlinux.org/packages/hoppscotch-bin) or download from [hoppscotch.io](https://hoppscotch.io/download).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "hoppscotch",
-            "color": "#47C0A7"
-        }
-    },
-    {
-        "id": "yaak",
-        "name": "Yaak",
-        "description": "支持 REST 和 GraphQL 的现代 API 客户端",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "yaak-bin",
-            "nix": "yaak",
-            "homebrew": "--cask yaak"
-        },
-        "unavailableReason": "Not in most official repos. Download .deb/.rpm or AppImage from [yaak.app](https://yaak.app/download).",
-        "icon": {
-            "type": "url",
-            "url": "https://avatars.githubusercontent.com/u/150165049?s=48&v=4"
-        }
-    },
-    {
-        "id": "virtmanager",
-        "name": "Virt Manager",
-        "description": "KVM 虚拟机桌面管理应用",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "virt-manager",
-            "debian": "virt-manager",
-            "arch": "virt-manager",
-            "fedora": "virt-manager",
-            "opensuse": "virt-manager",
-            "nix": "virt-manager",
-            "homebrew": "virt-manager"
-        },
-        "unavailableReason": "Virt Manager requires system access and is not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "qemu",
-            "color": "#FF6600"
-        }
-    },
-    {
-        "id": "imhex",
-        "name": "ImHex",
-        "description": "功能丰富的逆向工程十六进制编辑器",
-        "category": "Dev: Tools",
-        "targets": {
-            "arch": "imhex-bin",
-            "fedora": "imhex",
-            "nix": "imhex",
-            "flatpak": "net.werwolv.ImHex",
-            "homebrew": "--cask imhex"
-        },
-        "unavailableReason": "Not in most repos. Use [Flatpak](https://flathub.org/apps/net.werwolv.ImHex) or download from [imhex.werwolv.net](https://imhex.werwolv.net/).",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "hexadecimal",
-            "color": "#4FC1E8"
-        }
-    },
-    {
-        "id": "cmake",
-        "name": "CMake",
-        "description": "跨平台构建系统生成器",
-        "category": "Dev: Tools",
-        "targets": {
-            "ubuntu": "cmake",
-            "debian": "cmake",
-            "arch": "cmake",
-            "fedora": "cmake",
-            "opensuse": "cmake",
-            "nix": "cmake",
-            "snap": "cmake --classic",
-            "homebrew": "cmake"
-        },
-        "unavailableReason": "CMake is not available as a Flatpak package.",
-        "icon": {
-            "type": "iconify",
-            "set": "vscode-icons",
-            "name": "file-type-cmake"
-        }
+    "unavailableReason": "Git is a system package and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "git",
+      "color": "#F05032"
     }
+  },
+  {
+    "id": "gitlfs",
+    "name": "Git LFS",
+    "description": "Git 大文件版本控制扩展",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "git-lfs",
+      "debian": "git-lfs",
+      "arch": "git-lfs",
+      "fedora": "git-lfs",
+      "opensuse": "git-lfs",
+      "nix": "git-lfs",
+      "homebrew": "git-lfs"
+    },
+    "unavailableReason": "Git LFS is a system package and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "git",
+      "color": "#F05032"
+    }
+  },
+  {
+    "id": "lazygit",
+    "name": "LazyGit",
+    "description": "简洁的 Git 终端界面",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "lazygit",
+      "debian": "lazygit",
+      "arch": "lazygit",
+      "fedora": "lazygit",
+      "opensuse": "lazygit",
+      "nix": "lazygit",
+      "homebrew": "lazygit"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "git",
+      "color": "#F05032"
+    }
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "description": "最流行的应用容器化部署平台",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "docker.io",
+      "debian": "docker.io",
+      "arch": "docker",
+      "fedora": "docker",
+      "opensuse": "docker",
+      "nix": "docker",
+      "snap": "docker",
+      "homebrew": "docker"
+    },
+    "unavailableReason": "Docker is a system service and not available as a Flatpak.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "docker",
+      "color": "#2496ED"
+    }
+  },
+  {
+    "id": "podman",
+    "name": "Podman",
+    "description": "无 root 容器引擎，Docker 替代品",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "podman",
+      "debian": "podman",
+      "arch": "podman",
+      "fedora": "podman",
+      "opensuse": "podman",
+      "nix": "podman",
+      "homebrew": "podman"
+    },
+    "unavailableReason": "Podman is a system package and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "podman",
+      "color": "#892CA0"
+    }
+  },
+  {
+    "id": "podman-desktop",
+    "name": "Podman Desktop",
+    "description": "Podman 图形化管理界面",
+    "category": "Dev: Tools",
+    "targets": {
+      "arch": "podman-desktop",
+      "nix": "podman-desktop",
+      "flatpak": "io.podman_desktop.PodmanDesktop",
+      "homebrew": "--cask podman-desktop"
+    },
+    "unavailableReason": "Not in official repos. Use the [Flatpak version](https://flathub.org/en/apps/io.podman_desktop.PodmanDesktop) instead, or download from [podman-desktop.io/downloads](https://podman-desktop.io/downloads).",
+    "icon": {
+      "type": "url",
+      "url": "https://podman-desktop.io/img/logo.svg"
+    }
+  },
+  {
+    "id": "kubectl",
+    "name": "kubectl",
+    "description": "Kubernetes 集群命令行管理工具",
+    "category": "Dev: Tools",
+    "targets": {
+      "arch": "kubectl",
+      "fedora": "kubernetes-client",
+      "opensuse": "kubectl",
+      "nix": "kubectl",
+      "snap": "kubectl --classic",
+      "homebrew": "kubectl"
+    },
+    "unavailableReason": "kubectl is not in official Ubuntu or Debian repos. Use Snap or install via [kubernetes.io](https://kubernetes.io/docs/tasks/tools/).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "kubernetes",
+      "color": "#326CE5"
+    }
+  },
+  {
+    "id": "virtualbox",
+    "name": "VirtualBox",
+    "description": "免费跨平台的虚拟机管理器",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "virtualbox",
+      "arch": "virtualbox",
+      "opensuse": "virtualbox",
+      "nix": "virtualbox",
+      "homebrew": "--cask virtualbox"
+    },
+    "unavailableReason": "VirtualBox requires kernel modules and is not available via Flatpak or Snap. Debian user follow instructions at [wiki.debian.org/VirtualBox](https://wiki.debian.org/VirtualBox).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "virtualbox",
+      "color": "#183A61"
+    }
+  },
+  {
+    "id": "dbeaver",
+    "name": "DBeaver",
+    "description": "通用数据库管理工具",
+    "category": "Dev: Tools",
+    "targets": {
+      "arch": "dbeaver",
+      "nix": "dbeaver-bin",
+      "flatpak": "io.dbeaver.DBeaverCommunity",
+      "homebrew": "--cask dbeaver-community"
+    },
+    "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/io.dbeaver.DBeaverCommunity) or download from [dbeaver.io/download](https://dbeaver.io/download/).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "dbeaver",
+      "color": "#382923"
+    }
+  },
+  {
+    "id": "wireshark",
+    "name": "Wireshark",
+    "description": "网络协议分析与数据包抓取工具",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "wireshark",
+      "debian": "wireshark",
+      "arch": "wireshark-qt",
+      "fedora": "wireshark",
+      "opensuse": "wireshark",
+      "nix": "wireshark",
+      "flatpak": "org.wireshark.Wireshark",
+      "homebrew": "--cask wireshark-app"
+    },
+    "unavailableReason": "Wireshark is not available as a Snap package.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "wireshark",
+      "color": "#1679A7"
+    }
+  },
+  {
+    "id": "postman",
+    "name": "Postman",
+    "description": "流行的 API 测试与开发平台",
+    "category": "Dev: Tools",
+    "targets": {
+      "arch": "postman-bin",
+      "nix": "postman",
+      "flatpak": "com.getpostman.Postman",
+      "snap": "postman",
+      "homebrew": "--cask postman"
+    },
+    "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/com.getpostman.Postman)/[Snap](https://snapcraft.io/postman) or download from [postman.com/downloads](https://www.postman.com/downloads/).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "postman",
+      "color": "#FF6C37"
+    }
+  },
+  {
+    "id": "hoppscotch",
+    "name": "Hoppscotch",
+    "description": "开源的 API 开发生态系统",
+    "category": "Dev: Tools",
+    "targets": {
+      "arch": "hoppscotch-bin",
+      "nix": "hoppscotch",
+      "homebrew": "--cask hoppscotch"
+    },
+    "unavailableReason": "Use [AUR](https://aur.archlinux.org/packages/hoppscotch-bin) or download from [hoppscotch.io](https://hoppscotch.io/download).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "hoppscotch",
+      "color": "#47C0A7"
+    }
+  },
+  {
+    "id": "virtmanager",
+    "name": "Virt Manager",
+    "description": "KVM 虚拟机桌面管理应用",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "virt-manager",
+      "debian": "virt-manager",
+      "arch": "virt-manager",
+      "fedora": "virt-manager",
+      "opensuse": "virt-manager",
+      "nix": "virt-manager",
+      "homebrew": "virt-manager"
+    },
+    "unavailableReason": "Virt Manager requires system access and is not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "qemu",
+      "color": "#FF6600"
+    }
+  },
+  {
+    "id": "cmake",
+    "name": "CMake",
+    "description": "跨平台构建系统生成器",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": "cmake",
+      "debian": "cmake",
+      "arch": "cmake",
+      "fedora": "cmake",
+      "opensuse": "cmake",
+      "nix": "cmake",
+      "snap": "cmake --classic",
+      "homebrew": "cmake"
+    },
+    "unavailableReason": "CMake is not available as a Flatpak package.",
+    "icon": {
+      "type": "iconify",
+      "set": "vscode-icons",
+      "name": "file-type-cmake"
+    }
+  }
 ]

@@ -1,366 +1,194 @@
 [
-    {
-        "id": "gparted",
-        "name": "GParted",
-        "description": "GNOME 磁盘分区管理工具",
-        "category": "System",
-        "targets": {
-            "ubuntu": "gparted",
-            "debian": "gparted",
-            "arch": "gparted",
-            "fedora": "gparted",
-            "opensuse": "gparted",
-            "nix": "gparted"
-        },
-        "unavailableReason": "GParted requires root access and is not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "gnome",
-            "color": "#E95420"
-        }
+  {
+    "id": "gparted",
+    "name": "GParted",
+    "description": "GNOME 磁盘分区管理工具",
+    "category": "System",
+    "targets": {
+      "ubuntu": "gparted",
+      "debian": "gparted",
+      "arch": "gparted",
+      "fedora": "gparted",
+      "opensuse": "gparted",
+      "nix": "gparted"
     },
-    {
-        "id": "kde-partition-manager",
-        "name": "KDE Partition Manager",
-        "description": "磁盘设备、分区和文件系统管理工具",
-        "category": "System",
-        "targets": {
-            "ubuntu": "partitionmanager",
-            "debian": "partitionmanager",
-            "arch": "partitionmanager",
-            "fedora": "kde-partitionmanager",
-            "opensuse": "partitionmanager",
-            "nix": "partitionmanager",
-            "flatpak": "org.kde.partitionmanager"
-        },
-        "unavailableReason": "Not available as a Snap package.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "kde",
-            "color": "#1D99F3"
-        }
-    },
-    {
-        "id": "kdeconnect",
-        "name": "KDE Connect",
-        "description": "将手机与 Linux 桌面无缝连接",
-        "category": "System",
-        "targets": {
-            "ubuntu": "kdeconnect",
-            "debian": "kdeconnect",
-            "arch": "kdeconnect",
-            "fedora": "kdeconnectd",
-            "opensuse": "kdeconnect-kde",
-            "nix": "kdeconnect"
-        },
-        "unavailableReason": "KDE Connect is not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "kde",
-            "color": "#338BDB"
-        }
-    },
-    {
-        "id": "timeshift",
-        "name": "Timeshift",
-        "description": "系统快照备份和恢复工具",
-        "category": "System",
-        "targets": {
-            "ubuntu": "timeshift",
-            "debian": "timeshift",
-            "arch": "timeshift",
-            "fedora": "timeshift",
-            "opensuse": "timeshift",
-            "nix": "timeshift"
-        },
-        "unavailableReason": "Requires root filesystem access; not available as Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "backup-restore",
-            "color": "#D9534F"
-        }
-    },
-    {
-        "id": "bleachbit",
-        "name": "BleachBit",
-        "description": "释放磁盘空间并保护隐私",
-        "category": "System",
-        "targets": {
-            "ubuntu": "bleachbit",
-            "debian": "bleachbit",
-            "arch": "bleachbit",
-            "fedora": "bleachbit",
-            "opensuse": "bleachbit",
-            "nix": "bleachbit",
-            "flatpak": "org.bleachbit.BleachBit"
-        },
-        "unavailableReason": "BleachBit is not available as a Snap package.",
-        "icon": {
-            "type": "url",
-            "url": "https://raw.githubusercontent.com/chocolatey-community/chocolatey-packages/782707302851e7935c4a5a3e48e27140c774fa78/icons/bleachbit.svg"
-        }
-    },
-    {
-        "id": "flameshot",
-        "name": "Flameshot",
-        "description": "功能强大的截图和标注工具",
-        "category": "System",
-        "targets": {
-            "ubuntu": "flameshot",
-            "debian": "flameshot",
-            "arch": "flameshot",
-            "fedora": "flameshot",
-            "opensuse": "flameshot",
-            "nix": "flameshot",
-            "flatpak": "org.flameshot.Flameshot",
-            "homebrew": "--cask flameshot"
-        },
-        "unavailableReason": "Flameshot is not available as a Snap package.",
-        "icon": {
-            "type": "url",
-            "url": "https://raw.githubusercontent.com/flameshot-org/flameshot/master/data/img/app/flameshot.svg"
-        }
-    },
-    {
-        "id": "gnometweaks",
-        "name": "GNOME Tweaks",
-        "description": "GNOME 桌面高级设置和定制",
-        "category": "System",
-        "targets": {
-            "ubuntu": "gnome-tweaks",
-            "debian": "gnome-tweaks",
-            "arch": "gnome-tweaks",
-            "fedora": "gnome-tweaks",
-            "opensuse": "gnome-tweaks",
-            "nix": "gnome-tweaks"
-        },
-        "unavailableReason": "GNOME Tweaks is not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "gnome",
-            "color": "#4A86CF"
-        }
-    },
-    {
-        "id": "dconf",
-        "name": "dconf Editor",
-        "description": "GNOME 底层配置编辑器",
-        "category": "System",
-        "targets": {
-            "ubuntu": "dconf-editor",
-            "debian": "dconf-editor",
-            "arch": "dconf-editor",
-            "fedora": "dconf-editor",
-            "opensuse": "dconf-editor",
-            "nix": "dconf-editor"
-        },
-        "unavailableReason": "dconf Editor is not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "gnome",
-            "color": "#4A86CF"
-        }
-    },
-    {
-        "id": "borgbackup",
-        "name": "BorgBackup",
-        "description": "带压缩功能的去重备份工具",
-        "category": "System",
-        "targets": {
-            "ubuntu": "borgbackup",
-            "debian": "borgbackup",
-            "arch": "borg",
-            "fedora": "borgbackup",
-            "opensuse": "borgbackup",
-            "nix": "borgbackup",
-            "homebrew": "borgbackup"
-        },
-        "unavailableReason": "BorgBackup is a CLI tool and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "borgbackup",
-            "color": "#00B041"
-        }
-    },
-    {
-        "id": "restic",
-        "name": "Restic",
-        "description": "快速、安全、高效的备份程序",
-        "category": "System",
-        "targets": {
-            "ubuntu": "restic",
-            "debian": "restic",
-            "arch": "restic",
-            "fedora": "restic",
-            "opensuse": "restic",
-            "nix": "restic",
-            "homebrew": "restic"
-        },
-        "unavailableReason": "Restic is a CLI tool and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "cloud-sync",
-            "color": "#00B4AB"
-        }
-    },
-    {
-        "id": "flatpaksupport",
-        "name": "Flatpak",
-        "description": "通用应用打包和沙箱运行框架",
-        "category": "System",
-        "targets": {
-            "ubuntu": "flatpak",
-            "debian": "flatpak",
-            "arch": "flatpak",
-            "fedora": "flatpak",
-            "opensuse": "flatpak",
-            "nix": "flatpak"
-        },
-        "unavailableReason": "Flatpak is a system package manager and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "flatpak",
-            "color": "#4A90D9"
-        }
-    },
-    {
-        "id": "filelight",
-        "name": "Filelight",
-        "description": "KDE 出品交互式磁盘空间可视化",
-        "category": "System",
-        "targets": {
-            "ubuntu": "filelight",
-            "debian": "filelight",
-            "arch": "filelight",
-            "fedora": "filelight",
-            "opensuse": "filelight",
-            "nix": "filelight",
-            "flatpak": "org.kde.filelight",
-            "snap": "filelight"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "kde",
-            "color": "#338BDB"
-        }
-    },
-    {
-        "id": "conky",
-        "name": "Conky",
-        "description": "高度可配置的桌面系统监控工具",
-        "category": "System",
-        "targets": {
-            "ubuntu": "conky-all",
-            "debian": "conky-all",
-            "arch": "conky",
-            "fedora": "conky",
-            "opensuse": "conky",
-            "nix": "conky"
-        },
-        "unavailableReason": "Conky is a system tool and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "monitor-dashboard",
-            "color": "#FFFFFF"
-        }
-    },
-    {
-        "id": "fsearch",
-        "name": "FSearch",
-        "description": "受 Everything 启发的快速文件搜索",
-        "category": "System",
-        "targets": {
-            "ubuntu": "fsearch",
-            "debian": "fsearch",
-            "arch": "fsearch",
-            "opensuse": "fsearch",
-            "nix": "fsearch",
-            "flatpak": "com.github.cboxdoerfer.FSearch"
-        },
-        "unavailableReason": "Not in Fedora official repos. Available via [COPR](https://copr.fedorainfracloud.org/coprs/cboxdoerfer/fsearch/) but may have dependency issues on Fedora 41+.",
-        "icon": {
-            "type": "url",
-            "url": "https://dl.flathub.org/media/io/github/cboxdoerfer.FSearch/5dfcd05a3d0147745dccd8477b238210/icons/128x128/io.github.cboxdoerfer.FSearch.png"
-        }
-    },
-    {
-        "id": "resources",
-        "name": "Resources",
-        "description": "现代风格的系统资源监视器",
-        "category": "System",
-        "targets": {
-            "arch": "resources",
-            "nix": "resources",
-            "flatpak": "net.nokyan.Resources"
-        },
-        "icon": {
-            "type": "url",
-            "url": "https://dl.flathub.org/media/net/nokyan/Resources/4f0373aa103995c3e7197228fdb3d21c/icons/128x128/net.nokyan.Resources.png"
-        }
-    },
-    {
-        "id": "cpux",
-        "name": "CPU-X",
-        "description": "系统分析和监控工具（CPU-Z 替代）",
-        "category": "System",
-        "targets": {
-            "ubuntu": "cpu-x",
-            "debian": "cpu-x",
-            "arch": "cpu-x",
-            "fedora": "cpu-x",
-            "nix": "cpu-x",
-            "flatpak": "io.github.thetumultuousunicornofdarkness.cpu-x"
-        },
-        "icon": {
-            "type": "url",
-            "url": "https://dl.flathub.org/media/io/github/thetumultuousunicornofdarkness.cpu-x/80c9c5c5b9f72bd79cbe28b1c3d662da/icons/128x128/io.github.thetumultuousunicornofdarkness.cpu-x.png"
-        }
-    },
-    {
-        "id": "missioncenter",
-        "name": "Mission Center",
-        "description": "快速现代的系统监视器，支持 GPU",
-        "category": "System",
-        "targets": {
-            "arch": "mission-center",
-            "nix": "mission-center",
-            "flatpak": "io.missioncenter.MissionCenter",
-            "snap": "mission-center"
-        },
-        "unavailableReason": "Not in most official repos. Use [Flatpak](https://flathub.org/apps/io.github.MissionCenter.MissionCenter) or see [Mission Center](https://gitlab.com/mission-center-devs/mission-center/) for more information.",
-        "icon": {
-            "type": "url",
-            "url": "https://gitlab.com/mission-center-devs/mission-center/-/raw/main/data/icons/hicolor/scalable/apps/io.missioncenter.MissionCenter.svg"
-        }
-    },
-    {
-        "id": "openrgb",
-        "name": "OpenRGB",
-        "description": "不依赖厂商软件的开源 RGB 灯光控制",
-        "category": "System",
-        "targets": {
-            "arch": "openrgb",
-            "fedora": "openrgb",
-            "opensuse": "OpenRGB",
-            "nix": "openrgb",
-            "homebrew": "--cask openrgb",
-            "flatpak": "org.openrgb.OpenRGB"
-        },
-        "unavailableReason": "Not in available in Snap. Use the [Flatpak version](https://flathub.org/en/apps/org.openrgb.OpenRGB) instead. Available on Debian 14/Sid and Ubuntu 25.11 or later Official repos as `openrgb`",
-        "icon": {
-            "type": "url",
-            "url": "https://avatars.githubusercontent.com/u/1051772?s=48&v=4"
-        }
+    "unavailableReason": "GParted requires root access and is not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnome",
+      "color": "#E95420"
     }
+  },
+  {
+    "id": "kdeconnect",
+    "name": "KDE Connect",
+    "description": "将手机与 Linux 桌面无缝连接",
+    "category": "System",
+    "targets": {
+      "ubuntu": "kdeconnect",
+      "debian": "kdeconnect",
+      "arch": "kdeconnect",
+      "fedora": "kdeconnectd",
+      "opensuse": "kdeconnect-kde",
+      "nix": "kdeconnect"
+    },
+    "unavailableReason": "KDE Connect is not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "kde",
+      "color": "#338BDB"
+    }
+  },
+  {
+    "id": "flameshot",
+    "name": "Flameshot",
+    "description": "功能强大的截图和标注工具",
+    "category": "System",
+    "targets": {
+      "ubuntu": "flameshot",
+      "debian": "flameshot",
+      "arch": "flameshot",
+      "fedora": "flameshot",
+      "opensuse": "flameshot",
+      "nix": "flameshot",
+      "flatpak": "org.flameshot.Flameshot",
+      "homebrew": "--cask flameshot"
+    },
+    "unavailableReason": "Flameshot is not available as a Snap package.",
+    "icon": {
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/flameshot-org/flameshot/master/data/img/app/flameshot.svg"
+    }
+  },
+  {
+    "id": "gnometweaks",
+    "name": "GNOME Tweaks",
+    "description": "GNOME 桌面高级设置和定制",
+    "category": "System",
+    "targets": {
+      "ubuntu": "gnome-tweaks",
+      "debian": "gnome-tweaks",
+      "arch": "gnome-tweaks",
+      "fedora": "gnome-tweaks",
+      "opensuse": "gnome-tweaks",
+      "nix": "gnome-tweaks"
+    },
+    "unavailableReason": "GNOME Tweaks is not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnome",
+      "color": "#4A86CF"
+    }
+  },
+  {
+    "id": "dconf",
+    "name": "dconf Editor",
+    "description": "GNOME 底层配置编辑器",
+    "category": "System",
+    "targets": {
+      "ubuntu": "dconf-editor",
+      "debian": "dconf-editor",
+      "arch": "dconf-editor",
+      "fedora": "dconf-editor",
+      "opensuse": "dconf-editor",
+      "nix": "dconf-editor"
+    },
+    "unavailableReason": "dconf Editor is not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnome",
+      "color": "#4A86CF"
+    }
+  },
+  {
+    "id": "borgbackup",
+    "name": "BorgBackup",
+    "description": "带压缩功能的去重备份工具",
+    "category": "System",
+    "targets": {
+      "ubuntu": "borgbackup",
+      "debian": "borgbackup",
+      "arch": "borg",
+      "fedora": "borgbackup",
+      "opensuse": "borgbackup",
+      "nix": "borgbackup",
+      "homebrew": "borgbackup"
+    },
+    "unavailableReason": "BorgBackup is a CLI tool and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "borgbackup",
+      "color": "#00B041"
+    }
+  },
+  {
+    "id": "restic",
+    "name": "Restic",
+    "description": "快速、安全、高效的备份程序",
+    "category": "System",
+    "targets": {
+      "ubuntu": "restic",
+      "debian": "restic",
+      "arch": "restic",
+      "fedora": "restic",
+      "opensuse": "restic",
+      "nix": "restic",
+      "homebrew": "restic"
+    },
+    "unavailableReason": "Restic is a CLI tool and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "mdi",
+      "name": "cloud-sync",
+      "color": "#00B4AB"
+    }
+  },
+  {
+    "id": "flatpaksupport",
+    "name": "Flatpak",
+    "description": "通用应用打包和沙箱运行框架",
+    "category": "System",
+    "targets": {
+      "ubuntu": "flatpak",
+      "debian": "flatpak",
+      "arch": "flatpak",
+      "fedora": "flatpak",
+      "opensuse": "flatpak",
+      "nix": "flatpak"
+    },
+    "unavailableReason": "Flatpak is a system package manager and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "flatpak",
+      "color": "#4A90D9"
+    }
+  },
+  {
+    "id": "filelight",
+    "name": "Filelight",
+    "description": "KDE 出品交互式磁盘空间可视化",
+    "category": "System",
+    "targets": {
+      "ubuntu": "filelight",
+      "debian": "filelight",
+      "arch": "filelight",
+      "fedora": "filelight",
+      "opensuse": "filelight",
+      "nix": "filelight",
+      "flatpak": "org.kde.filelight",
+      "snap": "filelight"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "kde",
+      "color": "#338BDB"
+    }
+  }
 ]

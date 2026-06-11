@@ -1,336 +1,272 @@
 [
-    {
-        "id": "cursor",
-        "name": "Cursor",
-        "description": "基于 VS Code 的 AI 驱动代码编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "cursor-bin",
-            "nix": "code-cursor",
-            "homebrew": "--cask cursor"
-        },
-        "unavailableReason": "Only available via [AUR](https://aur.archlinux.org/packages/cursor-bin) or Nix. Download from [cursor.com/download](https://cursor.com/download).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "cursor",
-            "color": "#232020ff"
-        }
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "description": "基于 VS Code 的 AI 驱动代码编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "cursor-bin",
+      "nix": "code-cursor",
+      "homebrew": "--cask cursor"
     },
-    {
-        "id": "vscode",
-        "name": "VS Code",
-        "description": "微软出品的最流行可扩展代码编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "code",
-            "nix": "vscode",
-            "flatpak": "com.visualstudio.code",
-            "snap": "code --classic",
-            "homebrew": "--cask visual-studio-code"
-        },
-        "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/com.visualstudio.code)/[Snap](https://snapcraft.io/code) or download from [code.visualstudio.com](https://code.visualstudio.com/Download).",
-        "icon": {
-            "type": "iconify",
-            "set": "logos",
-            "name": "visual-studio-code"
-        }
-    },
-    {
-        "id": "vscodium",
-        "name": "VSCodium",
-        "description": "社区构建的无遥测 VS Code 版本",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "vscodium-bin",
-            "nix": "vscodium",
-            "flatpak": "com.vscodium.codium",
-            "snap": "codium --classic",
-            "homebrew": "--cask vscodium"
-        },
-        "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/com.vscodium.codium)/[Snap](https://snapcraft.io/codium) or follow instructions at [vscodium.com](https://vscodium.com/#install).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "vscodium",
-            "color": "#2F80ED"
-        }
-    },
-    {
-        "id": "zed",
-        "name": "Zed",
-        "description": "高性能支持实时协作的代码编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "zed",
-            "nix": "zed-editor",
-            "flatpak": "dev.zed.Zed",
-            "homebrew": "--cask zed"
-        },
-        "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/dev.zed.Zed) or see [zed.dev/docs/linux](https://zed.dev/docs/linux#other-ways-to-install-zed-on-linux) for other methods.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "zedindustries",
-            "color": "#084CCF"
-        }
-    },
-    {
-        "id": "intellij-idea",
-        "name": "Intellij IDEA",
-        "description": "JetBrains 出品的 Java/Kotlin 集成开发环境",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "intellij-idea-ultimate-edition",
-            "nix": "jetbrains.idea",
-            "flatpak": "com.jetbrains.IntelliJ-IDEA-Ultimate",
-            "homebrew": "--cask intellij-idea",
-            "snap": "intellij-idea --classic"
-        },
-        "unavailableReason": "Not in official repos, download from [JetBrains](https://www.jetbrains.com/idea/download/?section=linux) or use [Flatpak](https://flathub.org/en/apps/com.jetbrains.IntelliJ-IDEA-Ultimate) / [Snap](https://snapcraft.io/intellij-idea).",
-        "icon": {
-            "type": "iconify",
-            "set": "logos",
-            "name": "intellij-idea"
-        }
-    },
-    {
-        "id": "pycharm",
-        "name": "Pycharm",
-        "description": "JetBrains 出品的 Python 集成开发环境",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "pycharm",
-            "flatpak": "com.jetbrains.PyCharm-Professional",
-            "homebrew": "--cask pycharm",
-            "snap": "pycharm --classic",
-            "nix": "jetbrains.pycharm"
-        },
-        "unavailableReason": "Not in official repos, download from [JetBrains](https://www.jetbrains.com/pycharm/download/?section=linux) or use [Flatpak](https://flathub.org/en/apps/com.jetbrains.PyCharm-Professional) / [Snap](https://snapcraft.io/pycharm).",
-        "icon": {
-            "type": "iconify",
-            "set": "logos",
-            "name": "pycharm"
-        }
-    },
-    {
-        "id": "clion",
-        "name": "CLion",
-        "description": "JetBrains 出品的 C/C++ 集成开发环境",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "clion",
-            "flatpak": "com.jetbrains.CLion",
-            "homebrew": "--cask clion",
-            "snap": "clion --classic",
-            "nix": "jetbrains.clion"
-        },
-        "unavailableReason": "Not in official repos, download from [JetBrains](https://www.jetbrains.com/clion/download/?section=linux) or use [Flatpak](https://flathub.org/en/apps/com.jetbrains.CLion) / [Snap](https://snapcraft.io/clion).",
-        "icon": {
-            "type": "iconify",
-            "set": "logos",
-            "name": "clion"
-        }
-    },
-    {
-        "id": "arduino",
-        "name": "Arduino IDE",
-        "description": "Arduino 微控制器开发集成环境",
-        "category": "Dev: Editors",
-        "targets": {
-            "ubuntu": "arduino",
-            "debian": "arduino",
-            "arch": "arduino",
-            "fedora": "arduino",
-            "nix": "arduino-ide",
-            "flatpak": "cc.arduino.IDE2",
-            "snap": "arduino",
-            "homebrew": "--cask arduino-ide"
-        },
-        "unavailableReason": "Arduino IDE is not in official openSUSE repos. Use [Flatpak](https://flathub.org/en/apps/cc.arduino.IDE2) or [Snap](https://snapcraft.io/arduino) instead.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "arduino",
-            "color": "#00878F"
-        }
-    },
-    {
-        "id": "sublime",
-        "name": "Sublime Text",
-        "description": "极速轻量级的专有文本编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "sublime-text-4",
-            "nix": "sublime",
-            "flatpak": "com.sublimetext.three",
-            "snap": "sublime-text --classic",
-            "homebrew": "--cask sublime-text"
-        },
-        "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/com.sublimetext.three)/[Snap](https://snapcraft.io/sublime-text) or follow instructions at [sublimetext.com/docs/linux_repositories](https://www.sublimetext.com/docs/linux_repositories.html).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "sublimetext",
-            "color": "#FF9800"
-        }
-    },
-    {
-        "id": "kate",
-        "name": "Kate",
-        "description": "KDE 开发的功能丰富的文本编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "ubuntu": "kate",
-            "debian": "kate",
-            "arch": "kate",
-            "fedora": "kate",
-            "opensuse": "kate",
-            "nix": "kdePackages.kate",
-            "flatpak": "org.kde.kate",
-            "snap": "kate --classic",
-            "homebrew": "--cask kate"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "kde",
-            "color": "#1D99F3"
-        }
-    },
-    {
-        "id": "geany",
-        "name": "Geany",
-        "description": "快速轻量的集成开发环境",
-        "category": "Dev: Editors",
-        "targets": {
-            "ubuntu": "geany",
-            "debian": "geany",
-            "arch": "geany",
-            "fedora": "geany",
-            "opensuse": "geany",
-            "nix": "geany",
-            "flatpak": "org.geany.Geany",
-            "homebrew": "--cask geany"
-        },
-        "unavailableReason": "Snap is unmaintained, download from [Geany](https://www.geany.org/download/releases/) or use [Flatpak](https://flathub.org/en/apps/org.geany.Geany).",
-        "icon": {
-            "type": "url",
-            "url": "https://www.geany.org/static/img/geany.svg"
-        }
-    },
-    {
-        "id": "neovim",
-        "name": "Neovim",
-        "description": "现代化 Vim，扩展性更强",
-        "category": "Dev: Editors",
-        "targets": {
-            "ubuntu": "neovim",
-            "debian": "neovim",
-            "arch": "neovim",
-            "fedora": "neovim",
-            "opensuse": "neovim",
-            "nix": "neovim",
-            "flatpak": "com.neovim.Neovim",
-            "snap": "nvim --classic",
-            "homebrew": "neovim"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "neovim",
-            "color": "#57A143"
-        }
-    },
-    {
-        "id": "vim",
-        "name": "Vim",
-        "description": "经典的模式化文本编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "ubuntu": "vim",
-            "debian": "vim",
-            "arch": "vim",
-            "fedora": "vim-enhanced",
-            "opensuse": "vim",
-            "nix": "vim",
-            "flatpak": "org.vim.Vim",
-            "snap": "vim-editor",
-            "homebrew": "vim"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "vim",
-            "color": "#019733"
-        }
-    },
-    {
-        "id": "helix",
-        "name": "Helix",
-        "description": "内建 LSP 和 tree-sitter 的模式编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "helix",
-            "fedora": "helix",
-            "opensuse": "helix",
-            "nix": "helix",
-            "flatpak": "com.helix-editor.Helix",
-            "snap": "helix --classic",
-            "homebrew": "helix"
-        },
-        "unavailableReason": "Not in official Debian/Ubuntu repos. For Ubuntu, add the PPA: `sudo add-apt-repository ppa:maveonair/helix-editor && sudo apt update && sudo apt install helix`. For Debian, download .deb from [GitHub releases](https://github.com/helix-editor/helix/releases).",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "dna",
-            "color": "#4E2F7F"
-        }
-    },
-    {
-        "id": "micro",
-        "name": "Micro",
-        "description": "类 nano 的易用终端文本编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "arch": "micro",
-            "ubuntu": "micro",
-            "debian": "micro",
-            "fedora": "micro",
-            "opensuse": "micro-editor",
-            "nix": "micro-editor",
-            "flatpak": "io.github.zyedidia.micro",
-            "snap": "micro --classic",
-            "homebrew": "micro"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "microeditor",
-            "color": "#2E3192"
-        }
-    },
-    {
-        "id": "emacs",
-        "name": "Emacs",
-        "description": "可扩展、可定制的自由文本编辑器",
-        "category": "Dev: Editors",
-        "targets": {
-            "ubuntu": "emacs",
-            "debian": "emacs",
-            "arch": "emacs",
-            "fedora": "emacs",
-            "opensuse": "emacs",
-            "nix": "emacs",
-            "flatpak": "org.gnu.emacs",
-            "snap": "emacs --classic",
-            "homebrew": "--cask emacs-app"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "gnuemacs",
-            "color": "#7F5AB6"
-        }
+    "unavailableReason": "Only available via [AUR](https://aur.archlinux.org/packages/cursor-bin) or Nix. Download from [cursor.com/download](https://cursor.com/download).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "cursor",
+      "color": "#232020ff"
     }
+  },
+  {
+    "id": "vscode",
+    "name": "VS Code",
+    "description": "微软出品的最流行可扩展代码编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "code",
+      "nix": "vscode",
+      "flatpak": "com.visualstudio.code",
+      "snap": "code --classic",
+      "homebrew": "--cask visual-studio-code"
+    },
+    "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/com.visualstudio.code)/[Snap](https://snapcraft.io/code) or download from [code.visualstudio.com](https://code.visualstudio.com/Download).",
+    "icon": {
+      "type": "iconify",
+      "set": "logos",
+      "name": "visual-studio-code"
+    }
+  },
+  {
+    "id": "vscodium",
+    "name": "VSCodium",
+    "description": "社区构建的无遥测 VS Code 版本",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "vscodium-bin",
+      "nix": "vscodium",
+      "flatpak": "com.vscodium.codium",
+      "snap": "codium --classic",
+      "homebrew": "--cask vscodium"
+    },
+    "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/com.vscodium.codium)/[Snap](https://snapcraft.io/codium) or follow instructions at [vscodium.com](https://vscodium.com/#install).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "vscodium",
+      "color": "#2F80ED"
+    }
+  },
+  {
+    "id": "zed",
+    "name": "Zed",
+    "description": "高性能支持实时协作的代码编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "zed",
+      "nix": "zed-editor",
+      "flatpak": "dev.zed.Zed",
+      "homebrew": "--cask zed"
+    },
+    "unavailableReason": "Not in official repos. Use [Flatpak](https://flathub.org/en/apps/dev.zed.Zed) or see [zed.dev/docs/linux](https://zed.dev/docs/linux#other-ways-to-install-zed-on-linux) for other methods.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "zedindustries",
+      "color": "#084CCF"
+    }
+  },
+  {
+    "id": "intellij-idea",
+    "name": "Intellij IDEA",
+    "description": "JetBrains 出品的 Java/Kotlin 集成开发环境",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "intellij-idea-ultimate-edition",
+      "nix": "jetbrains.idea",
+      "flatpak": "com.jetbrains.IntelliJ-IDEA-Ultimate",
+      "homebrew": "--cask intellij-idea",
+      "snap": "intellij-idea --classic"
+    },
+    "unavailableReason": "Not in official repos, download from [JetBrains](https://www.jetbrains.com/idea/download/?section=linux) or use [Flatpak](https://flathub.org/en/apps/com.jetbrains.IntelliJ-IDEA-Ultimate) / [Snap](https://snapcraft.io/intellij-idea).",
+    "icon": {
+      "type": "iconify",
+      "set": "logos",
+      "name": "intellij-idea"
+    }
+  },
+  {
+    "id": "pycharm",
+    "name": "Pycharm",
+    "description": "JetBrains 出品的 Python 集成开发环境",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "pycharm",
+      "flatpak": "com.jetbrains.PyCharm-Professional",
+      "homebrew": "--cask pycharm",
+      "snap": "pycharm --classic",
+      "nix": "jetbrains.pycharm"
+    },
+    "unavailableReason": "Not in official repos, download from [JetBrains](https://www.jetbrains.com/pycharm/download/?section=linux) or use [Flatpak](https://flathub.org/en/apps/com.jetbrains.PyCharm-Professional) / [Snap](https://snapcraft.io/pycharm).",
+    "icon": {
+      "type": "iconify",
+      "set": "logos",
+      "name": "pycharm"
+    }
+  },
+  {
+    "id": "clion",
+    "name": "CLion",
+    "description": "JetBrains 出品的 C/C++ 集成开发环境",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "clion",
+      "flatpak": "com.jetbrains.CLion",
+      "homebrew": "--cask clion",
+      "snap": "clion --classic",
+      "nix": "jetbrains.clion"
+    },
+    "unavailableReason": "Not in official repos, download from [JetBrains](https://www.jetbrains.com/clion/download/?section=linux) or use [Flatpak](https://flathub.org/en/apps/com.jetbrains.CLion) / [Snap](https://snapcraft.io/clion).",
+    "icon": {
+      "type": "iconify",
+      "set": "logos",
+      "name": "clion"
+    }
+  },
+  {
+    "id": "arduino",
+    "name": "Arduino IDE",
+    "description": "Arduino 微控制器开发集成环境",
+    "category": "Dev: Editors",
+    "targets": {
+      "ubuntu": "arduino",
+      "debian": "arduino",
+      "arch": "arduino",
+      "fedora": "arduino",
+      "nix": "arduino-ide",
+      "flatpak": "cc.arduino.IDE2",
+      "snap": "arduino",
+      "homebrew": "--cask arduino-ide"
+    },
+    "unavailableReason": "Arduino IDE is not in official openSUSE repos. Use [Flatpak](https://flathub.org/en/apps/cc.arduino.IDE2) or [Snap](https://snapcraft.io/arduino) instead.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "arduino",
+      "color": "#00878F"
+    }
+  },
+  {
+    "id": "neovim",
+    "name": "Neovim",
+    "description": "现代化 Vim，扩展性更强",
+    "category": "Dev: Editors",
+    "targets": {
+      "ubuntu": "neovim",
+      "debian": "neovim",
+      "arch": "neovim",
+      "fedora": "neovim",
+      "opensuse": "neovim",
+      "nix": "neovim",
+      "flatpak": "com.neovim.Neovim",
+      "snap": "nvim --classic",
+      "homebrew": "neovim"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "neovim",
+      "color": "#57A143"
+    }
+  },
+  {
+    "id": "vim",
+    "name": "Vim",
+    "description": "经典的模式化文本编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "ubuntu": "vim",
+      "debian": "vim",
+      "arch": "vim",
+      "fedora": "vim-enhanced",
+      "opensuse": "vim",
+      "nix": "vim",
+      "flatpak": "org.vim.Vim",
+      "snap": "vim-editor",
+      "homebrew": "vim"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "vim",
+      "color": "#019733"
+    }
+  },
+  {
+    "id": "helix",
+    "name": "Helix",
+    "description": "内建 LSP 和 tree-sitter 的模式编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "helix",
+      "fedora": "helix",
+      "opensuse": "helix",
+      "nix": "helix",
+      "flatpak": "com.helix-editor.Helix",
+      "snap": "helix --classic",
+      "homebrew": "helix"
+    },
+    "unavailableReason": "Not in official Debian/Ubuntu repos. For Ubuntu, add the PPA: `sudo add-apt-repository ppa:maveonair/helix-editor && sudo apt update && sudo apt install helix`. For Debian, download .deb from [GitHub releases](https://github.com/helix-editor/helix/releases).",
+    "icon": {
+      "type": "iconify",
+      "set": "mdi",
+      "name": "dna",
+      "color": "#4E2F7F"
+    }
+  },
+  {
+    "id": "micro",
+    "name": "Micro",
+    "description": "类 nano 的易用终端文本编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "arch": "micro",
+      "ubuntu": "micro",
+      "debian": "micro",
+      "fedora": "micro",
+      "opensuse": "micro-editor",
+      "nix": "micro-editor",
+      "flatpak": "io.github.zyedidia.micro",
+      "snap": "micro --classic",
+      "homebrew": "micro"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "microeditor",
+      "color": "#2E3192"
+    }
+  },
+  {
+    "id": "emacs",
+    "name": "Emacs",
+    "description": "可扩展、可定制的自由文本编辑器",
+    "category": "Dev: Editors",
+    "targets": {
+      "ubuntu": "emacs",
+      "debian": "emacs",
+      "arch": "emacs",
+      "fedora": "emacs",
+      "opensuse": "emacs",
+      "nix": "emacs",
+      "flatpak": "org.gnu.emacs",
+      "snap": "emacs --classic",
+      "homebrew": "--cask emacs-app"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnuemacs",
+      "color": "#7F5AB6"
+    }
+  }
 ]

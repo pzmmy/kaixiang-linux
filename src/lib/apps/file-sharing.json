@@ -131,37 +131,5 @@
       "name": "nextcloud",
       "color": "#0082C9"
     }
-  },
-  {
-    "id": "abdownloadmanager",
-    "name": "AB Download Manager",
-    "description": "现代化下载管理器，支持浏览器集成",
-    "category": "File Sharing",
-    "targets": {
-      "arch": "ab-download-manager-bin"
-    },
-    "unavailableReason": "Only available via [AUR](https://aur.archlinux.org/packages/ab-download-manager-bin). Download from [abdownloadmanager.com](https://abdownloadmanager.com/).",
-    "icon": {
-      "type": "iconify",
-      "set": "mdi",
-      "name": "download-box",
-      "color": "#4CAF50"
-    }
-  },
-  {
-    "id": "fdm",
-    "name": "Free Download Manager",
-    "description": "功能丰富的下载管理器，支持BitTorrent",
-    "category": "File Sharing",
-    "targets": {
-      "arch": "freedownloadmanager-bin",
-      "homebrew": "--cask free-download-manager",
-      "flatpak": "org.freedownloadmanager.Manager"
-    },
-    "unavailableReason": "Not in official repos. Use [Flatpak version](https://flathub.org/en/apps/org.freedownloadmanager.Manager) or see [the official website](https://www.freedownloadmanager.org/) or  for other methods.",
-    "icon": {
-      "type": "url",
-      "url": "https://hexmos.com/freedevtools/svg_icons/reader/free_download_manager.svg"
-    }
   }
 ]

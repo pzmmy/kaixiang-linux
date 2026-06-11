@@ -1,206 +1,126 @@
 [
-    {
-        "id": "steam",
-        "name": "Steam",
-        "description": "全球最大的 PC 游戏平台和商店",
-        "category": "Gaming",
-        "targets": {
-            "ubuntu": "steam",
-            "fedora": "steam",
-            "opensuse": "steam",
-            "nix": "steam",
-            "flatpak": "com.valvesoftware.Steam",
-            "snap": "steam",
-            "homebrew": "--cask steam"
-        },
-        "unavailableReason": "Debian requires editing /etc/apt/sources.list adding \"contrib\" to the end of the line that starts with \"deb\" or \"deb-src\" and `sudo apt update` before installing `sudo apt install -y steam-installer`. Arch requires [multilib](https://wiki.archlinux.org/title/Official_repositories#multilib) enabled first: uncomment `[multilib]` section in `/etc/pacman.conf`, then run `sudo pacman -Syu`, then `sudo pacman -S steam`.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "steam",
-            "color": "#00ADEE"
-        }
+  {
+    "id": "steam",
+    "name": "Steam",
+    "description": "全球最大的 PC 游戏平台和商店",
+    "category": "Gaming",
+    "targets": {
+      "ubuntu": "steam",
+      "fedora": "steam",
+      "opensuse": "steam",
+      "nix": "steam",
+      "flatpak": "com.valvesoftware.Steam",
+      "snap": "steam",
+      "homebrew": "--cask steam"
     },
-    {
-        "id": "lutris",
-        "name": "Lutris",
-        "description": "统一管理游戏的开源游戏平台",
-        "category": "Gaming",
-        "targets": {
-            "ubuntu": "lutris",
-            "arch": "lutris",
-            "fedora": "lutris",
-            "opensuse": "lutris",
-            "nix": "lutris",
-            "flatpak": "net.lutris.Lutris"
-        },
-        "unavailableReason": "Debian requires editing /etc/apt/sources.list adding \"contrib\" to the end of the line that starts with \"deb\" or \"deb-src\" and `sudo apt update` before installing `sudo apt install -y lutris`. Lutris is not available as a Snap package.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "lutris",
-            "color": "#FF8F00"
-        }
-    },
-    {
-        "id": "heroic",
-        "name": "Heroic",
-        "description": "开源 Epic Games 和 GOG 游戏启动器",
-        "category": "Gaming",
-        "targets": {
-            "arch": "heroic-games-launcher-bin",
-            "nix": "heroic",
-            "flatpak": "com.heroicgameslauncher.hgl",
-            "homebrew": "--cask heroic"
-        },
-        "unavailableReason": "Only available via [AUR](https://aur.archlinux.org/packages/heroic-games-launcher-bin) or [Flatpak](https://flathub.org/apps/details/com.heroicgameslauncher.hgl). see [heroicgameslauncher.com](https://heroicgameslauncher.com/downloads) for more info.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "heroicgameslauncher",
-            "color": "#7B62E8"
-        }
-    },
-    {
-        "id": "prism",
-        "name": "Prism Launcher",
-        "description": "支持模组的开源 Minecraft 启动器",
-        "category": "Gaming",
-        "targets": {
-            "arch": "prismlauncher",
-            "nix": "prismlauncher",
-            "flatpak": "org.prismlauncher.PrismLauncher",
-            "homebrew": "--cask prismlauncher"
-        },
-        "unavailableReason": "Only available via [AUR](https://aur.archlinux.org/packages/prismlauncher) or [Flatpak](https://flathub.org/apps/details/org.prismlauncher.PrismLauncher). see [prismlauncher.org](https://prismlauncher.org/download/) for more info.",
-        "icon": {
-            "type": "url",
-            "url": "https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/develop/program_info/org.prismlauncher.PrismLauncher.logo.svg"
-        }
-    },
-    {
-        "id": "retroarch",
-        "name": "RetroArch",
-        "description": "复古游戏的一体化模拟器前端",
-        "category": "Gaming",
-        "targets": {
-            "ubuntu": "retroarch",
-            "debian": "retroarch",
-            "arch": "retroarch",
-            "fedora": "retroarch",
-            "opensuse": "retroarch",
-            "nix": "retroarch",
-            "flatpak": "org.libretro.RetroArch",
-            "snap": "retroarch",
-            "homebrew": "--cask retroarch"
-        },
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "retroarch",
-            "color": "#A0A0A0"
-        }
-    },
-    {
-        "id": "mangohud",
-        "name": "MangoHud",
-        "description": "Vulkan 和 OpenGL 的 FPS 监控覆盖层",
-        "category": "Gaming",
-        "targets": {
-            "ubuntu": "mangohud",
-            "debian": "mangohud",
-            "arch": "mangohud",
-            "fedora": "mangohud",
-            "opensuse": "mangohud",
-            "nix": "mangohud"
-        },
-        "unavailableReason": "MangoHud is a system overlay and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "gamejolt",
-            "color": "#FF9900"
-        }
-    },
-    {
-        "id": "gamemode",
-        "name": "GameMode",
-        "description": "优化 Linux 系统游戏性能的守护进程",
-        "category": "Gaming",
-        "targets": {
-            "ubuntu": "gamemode",
-            "debian": "gamemode",
-            "arch": "gamemode",
-            "fedora": "gamemode",
-            "opensuse": "gamemode",
-            "nix": "gamemode"
-        },
-        "unavailableReason": "GameMode is a system service and not available via Flatpak or Snap.",
-        "icon": {
-            "type": "url",
-            "url": "https://www.svgrepo.com/show/411187/game.svg"
-        }
-    },
-    {
-        "id": "protonup",
-        "name": "ProtonUp-Qt",
-        "description": "安装和管理 Steam 游戏的 Proton-GE 工具",
-        "category": "Gaming",
-        "targets": {
-            "arch": "protonup-qt-bin",
-            "nix": "protonup-qt",
-            "flatpak": "net.davidotek.pupgui2"
-        },
-        "unavailableReason": "Only available via [AUR](https://aur.archlinux.org/packages/protonup-qt-bin) or [Flatpak](https://flathub.org/apps/net.davidotek.pupgui2).",
-        "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "protondb",
-            "color": "#8B0000"
-        }
-    },
-    {
-        "id": "antimicrox",
-        "name": "AntiMicroX",
-        "description": "将手柄按键映射为键盘鼠标操作",
-        "category": "Gaming",
-        "targets": {
-            "ubuntu": "antimicrox",
-            "debian": "antimicrox",
-            "arch": "antimicrox",
-            "fedora": "antimicrox",
-            "opensuse": "antimicrox",
-            "nix": "antimicrox",
-            "flatpak": "io.github.antimicrox.antimicrox"
-        },
-        "unavailableReason": "Not available as a Snap package.",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "controller",
-            "color": "#007BFF"
-        }
-    },
-    {
-        "id": "goverlay",
-        "name": "GOverlay",
-        "description": "MangoHud 等工具的图形界面管理器",
-        "category": "Gaming",
-        "targets": {
-            "ubuntu": "goverlay",
-            "debian": "goverlay",
-            "arch": "goverlay",
-            "fedora": "goverlay",
-            "opensuse": "goverlay",
-            "nix": "goverlay",
-            "flatpak": "io.github.benjamimgois.goverlay"
-        },
-        "unavailableReason": "Not available as a Snap package.",
-        "icon": {
-            "type": "iconify",
-            "set": "mdi",
-            "name": "dock-window",
-            "color": "#6366F1"
-        }
+    "unavailableReason": "Debian requires editing /etc/apt/sources.list adding \"contrib\" to the end of the line that starts with \"deb\" or \"deb-src\" and `sudo apt update` before installing `sudo apt install -y steam-installer`. Arch requires [multilib](https://wiki.archlinux.org/title/Official_repositories#multilib) enabled first: uncomment `[multilib]` section in `/etc/pacman.conf`, then run `sudo pacman -Syu`, then `sudo pacman -S steam`.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "steam",
+      "color": "#00ADEE"
     }
+  },
+  {
+    "id": "lutris",
+    "name": "Lutris",
+    "description": "统一管理游戏的开源游戏平台",
+    "category": "Gaming",
+    "targets": {
+      "ubuntu": "lutris",
+      "arch": "lutris",
+      "fedora": "lutris",
+      "opensuse": "lutris",
+      "nix": "lutris",
+      "flatpak": "net.lutris.Lutris"
+    },
+    "unavailableReason": "Debian requires editing /etc/apt/sources.list adding \"contrib\" to the end of the line that starts with \"deb\" or \"deb-src\" and `sudo apt update` before installing `sudo apt install -y lutris`. Lutris is not available as a Snap package.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "lutris",
+      "color": "#FF8F00"
+    }
+  },
+  {
+    "id": "retroarch",
+    "name": "RetroArch",
+    "description": "复古游戏的一体化模拟器前端",
+    "category": "Gaming",
+    "targets": {
+      "ubuntu": "retroarch",
+      "debian": "retroarch",
+      "arch": "retroarch",
+      "fedora": "retroarch",
+      "opensuse": "retroarch",
+      "nix": "retroarch",
+      "flatpak": "org.libretro.RetroArch",
+      "snap": "retroarch",
+      "homebrew": "--cask retroarch"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "retroarch",
+      "color": "#A0A0A0"
+    }
+  },
+  {
+    "id": "mangohud",
+    "name": "MangoHud",
+    "description": "Vulkan 和 OpenGL 的 FPS 监控覆盖层",
+    "category": "Gaming",
+    "targets": {
+      "ubuntu": "mangohud",
+      "debian": "mangohud",
+      "arch": "mangohud",
+      "fedora": "mangohud",
+      "opensuse": "mangohud",
+      "nix": "mangohud"
+    },
+    "unavailableReason": "MangoHud is a system overlay and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gamejolt",
+      "color": "#FF9900"
+    }
+  },
+  {
+    "id": "gamemode",
+    "name": "GameMode",
+    "description": "优化 Linux 系统游戏性能的守护进程",
+    "category": "Gaming",
+    "targets": {
+      "ubuntu": "gamemode",
+      "debian": "gamemode",
+      "arch": "gamemode",
+      "fedora": "gamemode",
+      "opensuse": "gamemode",
+      "nix": "gamemode"
+    },
+    "unavailableReason": "GameMode is a system service and not available via Flatpak or Snap.",
+    "icon": {
+      "type": "url",
+      "url": "https://www.svgrepo.com/show/411187/game.svg"
+    }
+  },
+  {
+    "id": "protonup",
+    "name": "ProtonUp-Qt",
+    "description": "安装和管理 Steam 游戏的 Proton-GE 工具",
+    "category": "Gaming",
+    "targets": {
+      "arch": "protonup-qt-bin",
+      "nix": "protonup-qt",
+      "flatpak": "net.davidotek.pupgui2"
+    },
+    "unavailableReason": "Only available via [AUR](https://aur.archlinux.org/packages/protonup-qt-bin) or [Flatpak](https://flathub.org/apps/net.davidotek.pupgui2).",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "protondb",
+      "color": "#8B0000"
+    }
+  }
 ]

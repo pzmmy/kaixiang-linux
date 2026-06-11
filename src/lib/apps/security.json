@@ -82,25 +82,6 @@
     }
   },
   {
-    "id": "firejail",
-    "name": "Firejail",
-    "description": "SUID沙箱工具，限制应用运行环境",
-    "category": "Security",
-    "targets": {
-      "ubuntu": "firejail",
-      "debian": "firejail",
-      "arch": "firejail",
-      "fedora": "firejail",
-      "opensuse": "firejail",
-      "nix": "firejail"
-    },
-    "unavailableReason": "Firejail is a system security tool and not available via Flatpak or Snap.",
-    "icon": {
-      "type": "url",
-      "url": "https://linux.fi/w/images/1/1f/Firejail-logo.png"
-    }
-  },
-  {
     "id": "clamav",
     "name": "ClamAV",
     "description": "开源杀毒引擎，检测恶意软件",
@@ -118,23 +99,6 @@
     "icon": {
       "type": "url",
       "url": "https://raw.githubusercontent.com/ivangabriele/clamav-desktop/f60bfafdd23bb455f0468abe5f877d2b76eddfba/assets/icons/icon.svg"
-    }
-  },
-  {
-    "id": "ente-auth",
-    "name": "Ente Auth",
-    "description": "开源双因素认证器，支持端到端加密备份",
-    "category": "Security",
-    "targets": {
-      "arch": "ente-auth-bin",
-      "nix": "ente-auth",
-      "flatpak": "io.ente.auth",
-      "homebrew": "--cask ente-auth"
-    },
-    "unavailableReason": "Not in official repos. Use [Flatpak version](https://flathub.org/en/apps/io.ente.auth) or [Unofficial Snap Version](https://snapcraft.io/ente-auth-tsugu) or visit [ente.io/auth/](https://ente.io/auth/).",
-    "icon": {
-      "type": "url",
-      "url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ente-auth.svg"
     }
   }
 ]
