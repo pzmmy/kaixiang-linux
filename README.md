@@ -30,6 +30,9 @@
 ## 🖥️ 本地运行
 
 ```bash
+# 国内用户先设镜像源（重要）
+npm config set registry https://registry.npmmirror.com
+
 npm install
 npm run dev
 # 打开 http://localhost:3000
@@ -41,6 +44,71 @@ npm run dev
 docker build -t kaixiang-linux .
 docker run -p 3000:3000 kaixiang-linux
 ```
+
+---
+
+## 🌐 部署
+
+### GitHub Pages（推荐，免费）
+
+项目已配置 `output: 'export'`，构建后直接部署：
+
+```bash
+# 1. 国内用户先设镜像
+npm config set registry https://registry.npmmirror.com
+
+# 2. 构建
+npm install && npm run build
+
+# 3. 推送到 gh-pages 分支
+npx gh-pages -d out -b gh-pages
+
+# 4. 在仓库 Settings > Pages 中
+#    - Source 选 "Deploy from a branch"
+#    - Branch 选 gh-pages
+#    - 等待 1-2 分钟，访问 https://pzmmy.github.io/kaixiang-linux/
+```
+
+### Vercel（一键部署）
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/pzmmy/kaixiang-linux)
+
+### Cloudflare Pages
+
+```bash
+npm install && npm run build
+npx wrangler pages deploy out/
+```
+
+---
+
+## ⚠️ 踩坑记录
+
+### 1. 国内 npm install 慢 / 超时
+```bash
+# 必须换国内镜像源
+npm config set registry https://registry.npmmirror.com
+```
+
+### 2. Next.js 构建时文件覆盖报错
+如果从原版 tuxmate fork 后在 WSL 构建，可能出现工作目录文件冲突：
+```bash
+# 切到 main 分支前清理工作区
+git stash
+git checkout main
+```
+
+### 3. 静态导出配置
+如果自己从头配 Next.js 静态导出，确保 `next.config.ts` 中有：
+```typescript
+const nextConfig: NextConfig = {
+  output: 'export',
+  images: { unoptimized: true },
+};
+```
+
+### 4. GitHub Pages 部署后 404
+确保 `gh-pages` 分支根目录包含 `index.html`，且仓库 Settings > Pages 中 Branch 正确指向 `gh-pages`（不是 main）。
 
 ---
 
