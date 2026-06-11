@@ -43,7 +43,7 @@ export function useLinuxInit(): UseLinuxInitReturn {
     const [selectedApps, setSelectedApps] = useState<Set<string>>(new Set());
     const [hasYayInstalled, setHasYayInstalled] = useState(false);
     const [selectedHelper, setSelectedHelper] = useState<'yay' | 'paru'>('yay');
-    const [selectedMirror, setSelectedMirror] = useState<string>('none');
+    const [selectedMirror, setSelectedMirror] = useState<string>('tuna');
     const [hydrated, setHydrated] = useState(false);
 
     useEffect(() => {
@@ -207,8 +207,14 @@ export function useLinuxInit(): UseLinuxInitReturn {
         if (!distro) return '';
 
         // 国内镜像提示
-        const mirrorHeader = selectedMirror !== 'none'
-            ? `# 镜像源: ${mirrorSources.find(m => m.id === selectedMirror)?.name || selectedMirror}\n`
+        const mirrorInfo = mirrorSources.find(m => m.id === selectedMirror);
+        const mirrorHeader = selectedMirror !== 'none' && mirrorInfo
+            ? `# 镜像源: ${mirrorInfo.name}\n` +
+              (selectedDistro === 'flatpak' && mirrorInfo.flathubMirror
+                  ? `# Flatpak 镜像: ${mirrorInfo.flathubMirror}\n# sudo flatpak remote-modify flathub --url=${mirrorInfo.flathubMirror}\n`
+                  : selectedDistro !== 'flatpak' && mirrorInfo.rules[selectedDistro]
+                  ? `# ${selectedDistro} 镜像: ${mirrorInfo.rules[selectedDistro]}\n`
+                  : '')
             : '';
 
         const packageNames: string[] = [];

@@ -78,6 +78,8 @@ export interface MirrorSource {
     name: string;
     /** 应用到指定发行版的镜像替换规则 */
     rules: Partial<Record<DistroId, string>>;
+    /** Flatpak Flathub 镜像 URL（为空则不替换） */
+    flathubMirror?: string;
     description: string;
 }
 
@@ -85,7 +87,7 @@ export const mirrorSources: MirrorSource[] = [
     {
         id: 'none',
         name: '官方源（默认）',
-        description: '使用发行版官方源',
+        description: '使用发行版官方源，速度视网络而定',
         rules: {},
     },
     {
@@ -99,6 +101,7 @@ export const mirrorSources: MirrorSource[] = [
             fedora: 'https://mirrors.tuna.tsinghua.edu.cn/fedora/',
             opensuse: 'https://mirrors.tuna.tsinghua.edu.cn/opensuse/',
         },
+        flathubMirror: 'https://mirrors.tuna.tsinghua.edu.cn/flathub',
     },
     {
         id: 'aliyun',
@@ -111,6 +114,7 @@ export const mirrorSources: MirrorSource[] = [
             fedora: 'https://mirrors.aliyun.com/fedora/',
             opensuse: 'https://mirrors.aliyun.com/opensuse/',
         },
+        flathubMirror: 'https://mirrors.aliyun.com/flathub',
     },
     {
         id: 'ustc',
@@ -123,6 +127,7 @@ export const mirrorSources: MirrorSource[] = [
             fedora: 'https://mirrors.ustc.edu.cn/fedora/',
             opensuse: 'https://mirrors.ustc.edu.cn/opensuse/',
         },
+        flathubMirror: 'https://mirrors.ustc.edu.cn/flathub',
     },
 ];
 
