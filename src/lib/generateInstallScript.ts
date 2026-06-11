@@ -38,8 +38,10 @@ export function generateInstallScript(options: GenerateOptions): string {
     let scriptContent = '';
 
     switch (distroId) {
-        case 'ubuntu': scriptContent = injectUniversal(generateUbuntuScript(packages)); break;
-        case 'debian': scriptContent = injectUniversal(generateDebianScript(packages)); break;
+        case 'ubuntu':
+        case 'debian':
+        case 'deepin':
+        case 'uos': scriptContent = injectUniversal(generateUbuntuScript(packages)); break;
         case 'arch': scriptContent = injectUniversal(generateArchScript(packages, helper)); break;
         case 'fedora': scriptContent = injectUniversal(generateFedoraScript(packages)); break;
         case 'opensuse': scriptContent = injectUniversal(generateOpenSUSEScript(packages)); break;
@@ -92,7 +94,9 @@ export function generateCommandline(options: GenerateOptions): string {
 
     switch (distroId) {
         case 'ubuntu':
-        case 'debian': return appendScripts(appendExtras(pkgList ? `sudo apt install -y ${pkgList}` : ''));
+        case 'debian':
+        case 'deepin':
+        case 'uos': return appendScripts(appendExtras(pkgList ? `sudo apt install -y ${pkgList}` : ''));
         case 'arch': return appendScripts(appendExtras(pkgList ? `yay -S --needed --noconfirm ${pkgList}` : ''));
         case 'fedora': return appendScripts(appendExtras(pkgList ? `sudo dnf install -y ${pkgList}` : ''));
         case 'opensuse': return appendScripts(appendExtras(pkgList ? `sudo zypper install -y ${pkgList}` : ''));

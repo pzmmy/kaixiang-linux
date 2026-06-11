@@ -14,9 +14,10 @@ import security from './apps/security.json';
 import fileSharing from './apps/file-sharing.json';
 import system from './apps/system.json';
 import aiTools from './apps/ai-tools.json';
+import chinaEssentials from './apps/china-essentials.json';
 
 
-export type DistroId = 'ubuntu' | 'debian' | 'arch' | 'fedora' | 'opensuse' | 'nix' | 'flatpak' | 'snap' | 'homebrew';
+export type DistroId = 'ubuntu' | 'debian' | 'arch' | 'fedora' | 'opensuse' | 'nix' | 'flatpak' | 'snap' | 'homebrew' | 'deepin' | 'uos';
 export type UniversalTargetId = 'npm' | 'script';
 
 export type Category =
@@ -71,16 +72,72 @@ export const getIconUrl = (icon: IconDef): string => {
 
 
 
+/** 国内镜像源配置 */
+export interface MirrorSource {
+    id: string;
+    name: string;
+    /** 应用到指定发行版的镜像替换规则 */
+    rules: Partial<Record<DistroId, string>>;
+    description: string;
+}
+
+export const mirrorSources: MirrorSource[] = [
+    {
+        id: 'none',
+        name: '官方源（默认）',
+        description: '使用发行版官方源',
+        rules: {},
+    },
+    {
+        id: 'tuna',
+        name: '清华镜像源',
+        description: '清华大学 TUNA 镜像站，速度快、更新及时',
+        rules: {
+            ubuntu: 'https://mirrors.tuna.tsinghua.edu.cn/ubuntu/',
+            debian: 'https://mirrors.tuna.tsinghua.edu.cn/debian/',
+            arch: 'https://mirrors.tuna.tsinghua.edu.cn/archlinux/',
+            fedora: 'https://mirrors.tuna.tsinghua.edu.cn/fedora/',
+            opensuse: 'https://mirrors.tuna.tsinghua.edu.cn/opensuse/',
+        },
+    },
+    {
+        id: 'aliyun',
+        name: '阿里云镜像',
+        description: '阿里云镜像站，国内访问快',
+        rules: {
+            ubuntu: 'https://mirrors.aliyun.com/ubuntu/',
+            debian: 'https://mirrors.aliyun.com/debian/',
+            arch: 'https://mirrors.aliyun.com/archlinux/',
+            fedora: 'https://mirrors.aliyun.com/fedora/',
+            opensuse: 'https://mirrors.aliyun.com/opensuse/',
+        },
+    },
+    {
+        id: 'ustc',
+        name: '中科大镜像',
+        description: '中国科学技术大学镜像站',
+        rules: {
+            ubuntu: 'https://mirrors.ustc.edu.cn/ubuntu/',
+            debian: 'https://mirrors.ustc.edu.cn/debian/',
+            arch: 'https://mirrors.ustc.edu.cn/archlinux/',
+            fedora: 'https://mirrors.ustc.edu.cn/fedora/',
+            opensuse: 'https://mirrors.ustc.edu.cn/opensuse/',
+        },
+    },
+];
+
 export const distros: Distro[] = [
     { id: 'ubuntu', name: 'Ubuntu', iconUrl: 'https://api.iconify.design/simple-icons/ubuntu.svg?color=%23E95420', color: '#E95420', installPrefix: 'sudo apt install -y' },
     { id: 'debian', name: 'Debian', iconUrl: 'https://api.iconify.design/simple-icons/debian.svg?color=%23A81D33', color: '#A81D33', installPrefix: 'sudo apt install -y' },
-    { id: 'arch', name: 'Arch', iconUrl: 'https://api.iconify.design/simple-icons/archlinux.svg?color=%231793D1', color: '#1793D1', installPrefix: 'sudo pacman -S --needed --noconfirm' },
+    { id: 'arch', name: 'Arch Linux', iconUrl: 'https://api.iconify.design/simple-icons/archlinux.svg?color=%231793D1', color: '#1793D1', installPrefix: 'sudo pacman -S --needed --noconfirm' },
     { id: 'fedora', name: 'Fedora', iconUrl: 'https://api.iconify.design/simple-icons/fedora.svg?color=%2351A2DA', color: '#51A2DA', installPrefix: 'sudo dnf install -y' },
     { id: 'opensuse', name: 'OpenSUSE', iconUrl: 'https://api.iconify.design/simple-icons/opensuse.svg?color=%2373BA25', color: '#73BA25', installPrefix: 'sudo zypper install -y' },
-    { id: 'nix', name: 'Nix', iconUrl: 'https://api.iconify.design/simple-icons/nixos.svg?color=%235277C3', color: '#5277C3', installPrefix: 'nix-env -iA nixpkgs.' },
-    { id: 'flatpak', name: 'Flatpak', iconUrl: 'https://api.iconify.design/simple-icons/flatpak.svg?color=%234A90D9', color: '#4A90D9', installPrefix: 'flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak install flathub -y' },
-    { id: 'snap', name: 'Snap', iconUrl: 'https://api.iconify.design/simple-icons/snapcraft.svg?color=%2382BEA0', color: '#82BEA0', installPrefix: 'sudo snap install' },
-    { id: 'homebrew', name: 'Homebrew', iconUrl: 'https://api.iconify.design/simple-icons/homebrew.svg?color=%23FBB040', color: '#FBB040', installPrefix: 'brew install' },
+    { id: 'nix', name: 'NixOS', iconUrl: 'https://api.iconify.design/simple-icons/nixos.svg?color=%235277C3', color: '#5277C3', installPrefix: 'nix-env -iA nixpkgs.' },
+    { id: 'deepin', name: 'Deepin', iconUrl: 'https://api.iconify.design/simple-icons/deepin.svg?color=%23007CFF', color: '#007CFF', installPrefix: 'sudo apt install -y' },
+    { id: 'uos', name: 'UOS 统信', iconUrl: 'https://api.iconify.design/simple-icons/deepin.svg?color=%230081FF', color: '#0081FF', installPrefix: 'sudo apt install -y' },
+    { id: 'flatpak', name: 'Flatpak（通用）', iconUrl: 'https://api.iconify.design/simple-icons/flatpak.svg?color=%234A90D9', color: '#4A90D9', installPrefix: 'flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak install flathub -y' },
+    { id: 'snap', name: 'Snap（通用）', iconUrl: 'https://api.iconify.design/simple-icons/snapcraft.svg?color=%2382BEA0', color: '#82BEA0', installPrefix: 'sudo snap install' },
+    { id: 'homebrew', name: 'Homebrew（通用）', iconUrl: 'https://api.iconify.design/simple-icons/homebrew.svg?color=%23FBB040', color: '#FBB040', installPrefix: 'brew install' },
 ];
 
 export const apps: AppData[] = [
@@ -99,7 +156,8 @@ export const apps: AppData[] = [
     ...(security as AppData[]),
     ...(fileSharing as AppData[]),
     ...(system as AppData[]),
-    ...(aiTools as AppData[])
+    ...(aiTools as AppData[]),
+    ...(chinaEssentials as AppData[])
 ];
 
 export const categories: Category[] = [
@@ -149,6 +207,8 @@ export const distroNamesZh: Record<string, string> = {
     'fedora': 'Fedora',
     'opensuse': 'OpenSUSE',
     'nix': 'NixOS',
+    'deepin': 'Deepin',
+    'uos': 'UOS 统信',
     'flatpak': 'Flatpak（通用）',
     'snap': 'Snap（通用）',
     'homebrew': 'Homebrew（通用）',

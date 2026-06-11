@@ -1,0 +1,179 @@
+[
+  {
+    "id": "wechat",
+    "name": "微信 (WeChat)",
+    "description": "腾讯出品的即时通讯软件，中国最流行的聊天应用",
+    "category": "Communication",
+    "targets": {
+      "arch": "wechat-bin",
+      "flatpak": "com.tencent.WeChat"
+    },
+    "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/zh-Hans/apps/com.tencent.WeChat) 安装，或从 [微信Linux官网](https://linux.weixin.qq.com/) 下载 AppImage。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "wechat",
+      "color": "#07C160"
+    }
+  },
+  {
+    "id": "qq",
+    "name": "QQ Linux",
+    "description": "腾讯 QQ Linux 官方版，支持聊天、文件传输",
+    "category": "Communication",
+    "targets": {
+      "arch": "linuxqq",
+      "nix": "linuxqq",
+      "flatpak": "com.tencent.QQ"
+    },
+    "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/zh-Hans/apps/com.tencent.QQ) 安装，或从 [QQ Linux官网](https://im.qq.com/linuxqq/) 下载。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "tencentqq",
+      "color": "#1EBAFC"
+    }
+  },
+  {
+    "id": "dingtalk",
+    "name": "钉钉 (DingTalk)",
+    "description": "阿里巴巴出品的企业通讯和协同办公平台",
+    "category": "Communication",
+    "targets": {
+      "arch": "dingtalk-bin"
+    },
+    "unavailableReason": "多由 AUR (dingtalk-bin) 安装。也可从 [钉钉官网](https://page.dingtalk.com/wow/dingtalk/act/download-linux) 下载 deb/rpm 包。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "dingtalk",
+      "color": "#0089FF"
+    }
+  },
+  {
+    "id": "feishu",
+    "name": "飞书 (Lark)",
+    "description": "字节跳动出品的企业协作平台，整合即时通讯、文档、日历",
+    "category": "Communication",
+    "targets": {
+      "arch": "feishu-bin"
+    },
+    "unavailableReason": "多由 AUR (feishu-bin) 安装。也可从 [飞书官网](https://www.feishu.cn/download) 下载 deb/rpm 包。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "lark",
+      "color": "#00D26C"
+    }
+  },
+  {
+    "id": "wework",
+    "name": "企业微信",
+    "description": "腾讯企业微信，用于企业内外部沟通管理",
+    "category": "Communication",
+    "targets": {
+      "arch": "work-wechat-bin"
+    },
+    "unavailableReason": "多由 AUR (work-wechat-bin) 安装。也可从 [企业微信官网](https://work.weixin.qq.com/) 下载。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "wechat",
+      "color": "#08C160"
+    }
+  },
+  {
+    "id": "wps-office",
+    "name": "WPS Office",
+    "description": "金山办公出品的办公套件，高度兼容微软 Office 格式",
+    "category": "Office",
+    "targets": {
+      "arch": "wps-office-cn",
+      "nix": "wpsoffice-cn",
+      "flatpak": "com.wps.Office"
+    },
+    "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/en/apps/com.wps.Office)，AUR (wps-office-cn)，或从 [WPS官网](https://www.wps.cn/product/wpslinux) 下载。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "wps",
+      "color": "#3655B3"
+    }
+  },
+  {
+    "id": "netease-cloud-music",
+    "name": "网易云音乐",
+    "description": "网易云音乐 Linux 客户端，在线音乐播放",
+    "category": "Media",
+    "targets": {
+      "arch": "netease-cloud-music"
+    },
+    "unavailableReason": "多由 AUR (netease-cloud-music) 安装，或从 [网易云音乐官网](https://music.163.com/) 下载 deb 包。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "neteasecloudmusic",
+      "color": "#D43C33"
+    }
+  },
+  {
+    "id": "baidunetdisk",
+    "name": "百度网盘",
+    "description": "百度网盘 Linux 客户端，大文件云存储和分享",
+    "category": "File Sharing",
+    "targets": {
+      "arch": "baidunetdisk-bin"
+    },
+    "unavailableReason": "多由 AUR (baidunetdisk-bin) 安装，或从 [百度网盘官网](https://pan.baidu.com/download) 下载 deb/rpm 包。",
+    "icon": {
+      "type": "url",
+      "url": "https://pan.baidu.com/favicon.ico"
+    }
+  },
+  {
+    "id": "tencent-meeting",
+    "name": "腾讯会议",
+    "description": "腾讯出品的视频会议软件，国内远程办公常用",
+    "category": "Communication",
+    "targets": {
+      "arch": "wemeet-bin"
+    },
+    "unavailableReason": "多由 AUR (wemeet-bin) 安装，或从 [腾讯会议官网](https://meeting.tencent.com/download/) 下载 deb 包。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "tencentqq",
+      "color": "#0052D9"
+    }
+  },
+  {
+    "id": "sunlogin",
+    "name": "向日葵远程控制",
+    "description": "国产远程桌面控制软件，支持跨平台远程协助",
+    "category": "VPN & Network",
+    "targets": {
+      "arch": "sunlogin-bin"
+    },
+    "unavailableReason": "多由 AUR (sunlogin-bin) 安装，或从 [向日葵官网](https://sunlogin.oray.com/download/) 下载。",
+    "icon": {
+      "type": "url",
+      "url": "https://sunlogin.oray.com/favicon.ico"
+    }
+  },
+  {
+    "id": "sogouime",
+    "name": "搜狗输入法 for Linux",
+    "description": "搜狗输入法 Linux 版，支持拼音和五笔输入",
+    "category": "System",
+    "targets": {
+      "arch": "fcitx5-sogouime"
+    },
+    "unavailableReason": "多由 AUR (fcitx5-sogouime) 安装，或从 [搜狗输入法官网](https://shurufa.sogou.com/linux) 下载。",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "sogou",
+      "color": "#FB8000"
+    }
+  }
+]

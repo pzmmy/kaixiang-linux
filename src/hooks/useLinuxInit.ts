@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useCallback, useEffect } from 'react';
-import { distros, apps, type DistroId, isAppAvailable as globalIsAppAvailable } from '@/lib/data';
+import { distros, apps, mirrorSources, type DistroId, isAppAvailable as globalIsAppAvailable } from '@/lib/data';
 import { isAurPackage } from '@/lib/aur';
 import { isUnfreePackage } from '@/lib/nixUnfree';
 
@@ -28,18 +28,22 @@ export interface UseLinuxInitReturn {
     hasUnfreePackages: boolean;
     unfreeAppNames: string[];
     isHydrated: boolean;
+    selectedMirror: string;
+    setMirrorSource: (mirrorId: string) => void;
 }
 
 const STORAGE_KEY_DISTRO = 'linuxinit_distro';
 const STORAGE_KEY_APPS = 'linuxinit_apps';
 const STORAGE_KEY_YAY = 'linuxinit_yay_installed';
 const STORAGE_KEY_HELPER = 'linuxinit_selected_helper';
+const STORAGE_KEY_MIRROR = 'linuxinit_mirror';
 
 export function useLinuxInit(): UseLinuxInitReturn {
     const [selectedDistro, setSelectedDistroState] = useState<DistroId>('ubuntu');
     const [selectedApps, setSelectedApps] = useState<Set<string>>(new Set());
     const [hasYayInstalled, setHasYayInstalled] = useState(false);
     const [selectedHelper, setSelectedHelper] = useState<'yay' | 'paru'>('yay');
+    const [selectedMirror, setSelectedMirror] = useState<string>('none');
     const [hydrated, setHydrated] = useState(false);
 
     useEffect(() => {
@@ -48,6 +52,7 @@ export function useLinuxInit(): UseLinuxInitReturn {
             const savedApps = localStorage.getItem(STORAGE_KEY_APPS);
             const savedYay = localStorage.getItem(STORAGE_KEY_YAY);
             const savedHelper = localStorage.getItem(STORAGE_KEY_HELPER) as 'yay' | 'paru' | null;
+            const savedMirror = localStorage.getItem(STORAGE_KEY_MIRROR);
 
             if (savedDistro && distros.some(d => d.id === savedDistro)) {
                 // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -71,6 +76,10 @@ export function useLinuxInit(): UseLinuxInitReturn {
             if (savedHelper === 'paru') {
                 setSelectedHelper('paru');
             }
+
+            if (savedMirror) {
+                setSelectedMirror(savedMirror);
+            }
         } catch {
         }
         setHydrated(true);
@@ -83,9 +92,10 @@ export function useLinuxInit(): UseLinuxInitReturn {
             localStorage.setItem(STORAGE_KEY_APPS, JSON.stringify([...selectedApps]));
             localStorage.setItem(STORAGE_KEY_YAY, hasYayInstalled.toString());
             localStorage.setItem(STORAGE_KEY_HELPER, selectedHelper);
+            localStorage.setItem(STORAGE_KEY_MIRROR, selectedMirror);
         } catch {
         }
-    }, [selectedDistro, selectedApps, hasYayInstalled, selectedHelper, hydrated]);
+    }, [selectedDistro, selectedApps, hasYayInstalled, selectedHelper, selectedMirror, hydrated]);
 
     const aurPackageInfo = useMemo(() => {
         if (selectedDistro !== 'arch') {
@@ -180,6 +190,10 @@ export function useLinuxInit(): UseLinuxInitReturn {
         setSelectedApps(new Set());
     }, []);
 
+    const setMirrorSource = useCallback((mirrorId: string) => {
+        setSelectedMirror(mirrorId);
+    }, []);
+
     const availableCount = useMemo(() => {
         return apps.filter(app => globalIsAppAvailable(app, selectedDistro)).length;
     }, [selectedDistro]);
@@ -191,6 +205,11 @@ export function useLinuxInit(): UseLinuxInitReturn {
 
         const distro = distros.find(d => d.id === selectedDistro);
         if (!distro) return '';
+
+        // 国内镜像提示
+        const mirrorHeader = selectedMirror !== 'none'
+            ? `# 镜像源: ${mirrorSources.find(m => m.id === selectedMirror)?.name || selectedMirror}\n`
+            : '';
 
         const packageNames: string[] = [];
         const npmPkgs: string[] = [];
@@ -267,11 +286,11 @@ export function useLinuxInit(): UseLinuxInitReturn {
             let combined = baseCmd;
             if (extrasStr) combined += '\\n# NPM limits:\\n# ' + extrasStr;
             if (scriptPkgs.length > 0) combined += '\\n# Custom scripts:\\n# ' + scriptPkgs.join('\\n# ');
-            return combined;
+            return mirrorHeader + combined;
         }
 
-        return appendScripts(appendExtras(baseCmd));
-    }, [selectedDistro, selectedApps, aurPackageInfo.hasAur, hasYayInstalled, selectedHelper]);
+        return mirrorHeader + appendScripts(appendExtras(baseCmd));
+    }, [selectedDistro, selectedApps, aurPackageInfo.hasAur, hasYayInstalled, selectedHelper, selectedMirror]);
 
     return {
         selectedDistro,
@@ -295,6 +314,8 @@ export function useLinuxInit(): UseLinuxInitReturn {
         hasUnfreePackages: unfreePackageInfo.hasUnfree,
         unfreeAppNames: unfreePackageInfo.appNames,
         isHydrated: hydrated,
+        selectedMirror,
+        setMirrorSource,
     };
 }
 
