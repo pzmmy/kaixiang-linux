@@ -94,7 +94,7 @@ export function CategoryHeader({
                 const Icon = CATEGORY_ICONS[category] || Terminal;
                 return <Icon className="w-[18px] h-[18px]" style={{ color: hexColor }} />;
             })()}
-            <span className="flex-1 text-left">{categoryNamesZh[category] || category}</span>
+            <span className="flex-1 text-left">{(categoryNamesZh as Record<string, string>)[category] || category}</span>
             {selectedCount > 0 && (
                 <span
                     className="text-sm font-bold ml-1.5 px-2 py-0.5 rounded"

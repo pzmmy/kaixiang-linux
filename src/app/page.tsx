@@ -40,6 +40,8 @@ export default function Home() {
         setSelectedHelper,
         hasUnfreePackages,
         unfreeAppNames,
+        selectedMirror,
+        setMirrorSource,
     } = useLinuxInit();
 
     const [searchQuery, setSearchQuery] = useState('');
