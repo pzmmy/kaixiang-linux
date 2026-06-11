@@ -260,10 +260,10 @@
             "snap": "haruna"
         },
         "icon": {
-            "type": "iconify",
-            "set": "simple-icons",
-            "name": "hevy",
-            "color": "#A3A3A3"
+          "type": "iconify",
+          "set": "simple-icons",
+          "name": "kde",
+          "color": "#4A90D9"
         }
     },
     {

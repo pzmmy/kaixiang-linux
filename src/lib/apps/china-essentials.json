@@ -6,7 +6,9 @@
     "category": "Communication",
     "targets": {
       "arch": "wechat-bin",
-      "flatpak": "com.tencent.WeChat"
+      "flatpak": "com.tencent.WeChat",
+      "deepin": "com.tencent.wechat",
+      "uos": "com.tencent.wechat"
     },
     "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/zh-Hans/apps/com.tencent.WeChat) 安装，或从 [微信Linux官网](https://linux.weixin.qq.com/) 下载 AppImage。",
     "note": "Flatpak版文件保存需要执行: flatpak override --filesystem=xdg-download:rw com.tencent.WeChat",
@@ -25,7 +27,9 @@
     "targets": {
       "arch": "linuxqq",
       "nix": "linuxqq",
-      "flatpak": "com.tencent.QQ"
+      "flatpak": "com.tencent.QQ",
+      "deepin": "com.tencent.qq",
+      "uos": "com.tencent.qq"
     },
     "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/zh-Hans/apps/com.tencent.QQ) 安装，或从 [QQ Linux官网](https://im.qq.com/linuxqq/) 下载。",
     "icon": {
@@ -93,7 +97,9 @@
     "targets": {
       "arch": "wps-office-cn",
       "nix": "wpsoffice-cn",
-      "flatpak": "com.wps.Office"
+      "flatpak": "com.wps.Office",
+      "deepin": "wps-office",
+      "uos": "wps-office"
     },
     "unavailableReason": "不在官方仓库。使用 [Flatpak](https://flathub.org/en/apps/com.wps.Office)，AUR (wps-office-cn)，或从 [WPS官网](https://www.wps.cn/product/wpslinux) 下载。",
     "note": "Flatpak版如需使用系统字体，需执行: flatpak override --filesystem=/usr/share/fonts com.wps.Office",
@@ -110,7 +116,9 @@
     "description": "网易云音乐 Linux 客户端，在线音乐播放",
     "category": "Media",
     "targets": {
-      "arch": "netease-cloud-music"
+      "arch": "netease-cloud-music",
+      "deepin": "netease-cloud-music",
+      "uos": "netease-cloud-music"
     },
     "unavailableReason": "多由 AUR (netease-cloud-music) 安装，或从 [网易云音乐官网](https://music.163.com/) 下载 deb 包。",
     "note": "部分新版需要自行安装 electron 依赖",
@@ -127,7 +135,9 @@
     "description": "百度网盘 Linux 客户端，大文件云存储和分享",
     "category": "File Sharing",
     "targets": {
-      "arch": "baidunetdisk-bin"
+      "arch": "baidunetdisk-bin",
+      "deepin": "baidunetdisk",
+      "uos": "baidunetdisk"
     },
     "unavailableReason": "多由 AUR (baidunetdisk-bin) 安装，或从 [百度网盘官网](https://pan.baidu.com/download) 下载 deb/rpm 包。",
     "note": "Linux版功能受限，不支持相册备份等部分功能",
@@ -142,7 +152,9 @@
     "description": "腾讯出品的视频会议软件，国内远程办公常用",
     "category": "Communication",
     "targets": {
-      "arch": "wemeet-bin"
+      "arch": "wemeet-bin",
+      "deepin": "wemeet",
+      "uos": "wemeet"
     },
     "unavailableReason": "多由 AUR (wemeet-bin) 安装，或从 [腾讯会议官网](https://meeting.tencent.com/download/) 下载 deb 包。",
     "note": "新版腾讯会议支持屏幕共享和虚拟背景",
@@ -174,7 +186,9 @@
     "description": "搜狗输入法 Linux 版，支持拼音和五笔输入",
     "category": "System",
     "targets": {
-      "arch": "fcitx5-sogouime"
+      "arch": "fcitx5-sogouime",
+      "deepin": "sogoupinyin",
+      "uos": "sogoupinyin"
     },
     "unavailableReason": "多由 AUR (fcitx5-sogouime) 安装，或从 [搜狗输入法官网](https://shurufa.sogou.com/linux) 下载。",
     "note": "需要 fcitx5 框架支持，安装后需重启或重新登录才能启用",
