@@ -11,6 +11,9 @@
 .DS_Store
 *.pem
 
+# test coverage
+/coverage/
+
 # debug
 npm-debug.log*
 .pnpm-debug.log*

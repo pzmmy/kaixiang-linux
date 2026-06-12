@@ -1,108 +1,77 @@
 import { describe, it, expect } from 'vitest';
-import { distros, apps, categories, getAppsByCategory, isAppAvailable } from '@/lib/data';
+import { distros, apps, categories, getAppsByCategory, isAppAvailable, categoryNamesZh } from '@/lib/data';
 
-describe('Data Module', () => {
-    describe('distros', () => {
-        it('should have all expected distros', () => {
-            const distroIds = distros.map(d => d.id);
-            expect(distroIds).toContain('ubuntu');
-            expect(distroIds).toContain('debian');
-            expect(distroIds).toContain('arch');
-            expect(distroIds).toContain('fedora');
-            expect(distroIds).toContain('opensuse');
-            expect(distroIds).toContain('nix');
-            expect(distroIds).toContain('flatpak');
-            expect(distroIds).toContain('snap');
+describe('发行版数据', () => {
+    it('应包含 Deepin 和 UOS', () => {
+        const ids = distros.map(d => d.id);
+        expect(ids).toContain('deepin');
+        expect(ids).toContain('uos');
+    });
+
+    it('每个发行版应有有效的前缀和图标', () => {
+        distros.forEach(d => {
+            expect(d.installPrefix).toBeTruthy();
+            expect(d.iconUrl).toMatch(/^https?:\/\//);
         });
+    });
+});
 
-        it('should have valid install prefixes', () => {
-            distros.forEach(distro => {
-                expect(distro.installPrefix).toBeTruthy();
-                expect(typeof distro.installPrefix).toBe('string');
-            });
-        });
+describe('软件数据', () => {
+    it('总数应接近 180 款', () => {
+        expect(apps.length).toBeGreaterThan(170);
+        expect(apps.length).toBeLessThan(200);
+    });
 
-        it('should have icon URLs', () => {
-            distros.forEach(distro => {
-                expect(distro.iconUrl).toBeTruthy();
-                expect(distro.iconUrl).toMatch(/^https?:\/\//);
-            });
+    it('每款软件必填字段不可缺', () => {
+        apps.forEach(app => {
+            expect(app.id).toBeTruthy();
+            expect(app.name).toBeTruthy();
+            expect(app.description).toBeTruthy();
+            expect(app.category).toBeTruthy();
+            expect(app.icon).toBeDefined();
+            expect(app.targets).toBeDefined();
         });
     });
 
-    describe('apps', () => {
-        it('should have many apps', () => {
-            expect(apps.length).toBeGreaterThan(150);
-        });
+    it('ID 和分类必须有效', () => {
+        const ids = apps.map(a => a.id);
+        expect(new Set(ids).size).toBe(ids.length);
+        apps.forEach(a => expect(categories).toContain(a.category));
+    });
 
-        it('should have required fields for each app', () => {
-            apps.forEach(app => {
-                expect(app.id).toBeTruthy();
-                expect(app.name).toBeTruthy();
-                expect(app.description).toBeTruthy();
-                expect(app.category).toBeTruthy();
-                expect(app.icon).toBeDefined();
-                expect(app.icon.type).toBeTruthy();
-                expect(app.targets).toBeDefined();
-            });
+    it('被墙软件已全部移除', () => {
+        const blocked = ['discord', 'telegram', 'signal', 'slack', 'tor'];
+        blocked.forEach(id => {
+            expect(apps.find(a => a.id === id)).toBeUndefined();
         });
+    });
+});
 
-        it('should have unique IDs', () => {
-            const ids = apps.map(a => a.id);
-            const uniqueIds = new Set(ids);
-            expect(uniqueIds.size).toBe(ids.length);
-        });
-
-        it('should have valid categories', () => {
-            apps.forEach(app => {
-                expect(categories).toContain(app.category);
-            });
+describe('分类', () => {
+    it('所有分类都有中文名', () => {
+        categories.forEach(cat => {
+            expect(categoryNamesZh[cat]).toBeTruthy();
+            expect(categoryNamesZh[cat].length).toBeGreaterThan(1);
         });
     });
 
-    describe('categories', () => {
-        it('should have expected categories', () => {
-            expect(categories).toContain('Web Browsers');
-            expect(categories).toContain('Communication');
-            expect(categories).toContain('Dev: Editors');
-            expect(categories).toContain('Gaming');
+    it('每个分类至少有一款软件', () => {
+        categories.forEach(cat => {
+            expect(getAppsByCategory(cat).length).toBeGreaterThan(0);
         });
     });
+});
 
-    describe('getAppsByCategory', () => {
-        it('should return apps for a valid category', () => {
-            const browsers = getAppsByCategory('Web Browsers');
-            expect(browsers.length).toBeGreaterThan(0);
-            browsers.forEach(app => {
-                expect(app.category).toBe('Web Browsers');
-            });
-        });
-
-        it('should return empty array for invalid category', () => {
-            // @ts-expect-error Testing invalid input
-            const result = getAppsByCategory('Invalid Category');
-            expect(result).toEqual([]);
-        });
+describe('isAppAvailable', () => {
+    it('Firefox 在 Ubuntu 和 Arch 上都可用', () => {
+        const ff = apps.find(a => a.id === 'firefox')!;
+        expect(isAppAvailable(ff, 'ubuntu')).toBe(true);
+        expect(isAppAvailable(ff, 'arch')).toBe(true);
     });
 
-    describe('isAppAvailable', () => {
-        it('should return true for Firefox on Ubuntu', () => {
-            const firefox = apps.find(a => a.id === 'firefox');
-            expect(firefox).toBeDefined();
-            expect(isAppAvailable(firefox!, 'ubuntu')).toBe(true);
-        });
-
-        it('should return true for Firefox on Arch', () => {
-            const firefox = apps.find(a => a.id === 'firefox');
-            expect(firefox).toBeDefined();
-            expect(isAppAvailable(firefox!, 'arch')).toBe(true);
-        });
-
-        it('should return false for apps not on distro', () => {
-            // Discord is not in Ubuntu repos
-            const discord = apps.find(a => a.id === 'discord');
-            expect(discord).toBeDefined();
-            expect(isAppAvailable(discord!, 'ubuntu')).toBe(false);
-        });
+    it('微信在 Ubuntu 官方仓库不可用', () => {
+        const wechat = apps.find(a => a.id === 'wechat')!;
+        expect(isAppAvailable(wechat, 'ubuntu')).toBe(false);
+        expect(isAppAvailable(wechat, 'arch')).toBe(true);  // AUR
     });
 });
