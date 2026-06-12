@@ -25,6 +25,7 @@ interface CategorySectionProps {
     onAppFocus?: (appId: string) => void;
     isVerified?: (distro: DistroId, packageName: string) => boolean;
     getVerificationSource?: (distro: DistroId, packageName: string) => 'flathub' | 'snap' | null;
+    onSelectAll?: () => void;
 }
 
 const categoryColors: Record<Category, string> = {
@@ -64,6 +65,7 @@ function CategorySectionComponent({
     onAppFocus,
     isVerified,
     getVerificationSource,
+    onSelectAll,
 }: CategorySectionProps) {
     const selectedInCategory = categoryApps.filter(a => selectedApps.has(a.id)).length;
     const isCategoryFocused = focusedType === 'category' && focusedId === category;
@@ -90,6 +92,7 @@ function CategorySectionComponent({
                 selectedCount={selectedInCategory}
                 onFocus={onCategoryFocus}
                 color={color}
+                onSelectAll={onSelectAll}
             />
             <div
                 className={`overflow-hidden transition-[max-height,opacity] duration-500 pt-0.5 ${isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}

@@ -29,6 +29,12 @@ export const metadata: Metadata = {
     description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
     type: "website",
     url: "https://github.com/pzmmy/kaixiang-linux",
+    images: [{
+      url: "https://raw.githubusercontent.com/pzmmy/kaixiang-linux/main/public/og-preview.svg",
+      width: 1200,
+      height: 630,
+      alt: "开箱 Linux — 一键装软件",
+    }],
   },
   twitter: {
     card: "summary_large_image",

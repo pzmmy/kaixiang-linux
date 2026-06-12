@@ -12,6 +12,7 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { HowItWorks, GitHubLink, ContributeLink } from '@/components/header';
 import { DistroSelector } from '@/components/distro';
 import { MirrorSelector } from '@/components/distro/MirrorSelector';
+import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { CategorySection } from '@/components/app';
 import { CommandFooter } from '@/components/command';
 import { Tooltip, GlobalStyles, LoadingSkeleton } from '@/components/common';
@@ -55,6 +56,12 @@ export default function Home() {
         if (debounceTimer.current) clearTimeout(debounceTimer.current);
         debounceTimer.current = setTimeout(() => setDebouncedSearch(query), 120);
     }, []);
+
+    const selectAllInCategory = useCallback((catApps: {id: string}[]) => {
+        catApps.forEach(app => {
+            if (isAppAvailable(app.id)) toggleApp(app.id);
+        });
+    }, [isAppAvailable, toggleApp]);
 
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [drawerClosing, setDrawerClosing] = useState(false);
@@ -220,6 +227,7 @@ export default function Home() {
     }
 
     return (
+        <ErrorBoundary>
         <div
             className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] relative"
             style={{ transition: 'background-color 0.5s, color 0.5s' }}
@@ -254,7 +262,7 @@ export default function Home() {
                             <div className="flex items-center gap-4">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                    src="/kaixiang.png"
+                                    src="/kaixiang-logo.svg"
                                     alt="开箱 Linux Logo"
                                     className="w-16 h-16 sm:w-[72px] sm:h-[72px] object-contain shrink-0"
                                 />
@@ -264,7 +272,7 @@ export default function Home() {
                                     </h1>
                                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-0.5">
                                         <p className="text-xs sm:text-sm text-[var(--text-muted)] tracking-widest uppercase opacity-80" style={{ transition: 'color 0.5s' }}>
-                                            The Linux Bulk App Installer.
+                                            一键装软件，Linux 就该这么简单。
                                         </p>
                                         <span className="hidden sm:inline text-[var(--text-muted)] opacity-30 text-[10px]">•</span>
                                         <div className="hidden sm:block">
@@ -374,6 +382,7 @@ export default function Home() {
                                             onAppFocus={(appId) => setFocusByItem('app', appId)}
                                             isVerified={isVerified}
                                             getVerificationSource={getVerificationSource}
+                                            onSelectAll={() => selectAllInCategory(categoryApps)}
                                         />
                                     ))}
                                 </div>
@@ -412,6 +421,7 @@ export default function Home() {
                                             onAppFocus={(appId) => setFocusByItem('app', appId)}
                                             isVerified={isVerified}
                                             getVerificationSource={getVerificationSource}
+                                            onSelectAll={() => selectAllInCategory(categoryApps)}
                                         />
                                     ))}
                                 </div>
@@ -446,5 +456,6 @@ export default function Home() {
                 activeShortcut={activeShortcut}
             />
         </div>
+        </ErrorBoundary>
     );
 }

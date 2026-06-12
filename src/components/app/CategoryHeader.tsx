@@ -59,6 +59,7 @@ export function CategoryHeader({
     isExpanded: boolean;
     isFocused: boolean;
     onToggle: () => void;
+    onSelectAll?: () => void;
     selectedCount: number;
     onFocus?: () => void;
     color?: string;
@@ -95,6 +96,17 @@ export function CategoryHeader({
                 return <Icon className="w-[18px] h-[18px]" style={{ color: hexColor }} />;
             })()}
             <span className="flex-1 text-left">{(categoryNamesZh as Record<string, string>)[category] || category}</span>
+            {onSelectAll && (
+                <button
+                    onClick={(e) => { e.stopPropagation(); onSelectAll(); }}
+                    className="text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100
+                        hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-secondary)]
+                        transition-all duration-200 mr-1"
+                    title="全选此分类"
+                >
+                    +全选
+                </button>
+            )}
             {selectedCount > 0 && (
                 <span
                     className="text-sm font-bold ml-1.5 px-2 py-0.5 rounded"

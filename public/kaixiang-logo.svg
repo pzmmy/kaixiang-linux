@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lidGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#818cf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Box body -->
+  <rect x="30" y="85" width="140" height="95" rx="12" fill="url(#boxGrad)" opacity="0.95"/>
+  <!-- Box front panel highlight -->
+  <rect x="30" y="85" width="140" height="95" rx="12" fill="none" stroke="#a5b4fc" stroke-width="1.5" opacity="0.5"/>
+  <!-- Lid (tilted open) -->
+  <polygon points="25,85 175,85 160,45 40,45" fill="url(#lidGrad)" rx="8" opacity="0.85"/>
+  <!-- Lid edge line -->
+  <polygon points="25,85 175,85 160,45 40,45" fill="none" stroke="#a5b4fc" stroke-width="1" opacity="0.4"/>
+  <!-- Penguin body -->
+  <ellipse cx="100" cy="105" rx="20" ry="24" fill="#1e293b"/>
+  <!-- Penguin belly -->
+  <ellipse cx="100" cy="110" rx="11" ry="14" fill="#f1f5f9"/>
+  <!-- Penguin head -->
+  <circle cx="100" cy="82" r="13" fill="#1e293b"/>
+  <!-- Penguin face white -->
+  <ellipse cx="100" cy="84" rx="9" ry="8" fill="#f1f5f9"/>
+  <!-- Left eye -->
+  <circle cx="96" cy="81" r="2" fill="#1e293b"/>
+  <circle cx="96" cy="80.5" r="0.7" fill="white"/>
+  <!-- Right eye -->
+  <circle cx="104" cy="81" r="2" fill="#1e293b"/>
+  <circle cx="104" cy="80.5" r="0.7" fill="white"/>
+  <!-- Beak -->
+  <polygon points="97,85 103,85 100,89" fill="#f59e0b"/>
+  <!-- Left wing -->
+  <path d="M80,98 Q70,110 78,120 Q82,115 82,108 Z" fill="#0f172a"/>
+  <!-- Right wing -->
+  <path d="M120,98 Q130,110 122,120 Q118,115 118,108 Z" fill="#0f172a"/>
+  <!-- Left foot -->
+  <ellipse cx="92" cy="132" rx="6" ry="3" fill="#f59e0b"/>
+  <!-- Right foot -->
+  <ellipse cx="108" cy="132" rx="6" ry="3" fill="#f59e0b"/>
+  <!-- Sparkle/dots around box -->
+  <circle cx="25" cy="70" r="3" fill="#a5b4fc" opacity="0.6"/>
+  <circle cx="175" cy="65" r="2" fill="#a5b4fc" opacity="0.5"/>
+  <circle cx="15" cy="140" r="2" fill="#818cf8" opacity="0.4"/>
+  <circle cx="185" cy="130" r="2.5" fill="#818cf8" opacity="0.5"/>
+</svg>
