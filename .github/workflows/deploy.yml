@@ -30,9 +30,6 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: 国内镜像加速
-        run: npm config set registry https://registry.npmmirror.com
-
       - name: 安装依赖
         run: npm ci
 
