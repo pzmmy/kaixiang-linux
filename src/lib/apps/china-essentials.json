@@ -64,8 +64,8 @@
     "note": "AUR 版本由社区维护，更新可能比官方版本稍有延迟",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
-      "name": "dingtalk",
+      "set": "mingcute",
+      "name": "dingtalk-fill",
       "color": "#0089FF"
     },
     "aliases": [
@@ -85,7 +85,7 @@
     "unavailableReason": "多由 AUR (feishu-bin) 安装。也可从 [飞书官网](https://www.feishu.cn/download) 下载 deb/rpm 包。",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
+      "set": "icon-park-outline",
       "name": "lark",
       "color": "#00D26C"
     },
@@ -135,7 +135,7 @@
     "note": "Flatpak版如需使用系统字体，需执行: flatpak override --filesystem=/usr/share/fonts com.wps.Office",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
+      "set": "gis",
       "name": "wps",
       "color": "#3655B3"
     },
@@ -275,8 +275,8 @@
     "note": "安装后按 Alt+Space 唤醒搜索框，支持插件扩展",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
-      "name": "utools",
+      "set": "arcticons",
+      "name": "shizutools",
       "color": "#4A90D9"
     },
     "aliases": [
@@ -380,7 +380,7 @@
     "note": "需自行准备订阅链接，同时支持 TUN 模式",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
+      "set": "arcticons",
       "name": "clash",
       "color": "#E60012"
     },
@@ -422,7 +422,7 @@
     "note": "支持 Sing-box 核心和多种订阅格式",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
+      "set": "arcticons",
       "name": "hiddify",
       "color": "#FF6B35"
     },
@@ -584,10 +584,8 @@
     "unavailableReason": "大多数发行版官方源包含此字体",
     "note": "安装后可能需要 fc-cache -fv 刷新字体缓存",
     "icon": {
-      "type": "iconify",
-      "set": "simple-icons",
-      "name": "wqy",
-      "color": "#333333"
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/anthonyfok/fonts-wqy-microhei/master/logo.png"
     },
     "size": 12
   },
@@ -606,7 +604,7 @@
     "note": "如果搜狗输入法不好用，fcitx5-chinese-addons 是轻量替代",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
+      "set": "arcticons",
       "name": "fcitx5",
       "color": "#4A90D9"
     },
@@ -641,7 +639,7 @@
     "note": "免费版功能已足够日常使用，Pro 版需付费",
     "icon": {
       "type": "iconify",
-      "set": "simple-icons",
+      "set": "arcticons",
       "name": "xmind",
       "color": "#F75C2F"
     },
@@ -900,10 +898,8 @@
     },
     "unavailableReason": "从 [GitHub](https://github.com/Qv2ray/Qv2ray) 下载或 AUR 安装",
     "icon": {
-      "type": "iconify",
-      "set": "simple-icons",
-      "name": "qv2ray",
-      "color": "#0078D4"
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/Qv2ray/Qv2ray/master/icons/qv2ray.png"
     },
     "size": 80
   },

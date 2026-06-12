@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "开箱 Linux — Linux 一键装软件",
   description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
-  manifest: "/manifest.json",
+  manifest: "/kaixiang-linux/manifest.json",
   openGraph: {
     title: "开箱 Linux — Linux 一键装软件",
     description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
@@ -83,7 +83,7 @@ export default function RootLayout({
             default-src 'self';
             script-src 'self' 'unsafe-inline' https://cloud.umami.is https://static.cloudflareinsights.com;
             style-src 'self' 'unsafe-inline';
-            img-src 'self' https://api.iconify.design data:;
+            img-src 'self' https://api.iconify.design https://raw.githubusercontent.com data:;
             font-src 'self';
             connect-src 'self';
             frame-src 'none';
@@ -93,7 +93,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#8B5CF6" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="apple-touch-icon" href="/icon-192.png" />
+        <link rel="apple-touch-icon" href="/kaixiang-linux/icon-192.png" />
 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
 
@@ -102,7 +102,7 @@ export default function RootLayout({
           __html: `
           if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-              navigator.serviceWorker.register('/sw.js').then(function(reg) {
+              navigator.serviceWorker.register('/kaixiang-linux/sw.js').then(function(reg) {
                 console.log('SW registered:', reg.scope);
               }).catch(function(err) {
                 console.log('SW registration failed:', err);
