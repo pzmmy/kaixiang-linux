@@ -24,6 +24,13 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      - name: 缓存 Flathub 已验证应用列表
+        id: cache-flathub
+        uses: actions/cache@v4
+        with:
+          path: public/flathub-verified-cache.json
+          key: flathub-verified-${{ hashFiles('scripts/fetch-verified-flatpaks.mjs') }}
+
       - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:

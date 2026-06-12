@@ -15,6 +15,7 @@ interface SidebarProps {
     selectedApps: Set<string>;
     selectedCount: number;
     clearAll: () => void;
+    initScriptMode: boolean;
     command: string;
     searchQuery: string;
     onSearchChange: (query: string) => void;
@@ -35,6 +36,7 @@ export function Sidebar({
     selectedApps,
     selectedCount,
     clearAll,
+    initScriptMode,
     command,
     searchQuery,
     onSearchChange,
@@ -66,6 +68,16 @@ export function Sidebar({
 
     const handleDownload = useCallback(() => {
         if (selectedCount === 0) return;
+        if (initScriptMode) {
+            const blob = new Blob([command], { type: 'text/x-shellscript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `kaixiang-init-${selectedDistro}.sh`;
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+            return;
+        }
         const script = generateInstallScript({
             distroId: selectedDistro,
             selectedAppIds: selectedApps,
@@ -82,7 +94,7 @@ export function Sidebar({
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         const distroName = distros.find(d => d.id === selectedDistro)?.name || selectedDistro;
         analytics.scriptDownloaded(distroName, selectedCount);
-    }, [selectedCount, selectedDistro, selectedApps, selectedHelper]);
+    }, [selectedCount, selectedDistro, selectedApps, selectedHelper, initScriptMode, command]);
 
     const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Escape' || e.key === 'Enter') {

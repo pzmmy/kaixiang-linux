@@ -26,6 +26,7 @@ interface CategorySectionProps {
     isVerified?: (distro: DistroId, packageName: string) => boolean;
     getVerificationSource?: (distro: DistroId, packageName: string) => 'flathub' | 'snap' | null;
     onSelectAll?: () => void;
+    searchQuery?: string;
 }
 
 const categoryColors: Record<Category, string> = {
@@ -66,6 +67,7 @@ function CategorySectionComponent({
     isVerified,
     getVerificationSource,
     onSelectAll,
+    searchQuery,
 }: CategorySectionProps) {
     const selectedInCategory = categoryApps.filter(a => selectedApps.has(a.id)).length;
     const isCategoryFocused = focusedType === 'category' && focusedId === category;
@@ -111,6 +113,7 @@ function CategorySectionComponent({
                         onTooltipLeave={onTooltipLeave}
                         onFocus={() => onAppFocus?.(app.id)}
                         color={color}
+                        searchQuery={searchQuery}
                         isVerified={
                             (selectedDistro === 'flatpak' || selectedDistro === 'snap') &&
                             isVerified?.(selectedDistro, app.targets?.[selectedDistro] || '') || false

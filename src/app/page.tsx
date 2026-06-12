@@ -243,6 +243,7 @@ export default function Home() {
                 selectedApps={selectedApps}
                 selectedCount={selectedCount}
                 clearAll={clearAll}
+                initScriptMode={initScriptMode}
                 command={initScriptMode ? generateInitScript(selectedDistro, selectedMirror, includeDocker) : generatedCommand}
                 searchQuery={searchQuery}
                 onSearchChange={handleSearchChange}
@@ -401,6 +402,7 @@ export default function Home() {
                                             isVerified={isVerified}
                                             getVerificationSource={getVerificationSource}
                                             onSelectAll={() => selectAllInCategory(categoryApps)}
+                                            searchQuery={debouncedSearch}
                                         />
                                     ))}
                                 </div>
@@ -440,6 +442,7 @@ export default function Home() {
                                             isVerified={isVerified}
                                             getVerificationSource={getVerificationSource}
                                             onSelectAll={() => selectAllInCategory(categoryApps)}
+                                            searchQuery={debouncedSearch}
                                         />
                                     ))}
                                 </div>
@@ -452,6 +455,7 @@ export default function Home() {
             <CommandFooter
                 command={initScriptMode ? generateInitScript(selectedDistro, selectedMirror, includeDocker) : generatedCommand}
                 selectedCount={selectedCount}
+                initScriptMode={initScriptMode}
                 selectedDistro={selectedDistro}
                 selectedApps={selectedApps}
                 hasAurPackages={hasAurPackages}

@@ -5,6 +5,7 @@ import { Check } from 'lucide-react';
 import { distros, getIconUrl, type DistroId, type AppData } from '@/lib/data';
 import { isAurPackage } from '@/lib/aur';
 import { AppIcon } from './AppIcon';
+import { highlightSearchText } from '@/lib/highlight';
 const COLOR_MAP: Record<string, string> = {
     'orange': '#f97316',
     'blue': '#3b82f6',
@@ -35,6 +36,7 @@ interface AppItemProps {
     onTooltipLeave: () => void;
     onFocus?: () => void;
     color?: string;
+    searchQuery?: string;
     isVerified?: boolean;
     verificationSource?: 'flathub' | 'snap' | null;
 }
@@ -50,6 +52,7 @@ export const AppItem = memo(function AppItem({
     onTooltipLeave,
     onFocus,
     color = 'gray',
+    searchQuery,
     isVerified = false,
     verificationSource = null,
 }: AppItemProps) {
@@ -132,7 +135,7 @@ export const AppItem = memo(function AppItem({
                         onTooltipLeave();
                     }}
                 >
-                    {app.name}
+                    {highlightSearchText(app.name, searchQuery || '')}
                 </span>
                 {isAur && (
                     <svg

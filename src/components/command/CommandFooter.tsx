@@ -14,6 +14,7 @@ interface CommandFooterProps {
     command: string;
     selectedCount: number;
     totalSize: number;
+    initScriptMode: boolean;
     selectedDistro: DistroId;
     selectedApps: Set<string>;
     hasAurPackages: boolean;
@@ -40,6 +41,7 @@ export function CommandFooter({
     command,
     selectedCount,
     totalSize,
+    initScriptMode,
     selectedDistro,
     selectedApps,
     hasAurPackages,
@@ -113,6 +115,17 @@ export function CommandFooter({
 
     const handleDownload = useCallback(() => {
         if (selectedCount === 0) return;
+        if (initScriptMode) {
+            // Init mode: use the command prop directly (already contains full init script)
+            const blob = new Blob([command], { type: 'text/x-shellscript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `kaixiang-init-${selectedDistro}.sh`;
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+            return;
+        }
         const script = generateInstallScript({
             distroId: selectedDistro,
             selectedAppIds: selectedApps,
@@ -129,7 +142,7 @@ export function CommandFooter({
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         const distroName = distros.find(d => d.id === selectedDistro)?.name || selectedDistro;
         analytics.scriptDownloaded(distroName, selectedCount);
-    }, [selectedCount, selectedDistro, selectedApps, selectedHelper]);
+    }, [selectedCount, selectedDistro, selectedApps, selectedHelper, initScriptMode, command]);
 
     return (
         <>

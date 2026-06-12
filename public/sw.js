@@ -1,51 +1,42 @@
-// TuxMate Service Worker
-// caches the app for offline use - network-first so you always get fresh styles
+// 开箱 Linux Service Worker
+// 缓存静态资源实现基础离线支持
 
-const CACHE_NAME = 'tuxmate-v2';
+const CACHE = 'kaixiang-v1';
+const STATIC_RESOURCES = [
+  '/kaixiang-linux/',
+  '/kaixiang-linux/manifest.json',
+];
 
-// install: skip waiting so updates apply immediately
-self.addEventListener('install', () => {
-    self.skipWaiting();
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => {
+      return cache.addAll(STATIC_RESOURCES);
+    })
+  );
 });
 
-// activate: clean up old caches
-self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames
-                    .filter((name) => name !== CACHE_NAME)
-                    .map((name) => caches.delete(name))
-            );
-        }).then(() => {
-            return self.clients.claim();
-        })
-    );
-});
-
-// fetch: network-first with cache fallback (for offline support)
 self.addEventListener('fetch', (event) => {
-    if (event.request.method !== 'GET') return;
+  event.respondWith(
+    caches.match(event.request).then((cached) => {
+      // Return cached response immediately, then try to update
+      const fetchPromise = fetch(event.request).then((response) => {
+        if (response && response.status === 200) {
+          const clone = response.clone();
+          caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+        }
+        return response;
+      }).catch(() => cached);
+      return cached || fetchPromise;
+    })
+  );
+});
 
-    const url = new URL(event.request.url);
-    if (!url.protocol.startsWith('http')) return;
-    if (url.origin !== self.location.origin) return;
-
-    event.respondWith(
-        fetch(event.request)
-            .then((response) => {
-                // got fresh response, cache it for offline
-                if (response && response.status === 200 && response.type === 'basic') {
-                    const responseToCache = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, responseToCache);
-                    });
-                }
-                return response;
-            })
-            .catch(() => {
-                // network failed, try cache (offline mode)
-                return caches.match(event.request);
-            })
-    );
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))
+      );
+    })
+  );
 });
