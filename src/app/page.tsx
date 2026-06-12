@@ -48,6 +48,7 @@ export default function Home() {
     const [searchQuery, setSearchQuery] = useState('');
     const [debouncedSearch, setDebouncedSearch] = useState('');
     const [initScriptMode, setInitScriptMode] = useState(false);
+    const [includeDocker, setIncludeDocker] = useState(false);
     const searchInputRef = useRef<HTMLInputElement>(null);
     const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -242,7 +243,7 @@ export default function Home() {
                 selectedApps={selectedApps}
                 selectedCount={selectedCount}
                 clearAll={clearAll}
-                command={initScriptMode ? generateInitScript(selectedDistro) : generatedCommand}
+                command={initScriptMode ? generateInitScript(selectedDistro, selectedMirror, includeDocker) : generatedCommand}
                 searchQuery={searchQuery}
                 onSearchChange={handleSearchChange}
                 searchInputRef={searchInputRef}
@@ -339,10 +340,27 @@ export default function Home() {
                                     ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
                                     : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)]'
                                 }`}
-                            title="一键换源 + 安装中文字体和输入法"
+                            title="一键换源 + 安装中文字体 + 输入法 + pip/npm/go/docker 镜像"
                         >
                             🚀 一键初始化
                         </button>
+                        <label
+                            className={`px-3 py-1.5 text-xs rounded-lg border cursor-pointer select-none transition-all duration-200 flex items-center gap-1.5
+                                ${initScriptMode && includeDocker
+                                    ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
+                                    : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)]'
+                                }`}
+                            title="在初始化脚本中安装 Docker CE + 配置镜像加速"
+                        >
+                            <input
+                                type="checkbox"
+                                checked={includeDocker}
+                                onChange={(e) => setIncludeDocker(e.target.checked)}
+                                className="w-3 h-3 accent-[var(--accent)]"
+                                disabled={!initScriptMode}
+                            />
+                            <span>🐳 Docker</span>
+                        </label>
                     </div>
                     {allCategoriesWithApps.length === 0 && searchQuery && (
                         <div className="text-center py-20 text-[var(--text-muted)]">
@@ -432,7 +450,7 @@ export default function Home() {
             </main>
 
             <CommandFooter
-                command={initScriptMode ? generateInitScript(selectedDistro) : generatedCommand}
+                command={initScriptMode ? generateInitScript(selectedDistro, selectedMirror, includeDocker) : generatedCommand}
                 selectedCount={selectedCount}
                 selectedDistro={selectedDistro}
                 selectedApps={selectedApps}

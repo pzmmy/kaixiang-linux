@@ -13,7 +13,6 @@ describe('generateInitScript', () => {
     it('Deepin 脚本应与 Ubuntu 功能一致（apt 系）', () => {
         const ubuntu = generateInitScript('ubuntu');
         const deepin = generateInitScript('deepin');
-        // Both should contain apt-based operations
         expect(deepin).toContain('wqy-microhei');
         expect(deepin).toContain('fcitx5');
         expect(deepin).toContain('GTK_IM_MODULE');
@@ -27,11 +26,12 @@ describe('generateInitScript', () => {
         expect(debian).toContain('fcitx5');
     });
 
-    it('Arch 脚本应包含 pacman 和 fcitx5', () => {
+    it('Arch 脚本应包含 pacman、fcitx5 和 archlinuxcn 源', () => {
         const script = generateInitScript('arch');
         expect(script).toContain('pacman');
         expect(script).toContain('wqy-microhei');
         expect(script).toContain('fcitx5');
+        expect(script).toContain('archlinuxcn');
     });
 
     it('Fedora 脚本应包含 dnf', () => {
@@ -60,5 +60,43 @@ describe('generateInitScript', () => {
         // @ts-expect-error - testing fallback
         const script = generateInitScript('nonexistent');
         expect(script).toContain('暂不支持');
+    });
+
+    it('应包含开发工具镜像配置（pip/npm/go/docker）', () => {
+        const script = generateInitScript('ubuntu');
+        expect(script).toContain('pip 已换清华源');
+        expect(script).toContain('npm 已换淘宝源');
+        expect(script).toContain('Go 已换代理');
+        expect(script).toContain('Docker 镜像加速已配置');
+        expect(script).toContain('开发工具镜像配置完成');
+    });
+
+    it('不传 mirrorId 时默认使用清华 Flatpak 源', () => {
+        const script = generateInitScript('ubuntu');
+        expect(script).toContain('mirrors.tuna.tsinghua.edu.cn/flathub');
+    });
+
+    it('传 mirrorId=ustc 时使用中科大 Flatpak 源', () => {
+        const script = generateInitScript('ubuntu', 'ustc');
+        expect(script).toContain('mirrors.ustc.edu.cn/flathub');
+        expect(script).not.toContain('tuna.tsinghua.edu.cn/flathub');
+    });
+
+    it('includeDocker=true 时应包含 Docker CE 安装步骤', () => {
+        const script = generateInitScript('ubuntu', undefined, true);
+        expect(script).toContain('安装 Docker CE');
+        expect(script).toContain('get-docker.sh');
+        expect(script).toContain('usermod -aG docker');
+    });
+
+    it('includeDocker=false 时不应包含 Docker CE 安装', () => {
+        const script = generateInitScript('ubuntu', undefined, false);
+        expect(script).not.toContain('安装 Docker CE');
+        expect(script).not.toContain('get-docker.sh');
+    });
+
+    it('includeDocker 不传时默认为 false', () => {
+        const script = generateInitScript('ubuntu');
+        expect(script).not.toContain('安装 Docker CE');
     });
 });

@@ -95,7 +95,8 @@ export const mirrorSources: MirrorSource[] = [
     {
         id: 'tuna',
         name: '清华镜像源',
-        description: '清华大学 TUNA 镜像站，速度快、更新及时（推荐）',
+        description: '清华大学 TUNA 镜像站，速度快、更新及时（推荐），支持 Flatpak',
+        flathubMirror: 'https://mirrors.tuna.tsinghua.edu.cn/flathub',
         rules: {
             ubuntu: 'https://mirrors.tuna.tsinghua.edu.cn/ubuntu/',
             debian: 'https://mirrors.tuna.tsinghua.edu.cn/debian/',
@@ -176,18 +177,56 @@ export interface Recipe {
 }
 
 /**
- * 生成一键初始化脚本（换源 + 字体 + 输入法 + Flatpak 镜像）
+ * 生成一键初始化脚本（换源 + 字体 + 输入法 + 开发工具镜像 + Docker）
+ * @param distroId 发行版
+ * @param mirrorId 选中的镜像源 ID（影响 Flatpak 镜像）
+ * @param includeDocker 是否安装 Docker CE
  */
-export function generateInitScript(distroId: DistroId): string {
+export function generateInitScript(distroId: DistroId, mirrorId?: string, includeDocker?: boolean): string {
     const date = new Date().toISOString().split('T')[0];
+    const selectedMirror = mirrorSources.find(m => m.id === mirrorId);
+    const flathubUrl = selectedMirror?.flathubMirror || 'https://mirrors.tuna.tsinghua.edu.cn/flathub';
+
     const header = `#!/bin/bash
 # ============================================================
 # 开箱 Linux 一键初始化脚本
 # 生成日期: ${date}
 # 发行版: ${distroId}
-# 用途: 换国内源 + 安装中文字体 + 配置输入法
+# 用途: 换国内源 + 中文字体 + 输入法 + 开发工具镜像
 # ============================================================
 set -euo pipefail
+
+# ============================================================
+# 7. 开发工具国内镜像配置（通用，所有发行版适用）
+# ============================================================
+
+# --- pip 国内镜像 ---
+if command -v pip3 >/dev/null 2>&1; then
+    pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple 2>/dev/null && echo "✓ pip 已换清华源" || echo "⚠ pip 配置失败"
+fi
+
+# --- npm 国内镜像 ---
+if command -v npm >/dev/null 2>&1; then
+    npm config set registry https://registry.npmmirror.com 2>/dev/null && echo "✓ npm 已换淘宝源" || echo "⚠ npm 配置失败"
+fi
+
+# --- Go 国内镜像 ---
+if command -v go >/dev/null 2>&1; then
+    go env -w GOPROXY=https://goproxy.cn,direct 2>/dev/null && echo "✓ Go 已换代理" || echo "⚠ Go 配置失败"
+fi
+
+# --- Docker 镜像加速 ---
+if command -v docker >/dev/null 2>&1; then
+    sudo mkdir -p /etc/docker
+    if [ ! -f /etc/docker/daemon.json ]; then
+        echo '{"registry-mirrors":["https://docker.mirrors.ustc.edu.cn"]}' | sudo tee /etc/docker/daemon.json >/dev/null && echo "✓ Docker 镜像加速已配置" || echo "⚠ Docker 镜像配置失败"
+    else
+        echo "✓ Docker daemon.json 已存在，跳过"
+    fi
+fi
+
+echo "✓ 开发工具镜像配置完成"
+
 `;
 
     const aptMirror = `# 1. 备份并换清华源
@@ -213,23 +252,33 @@ grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
 echo "✓ 输入法环境变量已配置"
 
 # 5. Flatpak 镜像
-sudo flatpak remote-modify flathub --url=https://mirrors.tuna.tsinghua.edu.cn/flathub 2>/dev/null && echo "✓ Flathub 已换清华源" || echo "⚠ Flatpak 未安装，跳过"
+sudo flatpak remote-modify flathub --url=${flathubUrl} 2>/dev/null && echo "✓ Flathub 已换源" || echo "⚠ Flatpak 未安装，跳过"
 `;
 
     const archScript = `# 1. 配置清华源
 sudo sed -i 's|#Server = http://mirror.archlinux|Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux|g' /etc/pacman.d/mirrorlist 2>/dev/null || true
 echo "✓ 镜像源已配置"
 
-# 2. 更新系统
+# 2. 添加 archlinuxcn 源（快速安装微信/QQ等中国软件）
+if ! grep -q '\[archlinuxcn\]' /etc/pacman.conf 2>/dev/null; then
+    echo -e "\\n[archlinuxcn]\\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\\$arch" | sudo tee -a /etc/pacman.conf >/dev/null
+    sudo pacman-key --init 2>/dev/null || true
+    sudo pacman-key --populate archlinuxcn 2>/dev/null || true
+    echo "✓ archlinuxcn 源已添加"
+else
+    echo "✓ archlinuxcn 源已存在"
+fi
+
+# 3. 更新系统
 sudo pacman -Syu --noconfirm
 
-# 3. 安装中文字体
+# 4. 安装中文字体
 sudo pacman -S --noconfirm wqy-microhei wqy-zenhei 2>/dev/null && echo "✓ 中文字体已安装" || echo "⚠ 字体安装跳过"
 
-# 4. 安装中文输入法
+# 5. 安装中文输入法
 sudo pacman -S --noconfirm fcitx5 fcitx5-chinese-addons fcitx5-configtool 2>/dev/null && echo "✓ 输入法已安装" || echo "⚠ 输入法安装跳过"
 
-# 5. 配置输入法环境变量
+# 6. 配置输入法环境变量
 grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
     echo >> ~/.xprofile
     echo 'export GTK_IM_MODULE=fcitx' >> ~/.xprofile
@@ -237,6 +286,9 @@ grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
     echo 'export XMODIFIERS=@im=fcitx' >> ~/.xprofile
 }
 echo "✓ 输入法环境变量已配置"
+
+# 7. Flatpak 镜像
+sudo flatpak remote-modify flathub --url=${flathubUrl} 2>/dev/null && echo "✓ Flathub 已换源" || echo "⚠ Flatpak 未安装，跳过"
 `;
 
     const fedoraScript = `# 1. 换清华源
@@ -257,30 +309,67 @@ grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
     echo 'export XMODIFIERS=@im=fcitx' >> ~/.xprofile
 }
 echo "✓ 输入法环境变量已配置"
+
+# 5. Flatpak 镜像
+sudo flatpak remote-modify flathub --url=${flathubUrl} 2>/dev/null && echo "✓ Flathub 已换源" || echo "⚠ Flatpak 未安装，跳过"
 `;
 
+    let dockerSection = '';
+    if (includeDocker) {
+        dockerSection = `
+
+# ============================================================
+# 8. 安装 Docker CE
+# ============================================================
+# 检测并安装 Docker CE（仅当 docker 命令不存在时）
+if ! command -v docker >/dev/null 2>&1; then
+    echo "正在安装 Docker CE..."
+    curl -fsSL https://test.docker.com -o /tmp/get-docker.sh 2>/dev/null && sh /tmp/get-docker.sh 2>/dev/null && {
+        sudo usermod -aG docker $USER 2>/dev/null || true
+        # 配置镜像加速
+        sudo mkdir -p /etc/docker
+        echo '{"registry-mirrors":["https://docker.mirrors.ustc.edu.cn"]}' | sudo tee /etc/docker/daemon.json >/dev/null
+        echo "✓ Docker CE 已安装（镜像加速已配置）"
+    } || echo "⚠ Docker 安装失败，请手动安装"
+else
+    echo "✓ Docker 已存在，跳过安装"
+fi
+`;
+    }
+
+    // Build distro-specific part
+    let distroPart: string;
     switch (distroId) {
         case 'ubuntu':
         case 'debian':
         case 'deepin':
         case 'uos':
-            return header + aptMirror;
+            distroPart = aptMirror;
+            break;
         case 'arch':
-            return header + archScript;
+            distroPart = archScript;
+            break;
         case 'fedora':
-            return header + fedoraScript;
+            distroPart = fedoraScript;
+            break;
         case 'opensuse':
-            return header + `# OpenSUSE: 手动换源
+            distroPart = `# 1. 换清华源
 sudo zypper mr -da
 sudo zypper ar -fcg https://mirrors.tuna.tsinghua.edu.cn/opensuse/distribution/leap/15.6/repo/oss/ TUNA-OSS
 sudo zypper ar -fcg https://mirrors.tuna.tsinghua.edu.cn/opensuse/distribution/leap/15.6/repo/non-oss/ TUNA-NON-OSS
 sudo zypper ref
 sudo zypper install -y wqy-microhei-fonts fcitx5 fcitx5-chinese-addons
+
+# Flatpak 镜像
+sudo flatpak remote-modify flathub --url=${flathubUrl} 2>/dev/null && echo "✓ Flathub 已换源" || echo "⚠ Flatpak 未安装，跳过"
 `;
+            break;
         default:
             return `# 当前发行版 (${distroId}) 暂不支持一键初始化。
 # 请手动配置镜像源和输入法。`;
     }
+
+    return header + distroPart + dockerSection;
 }
 
 export const recipes: Recipe[] = [

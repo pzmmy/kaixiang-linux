@@ -40,10 +40,15 @@ describe('镜像源配置', () => {
         expect(sjtug?.flathubMirror).toBeTruthy();
     });
 
-    it('清华和阿里云不应有 flathubMirror（不可用）', () => {
+    it('清华和中科大应有 flathubMirror（可用）', () => {
         const tuna = mirrorSources.find(m => m.id === 'tuna');
+        const ustc = mirrorSources.find(m => m.id === 'ustc');
+        expect(tuna?.flathubMirror).toBeDefined();
+        expect(ustc?.flathubMirror).toBeDefined();
+    });
+
+    it('非推荐镜像不应有 flathubMirror（不可用）', () => {
         const aliyun = mirrorSources.find(m => m.id === 'aliyun');
-        expect(tuna?.flathubMirror).toBeUndefined();
         expect(aliyun?.flathubMirror).toBeUndefined();
     });
 });
