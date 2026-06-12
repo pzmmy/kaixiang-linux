@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/fetch-verified-flatpaks.mjs && node scripts/validate-apps.mjs",
+    "prebuild": "node scripts/fetch-verified-flatpaks.mjs || true && node scripts/validate-apps.mjs",
     "postbuild": "touch out/.nojekyll",
-    "predev": "node scripts/fetch-verified-flatpaks.mjs && node scripts/validate-apps.mjs",
+    "predev": "node scripts/fetch-verified-flatpaks.mjs || true && node scripts/validate-apps.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

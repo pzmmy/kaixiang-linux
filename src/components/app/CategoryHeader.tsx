@@ -51,6 +51,7 @@ export function CategoryHeader({
     isExpanded,
     isFocused,
     onToggle,
+    onSelectAll,
     selectedCount,
     onFocus,
     color = 'gray',
