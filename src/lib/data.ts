@@ -89,13 +89,13 @@ export const mirrorSources: MirrorSource[] = [
     {
         id: 'none',
         name: '官方源（默认）',
-        description: '使用发行版官方源，速度视网络而定',
+        description: '使用发行版官方源，国内下载可能较慢',
         rules: {},
     },
     {
         id: 'tuna',
         name: '清华镜像源',
-        description: '清华大学 TUNA 镜像站，速度快、更新及时',
+        description: '清华大学 TUNA 镜像站，速度快、更新及时（推荐）',
         rules: {
             ubuntu: 'https://mirrors.tuna.tsinghua.edu.cn/ubuntu/',
             debian: 'https://mirrors.tuna.tsinghua.edu.cn/debian/',
@@ -103,12 +103,11 @@ export const mirrorSources: MirrorSource[] = [
             fedora: 'https://mirrors.tuna.tsinghua.edu.cn/fedora/',
             opensuse: 'https://mirrors.tuna.tsinghua.edu.cn/opensuse/',
         },
-        flathubMirror: 'https://mirrors.tuna.tsinghua.edu.cn/flathub',
     },
     {
         id: 'aliyun',
         name: '阿里云镜像',
-        description: '阿里云镜像站，国内访问快',
+        description: '阿里云镜像站，系统包全、速度快',
         rules: {
             ubuntu: 'https://mirrors.aliyun.com/ubuntu/',
             debian: 'https://mirrors.aliyun.com/debian/',
@@ -116,12 +115,11 @@ export const mirrorSources: MirrorSource[] = [
             fedora: 'https://mirrors.aliyun.com/fedora/',
             opensuse: 'https://mirrors.aliyun.com/opensuse/',
         },
-        flathubMirror: 'https://mirrors.aliyun.com/flathub',
     },
     {
         id: 'ustc',
         name: '中科大镜像',
-        description: '中国科学技术大学镜像站',
+        description: '中国科学技术大学镜像站，速度好，支持 Flatpak',
         rules: {
             ubuntu: 'https://mirrors.ustc.edu.cn/ubuntu/',
             debian: 'https://mirrors.ustc.edu.cn/debian/',
@@ -130,6 +128,41 @@ export const mirrorSources: MirrorSource[] = [
             opensuse: 'https://mirrors.ustc.edu.cn/opensuse/',
         },
         flathubMirror: 'https://mirrors.ustc.edu.cn/flathub',
+    },
+    {
+        id: 'sjtug',
+        name: '上海交大镜像',
+        description: 'SJTUG 镜像站，支持 Flatpak 镜像',
+        rules: {
+            ubuntu: 'https://mirror.sjtu.edu.cn/ubuntu/',
+            debian: 'https://mirror.sjtu.edu.cn/debian/',
+            arch: 'https://mirror.sjtu.edu.cn/archlinux/',
+            fedora: 'https://mirror.sjtu.edu.cn/fedora/',
+            opensuse: 'https://mirror.sjtu.edu.cn/opensuse/',
+        },
+        flathubMirror: 'https://mirror.sjtu.edu.cn/flathub',
+    },
+    {
+        id: 'huawei',
+        name: '华为云镜像',
+        description: '华为云镜像站，大厂稳定',
+        rules: {
+            ubuntu: 'https://mirrors.huaweicloud.com/ubuntu/',
+            debian: 'https://mirrors.huaweicloud.com/debian/',
+            arch: 'https://mirrors.huaweicloud.com/archlinux/',
+            fedora: 'https://mirrors.huaweicloud.com/fedora/',
+            opensuse: 'https://mirrors.huaweicloud.com/opensuse/',
+        },
+    },
+    {
+        id: 'netease',
+        name: '网易镜像',
+        description: '网易 163 镜像站，老牌稳定',
+        rules: {
+            ubuntu: 'https://mirrors.163.com/ubuntu/',
+            debian: 'https://mirrors.163.com/debian/',
+            arch: 'https://mirrors.163.com/archlinux/',
+        },
     },
 ];
 
