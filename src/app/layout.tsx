@@ -21,28 +21,32 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "开箱 Linux — Linux 一键装软件",
-  description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
-  manifest: "/kaixiang-linux/manifest.json",
-  openGraph: {
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
     title: "开箱 Linux — Linux 一键装软件",
     description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
-    type: "website",
-    url: "https://github.com/pzmmy/kaixiang-linux",
-    images: [{
-      url: "https://raw.githubusercontent.com/pzmmy/kaixiang-linux/main/public/og-preview.svg",
-      width: 1200,
-      height: 630,
-      alt: "开箱 Linux — 一键装软件",
-    }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "开箱 Linux — Linux 一键装软件",
-    description: "开箱 Linux 帮你一键生成安装命令：选择发行版，挑选 200+ 软件，复制命令即可。",
-  },
-};
+    manifest: `${basePath}/manifest.json`,
+    openGraph: {
+      title: "开箱 Linux — Linux 一键装软件",
+      description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
+      type: "website",
+      url: "https://github.com/pzmmy/kaixiang-linux",
+      images: [{
+        url: "https://raw.githubusercontent.com/pzmmy/kaixiang-linux/main/public/og-preview.svg",
+        width: 1200,
+        height: 630,
+        alt: "开箱 Linux — 一键装软件",
+      }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "开箱 Linux — Linux 一键装软件",
+      description: "开箱 Linux 帮你一键生成安装命令：选择发行版，挑选 200+ 软件，复制命令即可。",
+    },
+  };
+}
 
 // Script to run before React hydrates to prevent theme flash
 const themeScript = `
@@ -93,7 +97,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#8B5CF6" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="apple-touch-icon" href="/kaixiang-linux/icon-192.png" />
+        <link rel="apple-touch-icon" href={`${basePath}/icon-192.png`} />
 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
 
@@ -102,7 +106,7 @@ export default function RootLayout({
           __html: `
           if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-              navigator.serviceWorker.register('/kaixiang-linux/sw.js').then(function(reg) {
+              navigator.serviceWorker.register('${basePath}/sw.js').then(function(reg) {
                 console.log('SW registered:', reg.scope);
               }).catch(function(err) {
                 console.log('SW registration failed:', err);
