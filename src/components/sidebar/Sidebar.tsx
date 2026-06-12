@@ -125,7 +125,7 @@ export function Sidebar({
                         </h1>
                         <p className="text-[11px] text-[var(--text-muted)] tracking-[0.14em] uppercase mt-2 font-medium leading-none"
                             style={{ transition: 'color 0.5s' }}>
-                            Linux Bulk App Installer
+                            Linux 一键装软件
                         </p>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ export function Sidebar({
                             value={searchQuery}
                             onChange={(e) => onSearchChange(e.target.value)}
                             onKeyDown={handleSearchKeyDown}
-                            placeholder="Search apps..."
+                            placeholder="搜索软件..."
                             className="flex-1 bg-transparent text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)]/40 outline-none"
                         />
                         {searchQuery ? (
@@ -158,7 +158,7 @@ export function Sidebar({
                 </div>
 
                 <div className="px-5 pb-5 relative">
-                    <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] mb-2 px-1 font-semibold">Distribution</p>
+                    <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] mb-2 px-1 font-semibold">发行版</p>
                     <button
                         onClick={() => setDistroOpen(prev => !prev)}
                         className="sidebar-distro-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50"
@@ -215,7 +215,7 @@ export function Sidebar({
                     <div className="flex items-center justify-between mb-2.5 px-1">
                         <div className="flex items-center gap-2">
                             <Terminal className="w-3.5 h-3.5 text-[var(--text-muted)]" />
-                            <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">Command</p>
+                            <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">命令</p>
                         </div>
                         <div className="flex items-center gap-2">
                             {selectedCount > 0 && (
@@ -248,7 +248,7 @@ export function Sidebar({
                                         overflow: 'hidden',
                                     }}
                                 >
-                                    {selectedCount > 0 ? command : 'Select apps to generate command...'}
+                                    {selectedCount > 0 ? command : '选好软件，生成安装命令...'}
                                 </code>
                             </div>
                         </div>
@@ -281,7 +281,7 @@ export function Sidebar({
                             }}
                         >
                             {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4 opacity-60" />}
-                            <span>{copied ? 'Copied!' : 'Copy'}</span>
+                            <span>复制</span>
                         </button>
                         <button
                             data-action="download"
@@ -295,7 +295,7 @@ export function Sidebar({
                                 }`}
                         >
                             <Download className="w-4 h-4 opacity-60" />
-                            <span>Download</span>
+                            <span>下载</span>
                         </button>
                     </div>
 
@@ -312,7 +312,7 @@ export function Sidebar({
                             }}
                         >
                             <Eye className="w-4 h-4" />
-                            <span>Preview</span>
+                            <span>预览</span>
                         </button>
                         <button
                             onClick={clearAll}
@@ -325,7 +325,7 @@ export function Sidebar({
                                 }`}
                         >
                             <Trash2 className="w-4 h-4 opacity-60" />
-                            <span>Clear All</span>
+                            <span>全部清空</span>
                         </button>
                     </div>
                 </div>
@@ -338,7 +338,7 @@ export function Sidebar({
                                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#1793d1">
                                     <path d="M12 0c-.39 0-.77.126-1.11.365a2.22 2.22 0 0 0-.82 1.056L0 24h4.15l2.067-5.58h11.666L19.95 24h4.05L13.91 1.42A2.24 2.24 0 0 0 12 0zm0 4.542l5.77 15.548H6.23l5.77-15.548z" />
                                 </svg>
-                                <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">AUR Helper</p>
+                                <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">AUR 助手</p>
                                 <span className="text-[10px] text-[var(--text-muted)] opacity-50">·</span>
                                 <span className="text-[10px] text-[var(--text-muted)]">{aurAppNames.length} pkg{aurAppNames.length !== 1 ? 's' : ''}</span>
                             </div>
@@ -366,7 +366,7 @@ export function Sidebar({
                         <div className="px-5 pb-2">
                             <div className="p-3.5 rounded-xl bg-amber-500/8 border border-amber-500/20">
                                 <p className="text-[11px] font-semibold text-amber-400 mb-1 flex items-center gap-1.5">
-                                    <span className="text-amber-400">⚠</span> Unfree Packages
+                                    <span className="text-amber-400">⚠</span> 非自由软件
                                 </p>
                                 <p className="text-[11px] text-[var(--text-muted)] leading-relaxed">
                                     {unfreeAppNames.join(', ')} require{' '}
@@ -380,46 +380,46 @@ export function Sidebar({
                 <div className="min-h-4" />
                 <div className="px-5 pb-3">
                     <div className="px-4 py-4 rounded-xl bg-[var(--bg-secondary)]/40 border border-[var(--border-primary)]">
-                        <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-secondary)] font-bold mb-3">Keyboard</p>
+                        <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-secondary)] font-bold mb-3">快捷键</p>
                         <div className="grid grid-cols-2 gap-y-2.5 gap-x-6 text-[13px]">
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Search</span>
+                                <span className="text-[var(--text-secondary)]">搜索</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">/</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Navigate</span>
+                                <span className="text-[var(--text-secondary)]">导航</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">←→↑↓</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Select</span>
+                                <span className="text-[var(--text-secondary)]">选择</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Space</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Copy</span>
+                                <span className="text-[var(--text-secondary)]">复制</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">y</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Download</span>
+                                <span className="text-[var(--text-secondary)]">下载</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">d</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Preview</span>
+                                <span className="text-[var(--text-secondary)]">预览</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Tab</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Theme</span>
+                                <span className="text-[var(--text-secondary)]">主题</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">t</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Clear All</span>
+                                <span className="text-[var(--text-secondary)]">清空</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">c</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Help</span>
+                                <span className="text-[var(--text-secondary)]">帮助</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">?</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">Close</span>
+                                <span className="text-[var(--text-secondary)]">关闭</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Esc</kbd>
                             </div>
                         </div>

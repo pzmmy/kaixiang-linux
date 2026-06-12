@@ -1,6 +1,10 @@
-# Contributing to TuxMate
+# 参与贡献 - 开箱 Linux (kaixiang-linux)
 
-## Quick Navigation
+感谢你对开箱 Linux 感兴趣！以下是贡献指南。
+
+> 注意：技术细节（应用添加、包管理器规则等）仍保留英文，因为涉及精确的包名和路径，中英混杂反而容易出错。
+
+## 快速导航
 
 1.  [Project Overview](#project-overview)
 2.  [Development Workflow](#development-workflow)

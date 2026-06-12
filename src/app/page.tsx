@@ -98,7 +98,7 @@ export default function Home() {
 
             if (e.key === '/') {
                 e.preventDefault();
-                const inputs = document.querySelectorAll<HTMLInputElement>('input[placeholder="Search apps..."]');
+                const inputs = document.querySelectorAll<HTMLInputElement>('input[placeholder="搜索软件..."]');
                 const visibleInput = Array.from(inputs).find(input => input.offsetParent !== null);
                 if (visibleInput) visibleInput.focus();
                 return;

@@ -210,7 +210,7 @@ export function useLinuxInit(): UseLinuxInitReturn {
 
     const generatedCommand = useMemo(() => {
         if (selectedApps.size === 0) {
-            return '# Select apps above to generate command';
+            return '# 选好软件，生成安装命令';
         }
 
         const distro = distros.find(d => d.id === selectedDistro);
