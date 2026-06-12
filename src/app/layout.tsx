@@ -24,6 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "开箱 Linux — Linux 一键装软件",
   description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
+  manifest: "/manifest.json",
   openGraph: {
     title: "开箱 Linux — Linux 一键装软件",
     description: "开箱 Linux 帮你一键生成安装命令。选择发行版，挑选软件，复制命令，搞定。",
@@ -73,7 +74,7 @@ export default function RootLayout({
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
         {/* PWA manifest and meta tags */}
-        <link rel="manifest" href="/manifest.json" />
+        {/* manifest handled via metadata API */}
         {/* Preconnect to icon CDN */}
         <link rel="preconnect" href="https://api.iconify.design" />
         <link rel="dns-prefetch" href="https://api.iconify.design" />
