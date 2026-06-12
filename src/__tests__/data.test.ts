@@ -40,7 +40,7 @@ describe('软件数据', () => {
     });
 
     it('被墙软件已全部移除', () => {
-        const blocked = ['discord', 'telegram', 'signal', 'slack', 'tor'];
+        const blocked = ['discord', 'telegram', 'signal', 'slack', 'tor-browser', 'mullvad'];
         blocked.forEach(id => {
             expect(apps.find(a => a.id === id)).toBeUndefined();
         });
