@@ -51,7 +51,11 @@ export function generateInstallScript(options: GenerateOptions): string {
         case 'nix': 
             if (packages.length === 0) return '# Nix\\n\\n# Generic Installers (Please run separately outside NixOS configuration):\\n' + uScript;
             return generateNixConfig(packages) + '\\n\\n# ----------------------------------------\\n# NOTE: Universal packages (npm) cannot be strictly placed in environment.systemPackages.\\n# You may need to run these commands in a standard terminal:\\n# \\n/* \\n' + uScript + '\\n*/\\n';
-        default: return '#!/bin/bash\\necho "Unsupported distribution"\\nexit 1';
+        default: {
+            // Unreachable: unknown distro caught by line 29
+            const _exhaustive: never = distroId;
+            return _exhaustive;
+        }
     }
 
     if (packages.length === 0) {
@@ -120,6 +124,10 @@ export function generateCommandline(options: GenerateOptions): string {
             }
             return appendScripts(appendExtras(parts.join(' && ')));
         }
-        default: return appendScripts(appendExtras(pkgList ? `# Install: ${pkgList}` : ''));
+        default: {
+            // Unreachable: empty packages caught by line 91
+            const _exhaustive: never = distroId;
+            return _exhaustive;
+        }
     }
 }
