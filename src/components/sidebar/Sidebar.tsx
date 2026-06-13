@@ -8,6 +8,7 @@ import { analytics } from '@/lib/analytics';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { DistroIcon } from '@/components/distro/DistroIcon';
 import { HowItWorks } from '@/components/header/HowItWorks';
+import { useLanguage } from '@/lib/i18n';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
@@ -52,6 +53,7 @@ export function Sidebar({
     onOpenDrawer,
     activeShortcut,
 }: SidebarProps) {
+    const { t, language, setLanguage } = useLanguage();
     const [copied, setCopied] = useState(false);
     const [distroOpen, setDistroOpen] = useState(false);
 
@@ -117,17 +119,17 @@ export function Sidebar({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src={`${basePath}/kaixiang-logo.svg`}
-                        alt="开箱 Linux Logo"
+                        alt={t('site.title')}
                         className="w-16 h-16 object-contain shrink-0"
                     />
                     <div className="flex flex-col items-start">
                         <h1 className="text-[28px] font-extrabold tracking-tight text-[var(--text-primary)] leading-none"
                             style={{ fontFamily: 'var(--font-heading)', transition: 'color 0.5s' }}>
-                            开箱 Linux
+                            {t('site.title')}
                         </h1>
                         <p className="text-[11px] text-[var(--text-muted)] tracking-[0.14em] uppercase mt-2 font-medium leading-none"
                             style={{ transition: 'color 0.5s' }}>
-                            Linux 一键装软件
+                            {t('site.subtitle')}
                         </p>
                     </div>
                 </div>
@@ -143,7 +145,7 @@ export function Sidebar({
                             value={searchQuery}
                             onChange={(e) => onSearchChange(e.target.value)}
                             onKeyDown={handleSearchKeyDown}
-                            placeholder="搜索软件..."
+                            placeholder={t('search.placeholder')}
                             className="flex-1 bg-transparent text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)]/40 outline-none"
                         />
                         {searchQuery ? (
@@ -160,7 +162,7 @@ export function Sidebar({
                 </div>
 
                 <div className="px-5 pb-5 relative">
-                    <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] mb-2 px-1 font-semibold">发行版</p>
+                    <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] mb-2 px-1 font-semibold">{t('distro.label')}</p>
                     <button
                         onClick={() => setDistroOpen(prev => !prev)}
                         className="sidebar-distro-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50"
@@ -217,7 +219,7 @@ export function Sidebar({
                     <div className="flex items-center justify-between mb-2.5 px-1">
                         <div className="flex items-center gap-2">
                             <Terminal className="w-3.5 h-3.5 text-[var(--text-muted)]" />
-                            <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">命令</p>
+                            <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">{t('command.label')}</p>
                         </div>
                         <div className="flex items-center gap-2">
                             {selectedCount > 0 && (
@@ -226,7 +228,7 @@ export function Sidebar({
                                         backgroundColor: `color-mix(in srgb, ${distroColor}, transparent 82%)`,
                                         color: distroColor,
                                     }}>
-                                    {selectedCount} 款
+                                    {t('count.format', String(selectedCount))}
                                 </span>
                             )}
                         </div>
@@ -250,14 +252,14 @@ export function Sidebar({
                                         overflow: 'hidden',
                                     }}
                                 >
-                                    {selectedCount > 0 || initScriptMode ? command : '选好软件，生成安装命令...'}
+                                    {selectedCount > 0 || initScriptMode ? command : t('command.preview')}
                                 </code>
                             </div>
                         </div>
                         {selectedCount > 0 && (
                             <div className="px-4 py-2 bg-[var(--bg-tertiary)]/50 border-t border-[var(--border-primary)] flex items-center justify-center gap-1.5 text-[10px] text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] transition-colors">
                                 <Eye className="w-3 h-3" />
-                                <span>点击查看完整命令</span>
+                                <span>{t('command.viewFull')}</span>
                                 <kbd className="ml-1 text-[9px] border border-[var(--border-primary)] rounded px-1 py-px font-mono opacity-50">Tab</kbd>
                             </div>
                         )}
@@ -283,7 +285,7 @@ export function Sidebar({
                             }}
                         >
                             {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4 opacity-60" />}
-                            <span>复制</span>
+                            <span>{t('btn.copy')}</span>
                         </button>
                         <button
                             data-action="download"
@@ -297,7 +299,7 @@ export function Sidebar({
                                 }`}
                         >
                             <Download className="w-4 h-4 opacity-60" />
-                            <span>下载</span>
+                            <span>{t('btn.download')}</span>
                         </button>
                     </div>
 
@@ -314,7 +316,7 @@ export function Sidebar({
                             }}
                         >
                             <Eye className="w-4 h-4" />
-                            <span>预览</span>
+                            <span>{t('btn.preview')}</span>
                         </button>
                         <button
                             onClick={clearAll}
@@ -327,7 +329,7 @@ export function Sidebar({
                                 }`}
                         >
                             <Trash2 className="w-4 h-4 opacity-60" />
-                            <span>全部清空</span>
+                            <span>{t('btn.clear')}</span>
                         </button>
                     </div>
                 </div>
@@ -340,9 +342,9 @@ export function Sidebar({
                                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#1793d1">
                                     <path d="M12 0c-.39 0-.77.126-1.11.365a2.22 2.22 0 0 0-.82 1.056L0 24h4.15l2.067-5.58h11.666L19.95 24h4.05L13.91 1.42A2.24 2.24 0 0 0 12 0zm0 4.542l5.77 15.548H6.23l5.77-15.548z" />
                                 </svg>
-                                <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">AUR 助手</p>
+                                <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">{t('aur.helper')}</p>
                                 <span className="text-[10px] text-[var(--text-muted)] opacity-50">·</span>
-                                <span className="text-[10px] text-[var(--text-muted)]">{aurAppNames.length} 个</span>
+                                <span className="text-[10px] text-[var(--text-muted)]">{t('aur.count', String(aurAppNames.length))}</span>
                             </div>
                             <div className="grid grid-cols-2 gap-2">
                                 {(['yay', 'paru'] as const).map((helper) => (
@@ -368,7 +370,7 @@ export function Sidebar({
                         <div className="px-5 pb-2">
                             <div className="p-3.5 rounded-xl bg-amber-500/8 border border-amber-500/20">
                                 <p className="text-[11px] font-semibold text-amber-400 mb-1 flex items-center gap-1.5">
-                                    <span className="text-amber-400">⚠</span> 非自由软件
+                                    <span className="text-amber-400">⚠</span> {t('unfree.title')}
                                 </p>
                                 <p className="text-[11px] text-[var(--text-muted)] leading-relaxed">
                                     {unfreeAppNames.join(', ')} require{' '}
@@ -382,46 +384,46 @@ export function Sidebar({
                 <div className="min-h-4" />
                 <div className="px-5 pb-3">
                     <div className="px-4 py-4 rounded-xl bg-[var(--bg-secondary)]/40 border border-[var(--border-primary)]">
-                        <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-secondary)] font-bold mb-3">快捷键</p>
+                        <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-secondary)] font-bold mb-3">{t('shortcuts.title')}</p>
                         <div className="grid grid-cols-2 gap-y-2.5 gap-x-6 text-[13px]">
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">搜索</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.search')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">/</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">导航</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.nav')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">←→↑↓</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">选择</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.select')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Space</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">复制</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.copy')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">y</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">下载</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.download')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">d</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">预览</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.preview')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Tab</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">主题</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.theme')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">t</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">清空</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.clear')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">c</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">帮助</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.help')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">?</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">关闭</span>
+                                <span className="text-[var(--text-secondary)]">{t('shortcut.close')}</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Esc</kbd>
                             </div>
                         </div>
@@ -434,12 +436,19 @@ export function Sidebar({
                     <ThemeToggle />
 
                     <div className="flex items-center gap-0.5">
+                        <button
+                            onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+                            className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all text-[12px] font-semibold"
+                            title={language === 'zh' ? 'Switch to English' : '切换到中文'}
+                        >
+                            {language === 'zh' ? 'EN' : '中'}
+                        </button>
                         <a
                             href="https://github.com/pzmmy/kaixiang-linux"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all text-[12px]"
-                            title="在 GitHub 上查看"
+                            title={t('tooltip.github')}
                             onClick={() => analytics.githubClicked()}
                         >
                             <Github className="w-4 h-4" />
@@ -449,7 +458,7 @@ export function Sidebar({
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-rose-400 transition-all text-[12px]"
-                            title="参与贡献"
+                            title={t('tooltip.contribute')}
                             onClick={() => analytics.contributeClicked()}
                         >
                             <Heart className="w-4 h-4" />
