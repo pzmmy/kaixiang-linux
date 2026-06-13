@@ -6,6 +6,7 @@ import {
     Network, Lock, Share2, Cpu, Sparkles, type LucideIcon
 } from 'lucide-react';
 import { categoryNamesZh } from '@/lib/data';
+import { useLanguage } from '@/lib/i18n';
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
     'Web Browsers': Globe,
@@ -65,7 +66,11 @@ export function CategoryHeader({
     onFocus?: () => void;
     color?: string;
 }) {
+    const { t, language } = useLanguage();
     const hexColor = COLOR_MAP[color] || COLOR_MAP['gray'];
+    const displayName = language === 'zh'
+        ? (categoryNamesZh as Record<string, string>)[category] || category
+        : category;
 
     return (
         <button
@@ -73,7 +78,7 @@ export function CategoryHeader({
             onClick={(e) => { e.stopPropagation(); onFocus?.(); onToggle(); }}
             tabIndex={-1}
             aria-expanded={isExpanded}
-            aria-label={`${category} category, ${selectedCount} apps selected`}
+            aria-label={`${displayName} category, ${selectedCount} apps selected`}
             className={`category-header group w-full py-2 flex items-center gap-2.5 text-[15px] font-semibold
         border-l-4
         px-3 mb-2
@@ -96,16 +101,16 @@ export function CategoryHeader({
                 const Icon = CATEGORY_ICONS[category] || Terminal;
                 return <Icon className="w-[18px] h-[18px]" style={{ color: hexColor }} />;
             })()}
-            <span className="flex-1 text-left">{(categoryNamesZh as Record<string, string>)[category] || category}</span>
+            <span className="flex-1 text-left">{displayName}</span>
             {onSelectAll && (
                 <button
                     onClick={(e) => { e.stopPropagation(); onSelectAll(); }}
                     className="text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100
                         hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-secondary)]
                         transition-all duration-200 mr-1"
-                    title="全选此分类"
+                    title={t('selectAll')}
                 >
-                    +全选
+                    {t('category.selectAll')}
                 </button>
             )}
             {selectedCount > 0 && (
