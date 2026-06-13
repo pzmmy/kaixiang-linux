@@ -134,7 +134,7 @@ export function AurFloatingCard({
                     <button
                         onClick={handleDismiss}
                         className="text-[var(--text-muted)]/60 hover:text-[var(--text-primary)] transition-colors duration-150 p-1 -mr-1 -mt-1 rounded-lg hover:bg-[var(--bg-hover)]"
-                        title="Dismiss"
+                        title="关闭"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -199,7 +199,7 @@ export function AurFloatingCard({
                         <button
                             onClick={handleDismiss}
                             className="text-[var(--text-muted)]/60 hover:text-[var(--text-primary)] transition-colors duration-150 p-1 -mr-1 rounded-lg hover:bg-[var(--bg-hover)]"
-                            title="Dismiss"
+                            title="关闭"
                         >
                             <X className="w-4 h-4" />
                         </button>

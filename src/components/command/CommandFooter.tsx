@@ -227,7 +227,7 @@ export function CommandFooter({
                                         }}
                                         disabled={selectedCount === 0}
                                         className={`hidden md:flex items-center gap-2 px-5 py-3 border-r border-[var(--border-primary)]/20 transition-all shrink-0 font-medium ${selectedCount === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                        title="Toggle Preview (Tab)"
+                                        title="切换预览 (Tab)"
                                         style={{
                                             backgroundColor: selectedCount > 0 ? `color-mix(in srgb, ${distroColor}, transparent 90%)` : undefined,
                                             color: selectedCount > 0 ? distroColor : undefined,
@@ -279,7 +279,7 @@ export function CommandFooter({
                                             ? activeShortcut === 'c' ? 'bg-red-500/20 text-red-400 scale-[0.97]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] active:scale-[0.97]'
                                             : 'text-[var(--text-muted)] opacity-50 cursor-not-allowed'
                                             }`}
-                                        title="Clear All (c)"
+                                        title="全部清空 (c)"
                                         onMouseEnter={(e) => {
                                             if (selectedCount > 0) {
                                                 e.currentTarget.style.backgroundColor = `color-mix(in srgb, ${distroColor}, transparent 95%)`;
@@ -302,7 +302,7 @@ export function CommandFooter({
                                             ? activeShortcut === 'd' ? 'bg-[var(--bg-hover)] opacity-80 scale-[0.97]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] active:scale-[0.97]'
                                             : 'text-[var(--text-muted)] opacity-50 cursor-not-allowed'
                                             }`}
-                                        title="Download Script (d)"
+                                        title="下载脚本 (d)"
                                         onMouseEnter={(e) => {
                                             if (selectedCount > 0) {
                                                 e.currentTarget.style.backgroundColor = `color-mix(in srgb, ${distroColor}, transparent 95%)`;
@@ -327,7 +327,7 @@ export function CommandFooter({
                                                 : activeShortcut === 'y' ? 'bg-[var(--bg-hover)] opacity-80 scale-[0.97]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] active:scale-[0.97]')
                                             : 'text-[var(--text-muted)] opacity-50 cursor-not-allowed'
                                             }`}
-                                        title="Copy Command (y)"
+                                        title="复制命令 (y)"
                                         onMouseEnter={(e) => {
                                             if (selectedCount > 0 && !copied) {
                                                 e.currentTarget.style.backgroundColor = `color-mix(in srgb, ${distroColor}, transparent 95%)`;

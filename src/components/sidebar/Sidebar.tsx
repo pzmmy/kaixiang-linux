@@ -226,7 +226,7 @@ export function Sidebar({
                                         backgroundColor: `color-mix(in srgb, ${distroColor}, transparent 82%)`,
                                         color: distroColor,
                                     }}>
-                                    {selectedCount} app{selectedCount !== 1 ? 's' : ''}
+                                    {selectedCount} 款
                                 </span>
                             )}
                         </div>
@@ -257,7 +257,7 @@ export function Sidebar({
                         {selectedCount > 0 && (
                             <div className="px-4 py-2 bg-[var(--bg-tertiary)]/50 border-t border-[var(--border-primary)] flex items-center justify-center gap-1.5 text-[10px] text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] transition-colors">
                                 <Eye className="w-3 h-3" />
-                                <span>Click for full preview</span>
+                                <span>点击查看完整命令</span>
                                 <kbd className="ml-1 text-[9px] border border-[var(--border-primary)] rounded px-1 py-px font-mono opacity-50">Tab</kbd>
                             </div>
                         )}
@@ -342,7 +342,7 @@ export function Sidebar({
                                 </svg>
                                 <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">AUR 助手</p>
                                 <span className="text-[10px] text-[var(--text-muted)] opacity-50">·</span>
-                                <span className="text-[10px] text-[var(--text-muted)]">{aurAppNames.length} pkg{aurAppNames.length !== 1 ? 's' : ''}</span>
+                                <span className="text-[10px] text-[var(--text-muted)]">{aurAppNames.length} 个</span>
                             </div>
                             <div className="grid grid-cols-2 gap-2">
                                 {(['yay', 'paru'] as const).map((helper) => (
@@ -439,7 +439,7 @@ export function Sidebar({
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all text-[12px]"
-                            title="View on GitHub"
+                            title="在 GitHub 上查看"
                             onClick={() => analytics.githubClicked()}
                         >
                             <Github className="w-4 h-4" />
@@ -449,7 +449,7 @@ export function Sidebar({
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-rose-400 transition-all text-[12px]"
-                            title="Contribute"
+                            title="参与贡献"
                             onClick={() => analytics.contributeClicked()}
                         >
                             <Heart className="w-4 h-4" />

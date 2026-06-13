@@ -75,7 +75,7 @@ export function ShortcutsBar({
 
                     {selectedCount > 0 && (
                         <div className="flex items-center px-3 py-1 text-[var(--text-muted)] border-r border-[var(--border-primary)]/30 whitespace-nowrap">
-                            [{selectedCount} app{selectedCount !== 1 ? 's' : ''}]
+                            [{selectedCount} 款]
                         </div>
                     )}
 
