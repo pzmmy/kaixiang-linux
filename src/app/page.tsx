@@ -48,6 +48,8 @@ export default function Home() {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [debouncedSearch, setDebouncedSearch] = useState('');
+    // activeCategory: when set, only this category is shown (focus mode)
+    const [activeCategory, setActiveCategory] = useState<string | null>(null);
     const [initScriptMode, setInitScriptMode] = useState(false);
     const [includeDocker, setIncludeDocker] = useState(false);
     const searchInputRef = useRef<HTMLInputElement>(null);
@@ -56,7 +58,11 @@ export default function Home() {
     const handleSearchChange = useCallback((query: string) => {
         setSearchQuery(query);
         if (debounceTimer.current) clearTimeout(debounceTimer.current);
-        debounceTimer.current = setTimeout(() => setDebouncedSearch(query), 120);
+        debounceTimer.current = setTimeout(() => {
+            setDebouncedSearch(query);
+            // Clear active category when search changes (show all matching results)
+            setActiveCategory(null);
+        }, 120);
     }, []);
 
     const selectAllInCategory = useCallback((catApps: {id: string}[]) => {
@@ -160,6 +166,10 @@ export default function Home() {
         const query = debouncedSearch.toLowerCase().trim();
         return categories
             .map(cat => {
+                // If activeCategory is set, skip non-matching categories
+                if (activeCategory && cat !== activeCategory) {
+                    return { category: cat, apps: [] };
+                }
                 const categoryApps = getAppsByCategory(cat);
                 const filteredApps = query
                     ? categoryApps.filter(app =>
@@ -172,7 +182,7 @@ export default function Home() {
                 return { category: cat, apps: filteredApps };
             })
             .filter(c => c.apps.length > 0);
-    }, [debouncedSearch]);
+    }, [debouncedSearch, activeCategory]);
 
     const COLUMN_COUNT = 4;
 
@@ -189,18 +199,35 @@ export default function Home() {
         return cols;
     }, [allCategoriesWithApps]);
 
+    // When activeCategory is set, expand only that category; otherwise expand all
     const [expandedCategories, setExpandedCategories] = useState<Set<string>>(() => new Set(categories));
 
-    const toggleCategoryExpanded = useCallback((cat: string) => {
+    // Sync expanded state with activeCategory changes
+    useEffect(() => {
         setExpandedCategories(prev => {
             const next = new Set(prev);
-            if (next.has(cat)) {
-                next.delete(cat);
+            if (activeCategory) {
+                // Expand only the active category
+                for (const cat of next) {
+                    if (cat !== activeCategory) next.delete(cat);
+                }
+                next.add(activeCategory);
             } else {
-                next.add(cat);
+                // Expand all
+                for (const cat of categories) {
+                    next.add(cat);
+                }
             }
             return next;
         });
+    }, [activeCategory]);
+
+    const toggleCategoryExpanded = useCallback((cat: string) => {
+        // Clicking a category header toggles activeCategory:
+        // - No active category → set it, expanding only this category
+        // - Same category already active → clear it, show all
+        // - Different category active → switch to new one
+        setActiveCategory(prev => prev === cat ? null : cat);
     }, []);
 
     const navItems = useMemo(() => {
@@ -308,6 +335,22 @@ export default function Home() {
 
             <main className="main-with-sidebar px-4 sm:px-6 pb-40 relative" style={{ zIndex: 1 }}>
                 <div className="max-w-7xl mx-auto lg:pt-8">
+                    {/* Active category chip bar */}
+                    {activeCategory && (
+                        <div className="flex items-center gap-2 mb-3 px-1">
+                            <span className="text-sm font-medium text-[var(--accent)]">
+                                📂 {categoryNamesZh[activeCategory as keyof typeof categoryNamesZh] || activeCategory}
+                            </span>
+                            <button
+                                onClick={() => setActiveCategory(null)}
+                                className="px-2 py-0.5 text-xs rounded-full border border-[var(--border-primary)]/30 
+                                    bg-[var(--bg-tertiary)] text-[var(--text-muted)]
+                                    hover:bg-[var(--bg-hover)] transition-all duration-200"
+                            >
+                                ✕ 显示全部分类
+                            </button>
+                        </div>
+                    )}
                     {/* 装机必备配方 */}
                     <div className="flex flex-wrap items-center gap-2 mb-6 px-1">
                         <span className="text-xs font-medium text-[var(--text-muted)] mr-1 whitespace-nowrap">🧩 一键选:</span>
