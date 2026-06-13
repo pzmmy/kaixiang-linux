@@ -250,7 +250,7 @@ export function Sidebar({
                                         overflow: 'hidden',
                                     }}
                                 >
-                                    {selectedCount > 0 ? command : '选好软件，生成安装命令...'}
+                                    {selectedCount > 0 || initScriptMode ? command : '选好软件，生成安装命令...'}
                                 </code>
                             </div>
                         </div>
