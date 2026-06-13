@@ -37,6 +37,12 @@ interface SidebarProps {
     unfreeAppNames?: string[];
     onOpenDrawer: () => void;
     activeShortcut?: string | null;
+    showHardwareCheck?: boolean;
+    onToggleHardwareCheck?: () => void;
+    showGamingGuide?: boolean;
+    onToggleGamingGuide?: () => void;
+    showWeChat?: boolean;
+    onToggleWeChat?: () => void;
 }
 
 export function Sidebar({
@@ -59,6 +65,10 @@ export function Sidebar({
     unfreeAppNames,
     onOpenDrawer,
     activeShortcut,
+    showHardwareCheck,
+    onToggleHardwareCheck,
+    showWeChat,
+    onToggleWeChat,
 }: SidebarProps) {
     const [copied, setCopied] = useState(false);
     const [distroOpen, setDistroOpen] = useState(false);
@@ -270,6 +280,60 @@ export function Sidebar({
                             </div>
                         )}
                     </div>
+                </div>
+
+                {/* Hardware Check button */}
+                <div className="px-5 pb-2">
+                    <button
+                        onClick={onToggleHardwareCheck}
+                        className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border transition-all ${
+                            showHardwareCheck
+                                ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
+                                : 'bg-transparent text-[var(--text-muted)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]'
+                        }`}
+                    >
+                        <span className="text-base">🔧</span>
+                        <span className="flex-1 text-left text-[13px] font-medium">硬件兼容性查询</span>
+                        {showHardwareCheck && (
+                            <span className="text-[10px] bg-[var(--accent)]/20 px-1.5 py-0.5 rounded-full">已开启</span>
+                        )}
+                    </button>
+                </div>
+
+                {/* WeChat Ecosystem button */}
+                <div className="px-5 pb-2">
+                    <button
+                        onClick={onToggleWeChat}
+                        className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border transition-all ${
+                            showWeChat
+                                ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
+                                : 'bg-transparent text-[var(--text-muted)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]'
+                        }`}
+                    >
+                        <span className="text-base">💬</span>
+                        <span className="flex-1 text-left text-[13px] font-medium">微信生态</span>
+                        {showWeChat && (
+                            <span className="text-[10px] bg-[var(--accent)]/20 px-1.5 py-0.5 rounded-full">已开启</span>
+                        )}
+                    </button>
+                </div>
+
+                {/* Gaming Performance Guide button */}
+                <div className="px-5 pb-2">
+                    <button
+                        onClick={onToggleGamingGuide}
+                        className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border transition-all ${
+                            showGamingGuide
+                                ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
+                                : 'bg-transparent text-[var(--text-muted)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]'
+                        }`}
+                    >
+                        <span className="text-base">🎮</span>
+                        <span className="flex-1 text-left text-[13px] font-medium">游戏优化</span>
+                        {showGamingGuide && (
+                            <span className="text-[10px] bg-[var(--accent)]/20 px-1.5 py-0.5 rounded-full">已开启</span>
+                        )}
+                    </button>
                 </div>
 
                 <div className="px-5 pb-5 relative">

@@ -18,6 +18,8 @@ import { CommandFooter } from '@/components/command';
 import { Tooltip, GlobalStyles, LoadingSkeleton, AutoDetectBanner, useAutoDetect } from '@/components/common';
 import { Sidebar } from '@/components/sidebar';
 import { HardwareCheck } from '@/components/hardware';
+import { WeChatGuide, WeComGuide } from '@/components/wechat';
+import { PerformanceGuide } from '@/components/gaming';
 import { LanguageProvider, useLanguage } from '@/lib/i18n';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -99,7 +101,23 @@ function HomeContent() {
 
     const [activeShortcut, setActiveShortcut] = useState<string | null>(null);
     const [showHardwareCheck, setShowHardwareCheck] = useState(false);
-    const toggleHardwareCheck = useCallback(() => setShowHardwareCheck(prev => !prev), []);
+    const toggleHardwareCheck = useCallback(() => {
+        setShowHardwareCheck(prev => !prev);
+        setShowWeChat(false);
+        setShowGamingGuide(false);
+    }, []);
+    const [showWeChat, setShowWeChat] = useState(false);
+    const toggleWeChat = useCallback(() => {
+        setShowWeChat(prev => !prev);
+        setShowHardwareCheck(false);
+        setShowGamingGuide(false);
+    }, []);
+    const [showGamingGuide, setShowGamingGuide] = useState(false);
+    const toggleGamingGuide = useCallback(() => {
+        setShowGamingGuide(prev => !prev);
+        setShowHardwareCheck(false);
+        setShowWeChat(false);
+    }, []);
 
     const toggleThemeWithFlash = useCallback(() => {
         document.body.classList.add('theme-flash');
@@ -323,6 +341,10 @@ function HomeContent() {
                 onOpenDrawer={openDrawer}
                 showHardwareCheck={showHardwareCheck}
                 onToggleHardwareCheck={toggleHardwareCheck}
+                showWeChat={showWeChat}
+                onToggleWeChat={toggleWeChat}
+                showGamingGuide={showGamingGuide}
+                onToggleGamingGuide={toggleGamingGuide}
             />
 
             <header className="lg:hidden pt-8 sm:pt-12 pb-8 sm:pb-10 px-4 sm:px-6 relative animate-fadeIn" style={{ zIndex: 1 }}>
@@ -389,6 +411,14 @@ function HomeContent() {
                 <div className="max-w-7xl mx-auto lg:pt-8">
                     {showHardwareCheck ? (
                         <HardwareCheck onClose={() => setShowHardwareCheck(false)} />
+                    ) : showWeChat ? (
+                        <div className="hardware-check">
+                            <WeChatGuide onClose={() => setShowWeChat(false)} />
+                            <div className="border-t border-[var(--border-primary)] mx-6 my-2" />
+                            <WeComGuide onClose={() => setShowWeChat(false)} />
+                        </div>
+                    ) : showGamingGuide ? (
+                        <PerformanceGuide onClose={() => setShowGamingGuide(false)} />
                     ) : (
                         <div>
                     {/* Active category chip bar */}
