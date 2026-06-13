@@ -39,6 +39,7 @@ interface AppItemProps {
     searchQuery?: string;
     isVerified?: boolean;
     verificationSource?: 'flathub' | 'snap' | null;
+    categoryName?: string;
 }
 
 export const AppItem = memo(function AppItem({
@@ -55,6 +56,7 @@ export const AppItem = memo(function AppItem({
     searchQuery,
     isVerified = false,
     verificationSource = null,
+    categoryName,
 }: AppItemProps) {
     const getUnavailableText = () => {
         const distroName = distros.find(d => d.id === selectedDistro)?.name || '';
@@ -115,28 +117,36 @@ export const AppItem = memo(function AppItem({
             </div>
             <AppIcon url={getIconUrl(app.icon)} name={app.name} />
             <div className="flex-1 flex items-baseline gap-1.5 min-w-0 overflow-hidden">
-                <span
-                    className={`truncate cursor-help ${!isAvailable ? 'text-[var(--text-muted)]' : isSelected ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)]'}`}
-                    style={{
-                        fontFamily: 'var(--font-open-sans), sans-serif',
-                        fontSize: '20px',
-                        fontWeight: 500,
-                        transition: 'color 0.5s',
-                        textRendering: 'geometricPrecision',
-                        WebkitFontSmoothing: 'antialiased'
-                    }}
-                    onMouseEnter={(e) => {
-                        e.stopPropagation();
-                        const tooltipText = app.note ? `${app.description} — ${app.note}` : app.description;
-                        onTooltipEnter(tooltipText, e);
-                    }}
-                    onMouseLeave={(e) => {
-                        e.stopPropagation();
-                        onTooltipLeave();
-                    }}
-                >
-                    {highlightSearchText(app.name, searchQuery || '')}
-                </span>
+                {categoryName && searchQuery ? (
+                        <span
+                            className="px-1.5 py-[1px] text-[10px] font-bold uppercase rounded-sm border shrink-0"
+                            style={{ color: hexColor, borderColor: hexColor, backgroundColor: `color-mix(in srgb, ${hexColor}, transparent 90%)` }}
+                        >
+                            {categoryName}
+                        </span>
+                    ) : null}
+                    <span
+                        className={`truncate cursor-help ${!isAvailable ? 'text-[var(--text-muted)]' : isSelected ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)]'}`}
+                        style={{
+                            fontFamily: 'var(--font-open-sans), sans-serif',
+                            fontSize: '20px',
+                            fontWeight: 500,
+                            transition: 'color 0.5s',
+                            textRendering: 'geometricPrecision',
+                            WebkitFontSmoothing: 'antialiased'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.stopPropagation();
+                            const tooltipText = app.note ? `${app.description} — ${app.note}` : app.description;
+                            onTooltipEnter(tooltipText, e);
+                        }}
+                        onMouseLeave={(e) => {
+                            e.stopPropagation();
+                            onTooltipLeave();
+                        }}
+                    >
+                        {highlightSearchText(app.name, searchQuery || '')}
+                    </span>
                 {isAur && (
                     <svg
                         className="ml-1.5 w-3 h-3 flex-shrink-0 opacity-80"

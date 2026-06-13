@@ -6,7 +6,7 @@ import { useLinuxInit } from '@/hooks/useLinuxInit';
 import { useTooltip } from '@/hooks/useTooltip';
 import { useKeyboardNavigation, type NavItem } from '@/hooks/useKeyboardNavigation';
 import { useVerification } from '@/hooks/useVerification';
-import { categories, getAppsByCategory, categoryNamesZh, mirrorSources, recipes, generateInitScript } from '@/lib/data';
+import { apps, categories, getAppsByCategory, categoryNamesZh, mirrorSources, recipes, generateInitScript } from '@/lib/data';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { HowItWorks, GitHubLink, ContributeLink } from '@/components/header';
 import { DistroSelector } from '@/components/distro';
@@ -186,6 +186,27 @@ function HomeContent() {
             .filter(c => c.apps.length > 0);
     }, [debouncedSearch, activeCategory]);
 
+    const searchSuggestions = useMemo(() => {
+        const q = searchQuery.toLowerCase().trim();
+        if (!q) return [];
+        const results: Array<{ name: string; category: string; id: string }> = [];
+        const seen = new Set<string>();
+        for (const app of apps) {
+            if (results.length >= 8) break;
+            if (seen.has(app.id)) continue;
+            const match = 
+                app.name.toLowerCase().includes(q) ||
+                app.id.toLowerCase().includes(q) ||
+                app.description.toLowerCase().includes(q) ||
+                (app.aliases && app.aliases.some(a => a.toLowerCase().includes(q)));
+            if (match) {
+                results.push({ name: app.name, category: app.category, id: app.id });
+                seen.add(app.id);
+            }
+        }
+        return results;
+    }, [searchQuery]);
+
     const COLUMN_COUNT = 4;
 
     const columns = useMemo(() => {
@@ -278,6 +299,7 @@ function HomeContent() {
                 searchQuery={searchQuery}
                 onSearchChange={handleSearchChange}
                 searchInputRef={searchInputRef}
+                searchSuggestions={searchSuggestions}
                 hasAurPackages={hasAurPackages}
                 aurAppNames={aurAppNames}
                 selectedHelper={selectedHelper}

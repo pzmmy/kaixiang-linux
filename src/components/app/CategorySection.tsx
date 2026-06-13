@@ -1,7 +1,7 @@
 'use client';
 
 import { memo, useRef, useEffect } from 'react';
-import { type DistroId, type AppData, type Category } from '@/lib/data';
+import { type DistroId, type AppData, type Category, categoryNamesZh } from '@/lib/data';
 import { analytics } from '@/lib/analytics';
 import { CategoryHeader } from './CategoryHeader';
 import { AppItem } from './AppItem';
@@ -116,6 +116,7 @@ function CategorySectionComponent({
                         onFocus={() => onAppFocus?.(app.id)}
                         color={color}
                         searchQuery={searchQuery}
+                        categoryName={categoryNamesZh[category]}
                         isVerified={
                             (selectedDistro === 'flatpak' || selectedDistro === 'snap') &&
                             isVerified?.(selectedDistro, app.targets?.[selectedDistro] || '') || false

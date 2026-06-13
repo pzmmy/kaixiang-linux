@@ -1,16 +1,21 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Check, Copy, Download, X, Search, ChevronDown, Github, Heart, Eye, Terminal, Trash2 } from 'lucide-react';
-import { distros, type DistroId } from '@/lib/data';
+import { distros, type DistroId, categoryNamesZh } from '@/lib/data';
 import { generateInstallScript } from '@/lib/generateInstallScript';
 import { analytics } from '@/lib/analytics';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { DistroIcon } from '@/components/distro/DistroIcon';
 import { HowItWorks } from '@/components/header/HowItWorks';
-import { useLanguage } from '@/lib/i18n';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+interface SearchSuggestion {
+    name: string;
+    category: string;
+    id: string;
+}
 
 interface SidebarProps {
     selectedDistro: DistroId;
@@ -23,6 +28,7 @@ interface SidebarProps {
     searchQuery: string;
     onSearchChange: (query: string) => void;
     searchInputRef: React.RefObject<HTMLInputElement | null>;
+    searchSuggestions: SearchSuggestion[];
     hasAurPackages: boolean;
     aurAppNames: string[];
     selectedHelper: 'yay' | 'paru';
@@ -44,6 +50,7 @@ export function Sidebar({
     searchQuery,
     onSearchChange,
     searchInputRef,
+    searchSuggestions,
     hasAurPackages,
     aurAppNames,
     selectedHelper,
@@ -53,9 +60,28 @@ export function Sidebar({
     onOpenDrawer,
     activeShortcut,
 }: SidebarProps) {
-    const { t, language, setLanguage } = useLanguage();
     const [copied, setCopied] = useState(false);
     const [distroOpen, setDistroOpen] = useState(false);
+    const [suggestionIndex, setSuggestionIndex] = useState(-1);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const suggestionRef = useRef<HTMLDivElement>(null);
+    const searchContainerRef = useRef<HTMLDivElement>(null);
+
+    // Close suggestions on click outside
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (searchContainerRef.current && !searchContainerRef.current.contains(e.target as Node)) {
+                setShowSuggestions(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    // Reset suggestion index when suggestions change
+    useEffect(() => {
+        setSuggestionIndex(-1);
+    }, [searchSuggestions.length]);
 
     const showAur = selectedDistro === 'arch' && hasAurPackages;
     const currentDistro = distros.find(d => d.id === selectedDistro);
@@ -101,9 +127,43 @@ export function Sidebar({
     }, [selectedCount, selectedDistro, selectedApps, selectedHelper, initScriptMode, command]);
 
     const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Escape' || e.key === 'Enter') {
+        if (e.key === 'Escape') {
+            if (showSuggestions) {
+                setShowSuggestions(false);
+                return;
+            }
             e.preventDefault();
             (e.target as HTMLInputElement).blur();
+            return;
+        }
+        if (e.key === 'Enter') {
+            if (showSuggestions && suggestionIndex >= 0 && suggestionIndex < searchSuggestions.length) {
+                e.preventDefault();
+                const selected = searchSuggestions[suggestionIndex];
+                onSearchChange(selected.name);
+                setShowSuggestions(false);
+                return;
+            }
+            e.preventDefault();
+            (e.target as HTMLInputElement).blur();
+            return;
+        }
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (!showSuggestions && searchSuggestions.length > 0) {
+                setShowSuggestions(true);
+                setSuggestionIndex(0);
+            } else if (showSuggestions && searchSuggestions.length > 0) {
+                setSuggestionIndex(prev => (prev + 1) % searchSuggestions.length);
+            }
+            return;
+        }
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (showSuggestions && searchSuggestions.length > 0) {
+                setSuggestionIndex(prev => (prev - 1 + searchSuggestions.length) % searchSuggestions.length);
+            }
+            return;
         }
     };
 
@@ -119,17 +179,17 @@ export function Sidebar({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src={`${basePath}/kaixiang-logo.svg`}
-                        alt={t('site.title')}
+                        alt="开箱 Linux Logo"
                         className="w-16 h-16 object-contain shrink-0"
                     />
                     <div className="flex flex-col items-start">
                         <h1 className="text-[28px] font-extrabold tracking-tight text-[var(--text-primary)] leading-none"
                             style={{ fontFamily: 'var(--font-heading)', transition: 'color 0.5s' }}>
-                            {t('site.title')}
+                            开箱 Linux
                         </h1>
                         <p className="text-[11px] text-[var(--text-muted)] tracking-[0.14em] uppercase mt-2 font-medium leading-none"
                             style={{ transition: 'color 0.5s' }}>
-                            {t('site.subtitle')}
+                            Linux 一键装软件
                         </p>
                     </div>
                 </div>
@@ -137,32 +197,83 @@ export function Sidebar({
 
             <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden sidebar-scroll">
                 <div className="px-5 pb-5">
-                    <div className="sidebar-search flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-[var(--border-primary)] bg-transparent">
-                        <Search className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0 opacity-40" />
-                        <input
-                            ref={searchInputRef}
-                            type="text"
-                            value={searchQuery}
-                            onChange={(e) => onSearchChange(e.target.value)}
-                            onKeyDown={handleSearchKeyDown}
-                            placeholder={t('search.placeholder')}
-                            className="flex-1 bg-transparent text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)]/40 outline-none"
-                        />
-                        {searchQuery ? (
-                            <button
-                                onClick={() => onSearchChange('')}
-                                className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                    <div ref={searchContainerRef} className="relative">
+                        <div className="sidebar-search flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-[var(--border-primary)] bg-transparent">
+                            <Search className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0 opacity-40" />
+                            <input
+                                ref={searchInputRef}
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => {
+                                    onSearchChange(e.target.value);
+                                    if (e.target.value.trim()) {
+                                        setShowSuggestions(true);
+                                    } else {
+                                        setShowSuggestions(false);
+                                    }
+                                }}
+                                onFocus={() => {
+                                    if (searchQuery.trim() && searchSuggestions.length > 0) {
+                                        setShowSuggestions(true);
+                                    }
+                                }}
+                                onKeyDown={handleSearchKeyDown}
+                                placeholder="搜索软件..."
+                                className="flex-1 bg-transparent text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)]/40 outline-none"
+                            />
+                            {searchQuery ? (
+                                <button
+                                    onClick={() => {
+                                        onSearchChange('');
+                                        setShowSuggestions(false);
+                                    }}
+                                    className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                                >
+                                    <X className="w-3.5 h-3.5" />
+                                </button>
+                            ) : (
+                                <kbd className="text-[10px] text-[var(--text-muted)]/40 border border-[var(--border-primary)] rounded px-1.5 py-0.5 font-mono">/</kbd>
+                            )}
+                        </div>
+                        {showSuggestions && searchSuggestions.length > 0 && (
+                            <div
+                                ref={suggestionRef}
+                                className="absolute left-0 right-0 mt-1.5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] overflow-hidden shadow-xl z-50 max-h-72 overflow-y-auto"
+                                style={{ animation: 'dropIn 0.15s ease-out' }}
                             >
-                                <X className="w-3.5 h-3.5" />
-                            </button>
-                        ) : (
-                            <kbd className="text-[10px] text-[var(--text-muted)]/40 border border-[var(--border-primary)] rounded px-1.5 py-0.5 font-mono">/</kbd>
+                                {searchSuggestions.map((suggestion, idx) => {
+                                    const catZh = categoryNamesZh[suggestion.category as keyof typeof categoryNamesZh] || suggestion.category;
+                                    return (
+                                        <button
+                                            key={suggestion.id}
+                                            className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 text-left transition-colors ${
+                                                idx === suggestionIndex
+                                                    ? 'bg-[var(--bg-hover)]'
+                                                    : 'hover:bg-[var(--bg-hover)]'
+                                            }`}
+                                            onMouseEnter={() => setSuggestionIndex(idx)}
+                                            onClick={() => {
+                                                onSearchChange(suggestion.name);
+                                                setShowSuggestions(false);
+                                            }}
+                                        >
+                                            <Search className="w-3 h-3 text-[var(--text-muted)] shrink-0 opacity-50" />
+                                            <span className="flex-1 text-sm text-[var(--text-primary)] truncate">
+                                                {suggestion.name}
+                                            </span>
+                                            <span className="text-[11px] text-[var(--text-muted)] shrink-0 opacity-70">
+                                                {catZh}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         )}
                     </div>
                 </div>
 
                 <div className="px-5 pb-5 relative">
-                    <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] mb-2 px-1 font-semibold">{t('distro.label')}</p>
+                    <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] mb-2 px-1 font-semibold">发行版</p>
                     <button
                         onClick={() => setDistroOpen(prev => !prev)}
                         className="sidebar-distro-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50"
@@ -219,7 +330,7 @@ export function Sidebar({
                     <div className="flex items-center justify-between mb-2.5 px-1">
                         <div className="flex items-center gap-2">
                             <Terminal className="w-3.5 h-3.5 text-[var(--text-muted)]" />
-                            <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">{t('command.label')}</p>
+                            <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">命令</p>
                         </div>
                         <div className="flex items-center gap-2">
                             {selectedCount > 0 && (
@@ -228,7 +339,7 @@ export function Sidebar({
                                         backgroundColor: `color-mix(in srgb, ${distroColor}, transparent 82%)`,
                                         color: distroColor,
                                     }}>
-                                    {t('count.format', String(selectedCount))}
+                                    {selectedCount} 款
                                 </span>
                             )}
                         </div>
@@ -252,14 +363,14 @@ export function Sidebar({
                                         overflow: 'hidden',
                                     }}
                                 >
-                                    {selectedCount > 0 || initScriptMode ? command : t('command.preview')}
+                                    {selectedCount > 0 || initScriptMode ? command : '选好软件，生成安装命令...'}
                                 </code>
                             </div>
                         </div>
                         {selectedCount > 0 && (
                             <div className="px-4 py-2 bg-[var(--bg-tertiary)]/50 border-t border-[var(--border-primary)] flex items-center justify-center gap-1.5 text-[10px] text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] transition-colors">
                                 <Eye className="w-3 h-3" />
-                                <span>{t('command.viewFull')}</span>
+                                <span>点击查看完整命令</span>
                                 <kbd className="ml-1 text-[9px] border border-[var(--border-primary)] rounded px-1 py-px font-mono opacity-50">Tab</kbd>
                             </div>
                         )}
@@ -285,7 +396,7 @@ export function Sidebar({
                             }}
                         >
                             {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4 opacity-60" />}
-                            <span>{t('btn.copy')}</span>
+                            <span>复制</span>
                         </button>
                         <button
                             data-action="download"
@@ -299,7 +410,7 @@ export function Sidebar({
                                 }`}
                         >
                             <Download className="w-4 h-4 opacity-60" />
-                            <span>{t('btn.download')}</span>
+                            <span>下载</span>
                         </button>
                     </div>
 
@@ -316,7 +427,7 @@ export function Sidebar({
                             }}
                         >
                             <Eye className="w-4 h-4" />
-                            <span>{t('btn.preview')}</span>
+                            <span>预览</span>
                         </button>
                         <button
                             onClick={clearAll}
@@ -329,7 +440,7 @@ export function Sidebar({
                                 }`}
                         >
                             <Trash2 className="w-4 h-4 opacity-60" />
-                            <span>{t('btn.clear')}</span>
+                            <span>全部清空</span>
                         </button>
                     </div>
                 </div>
@@ -342,9 +453,9 @@ export function Sidebar({
                                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#1793d1">
                                     <path d="M12 0c-.39 0-.77.126-1.11.365a2.22 2.22 0 0 0-.82 1.056L0 24h4.15l2.067-5.58h11.666L19.95 24h4.05L13.91 1.42A2.24 2.24 0 0 0 12 0zm0 4.542l5.77 15.548H6.23l5.77-15.548z" />
                                 </svg>
-                                <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">{t('aur.helper')}</p>
+                                <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-semibold">AUR 助手</p>
                                 <span className="text-[10px] text-[var(--text-muted)] opacity-50">·</span>
-                                <span className="text-[10px] text-[var(--text-muted)]">{t('aur.count', String(aurAppNames.length))}</span>
+                                <span className="text-[10px] text-[var(--text-muted)]">{aurAppNames.length} 个</span>
                             </div>
                             <div className="grid grid-cols-2 gap-2">
                                 {(['yay', 'paru'] as const).map((helper) => (
@@ -370,7 +481,7 @@ export function Sidebar({
                         <div className="px-5 pb-2">
                             <div className="p-3.5 rounded-xl bg-amber-500/8 border border-amber-500/20">
                                 <p className="text-[11px] font-semibold text-amber-400 mb-1 flex items-center gap-1.5">
-                                    <span className="text-amber-400">⚠</span> {t('unfree.title')}
+                                    <span className="text-amber-400">⚠</span> 非自由软件
                                 </p>
                                 <p className="text-[11px] text-[var(--text-muted)] leading-relaxed">
                                     {unfreeAppNames.join(', ')} require{' '}
@@ -384,46 +495,46 @@ export function Sidebar({
                 <div className="min-h-4" />
                 <div className="px-5 pb-3">
                     <div className="px-4 py-4 rounded-xl bg-[var(--bg-secondary)]/40 border border-[var(--border-primary)]">
-                        <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-secondary)] font-bold mb-3">{t('shortcuts.title')}</p>
+                        <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-secondary)] font-bold mb-3">快捷键</p>
                         <div className="grid grid-cols-2 gap-y-2.5 gap-x-6 text-[13px]">
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.search')}</span>
+                                <span className="text-[var(--text-secondary)]">搜索</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">/</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.nav')}</span>
+                                <span className="text-[var(--text-secondary)]">导航</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">←→↑↓</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.select')}</span>
+                                <span className="text-[var(--text-secondary)]">选择</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Space</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.copy')}</span>
+                                <span className="text-[var(--text-secondary)]">复制</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">y</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.download')}</span>
+                                <span className="text-[var(--text-secondary)]">下载</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">d</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.preview')}</span>
+                                <span className="text-[var(--text-secondary)]">预览</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Tab</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.theme')}</span>
+                                <span className="text-[var(--text-secondary)]">主题</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">t</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.clear')}</span>
+                                <span className="text-[var(--text-secondary)]">清空</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">c</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.help')}</span>
+                                <span className="text-[var(--text-secondary)]">帮助</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">?</kbd>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-[var(--text-secondary)]">{t('shortcut.close')}</span>
+                                <span className="text-[var(--text-secondary)]">关闭</span>
                                 <kbd className="text-[11px] text-[var(--text-primary)] bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-md px-2 py-0.5 font-mono font-medium shadow-sm">Esc</kbd>
                             </div>
                         </div>
@@ -436,19 +547,12 @@ export function Sidebar({
                     <ThemeToggle />
 
                     <div className="flex items-center gap-0.5">
-                        <button
-                            onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
-                            className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all text-[12px] font-semibold"
-                            title={language === 'zh' ? 'Switch to English' : '切换到中文'}
-                        >
-                            {language === 'zh' ? 'EN' : '中'}
-                        </button>
                         <a
                             href="https://github.com/pzmmy/kaixiang-linux"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all text-[12px]"
-                            title={t('tooltip.github')}
+                            title="在 GitHub 上查看"
                             onClick={() => analytics.githubClicked()}
                         >
                             <Github className="w-4 h-4" />
@@ -458,7 +562,7 @@ export function Sidebar({
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-rose-400 transition-all text-[12px]"
-                            title={t('tooltip.contribute')}
+                            title="参与贡献"
                             onClick={() => analytics.contributeClicked()}
                         >
                             <Heart className="w-4 h-4" />
