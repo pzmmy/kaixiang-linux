@@ -1,0 +1,4 @@
+1:"$Sreact.fragment"
+2:I[25305,["/kaixiang-linux/_next/static/chunks/578d71e8651276bf.js","/kaixiang-linux/_next/static/chunks/1d4c2822583112f1.js"],"default"]
+3:I[65578,["/kaixiang-linux/_next/static/chunks/578d71e8651276bf.js","/kaixiang-linux/_next/static/chunks/1d4c2822583112f1.js"],"default"]
+0:{"buildId":"PhnrS4v13sDpMxEoOTxIj","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}

@@ -1,0 +1,21 @@
+{
+  "name": "开箱 Linux",
+  "short_name": "开箱Linux",
+  "description": "Linux 一键装软件 — 选择发行版，挑选软件，复制命令，搞定。",
+  "start_url": "/kaixiang-linux/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/kaixiang-linux/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/kaixiang-linux/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
