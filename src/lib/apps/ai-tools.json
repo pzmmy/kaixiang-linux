@@ -127,5 +127,23 @@
       "set": "simple-icons",
       "name": "linux"
     }
+  },
+  {
+    "id": "mo-ti",
+    "name": "墨屉 (Mo-Ti)",
+    "description": "国产AI深度集成的Git原生Markdown知识库，支持拼音搜索/WebDAV同步/7家中国AI供应商",
+    "category": "AI Tools",
+    "targets": {
+      "ubuntu": "mo-ti",
+      "debian": "mo-ti",
+      "script": "curl -fsSL https://mo-ti.oss-cn-hangzhou.aliyuncs.com/releases/latest/mo-ti_latest_amd64.deb -o /tmp/mo-ti.deb && sudo dpkg -i /tmp/mo-ti.deb && rm /tmp/mo-ti.deb"
+    },
+    "note": "Ubuntu/Debian 用户优先用 .deb 包（国内 OSS 镜像加速）。其他发行版可下载 AppImage 直接运行。详情：https://pzmmy.github.io/mo-ti/",
+    "icon": {
+      "type": "iconify",
+      "set": "mdi",
+      "name": "book-open-page-variant",
+      "color": "#4F46E5"
+    }
   }
 ]
