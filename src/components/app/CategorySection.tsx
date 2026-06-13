@@ -77,7 +77,7 @@ function CategorySectionComponent({
     const color = categoryColors[category] || 'gray';
 
     return (
-        <div ref={sectionRef} className="mb-3 md:mb-5 category-section" style={{ contentVisibility: 'auto', containIntrinsicSize: '200px' }}>
+        <div ref={sectionRef} className="mb-3 md:mb-5 category-section">
             <CategoryHeader
                 category={category}
                 isExpanded={isExpanded}

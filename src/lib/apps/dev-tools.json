@@ -122,8 +122,10 @@
     },
     "unavailableReason": "Not in official repos. Use the [Flatpak version](https://flathub.org/en/apps/io.podman_desktop.PodmanDesktop) instead, or download from [podman-desktop.io/downloads](https://podman-desktop.io/downloads).",
     "icon": {
-      "type": "url",
-      "url": "https://podman-desktop.io/img/logo.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "podman",
+      "color": "#892CA0"
     }
   },
   {

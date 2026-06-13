@@ -9,6 +9,8 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { DistroIcon } from '@/components/distro/DistroIcon';
 import { HowItWorks } from '@/components/header/HowItWorks';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 interface SidebarProps {
     selectedDistro: DistroId;
     onDistroSelect: (id: DistroId) => void;
@@ -114,7 +116,7 @@ export function Sidebar({
                 <div className="flex items-center gap-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                        src="/kaixiang-logo.svg"
+                        src={`${basePath}/kaixiang-logo.svg`}
                         alt="开箱 Linux Logo"
                         className="w-16 h-16 object-contain shrink-0"
                     />

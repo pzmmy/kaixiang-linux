@@ -101,8 +101,9 @@
     },
     "unavailableReason": "GameMode is a system service and not available via Flatpak or Snap.",
     "icon": {
-      "type": "url",
-      "url": "https://www.svgrepo.com/show/411187/game.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     }
   },
   {

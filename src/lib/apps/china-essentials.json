@@ -182,8 +182,10 @@
     "unavailableReason": "多由 AUR (baidunetdisk-bin) 安装，或从 [百度网盘官网](https://pan.baidu.com/download) 下载 deb/rpm 包。",
     "note": "Linux版功能受限，不支持相册备份等部分功能",
     "icon": {
-      "type": "url",
-      "url": "https://pan.baidu.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "baidu",
+      "color": "#2932E1"
     },
     "aliases": [
       "baidupan",
@@ -228,8 +230,9 @@
     "unavailableReason": "多由 AUR (sunlogin-bin) 安装，或从 [向日葵官网](https://sunlogin.oray.com/download/) 下载。",
     "note": "免费版限速 300KB/s，需注册 Oray 账号使用",
     "icon": {
-      "type": "url",
-      "url": "https://sunlogin.oray.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "aliases": [
       "oray",
@@ -401,14 +404,15 @@
     },
     "unavailableReason": "从 [GitHub](https://github.com/v2rayA/v2rayA/releases) 下载 deb 包或 AUR 安装",
     "note": "需要 v2ray/xray 核心，Web 管理界面(http://localhost:2017)",
-    "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/v2rayA/v2rayA/master/img/logo.svg"
-    },
     "aliases": [
       "v2ray"
     ],
-    "size": 60
+    "size": 60,
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
+    }
   },
   {
     "id": "hiddify",
@@ -443,11 +447,12 @@
     },
     "unavailableReason": "从 [GitHub](https://github.com/SagerNet/sing-box/releases) 下载或 AUR 安装",
     "note": "命令行工具，需要手动编辑 JSON 配置文件",
+    "size": 20,
     "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/SagerNet/sing-box/main/icons/icon.svg"
-    },
-    "size": 20
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
+    }
   },
   {
     "id": "rustdesk",
@@ -462,8 +467,10 @@
     "unavailableReason": "使用 [Flatpak](https://flathub.org/apps/com.rustdesk.RustDesk) 或 AUR (rustdesk) 安装",
     "note": "可自建中继服务器，免费版不限速",
     "icon": {
-      "type": "url",
-      "url": "https://rustdesk.com/images/logo.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "rustdesk",
+      "color": "#F74C00"
     },
     "aliases": [
       "rust",
@@ -564,8 +571,9 @@
     "unavailableReason": "Deepin 社区维护的应用商店，从 [官网](https://www.spark-app.store/) 下载",
     "note": "星火商店收录了许多 Deepin 原生打包的中国软件",
     "icon": {
-      "type": "url",
-      "url": "https://www.spark-app.store/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "size": 50
   },
@@ -583,11 +591,12 @@
     },
     "unavailableReason": "大多数发行版官方源包含此字体",
     "note": "安装后可能需要 fc-cache -fv 刷新字体缓存",
+    "size": 12,
     "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/anthonyfok/fonts-wqy-microhei/master/logo.png"
-    },
-    "size": 12
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
+    }
   },
   {
     "id": "fcitx5-chinese",
@@ -621,8 +630,10 @@
     "unavailableReason": "通过 npm install -g @gitee/cli 安装",
     "note": "Gitee 是国内 GitHub 替代品，部分企业使用",
     "icon": {
-      "type": "url",
-      "url": "https://gitee.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gitee",
+      "color": "#C71D23"
     },
     "size": 8
   },
@@ -660,8 +671,9 @@
     "unavailableReason": "从 [有道词典官网](https://dict.youdao.com/) 下载 deb/rpm 包或 AUR 安装",
     "note": "Linux 版功能较 Windows 版少，基础翻译可用",
     "icon": {
-      "type": "url",
-      "url": "https://dict.youdao.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "size": 100
   },
@@ -694,8 +706,10 @@
     },
     "unavailableReason": "从 [福昕官网](https://www.foxit.com/zh-cn/downloads/) 下载，或 AUR (foxitreader) 安装",
     "icon": {
-      "type": "url",
-      "url": "https://www.foxit.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux",
+      "color": "#FF6C37"
     },
     "aliases": [
       "foxit",
@@ -714,8 +728,9 @@
     "unavailableReason": "从 [迅雷官网](https://www.xunlei.com/) 下载或 AUR (xunlei-bin) 安装",
     "note": "Linux 版功能精简，基础下载功能可用",
     "icon": {
-      "type": "url",
-      "url": "https://www.xunlei.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "aliases": [
       "thunder",
@@ -734,8 +749,9 @@
     "unavailableReason": "从 [酷狗音乐官网](https://www.kugou.com/) 下载或 AUR 安装",
     "note": "第三方打包版本，非官方客户端",
     "icon": {
-      "type": "url",
-      "url": "https://www.kugou.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "aliases": [
       "kugou",
@@ -754,8 +770,9 @@
     "unavailableReason": "从 [坚果云官网](https://www.jianguoyun.com/) 下载 Linux 客户端，或 AUR 安装",
     "note": "免费版每月 1GB 上传流量",
     "icon": {
-      "type": "url",
-      "url": "https://www.jianguoyun.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "aliases": [
       "jianguo",
@@ -829,8 +846,9 @@
     "unavailableReason": "通过 AUR (deepin-wine-aliwangwang) 安装，需要 deepin-wine 支持",
     "note": "Wine 版本，非原生 Linux 应用",
     "icon": {
-      "type": "url",
-      "url": "https://www.taobao.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "size": 200
   },
@@ -864,8 +882,9 @@
     "unavailableReason": "从 [网易邮箱官网](https://mail.163.com/) 下载或 AUR 安装",
     "note": "基于 Electron 的第三方封装",
     "icon": {
-      "type": "url",
-      "url": "https://mail.163.com/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "size": 100
   },
@@ -897,11 +916,12 @@
       "flatpak": "com.github.qv2ray"
     },
     "unavailableReason": "从 [GitHub](https://github.com/Qv2ray/Qv2ray) 下载或 AUR 安装",
+    "size": 80,
     "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/Qv2ray/Qv2ray/master/icons/qv2ray.png"
-    },
-    "size": 80
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
+    }
   },
   {
     "id": "copyq",
@@ -915,11 +935,12 @@
     },
     "unavailableReason": "从 [GitHub](https://github.com/hluk/CopyQ) 下载或官方源安装",
     "note": "国内用户很喜欢的高级剪贴板工具",
+    "size": 15,
     "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/hluk/CopyQ/master/copyq.svg"
-    },
-    "size": 15
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
+    }
   },
   {
     "id": "goldendict-ng",
@@ -933,8 +954,9 @@
     "unavailableReason": "从 [GitHub](https://github.com/xiaoyifang/goldendict-ng) 下载或 AUR 安装",
     "note": "支持离线词典包，国内用户常用",
     "icon": {
-      "type": "url",
-      "url": "https://goldendict.org/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "size": 100
   },
@@ -1005,8 +1027,10 @@
     },
     "unavailableReason": "从 [官网](https://peazip.github.io/) 下载或官方源安装",
     "icon": {
-      "type": "url",
-      "url": "https://peazip.github.io/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux",
+      "color": "#5E2750"
     },
     "size": 15
   },
@@ -1021,8 +1045,9 @@
     "unavailableReason": "从 [官网](https://code-industry.net/masterpdfeditor/) 下载或 AUR 安装",
     "note": "免费版可编辑，导出有水印",
     "icon": {
-      "type": "url",
-      "url": "https://code-industry.net/favicon.ico"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     },
     "size": 80
   },

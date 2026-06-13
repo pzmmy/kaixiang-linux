@@ -62,8 +62,10 @@
       "homebrew": "--cask inkscape"
     },
     "icon": {
-      "type": "url",
-      "url": "https://media.inkscape.org/static/images/inkscape-logo.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "inkscape",
+      "color": "#000000"
     }
   },
   {

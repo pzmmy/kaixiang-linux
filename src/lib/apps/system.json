@@ -58,8 +58,9 @@
     },
     "unavailableReason": "Flameshot is not available as a Snap package.",
     "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/flameshot-org/flameshot/master/data/img/app/flameshot.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     }
   },
   {

@@ -87,7 +87,7 @@ export default function RootLayout({
             default-src 'self';
             script-src 'self' 'unsafe-inline' https://cloud.umami.is https://static.cloudflareinsights.com;
             style-src 'self' 'unsafe-inline';
-            img-src 'self' https://api.iconify.design https://raw.githubusercontent.com data:;
+            img-src * data:;
             font-src 'self';
             connect-src 'self';
             frame-src 'none';

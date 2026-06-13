@@ -39,8 +39,10 @@
       "homebrew": "--cask chromium"
     },
     "icon": {
-      "type": "url",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Chromium_Logo.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "googlechrome",
+      "color": "#4285F4"
     }
   },
   {
@@ -138,8 +140,10 @@
     },
     "unavailableReason": "Please use your distribution's native package manager to install this application, or use [Flatpak](https://flathub.org/en/apps/org.gnome.Epiphany).",
     "icon": {
-      "type": "url",
-      "url": "https://static.gnome.org/catalog/app-icon/scalable/org.gnome.Epiphany.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnome",
+      "color": "#4A86CF"
     }
   },
   {

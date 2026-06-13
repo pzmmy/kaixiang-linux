@@ -55,8 +55,9 @@
     },
     "unavailableReason": "Not in official Debian/Ubuntu/Fedora repos. Download from [veracrypt.fr/en/Downloads](https://veracrypt.fr/en/Downloads.html).",
     "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/3390a630b535d1c1ccca04881b3959e262264116/Papirus/64x64/apps/veracrypt.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     }
   },
   {
@@ -97,8 +98,9 @@
     },
     "unavailableReason": "ClamAV is a system package and not available via Flatpak or Snap.",
     "icon": {
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/ivangabriele/clamav-desktop/f60bfafdd23bb455f0468abe5f877d2b76eddfba/assets/icons/icon.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     }
   }
 ]

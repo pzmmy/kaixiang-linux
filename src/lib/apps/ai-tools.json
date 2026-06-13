@@ -87,8 +87,10 @@
     },
     "note": "Falls back to official installer (ollama.com/install.sh) on distros without a native package.",
     "icon": {
-      "type": "url",
-      "url": "https://ollama.com/public/icon-64x64.png"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "ollama",
+      "color": "#000000"
     }
   },
   {
@@ -121,8 +123,9 @@
     },
     "unavailableReason": "Not in most official repos. Use [flatpak](https://flathub.org/en/apps/ai.jan.Jan) or Download AppImage or .deb package from [jan.ai/download](https://jan.ai/download).",
     "icon": {
-      "type": "url",
-      "url": "https://www.jan.ai/_next/static/media/logo-jan.db83c5f0.svg"
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "linux"
     }
   }
 ]

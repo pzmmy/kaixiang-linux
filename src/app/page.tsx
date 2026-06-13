@@ -7,7 +7,6 @@ import { useTooltip } from '@/hooks/useTooltip';
 import { useKeyboardNavigation, type NavItem } from '@/hooks/useKeyboardNavigation';
 import { useVerification } from '@/hooks/useVerification';
 import { categories, getAppsByCategory, categoryNamesZh, mirrorSources, recipes, generateInitScript } from '@/lib/data';
-
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { HowItWorks, GitHubLink, ContributeLink } from '@/components/header';
 import { DistroSelector } from '@/components/distro';
@@ -17,6 +16,8 @@ import { CategorySection } from '@/components/app';
 import { CommandFooter } from '@/components/command';
 import { Tooltip, GlobalStyles, LoadingSkeleton } from '@/components/common';
 import { Sidebar } from '@/components/sidebar';
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function Home() {
 
@@ -264,7 +265,7 @@ export default function Home() {
                             <div className="flex items-center gap-4">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                    src="/kaixiang-logo.svg"
+                                    src={`${basePath}/kaixiang-logo.svg`}
                                     alt="开箱 Linux Logo"
                                     className="w-16 h-16 sm:w-[72px] sm:h-[72px] object-contain shrink-0"
                                 />
