@@ -27,6 +27,7 @@ interface CategorySectionProps {
     getVerificationSource?: (distro: DistroId, packageName: string) => 'flathub' | 'snap' | null;
     onSelectAll?: () => void;
     searchQuery?: string;
+    language?: string;
 }
 
 const categoryColors: Record<Category, string> = {
@@ -68,6 +69,7 @@ function CategorySectionComponent({
     getVerificationSource,
     onSelectAll,
     searchQuery,
+    language,
 }: CategorySectionProps) {
     const selectedInCategory = categoryApps.filter(a => selectedApps.has(a.id)).length;
     const isCategoryFocused = focusedType === 'category' && focusedId === category;
@@ -146,6 +148,7 @@ export const CategorySection = memo(CategorySectionComponent, (prevProps, nextPr
 
     if (prevProps.isVerified !== nextProps.isVerified) return false;
     if (prevProps.getVerificationSource !== nextProps.getVerificationSource) return false;
+    if (prevProps.language !== nextProps.language) return false;
 
     for (const app of nextProps.categoryApps) {
         if (prevProps.selectedApps.has(app.id) !== nextProps.selectedApps.has(app.id)) {
