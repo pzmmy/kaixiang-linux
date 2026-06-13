@@ -16,10 +16,12 @@ import { CategorySection } from '@/components/app';
 import { CommandFooter } from '@/components/command';
 import { Tooltip, GlobalStyles, LoadingSkeleton } from '@/components/common';
 import { Sidebar } from '@/components/sidebar';
+import { LanguageProvider, useLanguage } from '@/lib/i18n';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-export default function Home() {
+function HomeContent() {
+    const { t, language, setLanguage } = useLanguage();
 
     const { tooltip, show: showTooltip, hide: hideTooltip, tooltipMouseEnter, tooltipMouseLeave, setTooltipRef } = useTooltip();
 
@@ -105,7 +107,7 @@ export default function Home() {
 
             if (e.key === '/') {
                 e.preventDefault();
-                const inputs = document.querySelectorAll<HTMLInputElement>('input[placeholder="搜索软件..."]');
+                const inputs = document.querySelectorAll<HTMLInputElement>('input[placeholder="' + t('search.placeholder') + '"]');
                 const visibleInput = Array.from(inputs).find(input => input.offsetParent !== null);
                 if (visibleInput) visibleInput.focus();
                 return;
@@ -160,7 +162,7 @@ export default function Home() {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [selectedCount, clearAll, hasAurPackages, setSelectedHelper, drawerOpen, closeDrawer, openDrawer, toggleThemeWithFlash]);
+    }, [selectedCount, clearAll, hasAurPackages, setSelectedHelper, drawerOpen, closeDrawer, openDrawer, toggleThemeWithFlash, t]);
 
     const allCategoriesWithApps = useMemo(() => {
         const query = debouncedSearch.toLowerCase().trim();
@@ -293,16 +295,16 @@ export default function Home() {
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                     src={`${basePath}/kaixiang-logo.svg`}
-                                    alt="开箱 Linux Logo"
+                                    alt={t('site.title')}
                                     className="w-16 h-16 sm:w-[72px] sm:h-[72px] object-contain shrink-0"
                                 />
                                 <div className="flex flex-col justify-center">
                                     <h1 className="text-xl sm:text-2xl font-bold tracking-tight" style={{ transition: 'color 0.5s' }}>
-                                        开箱 Linux
+                                        {t('site.title')}
                                     </h1>
                                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-0.5">
                                         <p className="text-xs sm:text-sm text-[var(--text-muted)] tracking-widest uppercase opacity-80" style={{ transition: 'color 0.5s' }}>
-                                            一键装软件，Linux 就该这么简单。
+                                            {t('site.subtitle')}
                                         </p>
                                         <span className="hidden sm:inline text-[var(--text-muted)] opacity-30 text-[10px]">•</span>
                                         <div className="hidden sm:block">
@@ -328,6 +330,18 @@ export default function Home() {
                                 <ThemeToggle />
                                 <DistroSelector selectedDistro={selectedDistro} onSelect={setSelectedDistro} />
                             </div>
+
+                            {/* Language toggle */}
+                            <button
+                                onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+                                className="px-2 py-1 text-xs font-semibold rounded-lg border border-[var(--border-primary)]/30 
+                                    bg-[var(--bg-tertiary)] text-[var(--text-secondary)]
+                                    hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]
+                                    transition-all duration-200"
+                                title={language === 'zh' ? 'Switch to English' : '切换到中文'}
+                            >
+                                {language === 'zh' ? 'EN' : '中'}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -339,7 +353,7 @@ export default function Home() {
                     {activeCategory && (
                         <div className="flex items-center gap-2 mb-3 px-1">
                             <span className="text-sm font-medium text-[var(--accent)]">
-                                📂 {categoryNamesZh[activeCategory as keyof typeof categoryNamesZh] || activeCategory}
+                                📂 {language === 'zh' ? (categoryNamesZh as Record<string, string>)[activeCategory] || activeCategory : activeCategory}
                             </span>
                             <button
                                 onClick={() => setActiveCategory(null)}
@@ -347,13 +361,13 @@ export default function Home() {
                                     bg-[var(--bg-tertiary)] text-[var(--text-muted)]
                                     hover:bg-[var(--bg-hover)] transition-all duration-200"
                             >
-                                ✕ 显示全部分类
+                                ✕ {t('showAll')}
                             </button>
                         </div>
                     )}
                     {/* 装机必备配方 */}
                     <div className="flex flex-wrap items-center gap-2 mb-6 px-1">
-                        <span className="text-xs font-medium text-[var(--text-muted)] mr-1 whitespace-nowrap">🧩 一键选:</span>
+                        <span className="text-xs font-medium text-[var(--text-muted)] mr-1 whitespace-nowrap">{t('recipe.oneClick')}</span>
                         {recipes.map(recipe => (
                             <button
                                 key={recipe.id}
@@ -385,9 +399,9 @@ export default function Home() {
                                     ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
                                     : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)]'
                                 }`}
-                            title="一键换源 + 安装中文字体 + 输入法 + pip/npm/go/docker 镜像"
+                            title={language === 'zh' ? '一键换源 + 安装中文字体 + 输入法 + pip/npm/go/docker 镜像' : 'One-click mirror + Chinese font + IME + pip/npm/go/docker mirrors'}
                         >
-                            🚀 一键初始化
+                            {t('init.title')}
                         </button>
                         <label
                             className={`px-3 py-1.5 text-xs rounded-lg border cursor-pointer select-none transition-all duration-200 flex items-center gap-1.5
@@ -395,7 +409,7 @@ export default function Home() {
                                     ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
                                     : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] border-[var(--border-primary)]/30 hover:bg-[var(--bg-hover)]'
                                 }`}
-                            title="在初始化脚本中安装 Docker CE + 配置镜像加速"
+                            title={language === 'zh' ? '在初始化脚本中安装 Docker CE + 配置镜像加速' : 'Install Docker CE in init script + configure mirror'}
                         >
                             <input
                                 type="checkbox"
@@ -404,14 +418,14 @@ export default function Home() {
                                 className="w-3 h-3 accent-[var(--accent)]"
                                 disabled={!initScriptMode}
                             />
-                            <span>🐳 Docker</span>
+                            <span>{t('docker.label')}</span>
                         </label>
                     </div>
                     {allCategoriesWithApps.length === 0 && searchQuery && (
                         <div className="text-center py-20 text-[var(--text-muted)]">
                             <div className="text-4xl mb-4">🔍</div>
-                            <p className="text-base">没有找到匹配的软件</p>
-                            <p className="text-sm mt-2 opacity-60">试试其他关键词，或清除搜索条件</p>
+                            <p className="text-base">{t('search.noResults')}</p>
+                            <p className="text-sm mt-2 opacity-60">{t('search.tryOther')}</p>
                         </div>
                     )}
                     <div className="grid grid-cols-2 gap-x-4 lg:hidden items-start">
@@ -447,6 +461,7 @@ export default function Home() {
                                             getVerificationSource={getVerificationSource}
                                             onSelectAll={() => selectAllInCategory(categoryApps)}
                                             searchQuery={debouncedSearch}
+                                            language={language}
                                         />
                                     ))}
                                 </div>
@@ -487,6 +502,7 @@ export default function Home() {
                                             getVerificationSource={getVerificationSource}
                                             onSelectAll={() => selectAllInCategory(categoryApps)}
                                             searchQuery={debouncedSearch}
+                                            language={language}
                                         />
                                     ))}
                                 </div>
@@ -523,5 +539,13 @@ export default function Home() {
             />
         </div>
         </ErrorBoundary>
+    );
+}
+
+export default function Home() {
+    return (
+        <LanguageProvider>
+            <HomeContent />
+        </LanguageProvider>
     );
 }
