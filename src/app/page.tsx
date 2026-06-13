@@ -14,7 +14,7 @@ import { MirrorSelector } from '@/components/distro/MirrorSelector';
 import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { CategorySection } from '@/components/app';
 import { CommandFooter } from '@/components/command';
-import { Tooltip, GlobalStyles, LoadingSkeleton } from '@/components/common';
+import { Tooltip, GlobalStyles, LoadingSkeleton, AutoDetectBanner, useAutoDetect } from '@/components/common';
 import { Sidebar } from '@/components/sidebar';
 import { LanguageProvider, useLanguage } from '@/lib/i18n';
 
@@ -47,6 +47,13 @@ function HomeContent() {
         setMirrorSource,
         totalSize,
     } = useLinuxInit();
+
+    const { detectedDistro, isDismissed, dismiss: dismissBanner } = useAutoDetect();
+    useEffect(() => {
+        if (detectedDistro) {
+            setSelectedDistro(detectedDistro);
+        }
+    }, [detectedDistro, setSelectedDistro]);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [debouncedSearch, setDebouncedSearch] = useState('');
@@ -280,6 +287,9 @@ function HomeContent() {
 
     return (
         <ErrorBoundary>
+        {!isDismissed && detectedDistro && (
+            <AutoDetectBanner detectedDistro={detectedDistro} onDismiss={dismissBanner} />
+        )}
         <div
             className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] relative"
             style={{ transition: 'background-color 0.5s, color 0.5s' }}

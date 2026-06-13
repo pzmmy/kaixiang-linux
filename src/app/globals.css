@@ -817,3 +817,15 @@ body.theme-flash::after {
         margin-left: 420px;
     }
 }
+
+/* Auto-detect banner slide-down animation */
+@keyframes autoDetectSlideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
