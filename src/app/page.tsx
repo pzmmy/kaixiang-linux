@@ -7,6 +7,7 @@ import { useTooltip } from '@/hooks/useTooltip';
 import { useKeyboardNavigation, type NavItem } from '@/hooks/useKeyboardNavigation';
 import { useVerification } from '@/hooks/useVerification';
 import { apps, categories, getAppsByCategory, categoryNamesZh, mirrorSources, recipes, generateInitScript } from '@/lib/data';
+import { isChinaDistro, getChinaDistroMeta, getAppStoreHint } from '@/lib/data/china-distros';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { HowItWorks, GitHubLink, ContributeLink } from '@/components/header';
 import { DistroSelector } from '@/components/distro';
@@ -16,6 +17,7 @@ import { CategorySection } from '@/components/app';
 import { CommandFooter } from '@/components/command';
 import { Tooltip, GlobalStyles, LoadingSkeleton, AutoDetectBanner, useAutoDetect } from '@/components/common';
 import { Sidebar } from '@/components/sidebar';
+import { HardwareCheck } from '@/components/hardware';
 import { LanguageProvider, useLanguage } from '@/lib/i18n';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -96,6 +98,8 @@ function HomeContent() {
     }, [selectedCount]);
 
     const [activeShortcut, setActiveShortcut] = useState<string | null>(null);
+    const [showHardwareCheck, setShowHardwareCheck] = useState(false);
+    const toggleHardwareCheck = useCallback(() => setShowHardwareCheck(prev => !prev), []);
 
     const toggleThemeWithFlash = useCallback(() => {
         document.body.classList.add('theme-flash');
@@ -317,6 +321,8 @@ function HomeContent() {
                 hasUnfreePackages={hasUnfreePackages}
                 unfreeAppNames={unfreeAppNames}
                 onOpenDrawer={openDrawer}
+                showHardwareCheck={showHardwareCheck}
+                onToggleHardwareCheck={toggleHardwareCheck}
             />
 
             <header className="lg:hidden pt-8 sm:pt-12 pb-8 sm:pb-10 px-4 sm:px-6 relative animate-fadeIn" style={{ zIndex: 1 }}>
@@ -381,6 +387,10 @@ function HomeContent() {
 
             <main className="main-with-sidebar px-4 sm:px-6 pb-40 relative" style={{ zIndex: 1 }}>
                 <div className="max-w-7xl mx-auto lg:pt-8">
+                    {showHardwareCheck ? (
+                        <HardwareCheck onClose={() => setShowHardwareCheck(false)} />
+                    ) : (
+                        <div>
                     {/* Active category chip bar */}
                     {activeCategory && (
                         <div className="flex items-center gap-2 mb-3 px-1">
@@ -453,6 +463,34 @@ function HomeContent() {
                             <span>{t('docker.label')}</span>
                         </label>
                     </div>
+                    {/* 国产发行版提示：优先使用应用商店 */}
+                    {isChinaDistro(selectedDistro) && (() => {
+                        const meta = getChinaDistroMeta(selectedDistro);
+                        if (!meta) return null;
+                        return (
+                            <div className="mb-6 mx-1 px-4 py-3 rounded-lg border-2 border-[var(--accent)]/30 bg-[var(--accent)]/5"
+                                style={{ borderColor: '#007CFF', backgroundColor: 'rgba(0, 124, 255, 0.05)' }}>
+                                <div className="flex items-start gap-3">
+                                    <span className="text-lg mt-0.5 shrink-0">💡</span>
+                                    <div className="text-sm leading-relaxed">
+                                        <p className="font-semibold mb-1">
+                                            {language === 'zh'
+                                                ? `您已选择「${meta.nameZh}」`
+                                                : `You selected "${meta.name}"`}
+                                        </p>
+                                        <p className="text-[var(--text-secondary)]">
+                                            {getAppStoreHint(selectedDistro, language)}
+                                        </p>
+                                        <p className="text-[var(--text-muted)] text-xs mt-1">
+                                            {language === 'zh'
+                                                ? `应用商店地址: ${meta.appStoreUrl}`
+                                                : `App store: ${meta.appStoreUrl}`}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })()}
                     {allCategoriesWithApps.length === 0 && searchQuery && (
                         <div className="text-center py-20 text-[var(--text-muted)]">
                             <div className="text-4xl mb-4">🔍</div>
@@ -541,6 +579,8 @@ function HomeContent() {
                             );
                         })}
                     </div>
+                </div>
+                )}
                 </div>
             </main>
 

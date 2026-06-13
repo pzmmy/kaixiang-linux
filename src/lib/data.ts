@@ -103,6 +103,8 @@ export const mirrorSources: MirrorSource[] = [
             arch: 'https://mirrors.tuna.tsinghua.edu.cn/archlinux/',
             fedora: 'https://mirrors.tuna.tsinghua.edu.cn/fedora/',
             opensuse: 'https://mirrors.tuna.tsinghua.edu.cn/opensuse/',
+            deepin: 'https://mirrors.tuna.tsinghua.edu.cn/deepin/',
+            uos: 'https://mirrors.tuna.tsinghua.edu.cn/deepin/',
         },
     },
     {
@@ -115,6 +117,8 @@ export const mirrorSources: MirrorSource[] = [
             arch: 'https://mirrors.aliyun.com/archlinux/',
             fedora: 'https://mirrors.aliyun.com/fedora/',
             opensuse: 'https://mirrors.aliyun.com/opensuse/',
+            deepin: 'https://mirrors.aliyun.com/deepin/',
+            uos: 'https://mirrors.aliyun.com/deepin/',
         },
     },
     {
@@ -127,6 +131,8 @@ export const mirrorSources: MirrorSource[] = [
             arch: 'https://mirrors.ustc.edu.cn/archlinux/',
             fedora: 'https://mirrors.ustc.edu.cn/fedora/',
             opensuse: 'https://mirrors.ustc.edu.cn/opensuse/',
+            deepin: 'https://mirrors.ustc.edu.cn/deepin/',
+            uos: 'https://mirrors.ustc.edu.cn/deepin/',
         },
         flathubMirror: 'https://mirrors.ustc.edu.cn/flathub',
     },
@@ -342,10 +348,54 @@ fi
     switch (distroId) {
         case 'ubuntu':
         case 'debian':
-        case 'deepin':
-        case 'uos':
             distroPart = aptMirror;
             break;
+        case 'deepin':
+        case 'uos': {
+            const distroName = distroId === 'deepin' ? 'Deepin' : 'UOS';
+            const storeName = distroId === 'deepin' ? '深度应用商店' : 'UOS 应用商店';
+            distroPart = `# ============================================================
+# 1. 提示：${distroName} 优先使用 ${storeName} 安装软件
+# ============================================================
+echo "========================================================"
+echo " 提示：${distroName} 建议优先使用 ${storeName}"
+echo " 应用商店提供图形化安装体验，兼容性更好"
+echo "========================================================"
+echo ""
+read -p "是否继续使用命令行换源并安装软件？(y/N): " confirm
+if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+    echo "已取消，请打开 ${storeName} 安装软件。"
+    echo "如需再次运行此脚本，请执行: bash $0"
+    exit 0
+fi
+
+# 2. 备份源并换清华源
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak 2>/dev/null || true
+sudo sed -i 's|http://packages.deepin.com|https://mirrors.tuna.tsinghua.edu.cn/deepin|g' /etc/apt/sources.list 2>/dev/null || true
+sudo sed -i 's|https://packages.deepin.com|https://mirrors.tuna.tsinghua.edu.cn/deepin|g' /etc/apt/sources.list 2>/dev/null || true
+sudo sed -i 's|http://uos.deepin.com|https://mirrors.tuna.tsinghua.edu.cn/deepin|g' /etc/apt/sources.list 2>/dev/null || true
+sudo apt update -qq
+
+# 3. 安装中文字体（Deepin/UOS 通常已自带，仅作补充）
+sudo apt install -y fonts-wqy-microhei fonts-wqy-zenhi 2>/dev/null && echo "✓ 中文字体已安装" || echo "⚠ 字体安装跳过"
+
+# 4. 安装中文输入法（Deepin/UOS 通常已自带 fcitx5）
+sudo apt install -y fcitx5 fcitx5-chinese-addons fcitx5-configtool 2>/dev/null && echo "✓ 输入法已安装" || echo "⚠ 输入法安装跳过"
+
+# 5. 配置输入法环境变量
+grep -q 'GTK_IM_MODULE=fcitx' ~/.xprofile 2>/dev/null || {
+    echo >> ~/.xprofile
+    echo 'export GTK_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export QT_IM_MODULE=fcitx' >> ~/.xprofile
+    echo 'export XMODIFIERS=@im=fcitx' >> ~/.xprofile
+}
+echo "✓ 输入法环境变量已配置"
+
+# 6. Flatpak 镜像
+sudo flatpak remote-modify flathub --url=${flathubUrl} 2>/dev/null && echo "✓ Flathub 已换源" || echo "⚠ Flatpak 未安装，跳过"
+`;
+            break;
+        }
         case 'arch':
             distroPart = archScript;
             break;
@@ -417,8 +467,8 @@ export const distros: Distro[] = [
     { id: 'fedora', name: 'Fedora', iconUrl: 'https://api.iconify.design/simple-icons/fedora.svg?color=%2351A2DA', color: '#51A2DA', installPrefix: 'sudo dnf install -y' },
     { id: 'opensuse', name: 'OpenSUSE', iconUrl: 'https://api.iconify.design/simple-icons/opensuse.svg?color=%2373BA25', color: '#73BA25', installPrefix: 'sudo zypper install -y' },
     { id: 'nix', name: 'NixOS', iconUrl: 'https://api.iconify.design/simple-icons/nixos.svg?color=%235277C3', color: '#5277C3', installPrefix: 'nix-env -iA nixpkgs.' },
-    { id: 'deepin', name: 'Deepin', iconUrl: 'https://api.iconify.design/simple-icons/deepin.svg?color=%23007CFF', color: '#007CFF', installPrefix: 'sudo apt install -y' },
-    { id: 'uos', name: 'UOS 统信', iconUrl: 'https://api.iconify.design/simple-icons/deepin.svg?color=%230081FF', color: '#0081FF', installPrefix: 'sudo apt install -y' },
+    { id: 'deepin', name: 'Deepin', iconUrl: 'https://api.iconify.design/simple-icons/deepin.svg?color=%23007CFF', color: '#007CFF', installPrefix: '# 推荐优先使用深度应用商店安装软件（图形化）\nsudo apt install -y' },
+    { id: 'uos', name: 'UOS 统信', iconUrl: 'https://api.iconify.design/simple-icons/deepin.svg?color=%230081FF', color: '#0081FF', installPrefix: '# 推荐优先使用 UOS 应用商店安装软件（图形化）\nsudo apt install -y' },
     { id: 'flatpak', name: 'Flatpak（通用）', iconUrl: 'https://api.iconify.design/simple-icons/flatpak.svg?color=%234A90D9', color: '#4A90D9', installPrefix: 'flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak install flathub -y' },
     { id: 'snap', name: 'Snap（通用）', iconUrl: 'https://api.iconify.design/simple-icons/snapcraft.svg?color=%2382BEA0', color: '#82BEA0', installPrefix: 'sudo snap install' },
     { id: 'homebrew', name: 'Homebrew（通用）', iconUrl: 'https://api.iconify.design/simple-icons/homebrew.svg?color=%23FBB040', color: '#FBB040', installPrefix: 'brew install' },
