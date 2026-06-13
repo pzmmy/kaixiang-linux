@@ -28,5 +28,14 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+
 # local notes
 AGENT.md
