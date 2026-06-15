@@ -1,0 +1,445 @@
+[
+  {
+    "id": "pantum-p2500",
+    "name": "奔图 P2500 系列",
+    "type": "printer",
+    "vendor": "奔图 (Pantum)",
+    "distros": {
+      "deepin": "full",
+      "ubuntu": "full",
+      "kylin": "full",
+      "arch": "full",
+      "fedora": "full",
+      "opensuse": "full"
+    },
+    "status": "full",
+    "driverInstructions": "奔图官网提供Linux驱动包，下载后解压运行 install.sh。Deepin/UOS 内置驱动。",
+    "source": "https://www.pantum.com/support/driver"
+  },
+  {
+    "id": "pantum-p3300",
+    "name": "奔图 P3300 系列",
+    "type": "printer",
+    "vendor": "奔图 (Pantum)",
+    "distros": {
+      "deepin": "full",
+      "ubuntu": "full",
+      "kylin": "full",
+      "arch": "manual",
+      "fedora": "partial",
+      "opensuse": "partial"
+    },
+    "status": "partial",
+    "driverInstructions": "奔图官网提供Linux驱动，建议优先使用官网 deb/rpm 包安装。Arch 需手动解压驱动使用。",
+    "source": "https://www.pantum.com/support/driver"
+  },
+  {
+    "id": "pantum-cp2500",
+    "name": "奔图 CP2500 系列彩色激光",
+    "type": "printer",
+    "vendor": "奔图 (Pantum)",
+    "distros": {
+      "deepin": "partial",
+      "ubuntu": "full",
+      "kylin": "full",
+      "arch": "manual",
+      "fedora": "partial"
+    },
+    "status": "partial",
+    "driverInstructions": "彩色激光需装完整驱动包，奔图官网提供。Deepin/UOS 部分支持，需手动配置PPD文件。",
+    "source": "https://www.pantum.com/support/driver"
+  },
+  {
+    "id": "hprt-print",
+    "name": "汉印 (HPRT) 系列热敏/标签打印机",
+    "type": "printer",
+    "vendor": "汉印 (HPRT)",
+    "distros": {
+      "deepin": "partial",
+      "ubuntu": "manual",
+      "kylin": "partial",
+      "arch": "manual"
+    },
+    "status": "manual",
+    "driverInstructions": "汉印部分型号提供Linux驱动，需从官网下载手动安装。建议安装后使用 cups 配置。",
+    "source": "https://www.hprt.com.cn/download/"
+  },
+  {
+    "id": "deli-printer",
+    "name": "得力 (Deli) 打印机系列",
+    "type": "printer",
+    "vendor": "得力 (Deli)",
+    "distros": {
+      "deepin": "partial",
+      "ubuntu": "manual",
+      "kylin": "partial",
+      "arch": "unsupported"
+    },
+    "status": "manual",
+    "driverInstructions": "得力部分型号提供Linux驱动，可下载后通过 cups 添加打印机。部分型号使用 GDI 协议，兼容性有限。",
+    "source": "https://www.nbdeli.com/service/down/"
+  },
+  {
+    "id": "canton-printer",
+    "name": "沧田 (Canton) 打印机系列",
+    "type": "printer",
+    "vendor": "沧田 (Canton)",
+    "distros": {
+      "deepin": "partial",
+      "kylin": "full",
+      "ubuntu": "manual",
+      "arch": "unsupported"
+    },
+    "status": "partial",
+    "driverInstructions": "沧田部分型号支持Linux，统信UOS/麒麟系统有官方驱动。Ubuntu需下载驱动手动编译安装。",
+    "source": "https://www.cantontec.com/service/driver/"
+  },
+  {
+    "id": "unis-scanner",
+    "name": "紫光 (Unis) 扫描仪系列",
+    "type": "scanner",
+    "vendor": "紫光 (Unis)",
+    "distros": {
+      "deepin": "partial",
+      "ubuntu": "manual",
+      "kylin": "full",
+      "arch": "manual"
+    },
+    "status": "manual",
+    "driverInstructions": "紫光部分扫描仪通过 SANE 支持。建议先用 `scanimage -L` 检测，再安装对应驱动。",
+    "source": "https://www.unis.com.cn/service/drive"
+  },
+  {
+    "id": "microtek-scanner",
+    "name": "中晶 (Microtek) 扫描仪系列",
+    "type": "scanner",
+    "vendor": "中晶 (Microtek)",
+    "distros": {
+      "deepin": "partial",
+      "ubuntu": "partial",
+      "fedora": "partial",
+      "arch": "manual"
+    },
+    "status": "partial",
+    "driverInstructions": "中晶部分扫描仪支持 SANE，可尝试 `sudo sane-find-scanner` 检测。部分型号需手动安装闭源驱动。",
+    "source": "https://www.microtek.com.cn/drivers"
+  },
+  {
+    "id": "founder-scanner",
+    "name": "方正 (Founder) 扫描仪系列",
+    "type": "scanner",
+    "vendor": "方正 (Founder)",
+    "distros": {
+      "kylin": "full",
+      "deepin": "partial",
+      "ubuntu": "manual",
+      "arch": "unsupported"
+    },
+    "status": "partial",
+    "driverInstructions": "部分方正扫描仪在麒麟系统内置支持，其他发行版需从官网下载驱动。部分较新型号仅支持 Windows。",
+    "source": "https://www.founder.com.cn/service/download/"
+  },
+  {
+    "id": "tenda-wifi",
+    "name": "腾达 (Tenda) USB 无线网卡",
+    "type": "wifi",
+    "vendor": "腾达 (Tenda)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "fedora": "full",
+      "arch": "full"
+    },
+    "status": "full",
+    "driverInstructions": "腾达大部分 Realtek/RTL 芯片网卡被 Linux 内核直接支持。如不识别，安装 rtl88x2bu-dkms 驱动。",
+    "source": "https://www.tenda.com.cn/download/"
+  },
+  {
+    "id": "mercury-wifi",
+    "name": "水星 (Mercury) USB 无线网卡",
+    "type": "wifi",
+    "vendor": "水星 (Mercury)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "fedora": "full",
+      "arch": "full"
+    },
+    "status": "full",
+    "driverInstructions": "水星网卡多使用 MTK/Realtek 芯片，内核通常自带驱动。个别型号需安装 rtl8812au-dkms。",
+    "source": "https://www.mercurycom.com.cn/download/"
+  },
+  {
+    "id": "360-wifi",
+    "name": "360 WiFi 随身wifi",
+    "type": "wifi",
+    "vendor": "360",
+    "distros": {
+      "ubuntu": "partial",
+      "deepin": "partial",
+      "fedora": "manual",
+      "arch": "manual"
+    },
+    "status": "manual",
+    "driverInstructions": "360 WiFi 使用 MTK 芯片，需安装 mt7601Usta 或 mt7610u 驱动。可通过 dkms 方式编译安装。",
+    "source": "https://bbs.360.cn/thread-15949997-1-1.html"
+  },
+  {
+    "id": "xiaomi-wifi",
+    "name": "小米随身WiFi",
+    "type": "wifi",
+    "vendor": "小米 (Xiaomi)",
+    "distros": {
+      "ubuntu": "partial",
+      "deepin": "partial",
+      "fedora": "manual",
+      "arch": "manual"
+    },
+    "status": "manual",
+    "driverInstructions": "小米随身WiFi使用 MT7601U 芯片。安装 mt7601u 驱动: `sudo modprobe mt7601u` 或编译 mt7601Usta.ko。",
+    "source": "https://github.com/art567/mt7601u"
+  },
+  {
+    "id": "zte-wifi",
+    "name": "中兴 (ZTE) 无线网卡/MiFi",
+    "type": "wifi",
+    "vendor": "中兴 (ZTE)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "kylin": "full",
+      "arch": "full"
+    },
+    "status": "full",
+    "driverInstructions": "中兴 4G/5G MiFi 设备通常通过 USB 共享网络（RNDIS/ECM 模式），内核支持良好。",
+    "source": "https://www.zte.com.cn/china/support"
+  },
+  {
+    "id": "huawei-fingerprint",
+    "name": "华为 MateBook 指纹模块",
+    "type": "fingerprint",
+    "vendor": "华为 (Huawei)",
+    "distros": {
+      "ubuntu": "partial",
+      "deepin": "partial",
+      "fedora": "partial",
+      "arch": "manual"
+    },
+    "status": "partial",
+    "driverInstructions": "华为 MateBook 指纹 (Goodix) 通过 libfprint 部分支持。需要较新版本的 libfprint >= 1.94。",
+    "source": "https://github.com/goodix-fp-linux/libfprint-goodix"
+  },
+  {
+    "id": "xiaomi-fingerprint",
+    "name": "小米笔记本指纹模块",
+    "type": "fingerprint",
+    "vendor": "小米 (Xiaomi)",
+    "distros": {
+      "ubuntu": "manual",
+      "arch": "manual",
+      "fedora": "manual"
+    },
+    "status": "manual",
+    "driverInstructions": "小米笔记本指纹 (Goodix/Synaptics) 需安装 libfprint 并添加设备 ID。参考 libfprint 开源项目。",
+    "source": "https://github.com/fprint/libfprint"
+  },
+  {
+    "id": "zkteco-fingerprint",
+    "name": "中控 (ZKTeco) 指纹采集器",
+    "type": "fingerprint",
+    "vendor": "中控 (ZKTeco)",
+    "distros": {
+      "ubuntu": "manual",
+      "deepin": "manual",
+      "kylin": "partial",
+      "arch": "unsupported"
+    },
+    "status": "manual",
+    "driverInstructions": "ZKTeco 提供 Linux SDK，需手动编译集成。部分型号在麒麟系统上有官方驱动支持。",
+    "source": "https://www.zkteco.com/download/"
+  },
+  {
+    "id": "hanwang-fingerprint",
+    "name": "汉王 (Hanwang) 指纹仪",
+    "type": "fingerprint",
+    "vendor": "汉王 (Hanwang)",
+    "distros": {
+      "kylin": "partial",
+      "ubuntu": "manual",
+      "deepin": "manual"
+    },
+    "status": "manual",
+    "driverInstructions": "汉王部分指纹仪提供Linux SDK，需要手动安装开发包。建议联系汉王技术支持获取最新驱动。",
+    "source": "https://www.hanwang.com.cn/download/"
+  },
+  {
+    "id": "moore-threads-mtt",
+    "name": "摩尔线程 MTT S70/S80/S3000",
+    "type": "gpu",
+    "vendor": "摩尔线程 (Moore Threads)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "kylin": "full",
+      "opensuse": "partial",
+      "arch": "partial"
+    },
+    "status": "full",
+    "driverInstructions": "摩尔线程提供官方 Linux 驱动包（deb/rpm），包含 Vulkan/OpenGL 支持。从官网下载 PVE 驱动安装。",
+    "source": "https://www.moorethreads.cn/support/driver"
+  },
+  {
+    "id": "jingjiamei-jm",
+    "name": "景嘉微 JM7201/JM9100",
+    "type": "gpu",
+    "vendor": "景嘉微 (Jingjiamei)",
+    "distros": {
+      "kylin": "full",
+      "deepin": "full",
+      "ubuntu": "partial",
+      "arch": "partial"
+    },
+    "status": "partial",
+    "driverInstructions": "景嘉微GPU在麒麟/UOS有官方驱动。其他发行版需手动安装，驱动闭源且需要签署NDA获取。",
+    "source": "https://www.jingjiamicro.com/service/"
+  },
+  {
+    "id": "innosilicon-fengxi",
+    "name": "芯动科技 风华 (Fantasy) GPU",
+    "type": "gpu",
+    "vendor": "芯动科技 (Innosilicon)",
+    "distros": {
+      "ubuntu": "full",
+      "kylin": "full",
+      "deepin": "full",
+      "fedora": "manual"
+    },
+    "status": "full",
+    "driverInstructions": "芯动风华GPU提供Linux驱动，支持 deb/rpm 格式安装，包含 DirectX/Vulkan 转译。",
+    "source": "https://www.innosilicon.com/support"
+  },
+  {
+    "id": "loongson-gpu",
+    "name": "龙芯 7A2000 集成GPU",
+    "type": "gpu",
+    "vendor": "龙芯 (Loongson)",
+    "distros": {
+      "deepin-loongarch": "full",
+      "kylin-loongarch": "full",
+      "ubuntu-loongarch": "partial",
+      "arch-loongarch": "partial"
+    },
+    "status": "partial",
+    "driverInstructions": "龙芯 7A2000 桥片集成GPU，LoongArch 架构专用。需使用龙芯版发行版，驱动已包含在内核中。",
+    "source": "https://www.loongson.cn/download/"
+  },
+  {
+    "id": "tax-ukey",
+    "name": "税务UKey (税务数字证书)",
+    "type": "ukey",
+    "vendor": "国家税务总局",
+    "distros": {
+      "deepin": "full",
+      "kylin": "full",
+      "ubuntu": "full",
+      "arch": "manual",
+      "fedora": "manual"
+    },
+    "status": "full",
+    "driverInstructions": "税务UKey在Deepin/UOS/麒麟系统内置支持。安装税务开票软件Linux版即可自动识别。其他发行版需安装 usb-modeswitch 和 pcsc-lite。",
+    "source": "https://inv-veri.chinatax.gov.cn/"
+  },
+  {
+    "id": "baiwang-tax-disk",
+    "name": "百旺/旋极税控盘",
+    "type": "ukey",
+    "vendor": "百旺/旋极信息",
+    "distros": {
+      "deepin": "full",
+      "kylin": "full",
+      "ubuntu": "partial",
+      "arch": "manual"
+    },
+    "status": "partial",
+    "driverInstructions": "税控盘在Deepin/UOS/麒麟上有官方驱动。Ubuntu需安装 pcscd 和 ccid 驱动，手动配置 udev 规则。",
+    "source": "https://www.baiwang.com/download/"
+  },
+  {
+    "id": "huawei-matebook",
+    "name": "华为 MateBook 系列笔记本",
+    "type": "laptop",
+    "vendor": "华为 (Huawei)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "fedora": "full",
+      "arch": "full",
+      "opensuse": "full"
+    },
+    "status": "full",
+    "driverInstructions": "华为 MateBook 主流型号安装 Linux 后键盘/触控板/WiFi/显卡通常正常工作。建议使用较新内核(>=6.0)获取最佳支持。",
+    "source": "https://github.com/zhanghai/linux-matebook"
+  },
+  {
+    "id": "lenovo-xiaoxin",
+    "name": "联想 小新/ThinkBook 系列笔记本",
+    "type": "laptop",
+    "vendor": "联想 (Lenovo)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "fedora": "full",
+      "arch": "full",
+      "opensuse": "full"
+    },
+    "status": "full",
+    "driverInstructions": "联想小新/ThinkBook系列主流硬件Linux支持良好。部分机型Intel AX201/WiFi6需内核>=5.10。",
+    "source": "https://wiki.archlinux.org/title/Lenovo_ThinkBook"
+  },
+  {
+    "id": "xiaomi-notebook",
+    "name": "小米笔记本 Air/Pro 系列",
+    "type": "laptop",
+    "vendor": "小米 (Xiaomi)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "fedora": "full",
+      "arch": "full",
+      "opensuse": "full"
+    },
+    "status": "full",
+    "driverInstructions": "小米笔记本 Linux 支持良好。主要注意指纹模块需额外配置，建议安装 libfprint-goodix。",
+    "source": "https://wiki.archlinux.org/title/Xiaomi_Mi_Notebook"
+  },
+  {
+    "id": "honor-magicbook",
+    "name": "荣耀 MagicBook 系列笔记本",
+    "type": "laptop",
+    "vendor": "荣耀 (Honor)",
+    "distros": {
+      "ubuntu": "full",
+      "deepin": "full",
+      "fedora": "full",
+      "arch": "partial"
+    },
+    "status": "full",
+    "driverInstructions": "荣耀 MagicBook 主流配置支持良好。部分新机型 AMD 平台需内核>=6.2。触控板使用 I2C-HID 协议。",
+    "source": "https://wiki.archlinux.org/title/Honor_MagicBook"
+  },
+  {
+    "id": "zhaoxin-gpu",
+    "name": "兆芯 (Zhaoxin) KX-6000/KX-7000 集成GPU",
+    "type": "gpu",
+    "vendor": "兆芯 (Zhaoxin)",
+    "distros": {
+      "kylin": "full",
+      "deepin": "full",
+      "ubuntu": "partial",
+      "arch": "partial"
+    },
+    "status": "partial",
+    "driverInstructions": "兆芯集成GPU使用 C-480 核心，需要装 zx-xg32 驱动。在麒麟/UOS上预装，其他发行版需手动安装。",
+    "source": "https://www.zhaoxin.com/service/drivers"
+  }
+]
