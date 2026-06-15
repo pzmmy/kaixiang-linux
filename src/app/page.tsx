@@ -564,7 +564,7 @@ function HomeContent() {
                                             selectedDistro={selectedDistro}
                                             toggleApp={toggleApp}
                                             isExpanded={expandedCategories.has(category)}
-                                            onToggleExpanded={() => toggleCategoryExpanded(category)}
+                                            onToggleExpanded={() => toggleCategoryVisibility(category)}
                                             focusedId={isKeyboardNavigating ? focusedItem?.id : undefined}
                                             focusedType={isKeyboardNavigating ? focusedItem?.type : undefined}
                                             onTooltipEnter={showTooltip}
@@ -607,7 +607,7 @@ function HomeContent() {
                                             selectedDistro={selectedDistro}
                                             toggleApp={toggleApp}
                                             isExpanded={expandedCategories.has(category)}
-                                            onToggleExpanded={() => toggleCategoryExpanded(category)}
+                                            onToggleExpanded={() => toggleCategoryVisibility(category)}
                                             focusedId={isKeyboardNavigating ? focusedItem?.id : undefined}
                                             focusedType={isKeyboardNavigating ? focusedItem?.type : undefined}
                                             onTooltipEnter={showTooltip}
