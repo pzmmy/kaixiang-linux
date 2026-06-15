@@ -132,5 +132,21 @@
       "name": "ffmpeg",
       "color": "#007808"
     }
+  },
+  {
+    "id": "wiliwili",
+    "name": "wiliwili",
+    "description": "第三方 B站（Bilibili）桌面客户端，支持触屏/手柄/键盘操控",
+    "category": "Media",
+    "targets": {
+      "flatpak": "cn.xfangfang.wiliwili"
+    },
+    "unavailableReason": "仅在 Flathub 上分发。`flatpak install flathub cn.xfangfang.wiliwili`",
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "bilibili",
+      "color": "#00A1D6"
+    }
   }
 ]
