@@ -195,12 +195,8 @@ function HomeContent() {
         const query = debouncedSearch.toLowerCase().trim();
         return categories
             .map(cat => {
-                // If visibleCategories is reduced, hide non-visible categories
-                if (!visibleCategories.has(cat)) {
-                    return { category: cat, apps: [] };
-                }
                 const categoryApps = getAppsByCategory(cat);
-                const filteredApps = query
+                const filteredApps = (query && visibleCategories.has(cat))
                     ? categoryApps.filter(app =>
                         app.name.toLowerCase().includes(query) ||
                         app.id.toLowerCase().includes(query) ||
@@ -208,9 +204,8 @@ function HomeContent() {
                         (app.aliases && app.aliases.some(a => a.toLowerCase().includes(query)))
                     )
                     : categoryApps;
-                return { category: cat, apps: filteredApps };
-            })
-            .filter(c => c.apps.length > 0);
+                return { category: cat, apps: filteredApps, visible: visibleCategories.has(cat) };
+            });
     }, [debouncedSearch, visibleCategories]);
 
     const searchSuggestions = useMemo(() => {
@@ -558,9 +553,10 @@ function HomeContent() {
                             });
                             return mobileColumns.map((columnCategories, colIdx) => (
                                 <div key={`mobile-col-${colIdx}`}>
-                                    {columnCategories.map(({ category, apps: categoryApps }, catIdx) => (
+                                    {columnCategories.map(({ category, apps: categoryApps, visible }, catIdx) => (
+                                        <div key={`${category}-${categoryApps.length}`} className={visible === false ? 'opacity-40' : ''}>
                                         <CategorySection
-                                            key={`${category}-${categoryApps.length}`}
+                                            key={`${category}`}
                                             category={category}
                                             categoryApps={categoryApps}
                                             selectedApps={selectedApps}
@@ -582,6 +578,7 @@ function HomeContent() {
                                             searchQuery={debouncedSearch}
                                             language={language}
                                         />
+                                    </div>
                                     ))}
                                 </div>
                             ));
@@ -599,9 +596,10 @@ function HomeContent() {
 
                             return (
                                 <div key={columnKey}>
-                                    {columnCategories.map(({ category, apps: categoryApps }, catIdx) => (
+                                    {columnCategories.map(({ category, apps: categoryApps, visible }, catIdx) => (
+                                        <div key={`${category}-${categoryApps.length}`} className={visible === false ? 'opacity-40' : ''}>
                                         <CategorySection
-                                            key={`${category}-${categoryApps.length}`}
+                                            key={`${category}`}
                                             category={category}
                                             categoryApps={categoryApps}
                                             selectedApps={selectedApps}
@@ -623,6 +621,7 @@ function HomeContent() {
                                             searchQuery={debouncedSearch}
                                             language={language}
                                         />
+                                    </div>
                                     ))}
                                 </div>
                             );
