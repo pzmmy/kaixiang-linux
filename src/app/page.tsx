@@ -61,8 +61,8 @@ function HomeContent() {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [debouncedSearch, setDebouncedSearch] = useState('');
-    // activeCategory: when set, only this category is shown (focus mode)
-    const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    // visibleCategories: Set of categories to show. Click a category header to toggle.
+    const [visibleCategories, setVisibleCategories] = useState<Set<string>>(() => new Set(categories));
     const [initScriptMode, setInitScriptMode] = useState(false);
     const [includeDocker, setIncludeDocker] = useState(false);
     const searchInputRef = useRef<HTMLInputElement>(null);
@@ -73,8 +73,6 @@ function HomeContent() {
         if (debounceTimer.current) clearTimeout(debounceTimer.current);
         debounceTimer.current = setTimeout(() => {
             setDebouncedSearch(query);
-            // Clear active category when search changes (show all matching results)
-            setActiveCategory(null);
         }, 120);
     }, []);
 
@@ -197,8 +195,8 @@ function HomeContent() {
         const query = debouncedSearch.toLowerCase().trim();
         return categories
             .map(cat => {
-                // If activeCategory is set, skip non-matching categories
-                if (activeCategory && cat !== activeCategory) {
+                // If visibleCategories is reduced, hide non-visible categories
+                if (!visibleCategories.has(cat)) {
                     return { category: cat, apps: [] };
                 }
                 const categoryApps = getAppsByCategory(cat);
@@ -213,7 +211,7 @@ function HomeContent() {
                 return { category: cat, apps: filteredApps };
             })
             .filter(c => c.apps.length > 0);
-    }, [debouncedSearch, activeCategory]);
+    }, [debouncedSearch, visibleCategories]);
 
     const searchSuggestions = useMemo(() => {
         const q = searchQuery.toLowerCase().trim();
@@ -251,35 +249,41 @@ function HomeContent() {
         return cols;
     }, [allCategoriesWithApps]);
 
-    // When activeCategory is set, expand only that category; otherwise expand all
+    // All categories start expanded. Each category toggles independently.
     const [expandedCategories, setExpandedCategories] = useState<Set<string>>(() => new Set(categories));
 
-    // Sync expanded state with activeCategory changes
-    useEffect(() => {
+    // Toggle expand/collapse within the grid (click category header row)
+    const toggleCategoryExpanded = useCallback((cat: string) => {
         setExpandedCategories(prev => {
             const next = new Set(prev);
-            if (activeCategory) {
-                // Expand only the active category
-                for (const cat of next) {
-                    if (cat !== activeCategory) next.delete(cat);
-                }
-                next.add(activeCategory);
+            if (next.has(cat)) {
+                next.delete(cat);
             } else {
-                // Expand all
-                for (const cat of categories) {
-                    next.add(cat);
-                }
+                next.add(cat);
             }
             return next;
         });
-    }, [activeCategory]);
+    }, []);
 
-    const toggleCategoryExpanded = useCallback((cat: string) => {
-        // Clicking a category header toggles activeCategory:
-        // - No active category → set it, expanding only this category
-        // - Same category already active → clear it, show all
-        // - Different category active → switch to new one
-        setActiveCategory(prev => prev === cat ? null : cat);
+    // Toggle visibility in the grid (via filter chips above)
+    const toggleCategoryVisibility = useCallback((cat: string) => {
+        setVisibleCategories(prev => {
+            const next = new Set(prev);
+            if (next.has(cat)) {
+                next.delete(cat);
+            } else {
+                next.add(cat);
+            }
+            // Always expand the category when making it visible
+            if (next.has(cat)) {
+                setExpandedCategories(prevExp => {
+                    const exp = new Set(prevExp);
+                    exp.add(cat);
+                    return exp;
+                });
+            }
+            return next;
+        });
     }, []);
 
     const navItems = useMemo(() => {
@@ -421,17 +425,32 @@ function HomeContent() {
                         <PerformanceGuide onClose={() => setShowGamingGuide(false)} />
                     ) : (
                         <div>
-                    {/* Active category chip bar */}
-                    {activeCategory && (
-                        <div className="flex items-center gap-2 mb-3 px-1">
-                            <span className="text-sm font-medium text-[var(--accent)]">
-                                📂 {language === 'zh' ? (categoryNamesZh as Record<string, string>)[activeCategory] || activeCategory : activeCategory}
-                            </span>
+                    {/* Category filter chips (hidden when all visible) */}
+                    {visibleCategories.size < categories.length && (
+                        <div className="flex flex-wrap items-center gap-1.5 mb-3 px-1">
+                            <span className="text-xs text-[var(--text-muted)] mr-0.5">🔍</span>
+                            {categories.map(cat => {
+                                const isVisible = visibleCategories.has(cat);
+                                const catName = language === 'zh' ? (categoryNamesZh as Record<string, string>)[cat] || cat : cat;
+                                return (
+                                    <button
+                                        key={cat}
+                                        onClick={() => toggleCategoryVisibility(cat)}
+                                        className={`px-2 py-0.5 text-xs rounded-full border transition-all duration-200 ${
+                                            isVisible
+                                                ? 'bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40'
+                                                : 'bg-[var(--bg-tertiary)] text-[var(--text-muted)] border-[var(--border-primary)]/20 opacity-50'
+                                        }`}
+                                    >
+                                        {isVisible ? '☑' : '☐'} {catName}
+                                    </button>
+                                );
+                            })}
                             <button
-                                onClick={() => setActiveCategory(null)}
+                                onClick={() => setVisibleCategories(new Set(categories))}
                                 className="px-2 py-0.5 text-xs rounded-full border border-[var(--border-primary)]/30 
                                     bg-[var(--bg-tertiary)] text-[var(--text-muted)]
-                                    hover:bg-[var(--bg-hover)] transition-all duration-200"
+                                    hover:bg-[var(--bg-hover)] transition-all duration-200 ml-1"
                             >
                                 ✕ {t('showAll')}
                             </button>
