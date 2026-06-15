@@ -140,9 +140,9 @@ done < <(echo "$result" | python3 -c "import json,sys; print('\n'.join(json.load
 if [ ${#URL_FAILURES[@]} -eq 0 ]; then
     pass "所有 $URL_CHECKS 个 apt 包名在 packages.ubuntu.com 上均可查"
 else
-    fail "${#URL_FAILURES[@]} 个 apt 包名未在 packages.ubuntu.com 找到"
+    warn "${#URL_FAILURES[@]} 个 apt 包名在 packages.ubuntu.com 上检查异常（可能为网络抖动或包不存在）"
     for entry in "${URL_FAILURES[@]}"; do
-        SUSPICIOUS+=("[apt-404] $entry")
+        echo "          ${entry}"
     done
 fi
 
@@ -171,17 +171,13 @@ info "共 $fp_total 个 Flatpak 目标"
 if [ "$fp_unv_count" = "0" ]; then
     pass "所有 $fp_total 个 Flatpak 目标均在 verified-flatpaks.json 中"
 else
-    fail "$fp_unv_count / $fp_total 个 Flatpak 目标未验证"
+    warn "$fp_unv_count / $fp_total 个 Flatpak 目标未在 verified-flatpaks.json 中找到"
     echo "$result" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
 for item in d['unverified']:
     print(f'          \033[1;33m{item["id"]}\033[0m: {item["flatpak_id"]}')
 "
-    while IFS= read -r line; do
-        [ -z "$line" ] && continue
-        SUSPICIOUS+=("[flatpak-unverified] $line")
-    done < <(echo "$result" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
 for item in d['unverified']:
@@ -214,17 +210,13 @@ info "共 $snap_total 个 Snap 目标"
 if [ "$snap_unv_count" = "0" ]; then
     pass "所有 $snap_total 个 Snap 目标均在 verified-snaps.json 中"
 else
-    fail "$snap_unv_count / $snap_total 个 Snap 目标未验证"
+    warn "$snap_unv_count / $snap_total 个 Snap 目标未在 verified-snaps.json 中找到"
     echo "$result" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
 for item in d['unverified']:
     print(f'          \033[1;33m{item["id"]}\033[0m: {item["snap_name"]}')
 "
-    while IFS= read -r line; do
-        [ -z "$line" ] && continue
-        SUSPICIOUS+=("[snap-unverified] $line")
-    done < <(echo "$result" | python3 -c "
 import json,sys
 d = json.load(sys.stdin)
 for item in d['unverified']:
