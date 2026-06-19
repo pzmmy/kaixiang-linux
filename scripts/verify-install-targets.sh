@@ -20,8 +20,8 @@ yellow='\033[1;33m'
 cyan='\033[0;36m'
 nc='\033[0m'
 
-pass() { echo -e "  ${green}✓${nc} $1"; ((PASS++)); }
-fail() { echo -e "  ${red}✗${nc} $1"; ((FAIL++)); }
+pass() { echo -e "  ${green}✓${nc} $1"; PASS=$((PASS+1)); }
+fail() { echo -e "  ${red}✗${nc} $1"; FAIL=$((FAIL+1)); }
 warn() { echo -e "  ${yellow}⚠${nc} $1"; }
 info() { echo -e "  ${cyan}→${nc} $1"; }
 
@@ -178,11 +178,6 @@ d = json.load(sys.stdin)
 for item in d['unverified']:
     print(f'          \033[1;33m{item["id"]}\033[0m: {item["flatpak_id"]}')
 "
-import json,sys
-d = json.load(sys.stdin)
-for item in d['unverified']:
-    print(f'{item["id"]}: {item["flatpak_id"]}')
-")
 fi
 
 echo ""
@@ -217,11 +212,6 @@ d = json.load(sys.stdin)
 for item in d['unverified']:
     print(f'          \033[1;33m{item["id"]}\033[0m: {item["snap_name"]}')
 "
-import json,sys
-d = json.load(sys.stdin)
-for item in d['unverified']:
-    print(f'{item["id"]}: {item["snap_name"]}')
-")
 fi
 
 echo ""
