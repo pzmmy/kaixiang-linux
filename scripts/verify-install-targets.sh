@@ -94,8 +94,14 @@ for item in json.load(sys.stdin):
 "
 fi
 
-echo ""
-echo -e "${cyan}[3/5] 检查 apt 包名在 packages.ubuntu.com 上是否可达${nc}"
+# In CI mode (GITHUB_ACTIONS), skip network-dependent checks (steps 3-5)
+if [[ -n "${GITHUB_ACTIONS:-}" ]]; then
+    echo ""
+    echo -e "${yellow}⚠ CI 模式：跳过网络依赖的检查（步骤 3-5）${nc}"
+    echo ""
+else
+    echo ""
+    echo -e "${cyan}[3/5] 检查 apt 包名在 packages.ubuntu.com 上是否可达${nc}"
 
 result=$(python3 -c "
 import json, glob
@@ -212,6 +218,7 @@ d = json.load(sys.stdin)
 for item in d['unverified']:
     print(f'          \033[1;33m{item["id"]}\033[0m: {item["snap_name"]}')
 "
+fi
 fi
 
 echo ""
