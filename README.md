@@ -64,10 +64,27 @@
 # 国内用户先设镜像源（重要）
 npm config set registry https://registry.npmmirror.com
 
+# 安装依赖
 npm install
+
+# 复制环境变量模板（可选，部分功能需要）
+cp .env.example .env.local
+
+# 启动开发服务器
 npm run dev
 # 打开 http://localhost:3000
 ```
+
+### 可用命令
+
+| 命令 | 说明 |
+|------|------|
+| `npm run dev` | 启动开发服务器 |
+| `npm run build` | 构建生产版本 |
+| `npm start` | 启动生产服务器 |
+| `npm run lint` | 代码风格检查 |
+| `npm test` | 运行测试套件（122+ 条用例） |
+| `npm run test:watch` | 监听模式运行测试 |
 
 ### Docker
 

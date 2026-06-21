@@ -1,10 +1,16 @@
 import { apps, type DistroId, type AppData, type UniversalTargetId } from '../data';
 
+/** 包信息：应用数据 + 发行版对应的包名字符串 */
 export interface PackageInfo {
     app: AppData;
     pkg: string;
 }
 
+/**
+ * 转义 shell 字符串中的特殊字符，防止注入
+ * @param str - 原始字符串
+ * @returns 转义后的字符串
+ */
 export function escapeShellString(str: string): string {
     return str
         .replace(/\\/g, '\\\\')
@@ -14,6 +20,12 @@ export function escapeShellString(str: string): string {
         .replace(/!/g, '\\!');
 }
 
+/**
+ * 获取选中应用在当前发行版下的原生包列表
+ * @param selectedAppIds - 选中应用 ID 集合
+ * @param distroId - 目标发行版
+ * @returns 包信息数组
+ */
 export function getSelectedPackages(selectedAppIds: Set<string>, distroId: DistroId): PackageInfo[] {
     return Array.from(selectedAppIds)
         .map(id => apps.find(a => a.id === id))
@@ -21,6 +33,13 @@ export function getSelectedPackages(selectedAppIds: Set<string>, distroId: Distr
         .map(app => ({ app, pkg: app.targets[distroId]! }));
 }
 
+/**
+ * 获取选中应用的通用包列表（npm/script），用于跨发行版的回退安装
+ * @param selectedAppIds - 选中应用 ID 集合
+ * @param target - 通用目标类型（npm 或 script）
+ * @param distroId - 可选，传入后会排除已有原生包的应用
+ * @returns 通用包信息数组
+ */
 export function getUniversalPackages(selectedAppIds: Set<string>, target: UniversalTargetId, distroId?: DistroId): PackageInfo[] {
     return Array.from(selectedAppIds)
         .map(id => apps.find(a => a.id === id))
@@ -28,6 +47,12 @@ export function getUniversalPackages(selectedAppIds: Set<string>, target: Univer
         .map(app => ({ app, pkg: app.targets[target]! }));
 }
 
+/**
+ * 生成通用安装脚本段（npm install -g + 自定义脚本），注入到各发行版脚本中
+ * @param selectedAppIds - 选中应用 ID 集合
+ * @param distroId - 可选，排除已有原生包的应用
+ * @returns Shell 脚本片段（可为空）
+ */
 export function generateUniversalScript(selectedAppIds: Set<string>, distroId?: DistroId): string {
     let script = '';
     const npmPkgs = getUniversalPackages(selectedAppIds, 'npm', distroId);
@@ -48,6 +73,12 @@ export function generateUniversalScript(selectedAppIds: Set<string>, distroId?: 
     return script;
 }
 
+/**
+ * 生成安装脚本头部的 ASCII 艺术字 + 元信息
+ * @param distroName - 发行版显示名称
+ * @param pkgCount - 包数量
+ * @returns ASCII 头部字符串
+ */
 export function generateAsciiHeader(distroName: string, pkgCount: number): string {
     const date = new Date().toISOString().split('T')[0];
     return `#!/bin/bash
@@ -77,6 +108,12 @@ umask 077
 `;
 }
 
+/**
+ * 生成共享的 Shell 工具函数（日志、进度条、重试、摘要等）
+ * @param distroName - 发行版名称（用于日志文件名）
+ * @param total - 安装包总数
+ * @returns Shell 函数定义字符串
+ */
 export function generateSharedUtils(distroName: string, total: number): string {
     return `# ---------------------------------------------------------------------------
 #  Logging & Colors

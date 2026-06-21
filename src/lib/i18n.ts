@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 // ============================================================
-// Translation table
+// Translation table — 中英文翻译对照表
 // ============================================================
 const translations: Record<string, Record<string, string>> = {
   zh: {
@@ -89,11 +89,15 @@ const translations: Record<string, Record<string, string>> = {
 // ============================================================
 // Context
 // ============================================================
+/**
+ * 语言上下文类型
+ */
 type Language = 'zh' | 'en';
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  /** 翻译函数：根据 key 获取对应语言的文本，支持 {0} 格式参数替换 */
   t: (key: string, ...args: string[]) => string;
 }
 
@@ -106,6 +110,9 @@ const LanguageContext = createContext<LanguageContextType>({
 // ============================================================
 // Provider
 // ============================================================
+/**
+ * 语言切换 Provider — 从 localStorage 恢复语言设置，提供翻译函数
+ */
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('zh');
 
@@ -121,6 +128,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('kaixiang-language', lang);
   }, []);
 
+/**
+ * 获取当前语言的翻译文本
+ * @param key - 翻译键
+ * @param args - 可选参数，替换文本中的 {0} {1} ... 占位符
+ * @returns 翻译后的字符串
+ */
   const t = useCallback((key: string, ...args: string[]): string => {
     const langTable = translations[language] || translations.zh;
     let text = langTable[key] || key;
@@ -140,6 +153,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 // ============================================================
 // Hook
 // ============================================================
+/**
+ * 使用当前语言上下文
+ * @returns { language, setLanguage, t }
+ */
 export function useLanguage() {
   return useContext(LanguageContext);
 }

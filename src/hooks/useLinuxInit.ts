@@ -6,6 +6,8 @@ import { isAurPackage } from '@/lib/aur';
 import { isUnfreePackage } from '@/lib/nixUnfree';
 
 export { isAurPackage, AUR_PATTERNS, KNOWN_AUR_PACKAGES } from '@/lib/aur';
+
+/** `useLinuxInit()` 返回值的类型定义 */
 export interface UseLinuxInitReturn {
     selectedDistro: DistroId;
     selectedApps: Set<string>;
@@ -39,6 +41,13 @@ const STORAGE_KEY_YAY = 'linuxinit_yay_installed';
 const STORAGE_KEY_HELPER = 'linuxinit_selected_helper';
 const STORAGE_KEY_MIRROR = 'linuxinit_mirror';
 
+/**
+ * 开箱 Linux 主状态 Hook
+ * 管理：选中发行版、选中应用、镜像源、AUR 助手、Nix 非自由软件等
+ * 状态自动持久化到 localStorage
+ *
+ * @returns 完整的应用状态和操作方法
+ */
 export function useLinuxInit(): UseLinuxInitReturn {
     const [selectedDistro, setSelectedDistroState] = useState<DistroId>('ubuntu');
     const [selectedApps, setSelectedApps] = useState<Set<string>>(new Set());

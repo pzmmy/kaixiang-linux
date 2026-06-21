@@ -17,9 +17,12 @@ import aiTools from './apps/ai-tools.json';
 import chinaEssentials from './apps/china-essentials.json';
 
 
+/** 支持的发行版 ID 联合类型 */
 export type DistroId = 'ubuntu' | 'debian' | 'arch' | 'fedora' | 'opensuse' | 'nix' | 'flatpak' | 'snap' | 'homebrew' | 'deepin' | 'uos';
+/** 通用安装目标类型（作为原生包不存在的回退） */
 export type UniversalTargetId = 'npm' | 'script';
 
+/** 应用分类 */
 export type Category =
     | 'Web Browsers'
     | 'Communication'
@@ -38,10 +41,12 @@ export type Category =
     | 'System'
     | 'AI Tools';
 
+/** 图标定义 — Iconify 图标或 URL 直链 */
 export type IconDef =
     | { type: 'iconify'; set: string; name: string; color?: string }
     | { type: 'url'; url: string };
 
+/** 发行版配置 */
 export interface Distro {
     id: DistroId;
     name: string;
@@ -50,6 +55,7 @@ export interface Distro {
     installPrefix: string;
 }
 
+/** 应用条目配置 */
 export interface AppData {
     id: string;
     name: string;
@@ -63,6 +69,12 @@ export interface AppData {
     size?: number;
 }
 
+/**
+ * 获取图标的完整 URL
+ * Iconify 图标会拼接 API URL，URL 类型直接返回
+ * @param icon - 图标定义
+ * @returns 图片 URL
+ */
 export const getIconUrl = (icon: IconDef): string => {
     if (icon.type === 'url') return icon.url;
     let url = `https://api.iconify.design/${icon.set}/${icon.name}.svg`;
@@ -548,10 +560,22 @@ export const distroNamesZh: Record<string, string> = {
     'homebrew': 'Homebrew（通用）',
 };
 
+/**
+ * 按分类获取应用列表
+ * @param category - 分类名称
+ * @returns 该分类下的应用数组
+ */
 export const getAppsByCategory = (category: Category): AppData[] => {
     return apps.filter(app => app.category === category);
 };
 
+/**
+ * 检查指定应用在当前发行版下是否可用
+ * （原生包、npm 或 script 任一存在即可用）
+ * @param app - 应用数据
+ * @param distro - 发行版 ID
+ * @returns 是否可用
+ */
 export const isAppAvailable = (app: AppData, distro: DistroId): boolean => {
     return (distro in app.targets) || 
            ('npm' in app.targets) || 

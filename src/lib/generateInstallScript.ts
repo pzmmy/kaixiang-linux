@@ -16,12 +16,23 @@ import {
     generateHomebrewScript,
 } from './scripts';
 
+/** 脚本生成选项 */
 interface GenerateOptions {
+    /** 目标发行版 ID */
     distroId: DistroId;
+    /** 用户选中的应用 ID 集合 */
     selectedAppIds: Set<string>;
+    /** AUR 助手类型（仅 Arch Linux 有效） */
     helper?: 'yay' | 'paru';
 }
 
+/**
+ * 生成完整的安装脚本（含 ASCII Header、日志、重试逻辑等）
+ * 根据发行版调用对应的生成器，并注入通用包（npm/script）
+ *
+ * @param options - 生成选项
+ * @returns 完整的 shell 安装脚本
+ */
 export function generateInstallScript(options: GenerateOptions): string {
     const { distroId, selectedAppIds, helper = 'yay' } = options;
     const distro = distros.find(d => d.id === distroId);
@@ -70,6 +81,13 @@ export function generateInstallScript(options: GenerateOptions): string {
     return scriptContent;
 }
 
+/**
+ * 生成简单的一行安装命令（不含包装脚本）。
+ * 用于命令预览栏 / 复制场景。
+ *
+ * @param options - 生成选项
+ * @returns 一行 shell 命令
+ */
 export function generateCommandline(options: GenerateOptions): string {
     const { selectedAppIds, distroId } = options;
     

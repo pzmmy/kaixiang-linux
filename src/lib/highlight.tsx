@@ -2,6 +2,10 @@ import { ReactNode } from 'react';
 
 /**
  * 搜索关键词高亮 — 将匹配文本包裹在 <mark> 标签中
+ *
+ * @param text - 原始文本
+ * @param query - 搜索关键词（大小写不敏感）
+ * @returns 带有 <mark> 高亮的 ReactNode
  */
 export function highlightSearchText(text: string, query: string): ReactNode {
     if (!query || !query.trim()) return text;
