@@ -141,5 +141,30 @@
       "name": "ghost-outline",
       "color": "#6E56CF"
     }
+  },
+  {
+    "id": "tmux",
+    "name": "Tmux",
+    "description": "终端复用器，单个窗口运行多个会话、分离/重连会话、分屏操作",
+    "category": "Terminal",
+    "targets": {
+      "ubuntu": "tmux",
+      "debian": "tmux",
+      "arch": "tmux",
+      "fedora": "tmux",
+      "opensuse": "tmux",
+      "nix": "tmux",
+      "flatpak": null,
+      "snap": null,
+      "homebrew": "tmux",
+      "deepin": "tmux",
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnometerminal",
+      "color": "#4A90D9"
+    }
   }
 ]

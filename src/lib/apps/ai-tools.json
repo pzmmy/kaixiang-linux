@@ -145,5 +145,31 @@
       "name": "book-open-page-variant",
       "color": "#4F46E5"
     }
+  },
+  {
+    "id": "open-webui",
+    "name": "OpenWebUI",
+    "description": "本地大模型的 Web 界面，支持多用户、RAG 文档检索、插件系统",
+    "category": "AI Tools",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": null,
+      "fedora": null,
+      "opensuse": null,
+      "nix": null,
+      "flatpak": null,
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null,
+      "script": "docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "openai",
+      "color": "#412991"
+    }
   }
 ]

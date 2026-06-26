@@ -148,5 +148,30 @@
       "name": "bilibili",
       "color": "#00A1D6"
     }
+  },
+  {
+    "id": "shotcut",
+    "name": "Shotcut",
+    "description": "专业视频编辑器，支持多轨道、色彩校正、关键帧动画、跨平台",
+    "category": "Media",
+    "targets": {
+      "ubuntu": "shotcut",
+      "debian": "shotcut",
+      "arch": "shotcut",
+      "fedora": "shotcut",
+      "opensuse": "shotcut",
+      "nix": "shotcut",
+      "flatpak": "org.shotcut.Shotcut",
+      "snap": "shotcut",
+      "homebrew": "--cask shotcut",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "shotcut",
+      "color": "#FF6600"
+    }
   }
 ]

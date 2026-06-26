@@ -191,5 +191,30 @@
       "name": "kde",
       "color": "#338BDB"
     }
+  },
+  {
+    "id": "mission-center",
+    "name": "Mission Center",
+    "description": "现代化系统监视器，美观的 CPU/内存/磁盘/网络实时图表，GTK4 构建",
+    "category": "System",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": "mission-center",
+      "fedora": null,
+      "opensuse": null,
+      "nix": "mission-center",
+      "flatpak": "io.missioncenter.MissionCenter",
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnome",
+      "color": "#4A86CF"
+    }
   }
 ]

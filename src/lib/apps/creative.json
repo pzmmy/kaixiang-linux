@@ -129,5 +129,30 @@
       "name": "davinciresolve",
       "color": "#E52222"
     }
+  },
+  {
+    "id": "freecad",
+    "name": "FreeCAD",
+    "description": "开源 3D CAD 建模工具，支持参数化设计、有限元分析、Python 脚本扩展",
+    "category": "Creative",
+    "targets": {
+      "ubuntu": "freecad",
+      "debian": "freecad",
+      "arch": "freecad",
+      "fedora": "freecad",
+      "opensuse": "FreeCAD",
+      "nix": "freecad",
+      "flatpak": "org.freecadweb.FreeCAD",
+      "snap": "freecad",
+      "homebrew": "--cask freecad",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "freecad",
+      "color": "#CB3837"
+    }
   }
 ]

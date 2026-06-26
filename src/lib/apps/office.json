@@ -103,5 +103,30 @@
       "name": "kde",
       "color": "#338BDB"
     }
+  },
+  {
+    "id": "pdfmixtool",
+    "name": "PDF Mix Tool",
+    "description": "轻量级 PDF 编辑工具，支持合并、拆分、旋转、提取页面、编辑元数据",
+    "category": "Office",
+    "targets": {
+      "ubuntu": "pdfmixtool",
+      "debian": "pdfmixtool",
+      "arch": "pdfmixtool",
+      "fedora": "pdfmixtool",
+      "opensuse": "pdfmixtool",
+      "nix": "pdfmixtool",
+      "flatpak": "eu.scarpetta.PDFMixTool",
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "adobeacrobatreader",
+      "color": "#EC1C24"
+    }
   }
 ]
