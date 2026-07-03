@@ -128,5 +128,80 @@
       "name": "adobeacrobatreader",
       "color": "#EC1C24"
     }
+  },
+  {
+    "id": "logseq",
+    "name": "Logseq",
+    "description": "开源知识管理工具，大纲式笔记，支持双向链接、图谱视图、本地优先存储",
+    "category": "Office",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": "logseq",
+      "fedora": null,
+      "opensuse": null,
+      "nix": "logseq",
+      "flatpak": "com.logseq.Logseq",
+      "snap": null,
+      "homebrew": "--cask logseq",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "logseq",
+      "color": "#85C0F9"
+    }
+  },
+  {
+    "id": "appflowy",
+    "name": "AppFlowy",
+    "description": "开源 Notion 替代品，支持文档、数据库、看板、日历，本地优先同步",
+    "category": "Office",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": "appflowy",
+      "fedora": null,
+      "opensuse": null,
+      "nix": "appflowy",
+      "flatpak": "io.appflowy.AppFlowy",
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "appflowy",
+      "color": "#5D5FEF"
+    }
+  },
+  {
+    "id": "foliate",
+    "name": "Foliate",
+    "description": "现代化电子书阅读器，支持 EPUB/Mobi/PDF，夜间模式、笔记标注、触控板手势",
+    "category": "Office",
+    "targets": {
+      "ubuntu": "foliate",
+      "debian": "foliate",
+      "arch": "foliate",
+      "fedora": "foliate",
+      "opensuse": "foliate",
+      "nix": "foliate",
+      "flatpak": "com.github.johnfactotum.Foliate",
+      "snap": "foliate",
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "bookstack",
+      "color": "#0288D1"
+    }
   }
 ]

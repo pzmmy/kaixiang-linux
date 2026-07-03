@@ -173,5 +173,55 @@
       "name": "shotcut",
       "color": "#FF6600"
     }
+  },
+  {
+    "id": "celluloid",
+    "name": "Celluloid",
+    "description": "mpv 前端播放器，GTK 界面，支持硬件解码、字幕、播放列表、截图",
+    "category": "Media",
+    "targets": {
+      "ubuntu": "celluloid",
+      "debian": "celluloid",
+      "arch": "celluloid",
+      "fedora": "celluloid",
+      "opensuse": "celluloid",
+      "nix": "celluloid",
+      "flatpak": "io.github.celluloid_player.Celluloid",
+      "snap": "celluloid",
+      "homebrew": "--cask celluloid",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "mpv",
+      "color": "#4A90D9"
+    }
+  },
+  {
+    "id": "haruna",
+    "name": "Haruna",
+    "description": "基于 mpv 的现代化视频播放器，KDE 风格，支持章节导航、在线字幕、配置界面",
+    "category": "Media",
+    "targets": {
+      "ubuntu": "haruna",
+      "debian": "haruna",
+      "arch": "haruna",
+      "fedora": "haruna",
+      "opensuse": "haruna",
+      "nix": "haruna",
+      "flatpak": "org.kde.haruna",
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "kde",
+      "color": "#1D99F3"
+    }
   }
 ]

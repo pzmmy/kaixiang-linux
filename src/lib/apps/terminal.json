@@ -166,5 +166,30 @@
       "name": "gnometerminal",
       "color": "#4A90D9"
     }
+  },
+  {
+    "id": "ptyxis",
+    "name": "Ptyxis",
+    "description": "GNOME 新一代终端模拟器，支持容器集成、分割窗口、GPU 加速渲染",
+    "category": "Terminal",
+    "targets": {
+      "ubuntu": "ptyxis",
+      "debian": null,
+      "arch": "ptyxis",
+      "fedora": "ptyxis",
+      "opensuse": null,
+      "nix": "ptyxis",
+      "flatpak": "app.devsuite.Ptyxis",
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnometerminal",
+      "color": "#4A86CF"
+    }
   }
 ]

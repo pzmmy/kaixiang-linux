@@ -171,5 +171,56 @@
       "name": "openai",
       "color": "#412991"
     }
+  },
+  {
+    "id": "lm-studio",
+    "name": "LM Studio",
+    "description": "本地大模型运行工具，图形界面下载/加载/运行 GGUF 模型，OpenAI 兼容 API",
+    "category": "AI Tools",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": null,
+      "fedora": null,
+      "opensuse": null,
+      "nix": null,
+      "flatpak": null,
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null,
+      "script": "curl -sSL https://installers.lmstudio.ai/install.sh | bash"
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "lmstudio",
+      "color": "#412991"
+    }
+  },
+  {
+    "id": "buzz",
+    "name": "Buzz",
+    "description": "OpenAI Whisper 前端，离线语音转文字，支持实时转录、多语言、导出 SRT",
+    "category": "AI Tools",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": null,
+      "fedora": null,
+      "opensuse": null,
+      "nix": null,
+      "flatpak": "io.github.chidiwilliams.Buzz",
+      "snap": "buzz",
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "whisper",
+      "color": "#412991"
+    }
   }
 ]

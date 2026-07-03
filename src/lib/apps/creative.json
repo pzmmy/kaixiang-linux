@@ -154,5 +154,55 @@
       "name": "freecad",
       "color": "#CB3837"
     }
+  },
+  {
+    "id": "upscayl",
+    "name": "Upscayl",
+    "description": "AI 图片放大工具，基于机器学习无损放大低分辨率图片，支持多种模型",
+    "category": "Creative",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": null,
+      "fedora": null,
+      "opensuse": null,
+      "nix": null,
+      "flatpak": "org.upscayl.Upscayl",
+      "snap": "upscayl",
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "upscayl",
+      "color": "#5B5DEF"
+    }
+  },
+  {
+    "id": "drawio",
+    "name": "Draw.io",
+    "description": "免费流程图/图表/架构图编辑工具，支持 VS Code 集成、本地/云端存储",
+    "category": "Creative",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": "drawio",
+      "fedora": null,
+      "opensuse": null,
+      "nix": "drawio",
+      "flatpak": "com.jgraph.drawio.desktop",
+      "snap": "drawio",
+      "homebrew": "--cask drawio",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "diagramsdotnet",
+      "color": "#F08705"
+    }
   }
 ]
