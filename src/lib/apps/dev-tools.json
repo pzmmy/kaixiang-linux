@@ -292,5 +292,30 @@
       "set": "vscode-icons",
       "name": "file-type-cmake"
     }
+  },
+  {
+    "id": "bruno",
+    "name": "Bruno",
+    "description": "开源 API 客户端，Postman 替代品，本地存储集合，支持 GraphQL/OAuth",
+    "category": "Dev: Tools",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": "bruno",
+      "fedora": null,
+      "opensuse": null,
+      "nix": "bruno",
+      "flatpak": "com.usebruno.Bruno",
+      "snap": null,
+      "homebrew": "--cask bruno",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "bruno",
+      "color": "#F4AA41"
+    }
   }
 ]

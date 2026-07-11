@@ -216,5 +216,55 @@
       "name": "gnome",
       "color": "#4A86CF"
     }
+  },
+  {
+    "id": "timeshift",
+    "name": "Timeshift",
+    "description": "系统快照备份工具，类似 Windows 系统还原，支持 rsync/Btrfs 快照",
+    "category": "System",
+    "targets": {
+      "ubuntu": "timeshift",
+      "debian": "timeshift",
+      "arch": "timeshift",
+      "fedora": "timeshift",
+      "opensuse": "timeshift",
+      "nix": null,
+      "flatpak": null,
+      "snap": null,
+      "homebrew": null,
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "backblaze",
+      "color": "#E41E2F"
+    }
+  },
+  {
+    "id": "btop",
+    "name": "btop",
+    "description": "现代化终端系统监视器，CPU/内存/磁盘/网络/进程实时图表，GPU 温度",
+    "category": "System",
+    "targets": {
+      "ubuntu": "btop",
+      "debian": "btop",
+      "arch": "btop",
+      "fedora": "btop",
+      "opensuse": "btop",
+      "nix": "btop",
+      "flatpak": null,
+      "snap": null,
+      "homebrew": "btop",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "gnome",
+      "color": "#48C9B0"
+    }
   }
 ]

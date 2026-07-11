@@ -191,5 +191,30 @@
       "name": "gnometerminal",
       "color": "#4A86CF"
     }
+  },
+  {
+    "id": "warp",
+    "name": "Warp",
+    "description": "Rust 编写的现代化终端，AI 辅助命令生成、智能补全、分块输出、团队协作",
+    "category": "Terminal",
+    "targets": {
+      "ubuntu": null,
+      "debian": null,
+      "arch": "warp-terminal",
+      "fedora": null,
+      "opensuse": null,
+      "nix": "warp-terminal",
+      "flatpak": "dev.warp.Warp",
+      "snap": null,
+      "homebrew": "--cask warp",
+      "deepin": null,
+      "uos": null
+    },
+    "icon": {
+      "type": "iconify",
+      "set": "simple-icons",
+      "name": "warp",
+      "color": "#01A4FF"
+    }
   }
 ]
